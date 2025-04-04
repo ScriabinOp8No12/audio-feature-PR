@@ -60,7 +60,6 @@ export function AvatarSelection(props: AvatarSelectionInterface): JSX.Element {
 
     return (
         <div className="AvatarSelection">
-
             <div className="race-selection-container">
                 <span className="pluses">+ + +</span>
                 <span className="race-selection-title">CHANGE SPECIES</span>
@@ -69,10 +68,14 @@ export function AvatarSelection(props: AvatarSelectionInterface): JSX.Element {
 
             <div className="race-selection-icons">
                 <div
-                    className={`icon Avatar-svg avatar-aquatic-2 ${
+                    className={`icon Avatar-svg avatar-aquatic-9 ${
                         race === "aquatic" ? "active" : ""
                     }`}
                     onClick={() => updateRace("aquatic")}
+                />
+                <div
+                    className={`icon Avatar-svg avatar-bird-5 ${race === "bird" ? "active" : ""}`}
+                    onClick={() => updateRace("bird")}
                 />
                 <div
                     className={`icon Avatar-svg avatar-fuzzball-23 ${
@@ -81,20 +84,16 @@ export function AvatarSelection(props: AvatarSelectionInterface): JSX.Element {
                     onClick={() => updateRace("fuzzball")}
                 />
                 <div
-                    className={`icon Avatar-svg avatar-bird-5 ${race === "bird" ? "active" : ""}`}
-                    onClick={() => updateRace("bird")}
-                />
-                <div
-                    className={`icon Avatar-svg avatar-wisdom-72 ${
-                        race === "wisdom" ? "active" : ""
-                    }`}
-                    onClick={() => updateRace("wisdom")}
-                />
-                <div
-                    className={`icon Avatar-svg avatar-robot-117 ${
+                    className={`icon Avatar-svg avatar-robot-248 ${
                         race === "robot" ? "active" : ""
                     }`}
                     onClick={() => updateRace("robot")}
+                />
+                <div
+                    className={`icon Avatar-svg avatar-wisdom-2 ${
+                        race === "wisdom" ? "active" : ""
+                    }`}
+                    onClick={() => updateRace("wisdom")}
                 />
             </div>
 

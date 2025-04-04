@@ -58,7 +58,7 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
         { name: "Beginner Bot", handicap: 4, ui_class: "aquatic-9" },
         { name: "Weak Bot", handicap: 2, ui_class: "bird-5" },
         { name: "Easy Bot", handicap: 0, ui_class: "fuzzball-23" },
-        { name: "Medium Bot", handicap: 0, ui_class: "robot-117" },
+        { name: "Medium Bot", handicap: 0, ui_class: "robot-248" },
         { name: "Hard Bot", handicap: 0, ui_class: "wisdom-2" },
     ];
 
