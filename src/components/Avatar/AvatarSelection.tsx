@@ -60,21 +60,10 @@ export function AvatarSelection(props: AvatarSelectionInterface): JSX.Element {
 
     return (
         <div className="AvatarSelection">
-            <div className="selector">
-                <div className="previous">
-                    <Button icon="left-arrow" onClick={() => increment(-1)} />
-                </div>
-                <div className="Avatar">
-                    <div className={`Avatar-svg avatar-${race}-${idx}`} />
-                </div>
-                <div className="next">
-                    <Button icon="right-arrow" onClick={() => increment(1)} />
-                </div>
-            </div>
 
             <div className="race-selection-container">
                 <span className="pluses">+ + +</span>
-                <span className="race-selection-title">SPECIES</span>
+                <span className="race-selection-title">CHANGE SPECIES</span>
                 <span className="pluses">+ + +</span>
             </div>
 
@@ -107,6 +96,18 @@ export function AvatarSelection(props: AvatarSelectionInterface): JSX.Element {
                     }`}
                     onClick={() => updateRace("robot")}
                 />
+            </div>
+
+            <div className="selector">
+                <div className="previous">
+                    <Button icon="left-arrow" onClick={() => increment(-1)} />
+                </div>
+                <div className="Avatar">
+                    <div className={`Avatar-svg avatar-${race}-${idx}`} />
+                </div>
+                <div className="next">
+                    <Button icon="right-arrow" onClick={() => increment(1)} />
+                </div>
             </div>
         </div>
     );
