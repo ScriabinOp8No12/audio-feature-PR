@@ -28,7 +28,6 @@ import autoprefixer from "autoprefixer";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import fixReactVirtualized from "esbuild-plugin-react-virtualized";
 
-const OGS_I18N_BUILD_MODE = (process.env.OGS_I18N_BUILD_MODE || "false").toLowerCase() === "true";
 let OGS_BACKEND = process.env.OGS_BACKEND;
 OGS_BACKEND = OGS_BACKEND ? OGS_BACKEND.toUpperCase() : "BETA";
 
@@ -43,10 +42,10 @@ if (process.env.OGS_BACKEND && !SUPPORTED_BACKENDS.includes(OGS_BACKEND as any))
 
 const backend_url =
     OGS_BACKEND === "BETA"
-        ? "https://beta.online-go.com"
+        ? "https://beta.kidsgoserver.com"
         : OGS_BACKEND === "PRODUCTION"
-        ? "https://online-go.com"
-        : "http://127.0.0.1:1080"; // LOCAL
+          ? "https://kidsgoserver.com"
+          : "http://127.0.0.1:1080"; // LOCAL
 
 const proxy: Record<string, ProxyOptions> = {};
 
@@ -98,54 +97,22 @@ proxy["^/$"] = {
 export default defineConfig({
     root: "src",
 
-    build: !OGS_I18N_BUILD_MODE
-        ? {
-              // This is our production build
-              outDir: "../dist",
-              sourcemap: true,
-              minify: "terser",
-              chunkSizeWarningLimit: 1024 * 1024 * 1.5,
-              rollupOptions: {
-                  input: {
-                      ogs: "src/main.tsx",
-                  },
-                  output: {
-                      assetFileNames: "[name].[ext]",
-                      entryFileNames: "[name].js",
-                  },
-              },
-          }
-        : {
-              // This build section is for our i18n system which run xgettext
-              // on the non-minified bundle
-              outDir: "../i18n/build/",
-              sourcemap: true,
-              minify: false,
-              target: "es2015",
-              chunkSizeWarningLimit: 1024 * 1024 * 99,
-              rollupOptions: {
-                  input: {
-                      ogs: "src/main.tsx",
-                  },
-                  output: {
-                      format: "commonjs",
-                      assetFileNames: "[name].strings.[ext]",
-                      entryFileNames: "[name].strings.js",
-                      manualChunks: (id: string) => {
-                          if (id.includes("node_modules")) {
-                              return "vendor";
-                          }
-                          if (id.includes("goban")) {
-                              return "goban";
-                          }
-                          if (id.includes("react-dynamic-help")) {
-                              return "rdh";
-                          }
-                          return;
-                      },
-                  },
-              },
-          },
+    build: {
+        // This is our production build
+        outDir: "../dist",
+        sourcemap: true,
+        minify: "terser",
+        chunkSizeWarningLimit: 1024 * 1024 * 1.5,
+        rollupOptions: {
+            input: {
+                kidsgo: "src/kidsgo.tsx",
+            },
+            output: {
+                assetFileNames: "[name].[ext]",
+                entryFileNames: "[name].js",
+            },
+        },
+    },
     /*
      * NOTE: We don't use vite css processing for our production builds because
      * it doesn't support generating sourcemaps in production as of 2025-01-07
@@ -183,26 +150,24 @@ export default defineConfig({
         process.env.NODE_ENV !== "production" ? nodePolyfills() : null,
         // checker relative directory is src/
         //
-        !OGS_I18N_BUILD_MODE
-            ? checker({
-                /*
-                  typescript: {
-                      tsconfigPath:
-                          process.env.NODE_ENV === "production"
-                              ? "tsconfig.json"
-                              : "../tsconfig.json",
-                  },
-                  */
-                  eslint: {
-                      useFlatConfig: true,
-                      lintCommand: `eslint ${path.resolve(__dirname, "src")}`,
-                  },
-                  overlay: {
-                      initialIsOpen: true,
-                  },
-                  enableBuild: true,
-              })
-            : null,
+        checker({
+            /*
+            typescript: {
+                tsconfigPath:
+                    process.env.NODE_ENV === "production"
+                        ? "tsconfig.json"
+                        : "../tsconfig.json",
+            },
+            */
+            eslint: {
+                useFlatConfig: true,
+                lintCommand: `eslint ${path.resolve(__dirname, "src")}`,
+            },
+            overlay: {
+                initialIsOpen: true,
+            },
+            enableBuild: true,
+        }),
     ],
     resolve: {
         alias: Object.assign(
@@ -306,8 +271,8 @@ function ogs_vite_middleware(): Plugin {
                         res.end(body);
                         return;
                     }
-                    
-                    let static_files = {
+
+                    const static_files = {
                         ".svg": "image/svg+xml",
                         ".png": "image/png",
                         ".ico": "image/x-icon",
@@ -319,7 +284,7 @@ function ogs_vite_middleware(): Plugin {
                     for (const [ext, mime_type] of Object.entries(static_files)) {
                         try {
                             if (url.endsWith(ext)) {
-                                let f = path.resolve(__dirname + "/assets/" + url);
+                                const f = path.resolve(__dirname + "/assets/" + url);
                                 console.info(`GET ${url} -> ${f}`);
                                 if (ext === ".svg") {
                                     send_response(await fs.readFile(f, "utf-8"), mime_type);
@@ -327,7 +292,7 @@ function ogs_vite_middleware(): Plugin {
                                     send_response(await fs.readFile(f, null), mime_type);
                                 }
                                 return;
-                            } 
+                            }
                         } catch (e) {
                             console.error(e);
                             res.statusCode = 404;
