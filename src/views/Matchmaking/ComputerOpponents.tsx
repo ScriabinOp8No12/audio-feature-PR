@@ -16,10 +16,10 @@
  */
 
 import * as React from "react";
-import { socket } from "sockets";
-import { chat_manager } from "chat_manager";
-import { Avatar, uiClassToRaceIdx } from "Avatar";
-import { bots_list } from "bots";
+import { socket } from "@/lib/sockets";
+import { chat_manager } from "@/lib/chat_manager";
+import { Avatar, uiClassToRaceIdx } from "@kidsgo/components/Avatar";
+import { bots_list } from "@/lib/bots";
 //import { getUserRating } from "rank_utils";
 
 interface OpponentListProperties {

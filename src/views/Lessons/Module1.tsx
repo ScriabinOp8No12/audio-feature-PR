@@ -19,7 +19,7 @@ import * as React from "react";
 import { Content } from "./Content";
 import { PuzzleConfig, Goban, JGOFNumericPlayerColor } from "goban";
 import { Axol } from "./Axol";
-import { openPopup } from "PopupDialog";
+import { openPopup } from "@kidsgo/components/PopupDialog";
 
 const POPUP_TIMEOUT = 3000;
 
@@ -60,8 +60,11 @@ class Page1 extends Module1 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoord("d4", JGOFNumericPlayerColor.BLACK));
-        this.delay(() => goban.editPlaceByPrettyCoord("e4", JGOFNumericPlayerColor.WHITE), 10000); // 10 second delay to align the white stone appearing with the word "followed"
+        this.delay(() => goban.editPlaceByPrettyCoordinates("d4", JGOFNumericPlayerColor.BLACK));
+        this.delay(
+            () => goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.WHITE),
+            10000,
+        ); // 10 second delay to align the white stone appearing with the word "followed"
     }
 }
 
@@ -90,10 +93,10 @@ class Page2 extends Module1 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoord("d5", "1"));
-        this.delay(() => goban.setMarkByPrettyCoord("e4", "2"));
-        this.delay(() => goban.setMarkByPrettyCoord("d3", "3"));
-        this.delay(() => goban.setMarkByPrettyCoord("c4", "4"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "1"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("e4", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d3", "3"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("c4", "4"));
 
         // todo: stone smiles at end
     }
@@ -124,8 +127,8 @@ class Page3 extends Module1 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoord("f7", "1"), 3000);
-        this.delay(() => goban.setMarkByPrettyCoord("g6", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("f7", "1"), 3000);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g6", "2"));
     }
 }
 
@@ -149,9 +152,9 @@ class Page4 extends Module1 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoord("c7", "1"));
-        this.delay(() => goban.setMarkByPrettyCoord("d6", "2"));
-        this.delay(() => goban.setMarkByPrettyCoord("e7", "3"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("c7", "1"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d6", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("e7", "3"));
     }
 }
 
@@ -179,14 +182,14 @@ class Page5 extends Module1 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoord("d4", JGOFNumericPlayerColor.BLACK));
-        this.delay(() => goban.editPlaceByPrettyCoord("e4", JGOFNumericPlayerColor.BLACK));
-        this.delay(() => goban.setMarkByPrettyCoord("d5", "1"));
-        this.delay(() => goban.setMarkByPrettyCoord("e5", "2"));
-        this.delay(() => goban.setMarkByPrettyCoord("f4", "3"));
-        this.delay(() => goban.setMarkByPrettyCoord("e3", "4"));
-        this.delay(() => goban.setMarkByPrettyCoord("d3", "5"));
-        this.delay(() => goban.setMarkByPrettyCoord("c4", "6"));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("d4", JGOFNumericPlayerColor.BLACK));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.BLACK));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "1"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("e5", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("f4", "3"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("e3", "4"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d3", "5"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("c4", "6"));
     }
 }
 
@@ -214,10 +217,10 @@ class Page6 extends Module1 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoord("c4", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.editPlaceByPrettyCoord("d3", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.editPlaceByPrettyCoord("e4", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.setMarkByPrettyCoord("d5", "triangle"));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("c4", JGOFNumericPlayerColor.WHITE));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("d3", JGOFNumericPlayerColor.WHITE));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.WHITE));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "triangle"));
     }
 }
 
@@ -243,10 +246,10 @@ class Page7 extends Module1 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoord("d5", JGOFNumericPlayerColor.BLACK));
-        this.delay(() => goban.setMarkByPrettyCoord("c5", "1"));
-        this.delay(() => goban.setMarkByPrettyCoord("d6", "2"));
-        this.delay(() => goban.setMarkByPrettyCoord("e5", "3"));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("d5", JGOFNumericPlayerColor.BLACK));
+        this.delay(() => goban.setMarkByPrettyCoordinates("c5", "1"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d6", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("e5", "3"));
     }
 }
 
@@ -275,8 +278,8 @@ class Page8 extends Module1 {
         } as PuzzleConfig;
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.placeByPrettyCoord("f5"));
-        this.delay(() => goban.placeByPrettyCoord("d5"));
+        this.delay(() => goban.placeByPrettyCoordinates("f5"));
+        this.delay(() => goban.placeByPrettyCoordinates("d5"));
     }
 }
 

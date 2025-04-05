@@ -16,11 +16,11 @@
  */
 
 import * as React from "react";
-import { KBShortcut } from "KBShortcut";
+import { KBShortcut } from "@/components/KBShortcut";
 import { Goban } from "goban";
-import { PlayerAvatar } from "Avatar";
-import { useUser } from "hooks";
-import { countPasses } from "countPasses";
+import { PlayerAvatar } from "@kidsgo/components/Avatar";
+import { useUser } from "@/lib/hooks";
+import { countPasses } from "@kidsgo/lib/countPasses";
 
 interface ResultsDialogProps {
     goban?: Goban;

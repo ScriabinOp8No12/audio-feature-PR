@@ -16,9 +16,9 @@
  */
 
 import * as React from "react";
-import { chat_manager, ChatChannelProxy } from "chat_manager";
-import { useUser } from "hooks";
-import { Avatar, uiClassToRaceIdx } from "Avatar";
+import { chat_manager, ChatChannelProxy } from "@/lib/chat_manager";
+import { useUser } from "@/lib/hooks";
+import { Avatar, uiClassToRaceIdx } from "@kidsgo/components/Avatar";
 //import { getUserRating } from "rank_utils";
 
 interface OpponentListProperties {

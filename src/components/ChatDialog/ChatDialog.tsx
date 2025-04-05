@@ -17,7 +17,7 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { KBShortcut } from "KBShortcut";
+import { KBShortcut } from "@/components/KBShortcut";
 import { Goban } from "goban";
 
 interface ChatDialogProps {

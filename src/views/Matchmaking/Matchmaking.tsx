@@ -16,32 +16,26 @@
  */
 
 import * as React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useUser } from "hooks";
-import { post, del } from "requests";
-import { socket } from "sockets";
-//import { useState } from "react";
-//import { Link } from "react-router-dom";
-import { _ } from "translate";
-import * as data from "data";
-import cached from "cached";
-//import { OpponentList } from "./OpponentList";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "@/lib/hooks";
+import { post, del } from "@/lib/requests";
+import { socket } from "@/lib/sockets";
+import * as data from "@/lib/data";
+import cached from "@/lib/cached";
 import { ComputerOpponents } from "./ComputerOpponents";
 import { KidOpponents } from "./KidOpponents";
-//import * as preferences from "preferences";
-//import { errorAlerter, ignore } from "misc";
-import { notification_manager } from "Notifications";
-import { ignore, errorAlerter } from "misc";
-import { PopupDialog } from "PopupDialog";
-import { closePopup, openPopup } from "PopupDialog";
-import { uiClassToRaceIdx, avatar_background_class } from "Avatar";
-import { BackButton } from "BackButton";
-import { Avatar } from "Avatar";
+import { notification_manager } from "@/components/Notifications";
+import { errorAlerter } from "@/lib/misc";
+import { PopupDialog } from "@kidsgo/components/PopupDialog";
+import { closePopup, openPopup } from "@kidsgo/components/PopupDialog";
+import { uiClassToRaceIdx, avatar_background_class } from "@kidsgo/components/Avatar";
+import { BackButton } from "@kidsgo/components/BackButton";
+import { Avatar } from "@kidsgo/components/Avatar";
+import { bots } from "@/lib/bots";
+import { image_url } from "@kidsgo/lib/goban_themes";
+import { SignIn } from "@kidsgo/components/SignIn";
+import { reload_page } from "@kidsgo/lib/reload_page";
 import { ActiveGamesList } from "./ActiveGamesList";
-import { bots } from "bots";
-import { image_url } from "goban_themes";
-import { SignIn } from "SignIn";
-import { reload_page } from "reload_page";
 
 type ChallengeDetails = rest_api.ChallengeDetails;
 
@@ -52,7 +46,7 @@ export function Matchmaking(): JSX.Element {
     const navigate = useNavigate();
     const user = useUser();
     const [opponent, _setOpponent] = React.useState("easy");
-    const [opponent_object, setOpponentObject] = React.useState(null);
+    const [_opponent_object, setOpponentObject] = React.useState(null);
     const [game_to_view, _setGameToView] = React.useState<any>(null);
     const [handicap, setHandicap] = React.useState(0);
     const [race, idx] = uiClassToRaceIdx(user.ui_class);
@@ -63,9 +57,12 @@ export function Matchmaking(): JSX.Element {
 
     // setup redirect back to home after an hour of inactivity
     React.useEffect(() => {
-        const t = setTimeout(() => {
-            navigate("/");
-        }, 60 * 60 * 1000);
+        const t = setTimeout(
+            () => {
+                navigate("/");
+            },
+            60 * 60 * 1000,
+        );
         return () => {
             clearTimeout(t);
         };
@@ -84,13 +81,15 @@ export function Matchmaking(): JSX.Element {
             setMyColor("black");
         }
     };
+    /*
     const setGameToView = (g: any) => {
         _setOpponent(null);
         _setGameToView(g);
         setOpponentObject(null);
     };
+    */
 
-    const play = (e) => {
+    const play = (_e) => {
         //const hc = isBot(opponent) ? handicap : 0;
         const hc = handicap;
 
@@ -526,23 +525,3 @@ function isBot(user_id: string | number): boolean {
 
     return false;
 }
-
-/*
-interface ChallengeDialogProps {
-    opponent: any;
-    onChange: (settings) => void;
-}
-
-function ChallengeDialog({ opponent, onChange }: ChallengeDialogProps): JSX.Element {
-    const user = useUser();
-    console.log({ opponent });
-    const [my_race, my_idx] = uiClassToRaceIdx(user?.ui_class);
-    const [orace, oidx] = uiClassToRaceIdx(opponent?.ui_class);
-
-    return (
-        <div>
-            {user?.username} vs {opponent?.username}
-        </div>
-    );
-}
-*/

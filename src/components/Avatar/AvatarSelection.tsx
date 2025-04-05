@@ -18,7 +18,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { avatars, Race } from "./avatar_list";
-import { Button } from "Button";
+import { Button } from "@kidsgo/components/Button";
 
 export interface AvatarSelectionInterface {
     race: Race;
@@ -64,7 +64,7 @@ export function AvatarSelection(props: AvatarSelectionInterface): JSX.Element {
                 <div className="previous">
                     <Button icon="left-arrow" onClick={() => increment(-1)} />
                 </div>
-                <div className="Avatar">
+                <div className="@kidsgo/components/Avatar">
                     <div className={`Avatar-svg avatar-${race}-${idx}`} />
                 </div>
                 <div className="next">

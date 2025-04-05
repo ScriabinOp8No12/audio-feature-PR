@@ -16,29 +16,36 @@
  */
 
 import * as React from "react";
-import * as data from "data";
-import { sfx } from "sfx";
+import * as data from "@/lib/data";
+import { sfx } from "@/lib/sfx";
 import { useNavigate, useParams } from "react-router-dom";
 import { useResizeDetector } from "react-resize-detector";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { _ } from "translate";
-import { Goban, GoMath, GobanConfig } from "goban";
+import { _ } from "@/lib/translate";
+import {
+    CanvasRendererGobanConfig,
+    decodeMoves,
+    Goban,
+    GobanCanvas,
+    GobanConfig,
+    prettyCoordinates,
+} from "goban";
 import {
     PlayerAvatar,
     //uiClassToRaceIdx,
     avatar_background_class,
     Race,
     usePlayerRace,
-} from "Avatar";
-import { Bowl } from "Bowl";
-import { Captures } from "Captures";
-import { BackButton } from "BackButton";
-import { PopupDialog, openPopup, closePopup } from "PopupDialog";
-import { ResultsDialog } from "ResultsDialog";
-import { usePlayerToMove, useShowUndoRequested, usePhase } from "Game/GameHooks";
-import { animateCaptures } from "animateCaptures";
+} from "@kidsgo/components/Avatar";
+import { Bowl } from "@kidsgo/components/Bowl";
+import { Captures } from "@kidsgo/components/Captures";
+import { BackButton } from "@kidsgo/components/BackButton";
+import { PopupDialog, openPopup, closePopup } from "@kidsgo/components/PopupDialog";
+import { ResultsDialog } from "@kidsgo/components/ResultsDialog";
+import { usePlayerToMove, useShowUndoRequested, usePhase } from "@/views/Game/GameHooks";
+import { animateCaptures } from "@kidsgo/lib/animateCaptures";
 import { ChatBubble } from "./ChatBubble";
-import { openChat } from "ChatDialog";
+import { openChat } from "@kidsgo/components/ChatDialog";
 
 export function KidsGame(): JSX.Element {
     const user = data.get("user");
@@ -83,7 +90,7 @@ export function KidsGame(): JSX.Element {
     });
 
     useEffect(() => {
-        const opts: GobanConfig = {
+        const opts: CanvasRendererGobanConfig = {
             board_div: container.current || undefined,
             interactive: true,
             mode: "play",
@@ -103,7 +110,7 @@ export function KidsGame(): JSX.Element {
         };
 
         goban_opts_ref.current = opts;
-        goban_ref.current = new Goban(opts);
+        goban_ref.current = new GobanCanvas(opts);
         const goban: Goban = goban_ref.current;
 
         try {
@@ -115,12 +122,12 @@ export function KidsGame(): JSX.Element {
         }
 
         const onUpdate = () => {
-            const mvs = GoMath.decodeMoves(
+            const mvs = decodeMoves(
                 goban.engine.cur_move.getMoveStringToThisPoint(),
                 goban.width,
                 goban.height,
             );
-            mvs.map((p) => GoMath.prettyCoords(p.x, p.y, goban.height));
+            mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height));
 
             if (goban.engine.phase === "finished") {
                 const s = goban.engine.computeScore(false);

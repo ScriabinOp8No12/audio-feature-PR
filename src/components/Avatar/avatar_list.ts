@@ -518,10 +518,6 @@ for (const avatar of avatar_list) {
     avatar.shuffle_hash = (avatar.id * 1299709) % 1987;
 }
 
-function sortById(a: Entry, b: Entry): number {
-    return a.id - b.id;
-}
-
 function sortByShuffleHash(a: Entry, b: Entry): number {
     return a.shuffle_hash - b.shuffle_hash;
 }

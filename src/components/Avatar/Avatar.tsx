@@ -28,7 +28,7 @@ export interface AvatarInterface {
 
 export function Avatar({ race, idx, small }: AvatarInterface): JSX.Element {
     return (
-        <div className={"Avatar" + (small ? " small" : "")}>
+        <div className={"@kidsgo/components/Avatar" + (small ? " small" : "")}>
             <div className={`Avatar-svg avatar-${race}-${idx}`} />
         </div>
     );

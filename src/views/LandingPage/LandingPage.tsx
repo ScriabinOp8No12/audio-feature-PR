@@ -16,9 +16,9 @@
  */
 
 import * as React from "react";
-import { _ } from "translate";
+import { _ } from "@/lib/translate";
 import { useNavigate } from "react-router-dom";
-import { kidsgo_sfx } from "kidsgo-sfx";
+import { kidsgo_sfx } from "@kidsgo/lib/kidsgo-sfx";
 
 const ROCKET_LAUNCH_DURATION = 1.25; // seconds. This should match the time in LandingPage.styl to sync animation and navigation
 let navigate_timeout;

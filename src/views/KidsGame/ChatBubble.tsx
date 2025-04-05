@@ -17,7 +17,7 @@
 
 import * as React from "react";
 import { Goban } from "goban";
-import { ChatPhrases } from "ChatDialog";
+import { ChatPhrases } from "@kidsgo/components/ChatDialog";
 
 const CHAT_AUTOHIDE_TIMEOUT = 5000;
 

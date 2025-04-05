@@ -75,10 +75,10 @@ class Page2 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoord("f7", "1"), 7250);
-        this.delay(() => goban.setMarkByPrettyCoord("g7", "2"));
-        this.delay(() => goban.setMarkByPrettyCoord("f6", "3"));
-        this.delay(() => goban.setMarkByPrettyCoord("g6", "4"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("f7", "1"), 7250);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g7", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("f6", "3"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("g6", "4"));
 
         // todo: stone smiles at end
     }
@@ -128,10 +128,10 @@ class Page4 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoord("d5", "1"));
-        this.delay(() => goban.setMarkByPrettyCoord("e5", "2"));
-        this.delay(() => goban.setMarkByPrettyCoord("d4", "3"));
-        this.delay(() => goban.setMarkByPrettyCoord("e4", "4"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "1"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("e5", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d4", "3"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("e4", "4"));
     }
 }
 
@@ -181,15 +181,15 @@ class Page6 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoord("a3", "1"));
-        this.delay(() => goban.setMarkByPrettyCoord("b3", "2"));
-        this.delay(() => goban.setMarkByPrettyCoord("a2", "3"));
-        this.delay(() => goban.setMarkByPrettyCoord("c2", "4"));
-        this.delay(() => goban.setMarkByPrettyCoord("d2", "5"));
-        this.delay(() => goban.setMarkByPrettyCoord("a1", "6"));
-        this.delay(() => goban.setMarkByPrettyCoord("b1", "7"));
-        this.delay(() => goban.setMarkByPrettyCoord("c1", "8"));
-        this.delay(() => goban.setMarkByPrettyCoord("d1", "9"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("a3", "1"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("b3", "2"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("a2", "3"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("c2", "4"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d2", "5"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("a1", "6"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("b1", "7"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("c1", "8"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d1", "9"));
     }
 }
 
@@ -247,10 +247,13 @@ class Page8 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoord("b5", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.editPlaceByPrettyCoord("b6", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.editPlaceByPrettyCoord("h5", JGOFNumericPlayerColor.BLACK), 3000);
-        this.delay(() => goban.editPlaceByPrettyCoord("h3", JGOFNumericPlayerColor.BLACK));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("b5", JGOFNumericPlayerColor.WHITE));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("b6", JGOFNumericPlayerColor.WHITE));
+        this.delay(
+            () => goban.editPlaceByPrettyCoordinates("h5", JGOFNumericPlayerColor.BLACK),
+            3000,
+        );
+        this.delay(() => goban.editPlaceByPrettyCoordinates("h3", JGOFNumericPlayerColor.BLACK));
     }
 }
 
@@ -312,7 +315,10 @@ class Page10 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("a9a8a7a6a5a4a3a2a1b7b6b5b4b3b2b1c9c8c1c2c4d3d9", "circle");
+        goban.setMarkByPrettyCoordinates(
+            "a9a8a7a6a5a4a3a2a1b7b6b5b4b3b2b1c9c8c1c2c4d3d9",
+            "circle",
+        );
     }
 }
 
@@ -337,7 +343,10 @@ class Page11 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("g9g8g7g5g2g1h9h8h7h6h5h4h3h2h1j9j8j7j6j5j4j3j2j1", "circle");
+        goban.setMarkByPrettyCoordinates(
+            "g9g8g7g5g2g1h9h8h7h6h5h4h3h2h1j9j8j7j6j5j4j3j2j1",
+            "circle",
+        );
     }
 }
 
@@ -366,8 +375,8 @@ class Page12 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("g5g2g1h9h8h7h6h5h4h3h2h1j9j8j7j6j5j4j3j2j1", "circle");
-        goban.setMarkByPrettyCoord("g9g8g7", "circle");
+        goban.setMarkByPrettyCoordinates("g5g2g1h9h8h7h6h5h4h3h2h1j9j8j7j6j5j4j3j2j1", "circle");
+        goban.setMarkByPrettyCoordinates("g9g8g7", "circle");
     }
 }
 

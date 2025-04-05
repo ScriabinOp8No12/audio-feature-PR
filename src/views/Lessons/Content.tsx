@@ -16,10 +16,10 @@
  */
 
 import * as React from "react";
-import * as data from "data";
-import { PuzzleConfig, Goban, GoMath } from "goban";
-import { Timeout } from "misc";
-import { TypedEventEmitter } from "TypedEventEmitter";
+import * as data from "@/lib/data";
+import { PuzzleConfig, Goban, decodeMoves } from "goban";
+import { Timeout } from "@/lib/misc";
+import { TypedEventEmitter } from "@/lib/TypedEventEmitter";
 
 interface Events {
     "animation-complete": void;
@@ -184,10 +184,10 @@ export class Content extends TypedEventEmitter<Events> {
         const correct: Array<any> = [];
         const wrong: Array<any> = [];
         for (const s of _correct) {
-            correct.push(GoMath.decodeMoves(s, width, height));
+            correct.push(decodeMoves(s, width, height));
         }
         for (const s of _wrong) {
-            wrong.push(GoMath.decodeMoves(s, width, height));
+            wrong.push(decodeMoves(s, width, height));
         }
 
         const ret = {

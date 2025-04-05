@@ -16,7 +16,7 @@
  */
 
 import * as React from "react";
-import * as player_cache from "player_cache";
+import * as player_cache from "@/lib/player_cache";
 import { uiClassToRaceIdx } from "./util";
 import { Race } from "./avatar_list";
 

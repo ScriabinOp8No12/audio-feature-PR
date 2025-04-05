@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{PAGE_LANGUAGE}}">
     <head>
         <meta charset="utf-8" />
@@ -81,7 +81,9 @@
                 }
             }
             #svg-bouncer {
-                animation: bounce 1s infinite, fade-in 2s;
+                animation:
+                    bounce 1s infinite,
+                    fade-in 2s;
             }
 
             #loading-svg-container {
@@ -1113,15 +1115,11 @@
         <script defer src="{{GOBAN_JS}}"></script>
         <script
             defer
-            src="{{CDN_SERVICE}}/{{RELEASE}}/kidsgo-vendor.{{KIDSGO_VENDOR_HASH_DOTJS}}"
-        ></script>
-        <script
-            defer
             src="https://cdn.online-go.com/lib/socket.io/3.1.0/socket.io{{MIN}}.js"
         ></script>
 
         <script type="text/javascript">
-            var supported_languages = {{SUPPORTED_LANGUAGES}};
+            var supported_languages = ["en"];
         </script>
         <script type="text/javascript">
             var kidsgo_version = "{{VERSION}}";
@@ -1248,7 +1246,15 @@
             } catch (e) {
                 console.error(e);
             }
-            document.write('<script defer src="' + kidsgo_script_path + '"><' + "/script>");
+
+            if ("{{RELEASE}}" === "" && "{{KIDSGO_VERSION_HASH_DOTJS}}" === "js") {
+                console.debug("Development mode detected, loading from vite");
+                // Load from dev server
+                document.write('<script defer type="module" src="/kidsgo.tsx"><' + "/script>");
+            } else {
+                console.log("Loading kidsgo script from cdn", kidsgo_script_path);
+                document.write('<script defer src="' + kidsgo_script_path + '"><' + "/script>");
+            }
         </script>
 
         {{LIVE_RELOAD}}

@@ -16,8 +16,8 @@
  */
 
 import * as React from "react";
-import { socket } from "sockets";
-import { PlayerAvatar } from "Avatar";
+import { socket } from "@/lib/sockets";
+import { PlayerAvatar } from "@kidsgo/components/Avatar";
 
 interface ActiveGamesListProperties {
     value: any;

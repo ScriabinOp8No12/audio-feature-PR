@@ -16,23 +16,23 @@
  */
 
 import * as React from "react";
-import * as data from "data";
-import cached from "cached";
+import * as data from "@/lib/data";
+import cached from "@/lib/cached";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "hooks";
-import { post, get } from "requests";
-import { BackButton } from "BackButton";
-import { _ } from "translate";
-import { useEnsureUserIsCreated } from "Matchmaking";
+import { useUser } from "@/lib/hooks";
+import { post, get } from "@/lib/requests";
+import { BackButton } from "@kidsgo/components/BackButton";
+import { _ } from "@/lib/translate";
+import { useEnsureUserIsCreated } from "@kidsgo/views/Matchmaking";
 import {
     AvatarSelection,
     Race,
     raceIdxToUiClass,
     uiClassToRaceIdx,
     avatar_background_class,
-} from "Avatar";
-import { openPopup } from "PopupDialog";
-import { SignIn } from "SignIn";
+} from "@kidsgo/components/Avatar";
+import { openPopup } from "@kidsgo/components/PopupDialog";
+//import { SignIn } from "@kidsgo/views/SignIn";
 
 export function CharacterSelection(): JSX.Element {
     useEnsureUserIsCreated();
