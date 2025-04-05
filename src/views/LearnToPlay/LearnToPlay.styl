@@ -85,8 +85,57 @@
         background-repeat: no-repeat;
     }
 
-    .ChapterButton {
+    .chapter-container {
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+        width: 7rem;
+    }
+
+    .chapter-1-container {
+        left: "calc(50% - 3.5rem)" % "";
+        top: 12%;
+    }
+
+    .chapter-2-container {
+        right: 22%;
+        top: 22%;
+    }
+
+    .chapter-3-container {
+        top: "calc(50% - 3.5rem)" % "";
+        right: 11%;
+    }
+
+    .chapter-4-container {
+        right: 22%;
+        bottom: 22%;
+    }
+
+    .chapter-5-container {
+        left: "calc(50% - 3.5rem)" % "";
+        bottom: 12%;
+    }
+
+    .chapter-6-container {
+        left: 22%;
+        bottom: 22%;
+    }
+
+    .chapter-7-container {
+        top: "calc(50% - 3.5rem)" % "";
+        left: 12%;
+    }
+
+    .chapter-8-container {
+        left: 22%;
+        top: 22%;
+    }
+
+    .ChapterButton {
+        position: relative;
         display: inline-flex;
         width: 3rem;
         height: 3rem;
@@ -107,173 +156,22 @@
             background-image: svg-load("../assets/pages/lessons/active.svg");
             cursor: not-allowed;
         }
-
-        // top bottom
-        &.chapter-1 {
-            left: "calc(50% - 1.5rem)" % "";
-            top: 12%;
-        }
-        &.chapter-5 {
-            left: "calc(50% - 1.5rem)" % "";
-            bottom: 12%;
-        }
-
-        // left right
-        &.chapter-7 {
-            top: "calc(50% - 1.5rem)" % "";
-            left: 12%;
-        }
-        &.chapter-3 {
-            top: "calc(50% - 1.5rem)" % "";
-            right: 11%;
-        }
-
-        // ne se
-        &.chapter-2 {
-            right: 22%
-            top: 22%;
-        }
-        &.chapter-4 {
-            right: 22%
-            bottom: 22%;
-        }
-
-        // nw sw
-        &.chapter-6 {
-            left: 22%
-            bottom: 22%;
-        }
-        &.chapter-8 {
-            left: 22%
-            top: 22%;
-        }
     }
 
     .chapter-text {
-        position: absolute;
-        color: #fff;
-        cursor: pointer;
-        user-select: none;
+        position: relative;
+        color: #001533;
+        text-align: center;
+        font-size: 1.25rem;
 
         &:hover {
-            color: orange;
+            color:rgb(159, 188, 197);
+            cursor: pointer;
         }
-    }
 
-    .chapter-1-text {
-        left: 42%;
-        top: 20%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
-    }
-
-    .chapter-2-text {
-        right: 15%;
-        top: 30%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
-    }
-
-    .chapter-3-text {
-        right: 3%;
-        top: 55%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
-    }
-
-    .chapter-4-text {
-        right: 19%;
-        bottom: 17%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
-    }
-
-    .chapter-5-text {
-        left: 43%;
-        bottom: 6%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
-    }
-    .chapter-6-text {
-        left: 14%;
-        bottom: 17%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
-    }
-    .chapter-7-text {
-        left: 5%;
-        top: 55%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
-    }
-    .chapter-8-text {
-        left: 15%;
-        top: 30%;
-        color: rgb(255, 204, 102);
-        font-weight: bold;
-        text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000;
-         background-color: #D4F1F4;
-         padding: 5px;
-         border-radius: 15px;
+        &.disabled {
+        color: #001533;
+        cursor: not-allowed;
+        }
     }
 }

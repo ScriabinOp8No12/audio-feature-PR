@@ -281,8 +281,9 @@ export function Matchmaking(): JSX.Element {
             <button id="Lessons-button" onClick={() => navigate("/learn-to-play")}>
                 Lessons
             </button>
+            {/* <button>Character</button> */}
             <CheckForChallengeReceived />
-            <div className="current-user-container">
+            {/* <div className="current-user-container">
                 <Avatar race={race} idx={idx} />
                 {(!user.anonymous || null) && (
                     <div>
@@ -296,7 +297,7 @@ export function Matchmaking(): JSX.Element {
                         </div>
                     </div>
                 )}
-            </div>
+            </div> */}
 
             <div className="outer-container">
                 <button

@@ -109,12 +109,11 @@ export function CharacterSelection(): JSX.Element {
 
             <NameSelection />
 
-            {/* <Button icon="check" onClick={() => navigate("/play")} /> */}
-            <button className="ok" onClick={() => navigate("/play")}>
-                OK
-            </button>
-
             <AvatarSelection race={avatarRace} idx={avatarIdx} onChange={update} />
+            
+            <button className="ok" onClick={() => navigate("/play")}>
+                Done — I love it!
+            </button>
         </div>
     );
 }
@@ -145,10 +144,10 @@ function NameSelection(): JSX.Element {
 
     return (
         <div className={`NameSelection ${refreshing ? "refreshing" : ""}`}>
-            <div className="title">CHARACTER SELECTION</div>
+            <div className="title">PLAYER AVATAR</div>
             <div className="username">{user.username}</div>
             <button className="refresh" onClick={refresh}>
-                Pick New Name
+                Change Name
             </button>
         </div>
     );
