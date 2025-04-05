@@ -18,6 +18,8 @@
 import * as React from "react";
 import { avatar_list, Race } from "./avatar_list";
 
+import "./Avatar.styl";
+
 window["avatar_list"] = avatar_list;
 
 export interface AvatarInterface {
@@ -28,7 +30,7 @@ export interface AvatarInterface {
 
 export function Avatar({ race, idx, small }: AvatarInterface): JSX.Element {
     return (
-        <div className={"@kidsgo/components/Avatar" + (small ? " small" : "")}>
+        <div className={"Avatar" + (small ? " small" : "")}>
             <div className={`Avatar-svg avatar-${race}-${idx}`} />
         </div>
     );

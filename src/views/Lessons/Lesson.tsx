@@ -243,10 +243,12 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
 
         let t = setTimeout(() => {
             t = null;
-            console.log(board_container_resizer.ref.current);
-            const w = board_container_resizer.ref.current.clientWidth;
-            const h = board_container_resizer.ref.current.clientHeight;
-            onResize(w, h);
+            if (board_container_resizer.ref.current) {
+                console.log(board_container_resizer.ref.current);
+                const w = board_container_resizer.ref.current.clientWidth;
+                const h = board_container_resizer.ref.current.clientHeight;
+                onResize(w, h);
+            }
         }, 10);
 
         const animation_interval = setInterval(() => {

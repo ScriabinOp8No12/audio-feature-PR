@@ -306,12 +306,34 @@ function ogs_vite_middleware(): Plugin {
                         res.end(body);
                         return;
                     }
-
-                    if (url.endsWith(".svg") || url.endsWith(".png") || url.endsWith(".ico") || url.endsWith(".webp") || url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".webm")) {
-                        let f = path.resolve(__dirname + "/assets/" + url);
-                        console.info(`GET ${url} -> ${f}`);
-                        send_response(await fs.readFile(f, "utf-8"), "image/svg+xml");
-                        return;
+                    
+                    let static_files = {
+                        ".svg": "image/svg+xml",
+                        ".png": "image/png",
+                        ".ico": "image/x-icon",
+                        ".webp": "image/webp",
+                        ".jpg": "image/jpeg",
+                        ".jpeg": "image/jpeg",
+                        ".webm": "video/webm",
+                    };
+                    for (const [ext, mime_type] of Object.entries(static_files)) {
+                        try {
+                            if (url.endsWith(ext)) {
+                                let f = path.resolve(__dirname + "/assets/" + url);
+                                console.info(`GET ${url} -> ${f}`);
+                                if (ext === ".svg") {
+                                    send_response(await fs.readFile(f, "utf-8"), mime_type);
+                                } else {
+                                    send_response(await fs.readFile(f, null), mime_type);
+                                }
+                                return;
+                            } 
+                        } catch (e) {
+                            console.error(e);
+                            res.statusCode = 404;
+                            res.end("Not found");
+                            return;
+                        }
                     }
 
                     if (url === "/manifest.json") {
