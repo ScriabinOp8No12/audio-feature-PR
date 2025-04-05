@@ -33,6 +33,8 @@ import * as requests from "@/lib/requests";
 import { configure_goban } from "./lib/configure-goban";
 import { initialize_kidsgo_themes } from "./lib/goban_themes";
 import {
+    init_remote_ownership_estimator,
+    init_wasm_ownership_estimator,
     //init_score_estimator,
     //set_remote_scorer,
     ScoreEstimateRequest,
@@ -268,22 +270,18 @@ sockets.socket.on("user/update", (user: any) => {
 });
 
 /*** Setup remote score estimation */
-console.warn("Not running remote or local score estimation code");
-/*
-set_remote_scorer(remote_score_estimator);
-function remote_score_estimator(req: ScoreEstimateRequest): Promise<ScoreEstimateResponse> {
-    return new Promise<ScoreEstimateResponse>((resolve, reject) => {
-        req.jwt = data.get("config.user_jwt");
+init_remote_ownership_estimator(remote_ownership_estimator);
+function remote_ownership_estimator(req: ScoreEstimateRequest): Promise<ScoreEstimateResponse> {
+    return new Promise<ScoreEstimateResponse>((resolve) => {
+        req.jwt = data.get("config.user_jwt", "");
         resolve(post(`${ai_host}/api/score`, req));
     });
 }
-
-init_score_estimator()
-    .then((tf) => {
+init_wasm_ownership_estimator()
+    .then(() => {
         // console.log('SE Initialized');
     })
     .catch((err) => console.error(err));
-    */
 
 /*** Generic error handling from the server ***/
 sockets.socket.on("ERROR", (msg) => {
