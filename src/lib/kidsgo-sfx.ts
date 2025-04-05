@@ -15,8 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import * as data from "data";
-import { sprite_packs } from "sfx_sprites";
 import { Howl, Howler } from "howler";
 
 export let kidsgo_sfx: Howl;

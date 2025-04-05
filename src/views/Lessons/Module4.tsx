@@ -18,7 +18,6 @@
 import * as React from "react";
 import { Content } from "./Content";
 import { PuzzleConfig, Goban, JGOFNumericPlayerColor } from "goban";
-import { openPopup } from "PopupDialog";
 
 class Module4 extends Content {
     constructor(audioUrl: string) {
@@ -52,7 +51,7 @@ class Page1 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("d4", "A");
+        goban.setMarkByPrettyCoordinates("d4", "A");
     }
 }
 
@@ -79,7 +78,7 @@ class Page2 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("e4", "B");
+        goban.setMarkByPrettyCoordinates("e4", "B");
     }
 }
 
@@ -105,7 +104,7 @@ class Page3 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("d4", "A");
+        goban.setMarkByPrettyCoordinates("d4", "A");
     }
 }
 
@@ -136,7 +135,7 @@ class Page4 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("e4", "B");
+        goban.setMarkByPrettyCoordinates("e4", "B");
     }
 }
 
@@ -165,8 +164,8 @@ class Page5 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("d4", "A");
-        goban.setMarkByPrettyCoord("e4", "1");
+        goban.setMarkByPrettyCoordinates("d4", "A");
+        goban.setMarkByPrettyCoordinates("e4", "1");
     }
 }
 
@@ -195,8 +194,8 @@ class Page6 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("d4", "triangle");
-        goban.setMarkByPrettyCoord("e4", "1");
+        goban.setMarkByPrettyCoordinates("d4", "triangle");
+        goban.setMarkByPrettyCoordinates("e4", "1");
     }
 }
 
@@ -225,20 +224,20 @@ class Page7 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("d4", "triangle");
-        goban.setMarkByPrettyCoord("e4", "1");
+        goban.setMarkByPrettyCoordinates("d4", "triangle");
+        goban.setMarkByPrettyCoordinates("e4", "1");
         this.delay(() => {
             goban.engine.editPlace(4, 5, JGOFNumericPlayerColor.WHITE);
-            goban.setMarkByPrettyCoord("d4", "triangle");
-            goban.setMarkByPrettyCoord("e4", "1");
-            goban.setMarkByPrettyCoord("e2", "2");
+            goban.setMarkByPrettyCoordinates("d4", "triangle");
+            goban.setMarkByPrettyCoordinates("e4", "1");
+            goban.setMarkByPrettyCoordinates("e2", "2");
         }, 6000);
         this.delay(() => {
             goban.engine.editPlace(4, 1, JGOFNumericPlayerColor.BLACK);
-            goban.setMarkByPrettyCoord("d4", "triangle");
-            goban.setMarkByPrettyCoord("e4", "1");
-            goban.setMarkByPrettyCoord("e2", "2");
-            goban.setMarkByPrettyCoord("e6", "3");
+            goban.setMarkByPrettyCoordinates("d4", "triangle");
+            goban.setMarkByPrettyCoordinates("e4", "1");
+            goban.setMarkByPrettyCoordinates("e2", "2");
+            goban.setMarkByPrettyCoordinates("e6", "3");
         }, 2500);
     }
 }
@@ -268,10 +267,10 @@ class Page8 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("e4", "triangle");
-        goban.setMarkByPrettyCoord("e2", "2");
-        goban.setMarkByPrettyCoord("e6", "3");
-        goban.setMarkByPrettyCoord("d4", "A");
+        goban.setMarkByPrettyCoordinates("e4", "triangle");
+        goban.setMarkByPrettyCoordinates("e2", "2");
+        goban.setMarkByPrettyCoordinates("e6", "3");
+        goban.setMarkByPrettyCoordinates("d4", "A");
     }
 }
 
@@ -297,8 +296,8 @@ class Page9 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("e4", "triangle");
-        goban.setMarkByPrettyCoord("c3", "1");
+        goban.setMarkByPrettyCoordinates("e4", "triangle");
+        goban.setMarkByPrettyCoordinates("c3", "1");
     }
 }
 
@@ -328,9 +327,9 @@ class Page10 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("c3", "1");
-        goban.setMarkByPrettyCoord("e4", "2");
-        goban.setMarkByPrettyCoord("c6", "3");
+        goban.setMarkByPrettyCoordinates("c3", "1");
+        goban.setMarkByPrettyCoordinates("e4", "2");
+        goban.setMarkByPrettyCoordinates("c6", "3");
     }
 }
 
@@ -360,7 +359,7 @@ class Page11 extends Module4 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoord("g4", "A");
+        goban.setMarkByPrettyCoordinates("g4", "A");
     }
 }
 

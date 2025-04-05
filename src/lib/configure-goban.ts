@@ -15,25 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import * as preferences from "preferences";
-import * as data from "data";
-import { get_clock_drift, get_network_latency, socket } from "sockets";
-import { current_language } from "translate";
-import { Goban, GoEngine, GoThemes } from "goban";
-import { sfx } from "sfx";
+import * as preferences from "@/lib/preferences";
+import * as data from "@/lib/data";
+import { get_clock_drift, get_network_latency, socket } from "@/lib/sockets";
+import { current_language } from "@/lib/translate";
+import { Goban, THEMES, setGobanCallbacks } from "goban";
+import { sfx } from "@/lib/sfx";
 
 window["Goban"] = Goban;
-window["GoThemes"] = GoThemes;
-window["GoEngine"] = GoEngine;
+//window["GoThemes"] = GoThemes;
+//window["GoEngine"] = GoEngine;
 
-data.setDefault("custom.black", "#000000");
-data.setDefault("custom.white", "#FFFFFF");
-data.setDefault("custom.board", "#DCB35C");
-data.setDefault("custom.line", "#000000");
-data.setDefault("custom.url", "");
+(data as any).setDefault("custom.black", "#000000");
+(data as any).setDefault("custom.white", "#FFFFFF");
+(data as any).setDefault("custom.board", "#DCB35C");
+(data as any).setDefault("custom.line", "#000000");
+(data as any).setDefault("custom.url", "");
 
 export function configure_goban() {
-    Goban.setHooks({
+    setGobanCallbacks({
         defaultConfig: () => {
             return {
                 server_socket: socket,
@@ -86,7 +86,7 @@ export function configure_goban() {
         getClockDrift: (): number => get_clock_drift(),
         getNetworkLatency: (): number => get_network_latency(),
         getLocation: (): string => window.location.pathname,
-        getShowMoveNumbers: (): boolean => !!preferences.get("show-move-numbers"),
+        //getShowMoveNumbers: (): boolean => !!preferences.get("show-move-numbers"),
         getShowVariationMoveNumbers: (): boolean => preferences.get("show-variation-move-numbers"),
         getMoveTreeNumbering: (): "none" | "move-number" | "move-coordinates" =>
             preferences.get("move-tree-numbering"),
@@ -97,13 +97,13 @@ export function configure_goban() {
         watchSelectedThemes: (cb) => preferences.watchSelectedThemes(cb),
         getSelectedThemes: () => getSelectedThemes(),
 
-        customBlackStoneColor: (): string => data.get("custom.black"),
-        customBlackTextColor: (): string => data.get("custom.white"),
-        customWhiteStoneColor: (): string => data.get("custom.white"),
-        customWhiteTextColor: (): string => data.get("custom.black"),
-        customBoardColor: (): string => data.get("custom.board"),
-        customBoardLineColor: (): string => data.get("custom.line"),
-        customBoardUrl: (): string => data.get("custom.url"),
+        customBlackStoneColor: (): string => data.get("custom.black" as any),
+        customBlackTextColor: (): string => data.get("custom.white" as any),
+        customWhiteStoneColor: (): string => data.get("custom.white" as any),
+        customWhiteTextColor: (): string => data.get("custom.black" as any),
+        customBoardColor: (): string => data.get("custom.board" as any),
+        customBoardLineColor: (): string => data.get("custom.line" as any),
+        customBoardUrl: (): string => data.get("custom.url" as any),
 
         addCoordinatesToChatInput: (coordinates: string): void => {
             const chat_input = $(".chat-input");
@@ -116,18 +116,24 @@ export function configure_goban() {
     });
 }
 
-export function getSelectedThemes(): { board: string; black: string; white: string } {
+export function getSelectedThemes(): {
+    board: string;
+    black: string;
+    white: string;
+    "removal-graphic": "x";
+    "removal-scale": number;
+} {
     let board = preferences.get("goban-theme-board") || "Plain";
     let white = preferences.get("goban-theme-white") || "White";
     let black = preferences.get("goban-theme-black") || "DarkBlue";
 
-    if (!(board in GoThemes["board"])) {
+    if (!(board in THEMES["board"])) {
         board = "Plain";
     }
-    if (!(white in GoThemes["white"])) {
+    if (!(white in THEMES["white"])) {
         white = "White";
     }
-    if (!(black in GoThemes["black"])) {
+    if (!(black in THEMES["black"])) {
         black = "DarkBlue";
     }
 
@@ -135,5 +141,7 @@ export function getSelectedThemes(): { board: string; black: string; white: stri
         board: board,
         white: white,
         black: black,
+        "removal-graphic": "x",
+        "removal-scale": 1,
     };
 }

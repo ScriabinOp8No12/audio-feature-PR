@@ -18,6 +18,8 @@
 import * as React from "react";
 import { avatar_list, Race } from "./avatar_list";
 
+import "./Avatar.styl";
+
 window["avatar_list"] = avatar_list;
 
 export interface AvatarInterface {

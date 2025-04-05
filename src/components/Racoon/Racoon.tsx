@@ -16,7 +16,6 @@
  */
 
 import * as React from "react";
-import { useState, useEffect } from "react";
 
 interface RacoonProperties {
     hover?: boolean;

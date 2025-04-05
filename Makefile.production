@@ -3,13 +3,9 @@
 RELEASE=$(shell git describe --long | sed 's@\([0-9.]\{1,\}\).*@\1@')
 VERSION=$(shell git describe --long)
 KIDSGO_HASH=$(shell md5sum dist/kidsgo.min.js | awk '{print $$1}')
-KIDSGO_VENDOR_HASH=$(shell md5sum dist/kidsgo-vendor.min.js | awk '{print $$1}')
 KIDSGO_VERSION_HASH=$(VERSION)-$(KIDSGO_HASH)
 
 
-stats:
-	npm run webpack -- --mode production --optimization-minimize --devtool=source-map --output-filename 'kidsgo.min.js' --json > webpack-stats.json
-	cat webpack-stats.json
 
 todo:
 	cd src; grep -r 'TODO: Implement' views components lib | grep -v gen.py | sort | grep --color -E '^[^:]*:'
@@ -38,18 +34,18 @@ BETA_INDEX_HEADERS=$(BASE_INDEX_HEADERS) -H "X-KIDSGO-Index-Auth: $(BETA_INDEX_A
 PROD_INDEX_HEADERS=$(BASE_INDEX_HEADERS) -H "X-KIDSGO-Index-Auth: $(PROD_INDEX_AUTH)"
 
 dev-put: push-cdn
-	KIDSGO_VERSION_HASH=$(KIDSGO_VERSION_HASH) KIDSGO_VENDOR_HASH=$(KIDSGO_VENDOR_HASH) npm run minify-index --silent | curl -X PUT $(DEV_INDEX_HEADERS) -d @- http://kidsgo.codebits.org:1080/_index
+	KIDSGO_VERSION_HASH=$(KIDSGO_VERSION_HASH) npm run minify-index --silent | curl -X PUT $(DEV_INDEX_HEADERS) -d @- http://kidsgo.codebits.org:1080/_index
 dev-del:
 	curl -X DELETE $(DEV_INDEX_HEADERS)  http://kidsgo.codebits.org:1080/_index
 
 beta-put: push-cdn audit-translations
-	KIDSGO_VERSION_HASH=$(KIDSGO_VERSION_HASH) KIDSGO_VENDOR_HASH=$(KIDSGO_VENDOR_HASH) npm run minify-index --silent | curl -X PUT $(BETA_INDEX_HEADERS) -d @- https://beta.kidsgoserver.com/_index
+	KIDSGO_VERSION_HASH=$(KIDSGO_VERSION_HASH) npm run minify-index --silent | curl -X PUT $(BETA_INDEX_HEADERS) -d @- https://beta.kidsgoserver.com/_index
 
 beta-maintenance:
 	cat src/maintenance.html | curl -X PUT $(BETA_INDEX_HEADERS) -d @- https://beta.kidsgoserver.com/_index
 
 live-put: push-cdn audit-translations
-	KIDSGO_VERSION_HASH=$(KIDSGO_VERSION_HASH) KIDSGO_VENDOR_HASH=$(KIDSGO_VENDOR_HASH) npm run minify-index --silent | curl -X PUT $(PROD_INDEX_HEADERS) -d @- https://kidsgoserver.com/_index
+	KIDSGO_VERSION_HASH=$(KIDSGO_VERSION_HASH) npm run minify-index --silent | curl -X PUT $(PROD_INDEX_HEADERS) -d @- https://kidsgoserver.com/_index
 
 live-maintenance:
 	cat src/maintenance.html | curl -X PUT $(PROD_INDEX_HEADERS) -d @- https://kidsgoserver.com/_index
@@ -71,15 +67,13 @@ sync-translations:
 audit-translations:
 	#cd i18n; node audit-translations.js
 
-prepare-cdn-files: purge-cdn-files sync-translations dist/kidsgo.min.js dist/kidsgo-vendor.min.js dist/kidsgo.$(VERSION).css
+prepare-cdn-files: purge-cdn-files sync-translations dist/kidsgo.js  dist/kidsgo.min.css
 	mkdir -p deployment-staging-area/$(RELEASE)/
 	mkdir -p deployment-staging-area/$(RELEASE)/locale
-	cat dist/kidsgo.min.js | sed 's/kidsgo.min.js.map/kidsgo.$(KIDSGO_VERSION_HASH).js.map/' > deployment-staging-area/$(RELEASE)/kidsgo.$(KIDSGO_VERSION_HASH).js
-	cat dist/kidsgo-vendor.min.js | sed 's/kidsgo-vendor.min.js.map/kidsgo-vendor.$(KIDSGO_VENDOR_HASH).js.map/' > deployment-staging-area/$(RELEASE)/kidsgo-vendor.$(KIDSGO_VENDOR_HASH).js
-	cp -p dist/kidsgo.min.js.map deployment-staging-area/$(RELEASE)/kidsgo.$(KIDSGO_VERSION_HASH).js.map
-	cp -p dist/kidsgo-vendor.min.js.map deployment-staging-area/$(RELEASE)/kidsgo-vendor.$(KIDSGO_VENDOR_HASH).js.map
-	cp -p dist/kidsgo.$(VERSION).css deployment-staging-area/$(RELEASE)/
-	cp -p dist/kidsgo.$(VERSION).css.map deployment-staging-area/$(RELEASE)/
+	cat dist/kidsgo.js | sed 's/kidsgo.js.map/kidsgo.$(KIDSGO_VERSION_HASH).js.map/' > deployment-staging-area/$(RELEASE)/kidsgo.$(KIDSGO_VERSION_HASH).js
+	cp -p dist/kidsgo.js.map deployment-staging-area/$(RELEASE)/kidsgo.$(KIDSGO_VERSION_HASH).js.map
+	cat dist/kidsgo.min.css | sed 's/kidsgo.min.css.map/kidsgo.min.$(VERSION).css.map/' > deployment-staging-area/$(RELEASE)/kidsgo.$(VERSION).css
+	cp -p dist/kidsgo.min.css.map deployment-staging-area/$(RELEASE)/kidsgo.min.$(VERSION).css.map
 	cp -Rp assets/img deployment-staging-area/$(RELEASE)/
 	cp -Rp assets/avatars deployment-staging-area/$(RELEASE)/
 	cp -Rp assets/backgrounds deployment-staging-area/$(RELEASE)/
@@ -101,13 +95,12 @@ purge-cdn-files:
 	rm -Rf deployment-staging-area
 
 dist/kidsgo.min.js: dist/kidsgo.js
-	npm run webpack -- --mode=production --optimization-minimize --devtool=source-map
+	cp dist/kidsgo.js dist/kidsgo.min.js
+	cp dist/kidsgo.js.map dist/kidsgo.min.js.map
 
-dist/kidsgo-vendor.min.js: dist/kidsgo-vendor.js
-	npm run webpack -- --mode=production --optimization-minimize --devtool=source-map
 
-dist/kidsgo.$(VERSION).css: 
-	npm run gulp min_styl
+dist/kidsgo.$(VERSION).css:  dist/kidsgo.min.css
+	cp dist/kidsgo.min.css dist/kidsgo.$(VERSION).css
 
 
 

@@ -27,23 +27,26 @@
 
 import * as _hacks from "./hacks";
 import * as Sentry from "@sentry/browser";
-import * as data from "data";
-import * as preferences from "preferences";
-import * as requests from "requests";
-import { configure_goban } from "configure-goban";
-import { initialize_kidsgo_themes } from "goban_themes";
+import * as data from "@/lib/data";
+import * as preferences from "@/lib/preferences";
+import * as requests from "@/lib/requests";
+import { configure_goban } from "./lib/configure-goban";
+import { initialize_kidsgo_themes } from "./lib/goban_themes";
 import {
-    GoMath,
-    init_score_estimator,
-    set_remote_scorer,
+    init_remote_ownership_estimator,
+    init_wasm_ownership_estimator,
+    //init_score_estimator,
+    //set_remote_scorer,
     ScoreEstimateRequest,
     ScoreEstimateResponse,
 } from "goban";
-import { sfx } from "sfx";
-import { init_kidsgo_sfx } from "kidsgo-sfx";
-import { post } from "requests";
-import { ai_host } from "sockets";
-import { reload_page } from "reload_page";
+import { sfx } from "@/lib/sfx";
+import { init_kidsgo_sfx } from "./lib/kidsgo-sfx";
+import { post } from "@/lib/requests";
+import { ai_host } from "@/lib/sockets";
+import { reload_page } from "./lib/reload_page";
+
+import "./kidsgo.styl";
 
 (window as any)["requests"] = requests;
 
@@ -153,12 +156,12 @@ import * as ReactDOM from "react-dom/client";
 import { routes } from "./kidsgo-routes";
 
 //import {Promise} from "es6-promise";
-import { errorAlerter, uuid } from "misc";
-import * as sockets from "sockets";
-import { _ } from "translate";
-import * as player_cache from "player_cache";
-import { toast } from "toast";
-import cached from "cached";
+import { errorAlerter, uuid } from "@/lib/misc";
+import * as sockets from "@/lib/sockets";
+import { _ } from "@/lib/translate";
+import * as player_cache from "@/lib/player_cache";
+import { toast } from "@/lib/toast";
+import cached from "@/lib/cached";
 
 import "debug";
 
@@ -267,15 +270,15 @@ sockets.socket.on("user/update", (user: any) => {
 });
 
 /*** Setup remote score estimation */
-set_remote_scorer(remote_score_estimator);
-function remote_score_estimator(req: ScoreEstimateRequest): Promise<ScoreEstimateResponse> {
-    return new Promise<ScoreEstimateResponse>((resolve, reject) => {
-        req.jwt = data.get("config.user_jwt");
+init_remote_ownership_estimator(remote_ownership_estimator);
+function remote_ownership_estimator(req: ScoreEstimateRequest): Promise<ScoreEstimateResponse> {
+    return new Promise<ScoreEstimateResponse>((resolve) => {
+        req.jwt = data.get("config.user_jwt", "");
         resolve(post(`${ai_host}/api/score`, req));
     });
 }
-init_score_estimator()
-    .then((tf) => {
+init_wasm_ownership_estimator()
+    .then(() => {
         // console.log('SE Initialized');
     })
     .catch((err) => console.error(err));
@@ -298,7 +301,6 @@ react_root.render(routes);
 window["data"] = data;
 window["preferences"] = preferences;
 window["player_cache"] = player_cache;
-window["GoMath"] = GoMath;
 
 /***
  * Setup a device UUID so we can logout other *devices* and not all other

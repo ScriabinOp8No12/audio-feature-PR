@@ -17,7 +17,7 @@
 
 import * as React from "react";
 import { Goban } from "goban";
-import { countPasses } from "countPasses";
+import { countPasses } from "@kidsgo/lib/countPasses";
 
 interface CapturesProps {
     color: "black" | "white";

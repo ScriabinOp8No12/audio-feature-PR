@@ -16,13 +16,13 @@
  */
 
 import {
-    GoTheme,
-    GoThemes,
-    GoMath,
-    GobanCore,
+    GobanTheme,
+    Goban,
+    THEMES,
     deviceCanvasScalingRatio,
     placeRenderedImageStone,
     preRenderImageStone,
+    makeMatrix,
 } from "goban";
 
 type StoneType = { stone: HTMLCanvasElement; shadow: HTMLCanvasElement };
@@ -68,7 +68,7 @@ let last_goban_liberties_hash = null;
  */
 let scared_map: Array<Array<number>>;
 
-function getCachedLiberties(goban: GobanCore): Array<Array<number>> {
+function getCachedLiberties(goban: Goban): Array<Array<number>> {
     const hash = JSON.stringify(goban.engine.board);
     if (last_goban_liberties_hash === hash && last_goban_liberties) {
         return last_goban_liberties;
@@ -80,7 +80,7 @@ function getCachedLiberties(goban: GobanCore): Array<Array<number>> {
     return last_goban_liberties;
 }
 
-function reset_game_when_changed(goban: GobanCore) {
+function reset_game_when_changed(goban: Goban) {
     if (
         last_game_id !== goban.game_id ||
         !scared_map ||
@@ -88,13 +88,13 @@ function reset_game_when_changed(goban: GobanCore) {
         scared_map[0].length !== goban.width
     ) {
         last_goban_liberties_hash = null;
-        scared_map = GoMath.makeMatrix(goban.width, goban.height, 0);
+        scared_map = makeMatrix(goban.width, goban.height, 0);
         last_game_id = +goban.game_id;
     }
 }
 
 export function initialize_kidsgo_themes() {
-    abstract class Common extends GoTheme {
+    abstract class Common extends GobanTheme {
         public abstract getSadStoneSvgUrl(): string;
         public abstract getNeutralStoneSvgUrl(): string;
         stoneCastsShadow(radius: number): boolean {
@@ -123,7 +123,7 @@ export function initialize_kidsgo_themes() {
             placeRenderedImageStone(ctx, shadow_ctx, stone, cx, cy, radius);
         }
 
-        getStone(x: number, y: number, stones: StoneTypeArray, goban: GobanCore): StoneType {
+        getStone(x: number, y: number, stones: StoneTypeArray, goban: Goban): StoneType {
             const hash = this.getStoneHash(x, y, stones, goban);
 
             switch (hash) {
@@ -149,7 +149,7 @@ export function initialize_kidsgo_themes() {
 
             return stones[0];
         }
-        getStoneHash(x: number, y: number, stones: StoneTypeArray, goban: GobanCore): string {
+        getStoneHash(x: number, y: number, stones: StoneTypeArray, goban: Goban): string {
             reset_game_when_changed(goban);
             if (goban.engine.board[y][x] === 0) {
                 return "plain";
@@ -229,7 +229,7 @@ export function initialize_kidsgo_themes() {
         }
     }
 
-    GoThemes["black"]["DarkBlue"] = DarkBlue;
+    THEMES["black"]["DarkBlue"] = DarkBlue;
 
     class Pink extends Common {
         sort() {
@@ -262,7 +262,7 @@ export function initialize_kidsgo_themes() {
         }
     }
 
-    GoThemes["black"]["Pink"] = Pink;
+    THEMES["black"]["Pink"] = Pink;
 
     class LightBlue extends Common {
         sort() {
@@ -293,7 +293,7 @@ export function initialize_kidsgo_themes() {
         }
     }
 
-    GoThemes["white"]["LightBlue"] = LightBlue;
+    THEMES["white"]["LightBlue"] = LightBlue;
 
     class White extends Common {
         sort() {
@@ -321,5 +321,5 @@ export function initialize_kidsgo_themes() {
         }
     }
 
-    GoThemes["white"]["White"] = White;
+    THEMES["white"]["White"] = White;
 }

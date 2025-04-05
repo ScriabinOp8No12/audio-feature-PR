@@ -16,11 +16,11 @@
  */
 
 import * as React from "react";
-import * as data from "data";
-import cached from "cached";
-import { post } from "requests";
-import { useUser } from "hooks";
-import { reload_page } from "reload_page";
+import * as data from "@/lib/data";
+import cached from "@/lib/cached";
+import { post } from "@/lib/requests";
+import { useUser } from "@/lib/hooks";
+import { reload_page } from "@kidsgo/lib/reload_page";
 
 export function SignIn(): JSX.Element {
     const user = useUser();

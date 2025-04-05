@@ -20,18 +20,18 @@ import * as React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import * as data from "data";
-import { _ } from "translate";
+import * as data from "@/lib/data";
+import { _ } from "@/lib/translate";
 //import { browserHistory } from "./kidsgoHistory";
 
-import { LandingPage } from "LandingPage";
-import { LessonRouter } from "Lessons";
-import { KidsGame } from "KidsGame";
-import { Matchmaking } from "Matchmaking";
-import { LearnToPlay } from "LearnToPlay";
-import { ErrorBoundary } from "ErrorBoundary";
-import { CharacterSelection } from "CharacterSelection";
-import * as sockets from "sockets";
+import { LandingPage } from "./views/LandingPage";
+import { LessonRouter } from "./views/Lessons";
+import { KidsGame } from "./views/KidsGame";
+import { Matchmaking } from "./views/Matchmaking";
+import { LearnToPlay } from "./views/LearnToPlay";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { CharacterSelection } from "./views/CharacterSelection";
+import * as sockets from "@/lib/sockets";
 
 /*** Layout our main view and routes ***/
 function Main(props): JSX.Element {

@@ -19,16 +19,16 @@ import * as React from "react";
 import { useResizeDetector } from "react-resize-detector";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { _ } from "translate";
-import { Goban, GoMath, GobanConfig } from "goban";
-import { Racoon } from "Racoon";
+import { _ } from "@/lib/translate";
+import { decodeMoves, Goban, GobanCanvas, GobanConfig, prettyCoordinates } from "goban";
+import { Racoon } from "@kidsgo/components/Racoon";
 import { setContentNavigate } from "./Content";
 import { chapters } from "./chapters";
-import { PersistentElement } from "PersistentElement";
+import { PersistentElement } from "@/components/PersistentElement";
 import { useNavigate } from "react-router-dom";
-import { animateCaptures } from "animateCaptures";
-import { BackButton } from "BackButton";
-import { sfx } from "sfx";
+import { animateCaptures } from "@kidsgo/lib/animateCaptures";
+import { BackButton } from "@kidsgo/components/BackButton";
+import { sfx } from "@/lib/sfx";
 
 export function Lesson({ chapter, page }: { chapter: number; page: number }): JSX.Element {
     const navigate = useNavigate();
@@ -108,7 +108,7 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
         if (audioRef.current) {
             audioRef.current.src = content.audioUrl;
             if (shouldPlayAudio) {
-                audioRef.current.play();
+                void audioRef.current.play();
             }
         }
         let ct = 0;
@@ -168,7 +168,7 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
 
         goban_opts_ref.current = opts;
         console.log(opts);
-        goban_ref.current = new Goban(opts);
+        goban_ref.current = new GobanCanvas(opts);
         const goban: Goban = goban_ref.current;
         content.setGoban(goban);
         content.setNext(next);
@@ -228,14 +228,12 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
         }
 
         const onUpdate = () => {
-            const mvs = GoMath.decodeMoves(
+            const mvs = decodeMoves(
                 goban.engine.cur_move.getMoveStringToThisPoint(),
                 goban.width,
                 goban.height,
             );
-            const move_string = mvs
-                .map((p) => GoMath.prettyCoords(p.x, p.y, goban.height))
-                .join(",");
+            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
             console.log("Move string: ", move_string);
             //this.setState({ move_string });
         };
@@ -245,10 +243,12 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
 
         let t = setTimeout(() => {
             t = null;
-            console.log(board_container_resizer.ref.current);
-            const w = board_container_resizer.ref.current.clientWidth;
-            const h = board_container_resizer.ref.current.clientHeight;
-            onResize(w, h);
+            if (board_container_resizer.ref.current) {
+                console.log(board_container_resizer.ref.current);
+                const w = board_container_resizer.ref.current.clientWidth;
+                const h = board_container_resizer.ref.current.clientHeight;
+                onResize(w, h);
+            }
         }, 10);
 
         const animation_interval = setInterval(() => {
@@ -280,7 +280,7 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
             if (shouldPlayAudio) {
                 audio.pause();
             } else {
-                audio.play();
+                void audio.play();
             }
             setShouldPlayAudio(!shouldPlayAudio);
         }
