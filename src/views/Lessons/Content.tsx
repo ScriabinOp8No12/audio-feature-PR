@@ -45,11 +45,7 @@ export class Content extends TypedEventEmitter<Events> {
     }
 
     text(): JSX.Element | Array<JSX.Element> {
-        return (
-            <p>
-                Oops, this page appears to be missing some text!
-            </p>
-        );
+        return <p>Oops, this page appears to be missing some text!</p>;
     }
 
     destroy(): void {

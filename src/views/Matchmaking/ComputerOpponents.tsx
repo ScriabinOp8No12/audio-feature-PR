@@ -66,28 +66,29 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
         <div className="OpponentList-container">
             <div className="OpponentList ComputerOpponents">
                 <h4>Computer Opponents</h4>
-                {(bots.length >= 1 || null) && bots.slice(0, 5).map((bot, index) => {
-                    const { name, handicap, ui_class } = botOverrides[index];
-                    const [race, idx] = uiClassToRaceIdx(ui_class);
+                {(bots.length >= 1 || null) &&
+                    bots.slice(0, 5).map((bot, index) => {
+                        const { name, handicap, ui_class } = botOverrides[index];
+                        const [race, idx] = uiClassToRaceIdx(ui_class);
 
-                    return (
-                        <span
-                            key={bot.id + "-" + handicap}
-                            className={
-                                "bot" +
-                                (props.value === bot.id &&
-                                (props.handicap === handicap ||
-                                    (handicap === 0 && props.handicap > 0))
-                                    ? " active"
-                                    : "")
-                            }
-                            onClick={() => props.onChange(bot.id, handicap, bot)}
-                        >
-                            <Avatar race={race} idx={idx} />
-                            {name}
-                        </span>
-                    );
-                })}
+                        return (
+                            <span
+                                key={bot.id + "-" + handicap}
+                                className={
+                                    "bot" +
+                                    (props.value === bot.id &&
+                                    (props.handicap === handicap ||
+                                        (handicap === 0 && props.handicap > 0))
+                                        ? " active"
+                                        : "")
+                                }
+                                onClick={() => props.onChange(bot.id, handicap, bot)}
+                            >
+                                <Avatar race={race} idx={idx} />
+                                {name}
+                            </span>
+                        );
+                    })}
             </div>
         </div>
     );

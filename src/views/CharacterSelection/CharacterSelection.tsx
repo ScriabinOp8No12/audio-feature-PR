@@ -110,7 +110,7 @@ export function CharacterSelection(): JSX.Element {
             <NameSelection />
 
             <AvatarSelection race={avatarRace} idx={avatarIdx} onChange={update} />
-            
+
             <button className="ok" onClick={() => navigate("/play")}>
                 Done — I love it!
             </button>
