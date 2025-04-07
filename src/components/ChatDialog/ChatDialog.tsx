@@ -41,6 +41,7 @@ export const ChatPhrases = [
 
     // required verbatim for our auto-chats, update in KidsGame.txt if these are changed.
     "I've passed.",
+    "I pass",
     "Your turn.",
 ];
 
