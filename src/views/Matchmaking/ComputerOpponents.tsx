@@ -32,7 +32,10 @@ interface OpponentListProperties {
 window["chat_manager"] = chat_manager;
 
 export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
-    const [bots, setBots] = React.useState<Array<any>>(bots_list());
+    const sortBots = (botList: any[]) => {
+        return [...botList].sort((a, b) => a.id - b.id);
+    };
+    const [bots, setBots] = React.useState<Array<any>>(sortBots(bots_list()));
 
     React.useEffect(() => {
         const updateBots = (bots: any[]) => {
@@ -42,7 +45,7 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
             }
             //list.sort((a, b) => getUserRating(a).rating - getUserRating(b).rating);
             // we created these in order of easy to hard, so just sort by id for now
-            list.sort((a, b) => a.id - b.id);
+            setBots(sortBots(list));
 
             setBots(list);
         };
@@ -69,32 +72,43 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
 
                             return (
                                 <React.Fragment key={bot.id}>
-                                    {handicaps.map((handicap) => (
-                                        <span
-                                            key={bot.id + "-" + handicap}
-                                            className={
-                                                "bot" +
-                                                (props.value === bot.id &&
-                                                (handicaps.length === 1 ||
-                                                    props.handicap === handicap ||
-                                                    (handicap === 0 &&
-                                                        handicaps.indexOf(props.handicap) < 0))
-                                                    ? " active"
-                                                    : "")
+                                    {handicaps.map((handicap) => {
+                                        let botDisplayName = bot.kidsgo_bot_name;
+
+                                        if (
+                                            bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
+                                        ) {
+                                            if (handicap === 4) {
+                                                botDisplayName = "Beginner bot";
+                                            } else if (handicap === 2) {
+                                                botDisplayName = "Weak bot";
+                                            } else if (handicap === 0) {
+                                                botDisplayName = "Easy bot";
                                             }
-                                            onClick={() => {
-                                                props.onChange(bot.id, handicap, bot);
-                                            }}
-                                        >
-                                            <Avatar race={race} idx={idx} />
-                                            {bot.kidsgo_bot_name}
-                                            {handicap > 0
-                                                ? handicap === 1
-                                                    ? " with no Komi"
-                                                    : ` + ${handicap}`
-                                                : ""}
-                                        </span>
-                                    ))}
+                                        }
+
+                                        return (
+                                            <span
+                                                key={bot.id + "-" + handicap}
+                                                className={
+                                                    "bot" +
+                                                    (props.value === bot.id &&
+                                                    (handicaps.length === 1 ||
+                                                        props.handicap === handicap ||
+                                                        (handicap === 0 &&
+                                                            handicaps.indexOf(props.handicap) < 0))
+                                                        ? " active"
+                                                        : "")
+                                                }
+                                                onClick={() => {
+                                                    props.onChange(bot.id, handicap, bot);
+                                                }}
+                                            >
+                                                <Avatar race={race} idx={idx} />
+                                                {botDisplayName}
+                                            </span>
+                                        );
+                                    })}
                                 </React.Fragment>
                             );
                         })}

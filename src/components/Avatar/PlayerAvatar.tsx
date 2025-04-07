@@ -28,9 +28,24 @@ export interface PlayerAvatarInterface {
 export function PlayerAvatar({ user_id }: PlayerAvatarInterface): JSX.Element {
     const [race, setRace] = React.useState<string>(null);
     const [idx, setIdx] = React.useState<number>();
-
+    console.log("player_cache", player_cache);
+    console.log("race, idx", race, idx);
     React.useEffect(() => {
         if (user_id) {
+            // First try to get data from localStorage if it's the current user
+            try {
+                const localUser = JSON.parse(localStorage.getItem("ogs.user"));
+                if (localUser && localUser.id === user_id) {
+                    const [r, i] = uiClassToRaceIdx(localUser.ui_class);
+                    setRace(r);
+                    setIdx(i);
+                    return; // Skip the fetch if we found the user in localStorage
+                }
+            } catch (e) {
+                console.error("Error reading from localStorage:", e);
+            }
+
+            // Fall back to player_cache if needed
             setRace(null);
             setIdx(null);
             player_cache
