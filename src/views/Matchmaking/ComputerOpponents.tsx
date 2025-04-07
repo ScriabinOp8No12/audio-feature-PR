@@ -53,42 +53,51 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
         };
     }, []);
 
-    // Hardcoded names and avatars mapped to bots because we want specific names and a specific avatar without needing to show handicaps
-    const botOverrides = [
-        { name: "Beginner Bot", handicap: 4, ui_class: "aquatic-9" },
-        { name: "Weak Bot", handicap: 2, ui_class: "bird-5" },
-        { name: "Easy Bot", handicap: 0, ui_class: "fuzzball-23" },
-        { name: "Medium Bot", handicap: 0, ui_class: "robot-248" },
-        { name: "Hard Bot", handicap: 0, ui_class: "wisdom-2" },
-    ];
-
     return (
         <div className="OpponentList-container">
             <div className="OpponentList ComputerOpponents">
                 <h4>Computer Opponents</h4>
                 {(bots.length >= 1 || null) &&
-                    bots.slice(0, 5).map((bot, index) => {
-                        const { name, handicap, ui_class } = botOverrides[index];
-                        const [race, idx] = uiClassToRaceIdx(ui_class);
+                    bots
+                        .filter((bot) => !!bot.kidsgo_bot_name)
+                        .map((bot: any) => {
+                            const [race, idx] = uiClassToRaceIdx(bot.ui_class);
+                            const handicaps =
+                                bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
+                                    ? [4, 2, 0]
+                                    : [0];
 
-                        return (
-                            <span
-                                key={bot.id + "-" + handicap}
-                                className={
-                                    "bot" +
-                                    (props.value === bot.id &&
-                                    (props.handicap === handicap ||
-                                        (handicap === 0 && props.handicap > 0))
-                                        ? " active"
-                                        : "")
-                                }
-                                onClick={() => props.onChange(bot.id, handicap, bot)}
-                            >
-                                <Avatar race={race} idx={idx} />
-                                {name}
-                            </span>
-                        );
-                    })}
+                            return (
+                                <React.Fragment key={bot.id}>
+                                    {handicaps.map((handicap) => (
+                                        <span
+                                            key={bot.id + "-" + handicap}
+                                            className={
+                                                "bot" +
+                                                (props.value === bot.id &&
+                                                (handicaps.length === 1 ||
+                                                    props.handicap === handicap ||
+                                                    (handicap === 0 &&
+                                                        handicaps.indexOf(props.handicap) < 0))
+                                                    ? " active"
+                                                    : "")
+                                            }
+                                            onClick={() => {
+                                                props.onChange(bot.id, handicap, bot);
+                                            }}
+                                        >
+                                            <Avatar race={race} idx={idx} />
+                                            {bot.kidsgo_bot_name}
+                                            {handicap > 0
+                                                ? handicap === 1
+                                                    ? " with no Komi"
+                                                    : ` + ${handicap}`
+                                                : ""}
+                                        </span>
+                                    ))}
+                                </React.Fragment>
+                            );
+                        })}
             </div>
         </div>
     );
