@@ -97,7 +97,7 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
                     </div>
 
                     <div className="result-center-message">
-                        <div className="center-text">{userWon ? "You won!" : "They won"}</div>
+                        <div> {userWon ? "You won!" : "They won!"} </div>
                     </div>
 
                     <div className="white">
@@ -108,14 +108,7 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
                         <div className="result-text">{right_winner}</div>
                     </div>
                 </div>
-                {/*
-                <div className="ResultsDialog-outcome">
-                    <div>
-                        <img className="stone-svg" src={winner_svg_url} />
-                        {outcome}
-                    </div>
-                </div>
-                */}
+
                 <div className="ResultsDialog-buttons">
                     <button className="primary-button" onClick={props.onPlayAgain}>
                         Play again
