@@ -31,6 +31,17 @@ export function PlayerAvatar({ user_id }: PlayerAvatarInterface): JSX.Element {
 
     React.useEffect(() => {
         if (user_id) {
+            // First try to get data from localStorage if it's the current user, since player_cache isn't properly updating, while the local storage value is
+            // Without this block, there was a bug where once we chose our avatar, then navigated to the game page and challenged a robot, it would show us the wrong avatar, until we refreshed the page
+            const localUser = JSON.parse(localStorage.getItem("ogs.user"));
+            if (localUser && localUser.id === user_id) {
+                const [r, i] = uiClassToRaceIdx(localUser.ui_class);
+                setRace(r);
+                setIdx(i);
+                return;
+            }
+
+            // This block is needed to fetch the computer's avatar, this player_cache contains the user's previous avatar
             setRace(null);
             setIdx(null);
             player_cache

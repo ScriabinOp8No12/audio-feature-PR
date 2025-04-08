@@ -177,7 +177,7 @@ export function KidsGame(): JSX.Element {
                                     });
                                 }
                             }
-                        }, 15000);
+                        }, 10000);
                     }
                 }
             }
@@ -193,7 +193,16 @@ export function KidsGame(): JSX.Element {
                         if (goban.engine.last_official_move.passed()) {
                             const color = goban.engine.colorToMove();
                             const other_color = color === "black" ? "white" : "black";
+
                             animateCaptures([{ x: -1, y: -1 }], goban, other_color);
+
+                            const passPlayerID = goban.engine.players[other_color].id;
+
+                            // Emit the "I pass" message for both user and computer
+                            goban.emit("chat", {
+                                body: "I pass",
+                                player_id: passPlayerID,
+                            });
 
                             if (
                                 goban.engine.last_official_move.move_number > 1 &&
@@ -219,7 +228,6 @@ export function KidsGame(): JSX.Element {
         });
         goban.on("clear-message", () => {
             closePopup();
-            //console.log("clear message");
         });
 
         goban.on("audio-stone", (stone) =>

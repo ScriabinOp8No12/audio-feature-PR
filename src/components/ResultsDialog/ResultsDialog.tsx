@@ -64,7 +64,6 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
         white_winner = "Wins by " + props.goban?.engine?.outcome;
         winner_svg_url = white_svg_url;
     }
-    const outcome = "wins by " + props.goban?.engine?.outcome;
 
     const swap = user.id === props.goban.engine.players.black.id;
 
@@ -81,6 +80,9 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
     const left_score = swap ? score.white : score.black;
     const right_score = swap ? score.black : score.white;
 
+    const winnerId = props.goban?.engine?.winner;
+    const userWon = user.id === winnerId;
+
     return (
         <div className="ResultsDialog-container">
             <KBShortcut shortcut="esc" action={props.onClose} />
@@ -94,6 +96,10 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
                         <div className="result-text">{left_winner}</div>
                     </div>
 
+                    <div className="result-center-message">
+                        <div> {userWon ? "You won!" : "They won!"} </div>
+                    </div>
+
                     <div className="white">
                         <div className="stone-avatar-container">
                             <PlayerAvatar user_id={right_id} />
@@ -102,14 +108,7 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
                         <div className="result-text">{right_winner}</div>
                     </div>
                 </div>
-                {/*
-                <div className="ResultsDialog-outcome">
-                    <div>
-                        <img className="stone-svg" src={winner_svg_url} />
-                        {outcome}
-                    </div>
-                </div>
-                */}
+
                 <div className="ResultsDialog-buttons">
                     <button className="primary-button" onClick={props.onPlayAgain}>
                         Play again

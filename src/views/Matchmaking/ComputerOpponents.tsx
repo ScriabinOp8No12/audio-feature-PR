@@ -32,7 +32,10 @@ interface OpponentListProperties {
 window["chat_manager"] = chat_manager;
 
 export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
-    const [bots, setBots] = React.useState<Array<any>>(bots_list());
+    const sortBots = (botList: any[]) => {
+        return [...botList].sort((a, b) => a.id - b.id);
+    };
+    const [bots, setBots] = React.useState<Array<any>>(sortBots(bots_list()));
 
     React.useEffect(() => {
         const updateBots = (bots: any[]) => {
@@ -42,7 +45,7 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
             }
             //list.sort((a, b) => getUserRating(a).rating - getUserRating(b).rating);
             // we created these in order of easy to hard, so just sort by id for now
-            list.sort((a, b) => a.id - b.id);
+            setBots(sortBots(list));
 
             setBots(list);
         };
@@ -53,42 +56,62 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
         };
     }, []);
 
-    // Hardcoded names and avatars mapped to bots because we want specific names and a specific avatar without needing to show handicaps
-    const botOverrides = [
-        { name: "Beginner Bot", handicap: 4, ui_class: "aquatic-9" },
-        { name: "Weak Bot", handicap: 2, ui_class: "bird-5" },
-        { name: "Easy Bot", handicap: 0, ui_class: "fuzzball-23" },
-        { name: "Medium Bot", handicap: 0, ui_class: "robot-248" },
-        { name: "Hard Bot", handicap: 0, ui_class: "wisdom-2" },
-    ];
-
     return (
         <div className="OpponentList-container">
             <div className="OpponentList ComputerOpponents">
                 <h4>Computer Opponents</h4>
                 {(bots.length >= 1 || null) &&
-                    bots.slice(0, 5).map((bot, index) => {
-                        const { name, handicap, ui_class } = botOverrides[index];
-                        const [race, idx] = uiClassToRaceIdx(ui_class);
+                    bots
+                        .filter((bot) => !!bot.kidsgo_bot_name)
+                        .map((bot: any) => {
+                            const [race, idx] = uiClassToRaceIdx(bot.ui_class);
+                            const handicaps =
+                                bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
+                                    ? [4, 2, 0]
+                                    : [0];
 
-                        return (
-                            <span
-                                key={bot.id + "-" + handicap}
-                                className={
-                                    "bot" +
-                                    (props.value === bot.id &&
-                                    (props.handicap === handicap ||
-                                        (handicap === 0 && props.handicap > 0))
-                                        ? " active"
-                                        : "")
-                                }
-                                onClick={() => props.onChange(bot.id, handicap, bot)}
-                            >
-                                <Avatar race={race} idx={idx} />
-                                {name}
-                            </span>
-                        );
-                    })}
+                            return (
+                                <React.Fragment key={bot.id}>
+                                    {handicaps.map((handicap) => {
+                                        let botDisplayName = bot.kidsgo_bot_name;
+
+                                        if (
+                                            bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
+                                        ) {
+                                            if (handicap === 4) {
+                                                botDisplayName = "Beginner bot";
+                                            } else if (handicap === 2) {
+                                                botDisplayName = "Weak bot";
+                                            } else if (handicap === 0) {
+                                                botDisplayName = "Easy bot";
+                                            }
+                                        }
+
+                                        return (
+                                            <span
+                                                key={bot.id + "-" + handicap}
+                                                className={
+                                                    "bot" +
+                                                    (props.value === bot.id &&
+                                                    (handicaps.length === 1 ||
+                                                        props.handicap === handicap ||
+                                                        (handicap === 0 &&
+                                                            handicaps.indexOf(props.handicap) < 0))
+                                                        ? " active"
+                                                        : "")
+                                                }
+                                                onClick={() => {
+                                                    props.onChange(bot.id, handicap, bot);
+                                                }}
+                                            >
+                                                <Avatar race={race} idx={idx} />
+                                                {botDisplayName}
+                                            </span>
+                                        );
+                                    })}
+                                </React.Fragment>
+                            );
+                        })}
             </div>
         </div>
     );
