@@ -284,7 +284,7 @@ export function Matchmaking(): JSX.Element {
             <button id="Character-button" onClick={() => navigate("/character-selection")}>
                 Character
             </button>
-            {/* <button id="Help-butt3333333333333333333333on" onClick={() => navigate("/help")}>
+            {/* <button id="Help-button" onClick={() => navigate("/help")}>
                 Help
             </button> */}
             {/* <button>Character</button> */}
