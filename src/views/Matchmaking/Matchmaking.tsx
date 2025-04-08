@@ -281,6 +281,9 @@ export function Matchmaking(): JSX.Element {
             <button id="Lessons-button" onClick={() => navigate("/learn-to-play")}>
                 Lessons
             </button>
+            <button id="Character-button" onClick={() => navigate("/character-selection")}>
+                Character
+            </button>
             {/* <button>Character</button> */}
             <CheckForChallengeReceived />
             {/* <div className="current-user-container">
