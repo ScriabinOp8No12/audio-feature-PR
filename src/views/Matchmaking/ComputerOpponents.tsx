@@ -43,11 +43,8 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
             for (const id in bots) {
                 list.push(bots[id]);
             }
-            //list.sort((a, b) => getUserRating(a).rating - getUserRating(b).rating);
             // we created these in order of easy to hard, so just sort by id for now
             setBots(sortBots(list));
-
-            setBots(list);
         };
 
         socket.on("active-bots", updateBots);
