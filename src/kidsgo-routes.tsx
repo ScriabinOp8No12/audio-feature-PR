@@ -29,8 +29,9 @@ import { LessonRouter } from "./views/Lessons";
 import { KidsGame } from "./views/KidsGame";
 import { Matchmaking } from "./views/Matchmaking";
 import { LearnToPlay } from "./views/LearnToPlay";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { CharacterSelection } from "./views/CharacterSelection";
+import { HelpPage } from "./views/HelpPage";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import * as sockets from "@/lib/sockets";
 
 /*** Layout our main view and routes ***/
@@ -78,6 +79,7 @@ export const routes = (
                 <Route path="/learn-to-play/:chapter" element={<LessonRouter />} />
                 <Route path="/learn-to-play" element={<LearnToPlay />} />
                 <Route path="/character-selection" element={<CharacterSelection />} />
+                <Route path="/help" element={<HelpPage />} />
                 <Route path="/play" element={<Matchmaking />} />
                 <Route path="/" element={<Default />} />
                 <Route path="/*" element={<PageNotFound />} />
