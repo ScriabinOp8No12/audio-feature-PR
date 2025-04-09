@@ -16,6 +16,7 @@
  */
 
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 const helpSections = [
     { id: "avatars", title: "Avatars" },
@@ -29,9 +30,18 @@ const helpSections = [
 ];
 
 export function HelpPage(): JSX.Element {
+    const navigate = useNavigate();
+
     return (
         <div className="HelpPage">
             <nav className="HelpNav">
+                <button
+                    onClick={() => {
+                        navigate("/play");
+                    }}
+                >
+                    Back to Play
+                </button>
                 <h2 className="HelpNavTitle">Help Topics</h2>
                 <ul className="HelpNavList">
                     {helpSections.map((section) => (
@@ -48,42 +58,50 @@ export function HelpPage(): JSX.Element {
                 <section id="avatars">
                     <h2>Avatars</h2>
                     <p>
-                        Your avatar is how you will appear to other players on the server.To change
-                        your player Avatar click “Change Species” There are five different species,
-                        and hundreds of options. Changing species automatically changes planets as
-                        well. You can choose species from the bar at top, and try different avatars
-                        by clicking the left and right arrows. When you are happy with your avatar,
-                        click OK. This avatar will load by default next time you use the server with
-                        the same device. You can change your name without changing your avatar by
-                        clicking change name. You can change both your name and your avatar as often
-                        as you like.
+                        Your avatar is how you will appear to other players on the server. To change
+                        your player Avatar click "Avatar" in the top left of the play page. There
+                        are five different species, and hundreds of options. Changing species
+                        automatically changes planets as well. You can choose species from the bar
+                        at top, and try different avatars by clicking the left and right arrows.
+                        When you are happy with your avatar, click "Done - I love it!". This avatar
+                        will load by default next time you use the server with the same device. You
+                        can change your name without changing your avatar by clicking "Change Name".
+                        You can change both your name and your avatar as often as you like.
                     </p>
                 </section>
 
                 <section id="starting">
                     <h2>Starting a Game</h2>
                     <p>
-                        You can choose your opponent on the game creation page. As there are so many
-                        skill levels in Go, you can choose a handicap to play at so the game is fair
-                        for both players. The Beginner Bot will automatically give you 4 stones to
-                        start out with. Weak Bot gives two stones, and Easy Bot plays even. You can
-                        change how many handicaps you want to play with at the bottom of the screen.
-                        You can also change color if you want to be white, or give your opponent a
-                        handicap. In general, if a player wins all the time, they should give a
-                        handicap to the other player. Consider one stone for every 7 points, so if
-                        you win by 21 you could try giving a 3 stone handicap. It will take a few
-                        games with a player to see what the right handicap should be. If you don’t
-                        know, just play even. If someone wins 2 or more times, adjust the handicap.
+                        You can choose your opponent on the game creation page. There are many skill
+                        levels in Go, so you are encouraged to choose a handicap to play at so the
+                        game is fair for both players. The Beginner Bot will automatically give you
+                        4 stones to start out with. Weak Bot gives two stones, and Easy Bot plays
+                        even. You can change how many handicaps you want to play with at the bottom
+                        of the screen. You can also change color if you want to be white, or give
+                        your opponent a handicap. In general, if a player wins all the time, they
+                        should give a handicap to the other player. Consider one stone for every 7
+                        points, so if you win by 21 points you could try giving a 3 stone handicap.
+                        It will take a few games with a player to see what the right handicap should
+                        be. If you don’t know, just play even. If someone wins 2 or more times,
+                        adjust the handicap.
                     </p>
                 </section>
 
                 <section id="boards">
                     <h2>Board Sizes</h2>
                     <p>
-                        The beginner board is 9x9, and that’s where everyone should start out. Once
+                        The beginner board is 9x9, and that's where everyone should start out. Once
                         you understand how to play on that size, try 13x13 for a bigger challenge.
-                        Full size go is played on 19x19 boards. We don’t offer 19x19 on this site,
-                        but visit OGS https://online-go.com/ or KGS https://www.gokgs.com/index.jsp
+                        Full size go is played on 19x19 boards. We don't offer 19x19 on this site,
+                        but visit{" "}
+                        <a href="https://online-go.com/" target="_blank" rel="noopener">
+                            OGS
+                        </a>{" "}
+                        or{" "}
+                        <a href="https://www.gokgs.com/index.jsp" target="_blank" rel="noopener">
+                            KGS
+                        </a>{" "}
                         if you want to play full size.
                     </p>
                 </section>
