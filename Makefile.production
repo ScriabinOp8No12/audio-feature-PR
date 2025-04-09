@@ -94,6 +94,9 @@ prepare-cdn-files: purge-cdn-files sync-translations dist/kidsgo.js  dist/kidsgo
 purge-cdn-files:
 	rm -Rf deployment-staging-area
 
+dist/kidsgo.js:
+	yarn run build
+
 dist/kidsgo.min.js: dist/kidsgo.js
 	cp dist/kidsgo.js dist/kidsgo.min.js
 	cp dist/kidsgo.js.map dist/kidsgo.min.js.map
