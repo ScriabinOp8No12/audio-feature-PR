@@ -295,10 +295,6 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
                 <div id="Lesson-bottom-container">
                     <div id="left-container">
                         <div className="explanation-text" onClick={cancel_animation_ref.current}>
-                            <button onClick={toggleAudio}>
-                                {shouldPlayAudio ? "Mute Audio" : "Play Audio"}
-                            </button>
-                            <audio ref={audioRef} style={{ display: "none" }} />
                             {text}
                             {/* Text animation logic below */}
                             {/* {text.map((e, idx) => (
@@ -306,6 +302,10 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
                                     {e}
                                 </div>
                             ))} */}
+                            <button onClick={toggleAudio}>
+                                {shouldPlayAudio ? "Sound off" : "Sound on"}
+                            </button>
+                            <audio ref={audioRef} style={{ display: "none" }} />
                         </div>
                         <div className="bottom-graphic" />
                     </div>

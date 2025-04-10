@@ -71,7 +71,7 @@
         //justify-content: space-evenly;
 
         .username {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: white;
             text-align: center;
         }
@@ -262,6 +262,25 @@
     position: absolute;
     top: 0.3rem;
     right: 1.0rem;
+}
+
+.HelpButton {
+    @extend .stone-button
+    display: inline-block;
+    background-image: svg-load("../assets/buttons/help-off.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    z-index: z.back-button;
+    &:hover {
+        background-image: svg-load("../assets/buttons/help-on.svg");
+    }
 }
 
 .StoneButton {
