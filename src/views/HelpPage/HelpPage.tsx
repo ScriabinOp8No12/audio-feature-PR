@@ -30,17 +30,15 @@ const helpSections = [
 ];
 
 export function HelpPage(): JSX.Element {
-    const navigate = useNavigate();
-
     return (
         <div className="HelpPage">
             <nav className="HelpNav">
                 <button
                     onClick={() => {
-                        navigate("/play");
+                        window.history.back();
                     }}
                 >
-                    Back to Play
+                    Back
                 </button>
                 <h2 className="HelpNavTitle">Help Topics</h2>
                 <ul className="HelpNavList">
@@ -91,9 +89,9 @@ export function HelpPage(): JSX.Element {
                 <section id="boards">
                     <h2>Board Sizes</h2>
                     <p>
-                        The beginner board is 9x9, and that's where everyone should start out. Once
+                        The beginner board is 9x9, and that's where we recommend you start out. Once
                         you understand how to play on that size, try 13x13 for a bigger challenge.
-                        Full size go is played on 19x19 boards. We don't offer 19x19 on this site,
+                        Full size Go is played on 19x19 boards. We don't offer 19x19 on this site,
                         but visit{" "}
                         <a href="https://online-go.com/" target="_blank" rel="noopener">
                             OGS

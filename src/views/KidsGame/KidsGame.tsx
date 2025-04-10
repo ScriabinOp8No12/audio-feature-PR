@@ -333,6 +333,10 @@ export function KidsGame(): JSX.Element {
         }
     };
 
+    const goToHelp = () => {
+        navigate("/help");
+    };
+
     const is_player = user.id in (goban_ref.current?.engine.player_pool || {});
 
     const opponent = is_player
@@ -386,6 +390,7 @@ export function KidsGame(): JSX.Element {
         <>
             <div id="KidsGame" className={race ? avatar_background_class(race as Race) : ""}>
                 <BackButton onClick={quit} />
+                <div className="HelpButton" onClick={goToHelp}></div>
                 {show_undo_requested && (
                     <PopupDialog
                         text="Undo requested"
