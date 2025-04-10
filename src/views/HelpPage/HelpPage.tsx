@@ -35,7 +35,7 @@ export function HelpPage(): JSX.Element {
             <nav className="HelpNav">
                 <button
                     onClick={() => {
-                        window.history.back();
+                        history.back();
                     }}
                 >
                     Back
