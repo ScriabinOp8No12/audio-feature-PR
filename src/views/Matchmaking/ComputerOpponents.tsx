@@ -33,6 +33,7 @@ window["chat_manager"] = chat_manager;
 
 export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
     const sortBots = (botList: any[]) => {
+        // we created these in order of easy to hard, so just sort by id for now
         return [...botList].sort((a, b) => a.id - b.id);
     };
     const [bots, setBots] = React.useState<Array<any>>(sortBots(bots_list()));
@@ -43,7 +44,6 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
             for (const id in bots) {
                 list.push(bots[id]);
             }
-            // we created these in order of easy to hard, so just sort by id for now
             setBots(sortBots(list));
         };
 
