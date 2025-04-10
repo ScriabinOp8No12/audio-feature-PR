@@ -94,7 +94,7 @@ prepare-cdn-files: purge-cdn-files sync-translations dist/kidsgo.js  dist/kidsgo
 purge-cdn-files:
 	rm -Rf deployment-staging-area
 
-dist/kidsgo.js:
+dist/kidsgo.js: $(shell find src -type f -name "*.ts" -o -name "*.tsx" -o -name "*.html" -o -name "*.styl")
 	yarn run build
 
 dist/kidsgo.min.js: dist/kidsgo.js
