@@ -56,7 +56,7 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
     return (
         <div className="OpponentList-container">
             <div className="OpponentList ComputerOpponents">
-                <h4>Computer Opponents</h4>
+                <h4>Bots to Play</h4>
                 {(bots.length >= 1 || null) &&
                     bots
                         .filter((bot) => !!bot.kidsgo_bot_name)
@@ -76,11 +76,11 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
                                             bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
                                         ) {
                                             if (handicap === 4) {
-                                                botDisplayName = "Beginner bot";
+                                                botDisplayName = "Beginner";
                                             } else if (handicap === 2) {
-                                                botDisplayName = "Weak bot";
+                                                botDisplayName = "Weak";
                                             } else if (handicap === 0) {
-                                                botDisplayName = "Easy bot";
+                                                botDisplayName = "Easy";
                                             }
                                         }
 
