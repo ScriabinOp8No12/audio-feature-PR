@@ -30,15 +30,17 @@ const helpSections = [
 ];
 
 export function HelpPage(): JSX.Element {
+    const navigate = useNavigate();
+
     return (
         <div className="HelpPage">
             <nav className="HelpNav">
                 <button
                     onClick={() => {
-                        history.back();
+                        navigate("/play");
                     }}
                 >
-                    Back
+                    Back to Play
                 </button>
                 <h2 className="HelpNavTitle">Help Topics</h2>
                 <ul className="HelpNavList">
