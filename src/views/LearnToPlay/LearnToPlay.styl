@@ -162,6 +162,7 @@
         position: relative;
         color: #001533;
         text-align: center;
+        margin-top: 1rem;
         font-size: 1.25rem;
         background-color:rgb(195, 232, 250); 
         border: 1px solid #9fbcc5;
@@ -170,12 +171,22 @@
 
         &:hover {
             cursor: pointer;
-            background-color: rgba(240, 248, 251, 0.87);
+            background-color: rgba(208, 238, 249, 0.87);
         }
 
         &.disabled {
             color: #001533;
             cursor: not-allowed;
+            background-color:rgb(48, 119, 219); 
+        }
+    
+        @media (max-width: 900px) {
+            font-size: 0.65rem;
+            padding: 0.25rem;
+            margin-top: 0.5rem;
+            width: 65%;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 }
