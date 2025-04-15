@@ -3,8 +3,9 @@
   min-height 100vh
   background #fdf8f3
 
-  @media (max-width: 768px)
+  +portrait() {
     flex-direction column
+  }
 
 .HelpNav
   position fixed
@@ -18,7 +19,7 @@
   flex-shrink 0
   box-shadow 2px 0 5px rgba(0, 0, 0, 0.05)
 
-  @media (max-width: 768px)
+  +portrait() {
     position static
     height auto
     width 100%
@@ -27,6 +28,7 @@
     border-radius 0
     box-shadow none
     padding 16px
+  }
 
 .HelpNav h2
   font-size 2rem
@@ -60,10 +62,11 @@
   padding-right: 40px
   max-width: 800px
 
-  @media (max-width: 768px)
+  +portrait() {
     margin-left 0
     padding 20px
-
+  }
+  
 .HelpContent h2
   font-size 2rem
   margin-bottom 10px
