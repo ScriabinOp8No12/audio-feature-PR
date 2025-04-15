@@ -350,6 +350,24 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
                         </div>
                     </div>
                 </div>
+
+                <div className="portrait-bottom-buttons">
+                    <div className="left">
+                        <Link to={back} className="game-button-container">
+                            <span className="stone-button-left" />
+                            <span className="button-text">Back</span>
+                        </Link>
+                    </div>
+
+                    <div className="center">Lesson {chapter + 1}</div>
+
+                    <div className="right">
+                        <Link to={next} className="game-button-container">
+                            <span className="stone-button-right" />
+                            <span className="button-text">Next</span>
+                        </Link>
+                    </div>
+                </div>
             </div>
 
             <BackButton onClick={() => navigate("/learn-to-play")} />
