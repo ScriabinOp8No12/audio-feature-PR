@@ -31,8 +31,11 @@ const helpSections = [
 
 function BackToTopButton() {
     const handleClick = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        document
+            .getElementById("scroll-top-anchor")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
+
     return <button onClick={handleClick}>Back to Top</button>;
 }
 
@@ -49,6 +52,8 @@ export function HelpPage(): JSX.Element {
     }, []);
     return (
         <div className="HelpPage">
+            <div id="scroll-top-anchor" style={{ position: "absolute", top: 0 }} />
+
             <nav className="HelpNav">
                 <div className="NavHeader">
                     <h2 className="HelpNavTitle">Help Topics</h2>
