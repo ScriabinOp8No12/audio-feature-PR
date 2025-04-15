@@ -52,8 +52,7 @@ export function HelpPage(): JSX.Element {
     }, []);
     return (
         <div className="HelpPage">
-            <div id="scroll-top-anchor" style={{ position: "absolute", top: 0 }} />
-
+            <div id="scroll-top-anchor" />
             <nav className="HelpNav">
                 <div className="NavHeader">
                     <button
