@@ -305,8 +305,12 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
                             <audio ref={audioRef} style={{ display: "none" }} />
                         </div>
                         <div className="bottom-graphic">
-                            <button onClick={toggleAudio}>
-                                {shouldPlayAudio ? "Sound off" : "Sound on"}
+                            <button onClick={toggleAudio} className="sound-button">
+                                <div
+                                    className={`sound-icon ${
+                                        shouldPlayAudio ? "sound-on" : "sound-off"
+                                    }`}
+                                />
                             </button>
                         </div>
                     </div>

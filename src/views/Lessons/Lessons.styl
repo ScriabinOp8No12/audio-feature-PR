@@ -152,6 +152,34 @@ backdropborder-color=rgba(255, 255, 255, 0.6)
             }
         }
 
+        .sound-button {
+                cursor: pointer;
+                background: transparent;
+                border: none;
+
+                .sound-icon {
+                    width: 3rem;
+                    height: 3rem;
+                    
+                    &.sound-on {
+                        background-image: svg-load("../assets/1.0/buttons/sound-on-hover-off.svg");
+                        
+                        &:hover, .sound-button:hover & {
+                            background-image: svg-load("../assets/1.0/buttons/sound-on-hover-on.svg");
+                        }
+                    }
+                    
+
+                    &.sound-off {
+                        background-image: svg-load("../assets/1.0/buttons/sound-off-hover-off2.svg");
+                        
+                        &:hover, .sound-button:hover & {
+                            background-image: svg-load("../assets/1.0/buttons/sound-off-hover-on2.svg");
+                        }
+                    }
+                }
+            }
+
     }
 
     #axolotl, .Axol {
