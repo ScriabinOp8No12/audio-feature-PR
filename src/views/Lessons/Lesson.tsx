@@ -302,12 +302,13 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
                                     {e}
                                 </div>
                             ))} */}
+                            <audio ref={audioRef} style={{ display: "none" }} />
+                        </div>
+                        <div className="bottom-graphic">
                             <button onClick={toggleAudio}>
                                 {shouldPlayAudio ? "Sound off" : "Sound on"}
                             </button>
-                            <audio ref={audioRef} style={{ display: "none" }} />
                         </div>
-                        <div className="bottom-graphic" />
                     </div>
 
                     <div id="board-container" ref={board_container_resizer.ref}>

@@ -126,7 +126,7 @@ backdropborder-color=rgba(255, 255, 255, 0.6)
 
         .bottom-graphic {
             flex: 0;
-            display: inline-flex;
+            display: flex;
             min-height: 2rem;
             height: 2rem;
             width: calc(100% - 4rem);
@@ -141,8 +141,12 @@ backdropborder-color=rgba(255, 255, 255, 0.6)
             padding-left: 1rem;
             padding-right: 1rem;
             padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
             background: backdropcolor
 
+            justify-content: center;
+            align-items: center;
+            
             +portrait() {
                 display: none !important;
             }
