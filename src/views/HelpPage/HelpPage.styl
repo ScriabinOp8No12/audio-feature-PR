@@ -9,22 +9,14 @@
 
 .NavHeader
   display flex
-  align-items center
-  justify-content space-between
+  flex-direction column
+  align-items flex-start
   margin-bottom 20px
   padding-top 20px
-
-  +portrait() {
-    justify-content flex-start
-  }
+  gap 0.5rem
 
 #back-to-play-btn
   cursor pointer
-  margin-top: 0.75rem
-  
-  +portrait() {
-    margin-left 1rem
-  }
 
 .HelpNav
   position fixed

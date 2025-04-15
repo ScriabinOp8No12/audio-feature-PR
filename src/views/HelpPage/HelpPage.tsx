@@ -56,7 +56,6 @@ export function HelpPage(): JSX.Element {
 
             <nav className="HelpNav">
                 <div className="NavHeader">
-                    <h2 className="HelpNavTitle">Help Topics</h2>
                     <button
                         id="back-to-play-btn"
                         onClick={() => {
@@ -65,6 +64,7 @@ export function HelpPage(): JSX.Element {
                     >
                         Back to Play
                     </button>
+                    <h2 className="HelpNavTitle">Help Topics</h2>
                 </div>
                 <ul className="HelpNavList">
                     {helpSections.map((section) => (
