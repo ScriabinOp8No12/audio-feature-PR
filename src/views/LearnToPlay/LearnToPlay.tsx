@@ -92,17 +92,17 @@ export function LearnToPlay(): JSX.Element {
 
                     <div className="chapter-container chapter-6-container">
                         <ChapterButton chapter={6} />
-                        <div className="chapter-text disabled">Coming Soon</div>
+                        <div className="chapter-text disabled">Soon</div>
                     </div>
 
                     <div className="chapter-container chapter-7-container">
                         <ChapterButton chapter={7} />
-                        <div className="chapter-text disabled">Coming Soon</div>
+                        <div className="chapter-text disabled">Soon</div>
                     </div>
 
                     <div className="chapter-container chapter-8-container">
                         <ChapterButton chapter={8} />
-                        <div className="chapter-text disabled">Coming Soon</div>
+                        <div className="chapter-text disabled">Soon</div>
                     </div>
                 </div>
             </div>
