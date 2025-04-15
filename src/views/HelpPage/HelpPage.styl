@@ -7,6 +7,24 @@
     flex-direction column
   }
 
+.NavHeader
+  display flex
+  align-items center
+  justify-content space-between
+  margin-bottom 20px
+
+  +portrait() {
+    justify-content flex-start
+  }
+
+#back-to-play-btn
+  cursor pointer
+  margin-top: 0.75rem
+  
+  +portrait() {
+    margin-left 1rem
+  }
+
 .HelpNav
   position fixed
   top 0
@@ -27,11 +45,10 @@
     border-bottom 1px solid #e0d3b8
     border-radius 0
     box-shadow none
-    padding 16px
   }
 
 .HelpNav h2
-  font-size 2rem
+  font-size 1.5rem
   margin-bottom 10px
   color #594400
 
@@ -66,7 +83,7 @@
     margin-left 0
     padding 20px
   }
-  
+
 .HelpContent h2
   font-size 2rem
   margin-bottom 10px

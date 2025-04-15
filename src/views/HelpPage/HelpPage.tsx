@@ -50,14 +50,17 @@ export function HelpPage(): JSX.Element {
     return (
         <div className="HelpPage">
             <nav className="HelpNav">
-                <button
-                    onClick={() => {
-                        navigate("/play");
-                    }}
-                >
-                    Back to Play
-                </button>
-                <h2 className="HelpNavTitle">Help Topics</h2>
+                <div className="NavHeader">
+                    <h2 className="HelpNavTitle">Help Topics</h2>
+                    <button
+                        id="back-to-play-btn"
+                        onClick={() => {
+                            navigate("/play");
+                        }}
+                    >
+                        Back to Play
+                    </button>
+                </div>
                 <ul className="HelpNavList">
                     {helpSections.map((section) => (
                         <li key={section.id}>
