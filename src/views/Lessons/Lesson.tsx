@@ -376,6 +376,10 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
 
             <BackButton onClick={() => navigate("/learn-to-play")} />
 
+            <div id="portrait-sound" onClick={toggleAudio}>
+                <div className={`sound-icon ${shouldPlayAudio ? "sound-on" : "sound-off"}`} />
+            </div>
+
             <div id="portrait-replay">
                 <span className="stone-button-refresh" onClick={() => setReplay(Math.random())} />
             </div>
