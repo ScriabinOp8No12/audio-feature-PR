@@ -126,7 +126,7 @@ backdropborder-color=rgba(255, 255, 255, 0.6)
 
         .bottom-graphic {
             flex: 0;
-            display: inline-flex;
+            display: flex;
             min-height: 2rem;
             height: 2rem;
             width: calc(100% - 4rem);
@@ -141,13 +141,43 @@ backdropborder-color=rgba(255, 255, 255, 0.6)
             padding-left: 1rem;
             padding-right: 1rem;
             padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
             background: backdropcolor
 
+            justify-content: center;
+            align-items: center;
+            
             +portrait() {
                 display: none !important;
             }
         }
 
+        .sound-button {
+            cursor: pointer;
+            background: transparent;
+            border: none;
+
+            .sound-icon {
+                width: 3rem;
+                height: 3rem;
+                
+                &.sound-on {
+                    background-image: svg-load("../assets/1.0/buttons/sound-on-hover-off.svg");
+                    
+                    &:hover, .sound-button:hover & {
+                        background-image: svg-load("../assets/1.0/buttons/sound-on-hover-on.svg");
+                    }
+                }
+                
+                &.sound-off {
+                    background-image: svg-load("../assets/1.0/buttons/sound-off-hover-off2.svg");
+                    
+                    &:hover, .sound-button:hover & {
+                        background-image: svg-load("../assets/1.0/buttons/sound-off-hover-on2.svg");
+                    }
+                }
+            }
+        }
     }
 
     #axolotl, .Axol {
@@ -393,6 +423,38 @@ backdropborder-color=rgba(255, 255, 255, 0.6)
     .fade-in {
         display: inline-block;
         animation: fadeIn linear 0.5s;
+    }
+}
+
+#portrait-sound {
+    position: absolute;
+    right: 3.8rem;
+    top: 0.3rem;
+    cursor: pointer;
+    
+    +landscape() {
+        display: none;
+    }
+    
+    .sound-icon {
+        width: 3rem;
+        height: 3rem;
+        
+        &.sound-on {
+            background-image: svg-load("../assets/1.0/buttons/sound-on-hover-off.svg");
+            
+            &:hover {
+                background-image: svg-load("../assets/1.0/buttons/sound-on-hover-on.svg");
+            }
+        }
+        
+        &.sound-off {
+            background-image: svg-load("../assets/1.0/buttons/sound-off-hover-off2.svg");
+            
+            &:hover {
+                background-image: svg-load("../assets/1.0/buttons/sound-off-hover-on2.svg");
+            }
+        }
     }
 }
 

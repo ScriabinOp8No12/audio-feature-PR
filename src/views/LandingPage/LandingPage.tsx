@@ -33,14 +33,6 @@ export function LandingPage(): JSX.Element {
         false as boolean,
     );
 
-    function navigateToPlayOrCharacterSelection() {
-        if (user.username === "Guest") {
-            navigate("/character-selection");
-        } else {
-            navigate("/play");
-        }
-    }
-
     function learnToPlay() {
         if (learn_to_play_launching) {
             return;
@@ -75,7 +67,7 @@ export function LandingPage(): JSX.Element {
 
         setTimeout(() => set_play_launching(false), 3000);
         navigate_timeout = setTimeout(() => {
-            navigateToPlayOrCharacterSelection();
+            navigate("/character-selection");
         }, ROCKET_LAUNCH_DURATION * 1000);
     }
 

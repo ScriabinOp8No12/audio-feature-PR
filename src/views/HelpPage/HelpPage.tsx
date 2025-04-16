@@ -29,18 +29,42 @@ const helpSections = [
     { id: "lessons", title: "Lessons" },
 ];
 
+function BackToTopButton() {
+    const handleClick = () => {
+        document
+            .getElementById("scroll-top-anchor")
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    return <button onClick={handleClick}>Back to Top</button>;
+}
+
 export function HelpPage(): JSX.Element {
+    const navigate = useNavigate();
+    const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+    React.useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     return (
         <div className="HelpPage">
+            <div id="scroll-top-anchor" />
             <nav className="HelpNav">
-                <button
-                    onClick={() => {
-                        history.back();
-                    }}
-                >
-                    Back
-                </button>
-                <h2 className="HelpNavTitle">Help Topics</h2>
+                <div className="NavHeader">
+                    <button
+                        id="back-to-play-btn"
+                        onClick={() => {
+                            navigate("/play");
+                        }}
+                    >
+                        Back to Play
+                    </button>
+                    <h2 className="HelpNavTitle">Help Topics</h2>
+                </div>
                 <ul className="HelpNavList">
                     {helpSections.map((section) => (
                         <li key={section.id}>
@@ -57,7 +81,7 @@ export function HelpPage(): JSX.Element {
                     <h2>Avatars</h2>
                     <p>
                         Your avatar is how you will appear to other players on the server. To change
-                        your player Avatar click "Avatar" in the top left of the play page. There
+                        your player Avatar, click "Avatar" in the top left of the play page. There
                         are five different species, and hundreds of options. Changing species
                         automatically changes planets as well. You can choose species from the bar
                         at top, and try different avatars by clicking the left and right arrows.
@@ -66,6 +90,7 @@ export function HelpPage(): JSX.Element {
                         can change your name without changing your avatar by clicking "Change Name".
                         You can change both your name and your avatar as often as you like.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
 
                 <section id="starting">
@@ -84,6 +109,7 @@ export function HelpPage(): JSX.Element {
                         be. If you don’t know, just play even. If someone wins 2 or more times,
                         adjust the handicap.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
 
                 <section id="boards">
@@ -102,6 +128,7 @@ export function HelpPage(): JSX.Element {
                         </a>{" "}
                         if you want to play full size.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
 
                 <section id="ending">
@@ -117,6 +144,7 @@ export function HelpPage(): JSX.Element {
                         resign a game to end it at any point, and the bots will often resign when
                         you are winning.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
 
                 <section id="scoring">
@@ -136,6 +164,7 @@ export function HelpPage(): JSX.Element {
                         start a new game. You must start a game with another player, or accept a
                         challenge, in order to play a new game.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
 
                 <section id="kids">
@@ -150,6 +179,7 @@ export function HelpPage(): JSX.Element {
                         shows up, or you can play a bot. Players who are in a game do not show up on
                         the list of kids to play until after their game ends.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
 
                 <section id="chat">
@@ -162,6 +192,7 @@ export function HelpPage(): JSX.Element {
                         with “Have a good game” and ending with “Thanks for the game” is polite.
                         Scroll down in the chat box to see available messages you can send.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
 
                 <section id="lessons">
@@ -172,6 +203,7 @@ export function HelpPage(): JSX.Element {
                         reminder on how something works. The 8th lesson is all go problems for you
                         to solve, you can visit this section as often as you like.
                     </p>
+                    {isMobile && <BackToTopButton />}
                 </section>
             </main>
         </div>

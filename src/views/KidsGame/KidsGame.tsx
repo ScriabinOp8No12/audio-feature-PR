@@ -436,7 +436,7 @@ export function KidsGame(): JSX.Element {
                             user_id={opponent?.id}
                             side="opponent"
                         />
-                        <span className="username">{opponent?.username}</span>
+                        {/* <span className="username">{opponent?.username}</span> */}
                     </div>
                     <Captures color={opponent_color} goban={goban_ref.current} />
                     <div className="landscape-bottom-buttons">
@@ -476,7 +476,7 @@ export function KidsGame(): JSX.Element {
                             user_id={self_player?.id}
                             side="player"
                         />
-                        <span className="username">{self_player?.username} (You)</span>
+                        {/* <span className="username">{self_player?.username} (You)</span> */}
                     </div>
                     <Bowl
                         bouncing={player_to_move === self_player?.id}
