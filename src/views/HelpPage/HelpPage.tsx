@@ -16,6 +16,7 @@
  */
 
 import * as React from "react";
+import { BackButton } from "@kidsgo/components/BackButton";
 
 const helpSections = [
     { id: "avatars", title: "Avatars" },
@@ -54,14 +55,11 @@ export function HelpPage(): JSX.Element {
             <div id="scroll-top-anchor" />
             <nav className="HelpNav">
                 <div className="NavHeader">
-                    <button
-                        id="back-btn"
+                    <BackButton
                         onClick={() => {
                             history.back();
                         }}
-                    >
-                        Back
-                    </button>
+                    />
                     <h2 className="HelpNavTitle">Help Topics</h2>
                 </div>
                 <ul className="HelpNavList">
@@ -219,7 +217,7 @@ export function HelpPage(): JSX.Element {
                         This website was created by the{" "}
                         <a href="https://www.agfgo.org" target="_blank" rel="noopener noreferrer">
                             American Go Foundation
-                        </a>
+                        </a>{" "}
                         in collaboration with the{" "}
                         <a href="https://online-go.com/" target="_blank" rel="noopener noreferrer">
                             Online Go Server
