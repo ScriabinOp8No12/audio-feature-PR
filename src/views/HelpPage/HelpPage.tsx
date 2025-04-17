@@ -26,6 +26,7 @@ const helpSections = [
     { id: "kids", title: "Playing Other Kids" },
     { id: "chat", title: "Chatting" },
     { id: "lessons", title: "Lessons" },
+    { id: "about", title: "About" },
 ];
 
 function BackToTopButton() {
@@ -208,6 +209,47 @@ export function HelpPage(): JSX.Element {
                         back as often as you like, and you can revisit any lesson if you need a
                         reminder on how something works. The 8th lesson is all go problems for you
                         to solve, you can visit this section as often as you like.
+                    </p>
+                    {isMobile && <BackToTopButton />}
+                </section>
+
+                <section id="about">
+                    <h2>About</h2>
+                    <p>
+                        This website was created by the{" "}
+                        <a href="https://www.agfgo.org" target="_blank" rel="noopener noreferrer">
+                            American Go Foundation
+                        </a>
+                        in collaboration with the{" "}
+                        <a href="https://online-go.com/" target="_blank" rel="noopener noreferrer">
+                            Online Go Server
+                        </a>
+                        , with assistance from the{" "}
+                        <a href="https://www.britgo.org/" target="_blank" rel="noopener noreferrer">
+                            British Go Association
+                        </a>
+                        . Graphics and animation are by{" "}
+                        <a
+                            href="https://www.nicksnyder.tv/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Nick Synder
+                        </a>
+                        . The lessons and overall design are by Paul Barchilon and Terry Benson.
+                        Initial programming and bot hosting were provided by Akita Noek, with
+                        additional programming by Nathan Harwit. The entire project has been funded
+                        solely by donations. If you would like to contribute,{" "}
+                        <a
+                            href="https://www.agfgo.org/donate"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            click here
+                        </a>
+                        .<br></br> <br></br> All content on this site, including images, text, and
+                        lessons, is copyright © 2025 American Go Foundation and contributors. Use
+                        with permission.
                     </p>
                     {isMobile && <BackToTopButton />}
                 </section>
