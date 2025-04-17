@@ -92,7 +92,7 @@ export function HelpPage(): JSX.Element {
                         are five different species, and hundreds of options. Changing species
                         automatically changes planets as well. You can choose species from the bar
                         at top, and try different avatars by clicking the left and right arrows.
-                        When you are happy with your avatar, click "Done - I love it!". This avatar
+                        When you are happy with your avatar, click "Done - I love it!" This avatar
                         will load by default next time you use the server with the same device. You
                         can change your name without changing your avatar by clicking "Change Name".
                         You can change both your name and your avatar as often as you like.
