@@ -5,6 +5,9 @@
    version="1.1"
    sodipodi:docname="background.svg"
    inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   inkscape:export-filename="background2.svg"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -20,10 +23,10 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.69561152"
-     inkscape:cx="928.67927"
-     inkscape:cy="-25.15772"
-     inkscape:current-layer="Layer_2" />
+     inkscape:zoom="0.5"
+     inkscape:cx="972"
+     inkscape:cy="899"
+     inkscape:current-layer="g405" />
   <defs
      id="defs330">
     <rect
@@ -783,10 +786,11 @@
     </clipPath>
   </defs>
   <g
-     id="Layer_1-2">
+     id="Layer_1-2"
+     style="display:inline">
     <path
        class="cls-34"
-       d="M1919.2,1919.2H0V0H1919.2V1919.2Zm-613.16-959.04c0-193.22-156.63-349.85-349.85-349.85s-349.85,156.63-349.85,349.85,156.63,349.85,349.85,349.85,349.85-156.63,349.85-349.85Z"
+       d="M 1919.2,1919.2 H 0 V 0 H 1919.2 Z M 1306.04,960.16 c 0,-193.22 -156.63,-349.85 -349.85,-349.85 -193.22,0 -349.85,156.63 -349.85,349.85 0,193.22 156.63,349.85 349.85,349.85 193.22,0 349.85,-156.63 349.85,-349.85 z"
        id="path332" />
     <g
        id="g409">
@@ -796,45 +800,45 @@
            id="g348">
           <circle
              class="cls-17"
-             cx="956.6"
-             cy="959.6"
+             cx="956.59998"
+             cy="959.59998"
              r="449.75"
              id="circle334" />
           <circle
              class="cls-17"
-             cx="956.6"
-             cy="959.6"
-             r="508.2"
+             cx="956.59998"
+             cy="959.59998"
+             r="508.20001"
              id="circle336" />
           <circle
              class="cls-17"
-             cx="956.6"
-             cy="959.6"
-             r="370.35"
+             cx="956.59998"
+             cy="959.59998"
+             r="370.35001"
              id="circle338" />
           <circle
              class="cls-17"
-             cx="956.6"
-             cy="959.6"
-             r="407.11"
+             cx="956.59998"
+             cy="959.59998"
+             r="407.10999"
              id="circle340" />
           <circle
              class="cls-17"
-             cx="956.6"
-             cy="959.6"
-             r="582.82"
+             cx="956.59998"
+             cy="959.59998"
+             r="582.82001"
              id="circle342" />
           <circle
              class="cls-17"
-             cx="956.6"
-             cy="959.6"
-             r="692.42"
+             cx="956.59998"
+             cy="959.59998"
+             r="692.41998"
              id="circle344" />
           <circle
              class="cls-17"
-             cx="956.6"
-             cy="959.6"
-             r="847.07"
+             cx="956.59998"
+             cy="959.59998"
+             r="847.07001"
              id="circle346" />
         </g>
         <g
@@ -847,21 +851,21 @@
                id="g398">
               <line
                  class="cls-17"
-                 x1="956.6"
+                 x1="956.59998"
                  y1="1032.64"
-                 x2="956.6"
+                 x2="956.59998"
                  y2="2575.52"
                  id="line350" />
               <line
                  class="cls-17"
-                 x1="975.72"
-                 y1="1030.57"
+                 x1="975.71997"
+                 y1="1030.5699"
                  x2="1375.05"
-                 y2="2520.87"
+                 y2="2520.8701"
                  id="line352" />
               <line
                  class="cls-17"
-                 x1="993.66"
+                 x1="993.65997"
                  y1="1023.61"
                  x2="1765.1"
                  y2="2359.78"
@@ -870,125 +874,125 @@
                  class="cls-17"
                  x1="1009.19"
                  y1="1012.25"
-                 x2="2100.17"
+                 x2="2100.1699"
                  y2="2103.23"
                  id="line356" />
               <line
                  class="cls-17"
                  x1="1021.24"
-                 y1="997.26"
-                 x2="2357.41"
+                 y1="997.26001"
+                 x2="2357.4099"
                  y2="1768.7"
                  id="line358" />
               <line
                  class="cls-17"
                  x1="1029.01"
-                 y1="979.66"
-                 x2="2519.31"
+                 y1="979.65997"
+                 x2="2519.3101"
                  y2="1378.99"
                  id="line360" />
               <line
                  class="cls-18"
                  x1="1031.96"
-                 y1="960.65"
-                 x2="2574.83"
-                 y2="960.65"
+                 y1="960.65002"
+                 x2="2574.8301"
+                 y2="960.65002"
                  id="line362" />
               <line
                  class="cls-17"
                  x1="1029.88"
-                 y1="941.53"
-                 x2="2520.19"
-                 y2="542.2"
+                 y1="941.53003"
+                 x2="2520.1899"
+                 y2="542.20001"
                  id="line364" />
               <line
                  class="cls-17"
                  x1="1022.93"
-                 y1="923.59"
-                 x2="2359.1"
-                 y2="152.15"
+                 y1="923.59003"
+                 x2="2359.1001"
+                 y2="152.14999"
                  id="line366" />
               <line
                  class="cls-17"
                  x1="1011.57"
-                 y1="908.07"
+                 y1="908.07001"
                  x2="2102.55"
                  y2="-182.91"
                  id="line368" />
               <line
                  class="cls-17"
-                 x1="996.58"
-                 y1="896.01"
+                 x1="996.58002"
+                 y1="896.01001"
                  x2="1768.02"
                  y2="-440.16"
                  id="line370" />
               <line
                  class="cls-17"
-                 x1="978.98"
-                 y1="888.24"
-                 x2="1378.31"
+                 x1="978.97998"
+                 y1="888.23999"
+                 x2="1378.3101"
                  y2="-602.06"
                  id="line372" />
               <line
                  class="cls-17"
-                 x1="959.97"
-                 y1="885.3"
-                 x2="959.97"
-                 y2="-657.58"
+                 x1="959.96997"
+                 y1="885.29999"
+                 x2="959.96997"
+                 y2="-657.58002"
                  id="line374" />
               <line
                  class="cls-17"
-                 x1="940.84"
+                 x1="940.84003"
                  y1="887.37"
-                 x2="541.52"
+                 x2="541.52002"
                  y2="-602.94"
                  id="line376" />
               <line
                  class="cls-17"
-                 x1="922.91"
-                 y1="894.32"
+                 x1="922.90997"
+                 y1="894.32001"
                  x2="151.47"
-                 y2="-441.85"
+                 y2="-441.85001"
                  id="line378" />
               <line
                  class="cls-17"
                  x1="907.38"
-                 y1="905.68"
-                 x2="-183.6"
+                 y1="905.67999"
+                 x2="-183.60001"
                  y2="-185.3"
                  id="line380" />
               <line
                  class="cls-17"
-                 x1="895.32"
-                 y1="920.67"
-                 x2="-440.85"
+                 x1="895.32001"
+                 y1="920.66998"
+                 x2="-440.85001"
                  y2="149.23"
                  id="line382" />
               <line
                  class="cls-17"
                  x1="887.56"
-                 y1="938.27"
+                 y1="938.27002"
                  x2="-602.75"
-                 y2="538.95"
+                 y2="538.95001"
                  id="line384" />
               <line
                  class="cls-17"
-                 x1="884.61"
-                 y1="957.28"
-                 x2="-658.27"
-                 y2="957.28"
+                 x1="884.60999"
+                 y1="957.28003"
+                 x2="-658.27002"
+                 y2="957.28003"
                  id="line386" />
               <line
                  class="cls-17"
                  x1="886.69"
-                 y1="976.41"
+                 y1="976.40997"
                  x2="-603.62"
                  y2="1375.73"
                  id="line388" />
               <line
                  class="cls-17"
-                 x1="893.64"
-                 y1="994.34"
+                 x1="893.64001"
+                 y1="994.34003"
                  x2="-442.53"
                  y2="1765.78"
                  id="line390" />
@@ -997,20 +1001,20 @@
                  x1="905"
                  y1="1009.87"
                  x2="-185.98"
-                 y2="2100.85"
+                 y2="2100.8501"
                  id="line392" />
               <line
                  class="cls-17"
-                 x1="919.99"
+                 x1="919.98999"
                  y1="1021.93"
                  x2="148.55"
-                 y2="2358.1"
+                 y2="2358.1001"
                  id="line394" />
               <line
                  class="cls-17"
-                 x1="937.59"
-                 y1="1029.69"
-                 x2="538.26"
+                 x1="937.59003"
+                 y1="1029.6899"
+                 x2="538.26001"
                  y2="2520"
                  id="line396" />
             </g>
@@ -1018,43 +1022,36 @@
           <path
              id="SVGID-8"
              class="cls-10"
-             d="M1812.58,45.71H106.61c-29.42,0-53.26,23.85-53.26,53.26V1820.22c0,29.42,23.85,53.26,53.26,53.26H1812.58c29.42,0,53.26-23.85,53.26-53.26V98.97c0-29.42-23.85-53.26-53.26-53.26ZM956.6,1308.06c-192.45,0-348.46-156.01-348.46-348.46s156.01-348.46,348.46-348.46,348.46,156.01,348.46,348.46-156.01,348.46-348.46,348.46Z" />
+             d="M 1821.9243,50.741544 105.17242,51.460336 C 75.752419,51.472654 59.831323,64.528458 59.819128,93.938456 L 59.100336,1827.4079 C 59.088137,1856.8279 77.2,1873.48 106.61,1873.48 h 1714.5955 c 29.42,0 43.9035,-16.6621 43.9157,-46.0721 L 1865.84,98.97 c 0.012,-29.419997 -14.5057,-48.24077 -43.9157,-48.228456 z M 956.6,1310.2164 c -192.45,0 -349.89758,-157.4476 -349.89758,-349.89761 C 606.70242,767.86879 764.15,611.14 956.6,611.14 c 192.45,0 348.46,156.01 348.46,348.46 0,192.45 -156.01,350.6164 -348.46,350.6164 z"
+             sodipodi:nodetypes="ssssssssssssss" />
         </g>
       </g>
       <circle
          class="cls-17"
-         cx="956.6"
-         cy="959.6"
-         r="348.46"
+         cx="956.59998"
+         cy="959.59998"
+         r="348.45999"
          id="circle407" />
     </g>
-    <rect
-       class="cls-19"
-       x="774.47"
-       y="103.04"
-       width="370.26"
-       height="54.68"
-       rx="8.48"
-       ry="8.48"
-       id="rect411" />
     <g
-       id="g457">
+       id="g457"
+       transform="translate(1.437584,14.37584)">
       <g
          id="g431">
         <g
            id="g417">
           <line
              class="cls-13"
-             x1="749.64"
+             x1="749.64001"
              y1="130.16"
-             x2="732.39"
+             x2="732.39001"
              y2="130.16"
              id="line413" />
           <line
              class="cls-13"
-             x1="741.02"
+             x1="741.02002"
              y1="138.78"
-             x2="741.02"
+             x2="741.02002"
              y2="121.53"
              id="line415" />
         </g>
@@ -1062,16 +1059,16 @@
            id="g423">
           <line
              class="cls-13"
-             x1="716.73"
+             x1="716.72998"
              y1="130.16"
-             x2="699.48"
+             x2="699.47998"
              y2="130.16"
              id="line419" />
           <line
              class="cls-13"
-             x1="708.1"
+             x1="708.09998"
              y1="138.78"
-             x2="708.1"
+             x2="708.09998"
              y2="121.53"
              id="line421" />
         </g>
@@ -1079,9 +1076,9 @@
            id="g429">
           <line
              class="cls-13"
-             x1="683.82"
+             x1="683.82001"
              y1="130.16"
-             x2="666.57"
+             x2="666.57001"
              y2="130.16"
              id="line425" />
           <line
@@ -1099,16 +1096,16 @@
            id="g437">
           <line
              class="cls-13"
-             x1="1170.44"
+             x1="1170.4399"
              y1="130.16"
-             x2="1187.69"
+             x2="1187.6899"
              y2="130.16"
              id="line433" />
           <line
              class="cls-13"
-             x1="1179.07"
+             x1="1179.0699"
              y1="138.78"
-             x2="1179.07"
+             x2="1179.0699"
              y2="121.53"
              id="line435" />
         </g>
@@ -1151,7 +1148,7 @@
          class="cls-5"
          transform="translate(865.96,140.24)"
          id="text455"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.57px;font-family:Fredoka, sans-serif;-inkscape-font-specification:'Fredoka, sans-serif, @wght=600,wdth=105.6';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wdth' 105.6, 'wght' 600;letter-spacing:0.5em;white-space:pre;inline-size:252.924;fill:#ffffff"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.57px;font-family:Fredoka, sans-serif;-inkscape-font-specification:'Fredoka, sans-serif, @wght=600,wdth=105.6';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wdth' 105.6, 'wght' 600;letter-spacing:0.5em;white-space:pre;inline-size:252.924;display:inline;fill:#ffffff"
          xml:space="preserve" />
     </g>
     <g
@@ -1163,20 +1160,20 @@
            x1="39.93"
            y1="1800.59"
            x2="39.93"
-           y2="959.41"
+           y2="959.40997"
            id="line459" />
         <line
            class="cls-17"
            x1="29.6"
            y1="1800.59"
            x2="29.6"
-           y2="959.41"
+           y2="959.40997"
            id="line461" />
         <line
            class="cls-17"
-           x1="59.88"
-           y1="959.41"
-           x2="59.88"
+           x1="59.880001"
+           y1="959.40997"
+           x2="59.880001"
            y2="1800.59"
            id="line463" />
       </g>
@@ -1184,34 +1181,34 @@
          id="g481">
         <path
            class="cls-17"
-           d="M171.58,1887.23H84.94c-24.86,0-45.01-20.15-45.01-45.01v-38.68"
+           d="M 171.58,1887.23 H 84.94 c -24.86,0 -45.01,-20.15 -45.01,-45.01 v -38.68"
            id="path467" />
         <path
            class="cls-17"
-           d="M171.58,1897.43H84.26c-30.19,0-54.66-24.47-54.66-54.66v-39.24"
+           d="M 171.58,1897.43 H 84.26 c -30.19,0 -54.66,-24.47 -54.66,-54.66 v -39.24"
            id="path469" />
         <path
            class="cls-17"
-           d="M59.88,1803.54v34.47c0,18.71,15.17,33.88,33.88,33.88h77.81"
+           d="m 59.88,1803.54 v 34.47 c 0,18.71 15.17,33.88 33.88,33.88 h 77.81"
            id="path471" />
         <g
            id="g479">
           <path
              class="cls-17"
-             d="M169.85,1859.77h-45.23c-1.66,0-3.14-1.24-3.23-2.89-.09-1.76,1.31-3.22,3.05-3.22h45.4v6.12Z"
+             d="m 169.85,1859.77 h -45.23 c -1.66,0 -3.14,-1.24 -3.23,-2.89 -0.09,-1.76 1.31,-3.22 3.05,-3.22 h 45.4 v 6.12 z"
              id="path473" />
           <rect
              class="cls-17"
              x="108.3"
              y="1853.65"
-             width="6.3"
-             height="6.12"
-             rx="3.06"
-             ry="3.06"
+             width="6.3000002"
+             height="6.1199999"
+             rx="3.0599999"
+             ry="3.0599999"
              id="rect475" />
           <path
              class="cls-17"
-             d="M169.85,1845.01H104.49c-1.69,0-3.06,1.37-3.06,3.06v8.65c0,1.69-1.37,3.06-3.06,3.06h-6.97c-.84,0-1.64-.34-2.22-.95l-14.04-14.76c-1.85-1.95-.47-5.17,2.22-5.17h92.49v6.12Z"
+             d="m 169.85,1845.01 h -65.36 c -1.69,0 -3.06,1.37 -3.06,3.06 v 8.65 c 0,1.69 -1.37,3.06 -3.06,3.06 H 91.4 c -0.84,0 -1.64,-0.34 -2.22,-0.95 l -14.04,-14.76 c -1.85,-1.95 -0.47,-5.17 2.22,-5.17 h 92.49 v 6.12 z"
              id="path477" />
         </g>
       </g>
@@ -1233,9 +1230,9 @@
            id="line485" />
         <line
            class="cls-17"
-           x1="59.88"
+           x1="59.880001"
            y1="955.19"
-           x2="59.88"
+           x2="59.880001"
            y2="122.91"
            id="line487" />
       </g>
@@ -1243,90 +1240,90 @@
          id="g503">
         <path
            class="cls-17"
-           d="M171.58,36.27H84.94c-24.86,0-45.01,20.15-45.01,45.01v38.68"
+           d="M 171.58,36.27 H 84.94 c -24.86,0 -45.01,20.15 -45.01,45.01 v 38.68"
            id="path491" />
         <path
            class="cls-17"
-           d="M171.58,26.06H84.26c-30.19,0-54.66,24.47-54.66,54.66v39.24"
+           d="M 171.58,26.06 H 84.26 C 54.07,26.06 29.6,50.53 29.6,80.72 v 39.24"
            id="path493" />
         <path
            class="cls-17"
-           d="M59.88,119.95v-34.47c0-18.71,15.17-33.88,33.88-33.88h77.81"
+           d="M 59.88,119.95 V 85.48 C 59.88,66.77 75.05,51.6 93.76,51.6 h 77.81"
            id="path495" />
         <path
            class="cls-17"
-           d="M169.85,63.72h-45.23c-1.66,0-3.14,1.24-3.23,2.89-.09,1.76,1.31,3.22,3.05,3.22h45.4v-6.12Z"
+           d="m 169.85,63.72 h -45.23 c -1.66,0 -3.14,1.24 -3.23,2.89 -0.09,1.76 1.31,3.22 3.05,3.22 h 45.4 v -6.12 z"
            id="path497" />
         <rect
            class="cls-17"
            x="108.3"
-           y="63.72"
-           width="6.3"
-           height="6.12"
-           rx="3.06"
-           ry="3.06"
+           y="63.720001"
+           width="6.3000002"
+           height="6.1199999"
+           rx="3.0599999"
+           ry="3.0599999"
            id="rect499" />
         <path
            class="cls-17"
-           d="M169.85,78.49H104.49c-1.69,0-3.06-1.37-3.06-3.06v-8.65c0-1.69-1.37-3.06-3.06-3.06h-6.97c-.84,0-1.64,.34-2.22,.95l-14.04,14.76c-1.85,1.95-.47,5.17,2.22,5.17h92.49v-6.12Z"
+           d="m 169.85,78.49 h -65.36 c -1.69,0 -3.06,-1.37 -3.06,-3.06 v -8.65 c 0,-1.69 -1.37,-3.06 -3.06,-3.06 H 91.4 c -0.84,0 -1.64,0.34 -2.22,0.95 L 75.14,79.43 c -1.85,1.95 -0.47,5.17 2.22,5.17 h 92.49 v -6.12 z"
            id="path501" />
       </g>
       <g
          id="g517">
         <line
            class="cls-17"
-           x1="178.29"
-           y1="36.35"
-           x2="958.77"
-           y2="36.35"
+           x1="178.28999"
+           y1="36.349998"
+           x2="958.77002"
+           y2="36.349998"
            id="line505" />
         <line
            class="cls-17"
-           x1="178.29"
-           y1="26.14"
-           x2="958.77"
-           y2="26.14"
+           x1="178.28999"
+           y1="26.139999"
+           x2="958.77002"
+           y2="26.139999"
            id="line507" />
         <rect
            class="cls-17"
-           x="178.29"
-           y="78.49"
+           x="178.28999"
+           y="78.489998"
            width="105.76"
-           height="6.12"
+           height="6.1199999"
            id="rect509" />
         <path
            class="cls-17"
-           d="M178.29,70.73H894.78c1.66,0,3.14-1.24,3.23-2.89,.09-1.76-1.31-3.22-3.05-3.22H178.29v6.12Z"
+           d="m 178.29,70.73 h 716.49 c 1.66,0 3.14,-1.24 3.23,-2.89 0.09,-1.76 -1.31,-3.22 -3.05,-3.22 H 178.29 v 6.12 z"
            id="path511" />
         <rect
            class="cls-17"
            x="904.81"
-           y="65.21"
-           width="6.3"
-           height="6.12"
-           rx="3.06"
-           ry="3.06"
+           y="65.209999"
+           width="6.3000002"
+           height="6.1199999"
+           rx="3.0599999"
+           ry="3.0599999"
            id="rect513" />
         <path
            class="cls-17"
-           d="M178.29,56.56H914.92c1.69,0,3.06,1.37,3.06,3.06v8.65c0,1.69,1.37,3.06,3.06,3.06h6.97c.84,0,1.64-.34,2.22-.95l14.04-14.76c1.85-1.95,.47-5.17-2.22-5.17H178.29v6.12Z"
+           d="m 178.29,56.56 h 736.63 c 1.69,0 3.06,1.37 3.06,3.06 v 8.65 c 0,1.69 1.37,3.06 3.06,3.06 h 6.97 c 0.84,0 1.64,-0.34 2.22,-0.95 l 14.04,-14.76 c 1.85,-1.95 0.47,-5.17 -2.22,-5.17 H 178.29 v 6.12 z"
            id="path515" />
       </g>
       <g
          id="g527">
         <line
            class="cls-17"
-           x1="720.7"
+           x1="720.70001"
            y1="1887.23"
-           x2="178.29"
+           x2="178.28999"
            y2="1887.23"
            id="line519" />
         <line
            class="cls-17"
-           x1="720.7"
-           y1="1897.43"
-           x2="178.29"
-           y2="1897.43"
+           x1="720.70001"
+           y1="1897.4301"
+           x2="178.28999"
+           y2="1897.4301"
            id="line521" />
         <polyline
            class="cls-17"
@@ -1341,9 +1338,9 @@
          id="g555">
         <line
            class="cls-17"
-           x1="955.83"
+           x1="955.83002"
            y1="1887.23"
-           x2="726.7"
+           x2="726.70001"
            y2="1887.23"
            id="line529" />
         <polyline
@@ -1352,7 +1349,7 @@
            id="polyline531" />
         <path
            class="cls-17"
-           d="M726.7,1852.72h57.06c1.75,0,3.17,1.42,3.17,3.17v8.97c0,1.75,1.42,3.17,3.17,3.17h7.23c.87,0,1.7-.36,2.3-.99l14.56-15.32c1.92-2.02,.49-5.36-2.3-5.36h-85.2"
+           d="m 726.7,1852.72 h 57.06 c 1.75,0 3.17,1.42 3.17,3.17 v 8.97 c 0,1.75 1.42,3.17 3.17,3.17 h 7.23 c 0.87,0 1.7,-0.36 2.3,-0.99 l 14.56,-15.32 c 1.92,-2.02 0.49,-5.36 -2.3,-5.36 h -85.2"
            id="path533" />
         <polyline
            class="cls-17"
@@ -1362,39 +1359,39 @@
            id="g553">
           <path
              class="cls-17"
-             d="M935.31,1873.63h-122.98l33.51-35h71c14.15,0,21.66,4.86,21.66,19.8v11.84c0,1.86-1.43,3.36-3.19,3.36Z"
+             d="M 935.31,1873.63 H 812.33 l 33.51,-35 h 71 c 14.15,0 21.66,4.86 21.66,19.8 v 11.84 c 0,1.86 -1.43,3.36 -3.19,3.36 z"
              id="path537" />
           <g
              id="g551">
             <path
                class="cls-17"
-               d="M927.4,1868.04h-92.78c-2.79,0-4.22-3.34-2.3-5.36l14.56-15.32c.6-.63,1.43-.99,2.3-.99h7.23c1.75,0,3.17,1.42,3.17,3.17v8.97c0,1.75,1.42,3.17,3.17,3.17h64.64c1.75,0,3.17,1.42,3.17,3.17h0c0,1.75-1.42,3.17-3.17,3.17Z"
+               d="m 927.4,1868.04 h -92.78 c -2.79,0 -4.22,-3.34 -2.3,-5.36 l 14.56,-15.32 c 0.6,-0.63 1.43,-0.99 2.3,-0.99 h 7.23 c 1.75,0 3.17,1.42 3.17,3.17 v 8.97 c 0,1.75 1.42,3.17 3.17,3.17 h 64.64 c 1.75,0 3.17,1.42 3.17,3.17 v 0 c 0,1.75 -1.42,3.17 -3.17,3.17 z"
                id="path539" />
             <g
                id="g549">
               <circle
                  class="cls-17"
-                 cx="869.51"
+                 cx="869.51001"
                  cy="1849.36"
-                 r="3.32"
+                 r="3.3199999"
                  id="circle541" />
               <circle
                  class="cls-17"
                  cx="883.31"
                  cy="1849.36"
-                 r="3.32"
+                 r="3.3199999"
                  id="circle543" />
               <circle
                  class="cls-17"
-                 cx="897.1"
+                 cx="897.09998"
                  cy="1849.36"
-                 r="3.32"
+                 r="3.3199999"
                  id="circle545" />
               <circle
                  class="cls-17"
-                 cx="910.9"
+                 cx="910.90002"
                  cy="1849.36"
-                 r="3.32"
+                 r="3.3199999"
                  id="circle547" />
             </g>
           </g>
@@ -1407,19 +1404,19 @@
            x1="1885.08"
            y1="1800.59"
            x2="1885.08"
-           y2="959.41"
+           y2="959.40997"
            id="line557" />
         <line
            class="cls-17"
            x1="1895.41"
            y1="1800.59"
            x2="1895.41"
-           y2="959.41"
+           y2="959.40997"
            id="line559" />
         <line
            class="cls-17"
            x1="1865.12"
-           y1="959.41"
+           y1="959.40997"
            x2="1865.12"
            y2="1800.59"
            id="line561" />
@@ -1428,34 +1425,34 @@
          id="g579">
         <path
            class="cls-17"
-           d="M1753.42,1887.23h86.64c24.86,0,45.01-20.15,45.01-45.01v-38.68"
+           d="m 1753.42,1887.23 h 86.64 c 24.86,0 45.01,-20.15 45.01,-45.01 v -38.68"
            id="path565" />
         <path
            class="cls-17"
-           d="M1753.42,1897.43h87.32c30.19,0,54.66-24.47,54.66-54.66v-39.24"
+           d="m 1753.42,1897.43 h 87.32 c 30.19,0 54.66,-24.47 54.66,-54.66 v -39.24"
            id="path567" />
         <path
            class="cls-17"
-           d="M1865.12,1803.54v34.47c0,18.71-15.17,33.88-33.88,33.88h-77.81"
+           d="m 1865.12,1803.54 v 34.47 c 0,18.71 -15.17,33.88 -33.88,33.88 h -77.81"
            id="path569" />
         <g
            id="g577">
           <path
              class="cls-17"
-             d="M1755.15,1859.77h45.23c1.66,0,3.14-1.24,3.23-2.89,.09-1.76-1.31-3.22-3.05-3.22h-45.4v6.12Z"
+             d="m 1755.15,1859.77 h 45.23 c 1.66,0 3.14,-1.24 3.23,-2.89 0.09,-1.76 -1.31,-3.22 -3.05,-3.22 h -45.4 v 6.12 z"
              id="path571" />
           <rect
              class="cls-17"
              x="1810.41"
              y="1853.65"
-             width="6.3"
-             height="6.12"
-             rx="3.06"
-             ry="3.06"
+             width="6.3000002"
+             height="6.1199999"
+             rx="3.0599999"
+             ry="3.0599999"
              id="rect573" />
           <path
              class="cls-17"
-             d="M1755.15,1845.01h65.37c1.69,0,3.06,1.37,3.06,3.06v8.65c0,1.69,1.37,3.06,3.06,3.06h6.97c.84,0,1.64-.34,2.22-.95l14.04-14.76c1.85-1.95,.47-5.17-2.22-5.17h-92.49v6.12Z"
+             d="m 1755.15,1845.01 h 65.37 c 1.69,0 3.06,1.37 3.06,3.06 v 8.65 c 0,1.69 1.37,3.06 3.06,3.06 h 6.97 c 0.84,0 1.64,-0.34 2.22,-0.95 l 14.04,-14.76 c 1.85,-1.95 0.47,-5.17 -2.22,-5.17 h -92.49 v 6.12 z"
              id="path575" />
         </g>
       </g>
@@ -1487,32 +1484,32 @@
          id="g601">
         <path
            class="cls-17"
-           d="M1753.42,36.27h86.64c24.86,0,45.01,20.15,45.01,45.01v38.68"
+           d="m 1753.42,36.27 h 86.64 c 24.86,0 45.01,20.15 45.01,45.01 v 38.68"
            id="path589" />
         <path
            class="cls-17"
-           d="M1753.42,26.06h87.32c30.19,0,54.66,24.47,54.66,54.66v39.24"
+           d="m 1753.42,26.06 h 87.32 c 30.19,0 54.66,24.47 54.66,54.66 v 39.24"
            id="path591" />
         <path
            class="cls-17"
-           d="M1865.12,119.95v-34.47c0-18.71-15.17-33.88-33.88-33.88h-77.81"
+           d="M 1865.12,119.95 V 85.48 c 0,-18.71 -15.17,-33.88 -33.88,-33.88 h -77.81"
            id="path593" />
         <path
            class="cls-17"
-           d="M1755.15,63.72h45.23c1.66,0,3.14,1.24,3.23,2.89,.09,1.76-1.31,3.22-3.05,3.22h-45.4v-6.12Z"
+           d="m 1755.15,63.72 h 45.23 c 1.66,0 3.14,1.24 3.23,2.89 0.09,1.76 -1.31,3.22 -3.05,3.22 h -45.4 v -6.12 z"
            id="path595" />
         <rect
            class="cls-17"
            x="1810.41"
-           y="63.72"
-           width="6.3"
-           height="6.12"
-           rx="3.06"
-           ry="3.06"
+           y="63.720001"
+           width="6.3000002"
+           height="6.1199999"
+           rx="3.0599999"
+           ry="3.0599999"
            id="rect597" />
         <path
            class="cls-17"
-           d="M1755.15,78.49h65.37c1.69,0,3.06-1.37,3.06-3.06v-8.65c0-1.69,1.37-3.06,3.06-3.06h6.97c.84,0,1.64,.34,2.22,.95l14.04,14.76c1.85,1.95,.47,5.17-2.22,5.17h-92.49v-6.12Z"
+           d="m 1755.15,78.49 h 65.37 c 1.69,0 3.06,-1.37 3.06,-3.06 v -8.65 c 0,-1.69 1.37,-3.06 3.06,-3.06 h 6.97 c 0.84,0 1.64,0.34 2.22,0.95 l 14.04,14.76 c 1.85,1.95 0.47,5.17 -2.22,5.17 h -92.49 v -6.12 z"
            id="path599" />
       </g>
       <g
@@ -1520,40 +1517,40 @@
         <line
            class="cls-17"
            x1="1746.72"
-           y1="36.35"
-           x2="966.23"
-           y2="36.35"
+           y1="36.349998"
+           x2="966.22998"
+           y2="36.349998"
            id="line603" />
         <line
            class="cls-17"
            x1="1746.72"
-           y1="26.14"
-           x2="966.23"
-           y2="26.14"
+           y1="26.139999"
+           x2="966.22998"
+           y2="26.139999"
            id="line605" />
         <rect
            class="cls-17"
            x="1640.95"
-           y="78.49"
+           y="78.489998"
            width="105.76"
-           height="6.12"
+           height="6.1199999"
            id="rect607" />
         <path
            class="cls-17"
-           d="M1746.72,70.73h-716.49c-1.66,0-3.14-1.24-3.23-2.89-.09-1.76,1.31-3.22,3.05-3.22h716.66v6.12Z"
+           d="m 1746.72,70.73 h -716.49 c -1.66,0 -3.14,-1.24 -3.23,-2.89 -0.09,-1.76 1.31,-3.22 3.05,-3.22 h 716.66 v 6.12 z"
            id="path609" />
         <rect
            class="cls-17"
            x="1013.9"
-           y="65.21"
-           width="6.3"
-           height="6.12"
-           rx="3.06"
-           ry="3.06"
+           y="65.209999"
+           width="6.3000002"
+           height="6.1199999"
+           rx="3.0599999"
+           ry="3.0599999"
            id="rect611" />
         <path
            class="cls-17"
-           d="M1746.72,56.56H1010.09c-1.69,0-3.06,1.37-3.06,3.06v8.65c0,1.69-1.37,3.06-3.06,3.06h-6.97c-.84,0-1.64-.34-2.22-.95l-14.04-14.76c-1.85-1.95-.47-5.17,2.22-5.17h763.75v6.12Z"
+           d="m 1746.72,56.56 h -736.63 c -1.69,0 -3.06,1.37 -3.06,3.06 v 8.65 c 0,1.69 -1.37,3.06 -3.06,3.06 H 997 c -0.84,0 -1.64,-0.34 -2.22,-0.95 L 980.74,55.62 c -1.85,-1.95 -0.47,-5.17 2.22,-5.17 h 763.75 v 6.12 z"
            id="path613" />
       </g>
       <g
@@ -1568,9 +1565,9 @@
         <line
            class="cls-17"
            x1="1204.3"
-           y1="1897.43"
+           y1="1897.4301"
            x2="1746.72"
-           y2="1897.43"
+           y2="1897.4301"
            id="line619" />
         <polyline
            class="cls-17"
@@ -1585,7 +1582,7 @@
          id="g653">
         <line
            class="cls-17"
-           x1="969.18"
+           x1="969.17999"
            y1="1887.23"
            x2="1198.3"
            y2="1887.23"
@@ -1596,7 +1593,7 @@
            id="polyline629" />
         <path
            class="cls-17"
-           d="M1198.3,1852.72h-57.06c-1.75,0-3.17,1.42-3.17,3.17v8.97c0,1.75-1.42,3.17-3.17,3.17h-7.23c-.87,0-1.7-.36-2.3-.99l-14.56-15.32c-1.92-2.02-.49-5.36,2.3-5.36h85.2"
+           d="m 1198.3,1852.72 h -57.06 c -1.75,0 -3.17,1.42 -3.17,3.17 v 8.97 c 0,1.75 -1.42,3.17 -3.17,3.17 h -7.23 c -0.87,0 -1.7,-0.36 -2.3,-0.99 l -14.56,-15.32 c -1.92,-2.02 -0.49,-5.36 2.3,-5.36 h 85.2"
            id="path631" />
         <polyline
            class="cls-17"
@@ -1606,74 +1603,88 @@
            id="g651">
           <path
              class="cls-17"
-             d="M989.7,1873.63h122.98l-33.51-35h-71c-14.15,0-21.66,4.86-21.66,19.8v11.84c0,1.86,1.43,3.36,3.19,3.36Z"
+             d="m 989.7,1873.63 h 122.98 l -33.51,-35 h -71 c -14.15,0 -21.66,4.86 -21.66,19.8 v 11.84 c 0,1.86 1.43,3.36 3.19,3.36 z"
              id="path635" />
           <g
              id="g649">
             <path
                class="cls-17"
-               d="M997.6,1868.04h92.78c2.79,0,4.22-3.34,2.3-5.36l-14.56-15.32c-.6-.63-1.43-.99-2.3-.99h-7.23c-1.75,0-3.17,1.42-3.17,3.17v8.97c0,1.75-1.42,3.17-3.17,3.17h-64.64c-1.75,0-3.17,1.42-3.17,3.17h0c0,1.75,1.42,3.17,3.17,3.17Z"
+               d="m 997.6,1868.04 h 92.78 c 2.79,0 4.22,-3.34 2.3,-5.36 l -14.56,-15.32 c -0.6,-0.63 -1.43,-0.99 -2.3,-0.99 h -7.23 c -1.75,0 -3.17,1.42 -3.17,3.17 v 8.97 c 0,1.75 -1.42,3.17 -3.17,3.17 h -64.64 c -1.75,0 -3.17,1.42 -3.17,3.17 v 0 c 0,1.75 1.42,3.17 3.17,3.17 z"
                id="path637" />
             <g
                id="g647">
               <path
                  class="cls-17"
-                 d="M1052.17,1849.36c0-1.83,1.49-3.32,3.32-3.32s3.32,1.49,3.32,3.32-1.49,3.32-3.32,3.32-3.32-1.49-3.32-3.32Z"
+                 d="m 1052.17,1849.36 c 0,-1.83 1.49,-3.32 3.32,-3.32 1.83,0 3.32,1.49 3.32,3.32 0,1.83 -1.49,3.32 -3.32,3.32 -1.83,0 -3.32,-1.49 -3.32,-3.32 z"
                  id="path639" />
               <path
                  class="cls-17"
-                 d="M1038.38,1849.36c0-1.83,1.49-3.32,3.32-3.32s3.32,1.49,3.32,3.32c0,1.83-1.49,3.32-3.32,3.32-1.83,0-3.32-1.49-3.32-3.32Z"
+                 d="m 1038.38,1849.36 c 0,-1.83 1.49,-3.32 3.32,-3.32 1.83,0 3.32,1.49 3.32,3.32 0,1.83 -1.49,3.32 -3.32,3.32 -1.83,0 -3.32,-1.49 -3.32,-3.32 z"
                  id="path641" />
               <circle
                  class="cls-17"
                  cx="1027.9"
                  cy="1849.36"
-                 r="3.32"
+                 r="3.3199999"
                  id="circle643" />
               <circle
                  class="cls-17"
                  cx="1014.1"
                  cy="1849.36"
-                 r="3.32"
+                 r="3.3199999"
                  id="circle645" />
             </g>
           </g>
         </g>
       </g>
+      <path
+         id="circle655"
+         class="cls-17"
+         d="m 956.16979,1848.9217 c -2.63017,0.058 -5.2172,1.3522 -6.76969,3.4841 -1.71453,2.2213 -2.18972,5.2961 -1.30258,7.9499 0.91425,2.7907 3.33448,5.0453 6.20816,5.6935 2.55214,0.6565 5.37638,0.011 7.43519,-1.6255 2.0115,-1.5819 3.24204,-4.0779 3.29416,-6.6367 0.16504,-3.9791 -2.79524,-7.792 -6.68548,-8.6352 -0.71207,-0.1694 -1.44817,-0.2542 -2.17976,-0.2301 z" />
       <circle
          class="cls-17"
-         cx="962.5"
-         cy="1859.77"
-         r="6.7"
-         id="circle655" />
-      <circle
-         class="cls-17"
-         cx="962.5"
-         cy="61.45"
-         r="6.7"
+         cx="959.93756"
+         cy="61.450001"
+         r="6.6999998"
          id="circle657" />
     </g>
     <use
-       width="893.57"
-       height="903.07"
-       transform="translate(702.5 707.48) scale(.55)"
+       width="893.57001"
+       height="903.07001"
+       transform="matrix(0.55,0,0,0.55,702.5,707.48)"
        xlink:href="#Character_Deafault_1_2"
        id="use661" />
+    <rect
+       style="font-variation-settings:'wght' 600;opacity:1;fill:#ffffff;fill-opacity:0;fill-rule:evenodd;stroke:#fefefe;stroke-width:7.883;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.966741;paint-order:stroke fill markers"
+       id="rect7558"
+       width="359.396"
+       height="88.411415"
+       x="786.35846"
+       y="94.880547"
+       rx="4.7877541"
+       ry="13.456748" />
   </g>
   <text
      xml:space="preserve"
      id="text823"
-     style="fill:black;fill-opacity:1;line-height:1.25;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;white-space:pre;shape-inside:url(#rect825)" />
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect825);display:inline;fill:#000000;fill-opacity:1;stroke:none" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:59.2469px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.48117"
-     x="706.7713"
-     y="174.74425"
+     style="font-style:normal;font-weight:normal;font-size:73.8103px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.84525"
+     x="736.10181"
+     y="175.33344"
      id="text831"
-     transform="scale(1.1816742,0.84625698)"><tspan
+     transform="scale(1.1122858,0.8990495)"><tspan
        sodipodi:role="line"
        id="tspan829"
-       x="706.7713"
-       y="174.74425"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:59.2469px;font-family:Fredoka, sans-serif;-inkscape-font-specification:'Fredoka, sans-serif, @wght=600';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 600;fill:#ffffff;stroke-width:1.48117">Lessons</tspan></text>
+       x="736.10181"
+       y="175.33344"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:73.8103px;font-family:Fredoka, sans-serif;-inkscape-font-specification:'Fredoka, sans-serif, @wght=600';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;font-variation-settings:'wght' 600;fill:#ffffff;stroke-width:1.84525" /></text>
+  <image
+     xlink:href="data:image/png;base64,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 "
+     width="285"
+     height="48"
+     id="image7504"
+     x="822"
+     y="115.0661" />
 </svg>
