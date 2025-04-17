@@ -16,7 +16,6 @@
  */
 
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
 
 const helpSections = [
     { id: "avatars", title: "Avatars" },
@@ -40,7 +39,6 @@ function BackToTopButton() {
 }
 
 export function HelpPage(): JSX.Element {
-    const navigate = useNavigate();
     const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
     React.useEffect(() => {
         const handleResize = () => {
@@ -56,21 +54,29 @@ export function HelpPage(): JSX.Element {
             <nav className="HelpNav">
                 <div className="NavHeader">
                     <button
-                        id="back-to-play-btn"
+                        id="back-btn"
                         onClick={() => {
-                            navigate("/play");
+                            history.back();
                         }}
                     >
-                        Back to Play
+                        Back
                     </button>
                     <h2 className="HelpNavTitle">Help Topics</h2>
                 </div>
                 <ul className="HelpNavList">
                     {helpSections.map((section) => (
                         <li key={section.id}>
-                            <a href={`#${section.id}`} className="HelpNavLink">
+                            <button
+                                className="HelpNavLink"
+                                onClick={() => {
+                                    const el = document.getElementById(section.id);
+                                    if (el) {
+                                        el.scrollIntoView({ behavior: "smooth", block: "start" });
+                                    }
+                                }}
+                            >
                                 {section.title}
-                            </a>
+                            </button>
                         </li>
                     ))}
                 </ul>
