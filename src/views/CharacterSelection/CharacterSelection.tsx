@@ -80,32 +80,9 @@ export function CharacterSelection(): JSX.Element {
         data.set("user", JSON.parse(JSON.stringify(config.user)));
     };
 
-    const signout = (): void => {
-        openPopup({
-            text: "Are you sure you want to sign out?",
-        })
-            .then(() => {
-                get("/api/v0/logout")
-                    .then(() => {
-                        window.location.pathname = "/";
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                    });
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    };
-
     return (
         <div id="CharacterSelection" className={avatar_background_class(race)}>
             <BackButton onClick={() => navigate("/play")} />
-            <span className="signin-out-buttons">
-                <button className="sign-out" onClick={signout}>
-                    Sign out
-                </button>
-            </span>
 
             <NameSelection />
 

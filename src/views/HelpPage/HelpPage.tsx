@@ -16,7 +16,7 @@
  */
 
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { BackButton } from "@kidsgo/components/BackButton";
 
 const helpSections = [
     { id: "avatars", title: "Avatars" },
@@ -27,6 +27,7 @@ const helpSections = [
     { id: "kids", title: "Playing Other Kids" },
     { id: "chat", title: "Chatting" },
     { id: "lessons", title: "Lessons" },
+    { id: "about", title: "About" },
 ];
 
 function BackToTopButton() {
@@ -40,7 +41,6 @@ function BackToTopButton() {
 }
 
 export function HelpPage(): JSX.Element {
-    const navigate = useNavigate();
     const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
     React.useEffect(() => {
         const handleResize = () => {
@@ -55,22 +55,27 @@ export function HelpPage(): JSX.Element {
             <div id="scroll-top-anchor" />
             <nav className="HelpNav">
                 <div className="NavHeader">
-                    <button
-                        id="back-to-play-btn"
+                    <BackButton
                         onClick={() => {
-                            navigate("/play");
+                            history.back();
                         }}
-                    >
-                        Back to Play
-                    </button>
+                    />
                     <h2 className="HelpNavTitle">Help Topics</h2>
                 </div>
                 <ul className="HelpNavList">
                     {helpSections.map((section) => (
                         <li key={section.id}>
-                            <a href={`#${section.id}`} className="HelpNavLink">
+                            <button
+                                className="HelpNavLink"
+                                onClick={() => {
+                                    const el = document.getElementById(section.id);
+                                    if (el) {
+                                        el.scrollIntoView({ behavior: "smooth", block: "start" });
+                                    }
+                                }}
+                            >
                                 {section.title}
-                            </a>
+                            </button>
                         </li>
                     ))}
                 </ul>
@@ -85,7 +90,7 @@ export function HelpPage(): JSX.Element {
                         are five different species, and hundreds of options. Changing species
                         automatically changes planets as well. You can choose species from the bar
                         at top, and try different avatars by clicking the left and right arrows.
-                        When you are happy with your avatar, click "Done - I love it!". This avatar
+                        When you are happy with your avatar, click "Done - I love it!" This avatar
                         will load by default next time you use the server with the same device. You
                         can change your name without changing your avatar by clicking "Change Name".
                         You can change both your name and your avatar as often as you like.
@@ -202,6 +207,47 @@ export function HelpPage(): JSX.Element {
                         back as often as you like, and you can revisit any lesson if you need a
                         reminder on how something works. The 8th lesson is all go problems for you
                         to solve, you can visit this section as often as you like.
+                    </p>
+                    {isMobile && <BackToTopButton />}
+                </section>
+
+                <section id="about">
+                    <h2>About</h2>
+                    <p>
+                        This website was created by the{" "}
+                        <a href="https://www.agfgo.org" target="_blank" rel="noopener noreferrer">
+                            American Go Foundation
+                        </a>{" "}
+                        in collaboration with the{" "}
+                        <a href="https://online-go.com/" target="_blank" rel="noopener noreferrer">
+                            Online Go Server
+                        </a>
+                        , with assistance from the{" "}
+                        <a href="https://www.britgo.org/" target="_blank" rel="noopener noreferrer">
+                            British Go Association
+                        </a>
+                        . Graphics and animation are by{" "}
+                        <a
+                            href="https://www.nicksnyder.tv/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Nick Synder
+                        </a>
+                        . The lessons and overall design are by Paul Barchilon and Terry Benson.
+                        Initial programming and bot hosting were provided by Akita Noek, with
+                        additional programming by Nathan Harwit. The entire project has been funded
+                        solely by donations. If you would like to contribute,{" "}
+                        <a
+                            href="https://www.agfgo.org/donate"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            click here
+                        </a>
+                        .<br></br> <br></br> All content on this site, including images, text, and
+                        lessons, is copyright © 2025 American Go Foundation and contributors. Use
+                        with permission.
                     </p>
                     {isMobile && <BackToTopButton />}
                 </section>
