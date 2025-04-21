@@ -234,10 +234,10 @@ export function HelpPage(): JSX.Element {
                         >
                             Nick Synder
                         </a>
-                        . The lessons and overall design are by Paul Barchilon and Terry Benson.
-                        Initial programming and bot hosting were provided by Akita Noek, with
-                        additional programming by Nathan Harwit. The entire project has been funded
-                        solely by donations. If you would like to contribute,{" "}
+                        . The lessons and general concept of the site are by Paul Barchilon and
+                        Terry Benson. Initial programming and bot hosting were provided by Akita
+                        Noek, with additional programming by Nathan Harwit. The entire project has
+                        been funded solely by donations. If you would like to contribute,{" "}
                         <a
                             href="https://www.agfgo.org/donate"
                             target="_blank"
@@ -245,9 +245,8 @@ export function HelpPage(): JSX.Element {
                         >
                             click here
                         </a>
-                        .<br></br> <br></br> All content on this site, including images, text, and
-                        lessons, is copyright © 2025 American Go Foundation and contributors. Use
-                        with permission.
+                        .<br></br> <br></br> Images, text, and lessons copyright 2025 by the
+                        American Go Foundation.
                     </p>
                     {isMobile && <BackToTopButton />}
                 </section>
