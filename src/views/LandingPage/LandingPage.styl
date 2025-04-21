@@ -82,7 +82,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
         width: 80%;
         height: 80%;
         left: 10%;
-
     }
 
     .learn-to-play-rocket, .play-rocket {
@@ -124,10 +123,10 @@ ROCKET_LAUNCH_DURATION = 1.25s
 
     .agf-logo {
         position: absolute;
-        bottom: 5%;
-        left: 15.5vw;
-        width: 3vw;
-        height: 3vw;
+        bottom: calc(var(--ROCKETHEIGHT) * 0.10);
+        left: calc(5vw + var(--ROCKETWIDTH) + 2rem);
+        width: 3rem;
+        height: 3rem;
         background-image: url("/1.0/pages/home/AGFlogo.png");
         background-repeat: no-repeat;
         background-size: contain;
@@ -135,14 +134,20 @@ ROCKET_LAUNCH_DURATION = 1.25s
 
     .ogs-logo {
         position: absolute;
-        bottom: 1%;
-        right: 15.5vw;
-        width: 3.5vw;
-        height: 3.5vw;
+        bottom: calc(var(--ROCKETHEIGHT) * 0.05);
+        right: calc(5vw + var(--ROCKETWIDTH) + 2rem);
+        width: 3.5rem;
+        height: 3.5rem;
         background-image: url("/1.0/pages/home/OGS.png");
         background-repeat: no-repeat;
         background-size: contain;
+
+        +portrait() {
+            bottom: calc(var(--ROCKETHEIGHT) * 0.02);
+            right: calc(5vw + var(--ROCKETWIDTH) + 1rem);
+        }
     }
+
 
     .play-rocket {
         right: 5vw;
