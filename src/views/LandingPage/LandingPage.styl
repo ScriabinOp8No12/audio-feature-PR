@@ -130,6 +130,10 @@ ROCKET_LAUNCH_DURATION = 1.25s
         background-image: url("/1.0/pages/home/AGFlogo.png");
         background-repeat: no-repeat;
         background-size: contain;
+
+        +portrait() {
+            left: calc(5vw + var(--ROCKETWIDTH) + 1rem);
+        }
     }
 
     .ogs-logo {
@@ -144,6 +148,7 @@ ROCKET_LAUNCH_DURATION = 1.25s
 
         +portrait() {
             bottom: calc(var(--ROCKETHEIGHT) * 0.03);
+            right: calc(5vw + var(--ROCKETWIDTH) + 1rem);
         }
     }
 
