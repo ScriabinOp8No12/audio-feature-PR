@@ -129,7 +129,9 @@ export function KidsGame(): JSX.Element {
             );
             mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height));
 
-            if (goban.engine.phase === "finished") {
+            const isResignation = goban?.engine?.outcome === "Resignation";
+
+            if (goban.engine.phase === "finished" && !isResignation) {
                 const s = goban.engine.computeScore(false);
                 goban.showScores(s, true);
             }
