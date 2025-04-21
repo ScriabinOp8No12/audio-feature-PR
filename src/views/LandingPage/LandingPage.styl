@@ -26,7 +26,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
     }
 }
 
-
 :root {
     //--ROCKETWIDTH: min(10vw, 10rem);
     --ROCKETWIDTH: "min(20vw, 10rem)" % "";
@@ -35,8 +34,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
     --FLAMECENTER: calc(var(--FLAMEWIDTH) / 2);
     --FLAMEHEIGHT: calc(var(--ROCKETHEIGHT) / 2);
 }
-
-
 
 #LandingPage {
     position: absolute;
@@ -88,7 +85,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
 
     }
 
-
     .learn-to-play-rocket, .play-rocket {
         position: absolute;
         bottom: calc(var(--ROCKETHEIGHT) * 0.1 + 0.8rem);
@@ -120,9 +116,32 @@ ROCKET_LAUNCH_DURATION = 1.25s
 
         }
     }
+
     .learn-to-play-rocket {
         left: 5vw;
         background-image: url("/1.0/pages/home/learn.svg");
+    }
+
+    .agf-logo {
+        position: absolute;
+        top: 65%;
+        left: 14vw;
+        width: 4vw;
+        height: 4vw;
+        background-image: url("/1.0/pages/home/AGFlogo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .ogs-logo {
+        position: absolute;
+        top: 68%;
+        right: 14vw;
+        width: 4.5vw;
+        height: 4.5vw;
+        background-image: url("/1.0/pages/home/OGS.png");
+        background-repeat: no-repeat;
+        background-size: contain;
     }
 
     .play-rocket {
@@ -139,8 +158,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
             display: inline-block;
         }
     }
-
-
 
     .launchpad {
         position: absolute;
