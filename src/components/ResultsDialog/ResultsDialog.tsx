@@ -85,7 +85,8 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
     const winnerId = props.goban?.engine?.winner;
     const userWon = user.id === winnerId;
 
-    // For the resignation case, we still need to display avatars and maintain the same structure
+    // Show a different results dialog when a user resigns, which does not show the score.
+    // Goban also has a isResignation flag that omits the goban score state after a user resigns
     if (isResignation) {
         return (
             <div className="ResultsDialog-container">
