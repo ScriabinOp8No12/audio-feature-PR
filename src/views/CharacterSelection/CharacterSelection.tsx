@@ -83,7 +83,7 @@ export function CharacterSelection(): JSX.Element {
     return (
         <div id="CharacterSelection" className={avatar_background_class(race)}>
             <BackButton onClick={() => navigate("/play")} />
-
+            <div className="HelpButton" onClick={() => navigate("/help")}></div>
             <NameSelection />
 
             <AvatarSelection race={avatarRace} idx={avatarIdx} onChange={update} />
