@@ -44,6 +44,8 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
     score.black.prisoners = score_prisoners.black.prisoners + passes.black;
     score.white.prisoners = score_prisoners.white.prisoners + passes.white;
 
+    const isResignation = props.goban?.engine?.outcome === "Resignation";
+
     const black_svg_url = ((props.goban as any)?.theme_black?.getSadStoneSvgUrl() || "").replace(
         "sad",
         "neutral",
@@ -82,6 +84,48 @@ export function ResultsDialog(props: ResultsDialogProps): JSX.Element {
 
     const winnerId = props.goban?.engine?.winner;
     const userWon = user.id === winnerId;
+
+    // Show a different results dialog when a user resigns, which does not show the score.
+    // Goban also has a isResignation flag that omits the goban score state after a user resigns
+    if (isResignation) {
+        return (
+            <div className="ResultsDialog-container">
+                <KBShortcut shortcut="esc" action={props.onClose} />
+                <div className="ResultsDialog">
+                    <div className="ResultsDialog-results">
+                        <div className="black">
+                            <div className="stone-avatar-container">
+                                <PlayerAvatar user_id={left_id} />
+                            </div>
+                            <div className="result-text"></div>
+                        </div>
+
+                        <div className="result-center-message">
+                            <div>
+                                {userWon ? "They resigned, you won!" : "You resigned, they won!"}
+                            </div>
+                        </div>
+
+                        <div className="white">
+                            <div className="stone-avatar-container">
+                                <PlayerAvatar user_id={right_id} />
+                            </div>
+                            <div className="result-text"></div>
+                        </div>
+                    </div>
+
+                    <div className="ResultsDialog-buttons">
+                        <button className="primary-button" onClick={props.onPlayAgain}>
+                            Play again
+                        </button>
+                        <button className="primary-button" onClick={props.onClose}>
+                            View game
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="ResultsDialog-container">
