@@ -35,6 +35,7 @@ export function LearnToPlay(): JSX.Element {
     return (
         <div id="LearnToPlay">
             <BackButton onClick={back} />
+            <div className="HelpButton" onClick={() => navigate("/help")}></div>
             <div className="spacer" />
             <div className="background-container">
                 <div className="back-background" />

@@ -26,7 +26,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
     }
 }
 
-
 :root {
     //--ROCKETWIDTH: min(10vw, 10rem);
     --ROCKETWIDTH: "min(20vw, 10rem)" % "";
@@ -35,8 +34,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
     --FLAMECENTER: calc(var(--FLAMEWIDTH) / 2);
     --FLAMEHEIGHT: calc(var(--ROCKETHEIGHT) / 2);
 }
-
-
 
 #LandingPage {
     position: absolute;
@@ -85,9 +82,7 @@ ROCKET_LAUNCH_DURATION = 1.25s
         width: 80%;
         height: 80%;
         left: 10%;
-
     }
-
 
     .learn-to-play-rocket, .play-rocket {
         position: absolute;
@@ -120,9 +115,41 @@ ROCKET_LAUNCH_DURATION = 1.25s
 
         }
     }
+
     .learn-to-play-rocket {
         left: 5vw;
         background-image: url("/1.0/pages/home/learn.svg");
+    }
+
+    .agf-logo {
+        position: absolute;
+        bottom: calc(var(--ROCKETHEIGHT) * 0.10);
+        left: calc(5vw + var(--ROCKETWIDTH) + 2rem);
+        width: 3.5rem;
+        height: 3.5rem;
+        background-image: url("/1.0/pages/home/AGFlogo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        +portrait() {
+            left: calc(5vw + var(--ROCKETWIDTH) + 1rem);
+        }
+    }
+
+    .ogs-logo {
+        position: absolute;
+        bottom: calc(var(--ROCKETHEIGHT) * 0.05);
+        right: calc(5vw + var(--ROCKETWIDTH) + 2rem);
+        width: 3.5rem;
+        height: 3.5rem;
+        background-image: url("/1.0/pages/home/OGS.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        +portrait() {
+            bottom: calc(var(--ROCKETHEIGHT) * 0.03);
+            right: calc(5vw + var(--ROCKETWIDTH) + 1rem);
+        }
     }
 
     .play-rocket {
@@ -139,8 +166,6 @@ ROCKET_LAUNCH_DURATION = 1.25s
             display: inline-block;
         }
     }
-
-
 
     .launchpad {
         position: absolute;
@@ -161,8 +186,4 @@ ROCKET_LAUNCH_DURATION = 1.25s
         right: 5vw;
         background-image: svg-load("../assets/pages/home/launchpad.svg");
     }
-
-
-
-
 }
