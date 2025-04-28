@@ -403,6 +403,21 @@ class Page13 extends Module2 {
     }
 }
 
+class Page14 extends Module2 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Let's try some simple problems now.</p>];
+    }
+    axolotlFace() {
+        return true;
+    }
+    hidePlayButton() {
+        return true;
+    }
+}
+
 export const module2: Array<typeof Content> = [
     Page1,
     Page2,
@@ -417,4 +432,5 @@ export const module2: Array<typeof Content> = [
     Page11,
     Page12,
     Page13,
+    Page14,
 ];
