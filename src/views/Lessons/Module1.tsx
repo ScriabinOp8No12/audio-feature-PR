@@ -495,7 +495,6 @@ class Puzzle5 extends Module1 {
                 black: "E6D5F5",
                 white: "D4E5",
             },
-            //'move_tree': this.makePuzzleMoveTree(["E7"], [])
         };
     }
     onSetGoban(goban: Goban): void {
@@ -509,6 +508,52 @@ class Puzzle5 extends Module1 {
                 this.captureDelay(() => {
                     openPopup({
                         text: <Axol>You did it!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    })
+                        .then(() => {
+                            this.gotoNext();
+                        })
+                        .catch(() => 0);
+                });
+            }
+        });
+    }
+}
+
+class Puzzle6 extends Module1 {
+    private successAudio: HTMLAudioElement;
+    constructor(shouldPlayAudio: boolean) {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548582/audio-slices-less-pauses/slice18_less_pauses_revised_y2583y.mp3",
+            shouldPlayAudio,
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Try and capture these White stones.</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "B4B3B2C1D2D3E4F4F5E6D6",
+                white: "E5D5D4C4C3C2",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("update", () => {
+            if (goban.engine.board[2][3] === 0) {
+                if (this.shouldPlayAudio) {
+                    this.successAudio
+                        .play()
+                        .catch((error) => console.error("Error playing success audio:", error));
+                }
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>Very clever!</Axol>,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     })
@@ -537,4 +582,5 @@ export const module1: Array<typeof Content> = [
     Puzzle3,
     Puzzle4,
     Puzzle5,
+    Puzzle6,
 ];
