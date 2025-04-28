@@ -475,6 +475,53 @@ class Puzzle4 extends Module1 {
     }
 }
 
+class Puzzle5 extends Module1 {
+    private successAudio: HTMLAudioElement;
+    constructor(shouldPlayAudio: boolean) {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472327/audio-slices-less-pauses/slice14_less_pauses_if00pt.mp3",
+            shouldPlayAudio,
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Try and capture the White stone.</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "E6D5F5",
+                white: "D4E5",
+            },
+            //'move_tree': this.makePuzzleMoveTree(["E7"], [])
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("update", () => {
+            if (goban.engine.board[2][4] === 0) {
+                if (this.shouldPlayAudio) {
+                    this.successAudio
+                        .play()
+                        .catch((error) => console.error("Error playing success audio:", error));
+                }
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>You did it!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    })
+                        .then(() => {
+                            this.gotoNext();
+                        })
+                        .catch(() => 0);
+                });
+            }
+        });
+    }
+}
+
 export const module1: Array<typeof Content> = [
     Page1,
     Page2,
@@ -489,4 +536,5 @@ export const module1: Array<typeof Content> = [
     Puzzle2,
     Puzzle3,
     Puzzle4,
+    Puzzle5,
 ];
