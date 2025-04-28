@@ -403,27 +403,6 @@ class Page13 extends Module2 {
     }
 }
 
-class Page14 extends Module2 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708554038/audio-slice-less-pauses-COMBINED/slice41_42_and_43_combined_hz4vsr.mp3",
-        );
-    }
-    text(): JSX.Element | Array<JSX.Element> {
-        return [
-            // Audio not matching, need to record "and then come back to read the rest of these lessons."
-            <p>
-                You now know enough to play your first game of Go! There are actually two more
-                rules, but it can be confusing at first. Play a couple of games against the Easy
-                Bot. You can get 6 extra stones at the start, to make it a better game. Have fun!
-            </p>,
-        ];
-    }
-    axolotlFace() {
-        return true;
-    }
-}
-
 export const module2: Array<typeof Content> = [
     Page1,
     Page2,
@@ -438,5 +417,4 @@ export const module2: Array<typeof Content> = [
     Page11,
     Page12,
     Page13,
-    Page14,
 ];
