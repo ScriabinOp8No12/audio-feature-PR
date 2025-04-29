@@ -613,6 +613,52 @@ class Puzzle7 extends Module1 {
     }
 }
 
+class Puzzle8 extends Module1 {
+    private successAudio: HTMLAudioElement;
+    constructor(shouldPlayAudio: boolean) {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548582/audio-slices-less-pauses/slice18_less_pauses_revised_y2583y.mp3",
+            shouldPlayAudio,
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Try and capture these White stones.</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "C7C6C5B5A5",
+                white: "A6B6B7",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("update", () => {
+            if (goban.engine.board[1][1] === 0) {
+                if (this.shouldPlayAudio) {
+                    this.successAudio
+                        .play()
+                        .catch((error) => console.error("Error playing success audio:", error));
+                }
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>Very clever!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    })
+                        .then(() => {
+                            this.gotoNext();
+                        })
+                        .catch(() => 0);
+                });
+            }
+        });
+    }
+}
+
 export const module1: Array<typeof Content> = [
     Page1,
     Page2,
@@ -630,4 +676,5 @@ export const module1: Array<typeof Content> = [
     Puzzle5,
     Puzzle6,
     Puzzle7,
+    Puzzle8,
 ];
