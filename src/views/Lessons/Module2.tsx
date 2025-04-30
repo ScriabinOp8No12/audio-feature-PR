@@ -17,9 +17,9 @@
 
 import * as React from "react";
 import { Content } from "./Content";
-import { PuzzleConfig, Goban, createGoban, JGOFNumericPlayerColor } from "goban";
+import { decodeMoves, PuzzleConfig, Goban, prettyCoordinates, JGOFNumericPlayerColor } from "goban";
 import { Axol } from "./Axol";
-import { openPopup, closePopup } from "@kidsgo/components/PopupDialog";
+import { openPopup } from "@kidsgo/components/PopupDialog";
 
 const POPUP_TIMEOUT = 3000;
 class Module2 extends Content {
@@ -443,23 +443,35 @@ class Puzzle1 extends Module2 {
         };
     }
     onSetGoban(goban: Goban): void {
+        // console.log("Goban engine properties:", Object.getOwnPropertyNames(goban.engine));
+        // console.log("Full goban engine:", goban.engine);
+        // console.log("goban.engine.board", goban.engine.board);
         goban.on("update", () => {
+            console.log("GOBANNNNN", goban);
+            const mvs = decodeMoves(
+                goban.engine.cur_move.getMoveStringToThisPoint(),
+                goban.width,
+                goban.height,
+            );
+            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
+            console.log("Move string22222222222222222222: ", move_string);
             if (goban.engine.board[4][3] === 1) {
                 if (this.shouldPlayAudio) {
                     this.successAudio
                         .play()
                         .catch((error) => console.error("Error playing success audio:", error));
                 }
-
-                openPopup({
-                    text: <Axol>Very clever!</Axol>,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>Very clever!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
                     })
-                    .catch(() => 0);
+                        .then(() => {
+                            this.gotoNext();
+                        })
+                        .catch(() => 0);
+                });
             }
         });
 
