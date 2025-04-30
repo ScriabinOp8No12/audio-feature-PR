@@ -444,7 +444,6 @@ class Puzzle1 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("update", () => {
-            console.log("HELLO 11111111111111111111111111111");
             if (goban.engine.board[4][3] === 1) {
                 if (this.shouldPlayAudio) {
                     this.successAudio
@@ -465,7 +464,6 @@ class Puzzle1 extends Module2 {
         });
 
         goban.on("update", () => {
-            console.log("HELLO 222222222222222222222222222222222");
             if (goban.engine.board[6][3] === 0) {
                 openPopup({
                     text: <Axol>Try again!</Axol>,
@@ -473,10 +471,7 @@ class Puzzle1 extends Module2 {
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        const replayButton = document.querySelector(".stone-button-refresh");
-                        if (replayButton && replayButton.parentElement) {
-                            replayButton.parentElement.click();
-                        }
+                        this.resetGoban?.();
                     })
                     .catch(() => 0);
             }
