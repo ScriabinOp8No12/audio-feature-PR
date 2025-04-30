@@ -87,7 +87,15 @@ export function configure_goban() {
         getNetworkLatency: (): number => get_network_latency(),
         getLocation: (): string => window.location.pathname,
         //getShowMoveNumbers: (): boolean => !!preferences.get("show-move-numbers"),
-        getShowVariationMoveNumbers: (): boolean => preferences.get("show-variation-move-numbers"),
+        getShowVariationMoveNumbers: (): boolean => {
+            const location = window.location.pathname;
+            // Hacky solution as I can't figure out an easy way to check if the goban is in puzzle mode,
+            // so we just check if we are on the learn pages, which are when are in puzzle mode
+            if (location.includes("/learn-to-play/")) {
+                return false;
+            }
+            return preferences.get("show-variation-move-numbers");
+        },
         getMoveTreeNumbering: (): "none" | "move-number" | "move-coordinates" =>
             preferences.get("move-tree-numbering"),
         getCDNReleaseBase: (): string => data.get("config.cdn_release"),
