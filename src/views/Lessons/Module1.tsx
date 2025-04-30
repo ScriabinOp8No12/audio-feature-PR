@@ -64,7 +64,7 @@ class Page1 extends Module1 {
         this.delay(
             () => goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.WHITE),
             10000,
-        ); // 10 second delay to align the white stone appearing with the word "followed"
+        );
     }
 }
 

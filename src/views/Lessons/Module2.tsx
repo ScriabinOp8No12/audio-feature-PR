@@ -17,8 +17,11 @@
 
 import * as React from "react";
 import { Content } from "./Content";
-import { PuzzleConfig, Goban, JGOFNumericPlayerColor } from "goban";
+import { PuzzleConfig, Goban, createGoban, JGOFNumericPlayerColor } from "goban";
+import { Axol } from "./Axol";
+import { openPopup, closePopup } from "@kidsgo/components/PopupDialog";
 
+const POPUP_TIMEOUT = 3000;
 class Module2 extends Content {
     constructor(audioUrl: string) {
         super();
@@ -418,6 +421,69 @@ class Page14 extends Module2 {
     }
 }
 
+class Puzzle1 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Try and save these blue stones!</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "C1D1D2E1",
+                white: "B1C2E2F1",
+            },
+            // Make a helper function that takes into account initial_state, then replaces this 2nd array with every other move on the board that's legal
+            move_tree: this.makePuzzleMoveTree([], ["C3D3", "E3D3", "B3D3", "F2D3", "D7D3"]),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("update", () => {
+            console.log("HELLO 11111111111111111111111111111");
+            if (goban.engine.board[4][3] === 1) {
+                if (this.shouldPlayAudio) {
+                    this.successAudio
+                        .play()
+                        .catch((error) => console.error("Error playing success audio:", error));
+                }
+
+                openPopup({
+                    text: <Axol>Very clever!</Axol>,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            }
+        });
+
+        goban.on("update", () => {
+            console.log("HELLO 222222222222222222222222222222222");
+            if (goban.engine.board[6][3] === 0) {
+                openPopup({
+                    text: <Axol>Try again!</Axol>,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        const replayButton = document.querySelector(".stone-button-refresh");
+                        if (replayButton && replayButton.parentElement) {
+                            replayButton.parentElement.click();
+                        }
+                    })
+                    .catch(() => 0);
+            }
+        });
+    }
+}
+
 export const module2: Array<typeof Content> = [
     Page1,
     Page2,
@@ -433,4 +499,6 @@ export const module2: Array<typeof Content> = [
     Page12,
     Page13,
     Page14,
+
+    Puzzle1,
 ];
