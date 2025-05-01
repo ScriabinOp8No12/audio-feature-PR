@@ -214,8 +214,9 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
                 this.instructional_goban.goban.disableStonePlacement();
                 this.forceUpdate();
                  */
-            goban.engine.place(-1, -1);
-            //goban.disableStonePlacement();
+            // Use the following line to have the computer pass
+            // goban.engine.place(-1, -1);
+            goban.disableStonePlacement();
         });
         goban.on("error", () => {
             console.log("ERROR");
