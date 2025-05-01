@@ -443,15 +443,13 @@ class Puzzle1 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("update", () => {
-            // ******************* //
             const mvs = decodeMoves(
                 goban.engine.cur_move.getMoveStringToThisPoint(),
                 goban.width,
                 goban.height,
             );
             const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-            console.log("Move string22222222222222222222: ", move_string);
-            // ******************* //
+
             if (move_string === "D3,pass") {
                 console.log(
                     "The move_string value matches! Puzzle solved and playing success audio if it exists",
