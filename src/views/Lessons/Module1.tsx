@@ -306,53 +306,38 @@ class Puzzle1 extends Module1 {
                 black: "C7D6",
                 white: "D7",
             },
-            //'move_tree': this.makePuzzleMoveTree(["E7"], [])
+            move_tree: this.makePuzzleMoveTree(["E7"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "E7,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                // If we chain the success audio after the captureDelay, the "good job audio clip" happens after we go to the next puzzle
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>Good job!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "E7,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
@@ -378,51 +363,38 @@ class Puzzle2 extends Module1 {
                 black: "E5D4E3",
                 white: "E4",
             },
+            move_tree: this.makePuzzleMoveTree(["F4"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "F4,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>You did it!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "F4,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
@@ -447,52 +419,38 @@ class Puzzle3 extends Module1 {
                 black: "E5E2D4D3F4",
                 white: "E4E3",
             },
-            //'move_tree': this.makePuzzleMoveTree(["E7"], [])
+            move_tree: this.makePuzzleMoveTree(["F3"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "F3,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>Nice work!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "F3,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
@@ -517,52 +475,38 @@ class Puzzle4 extends Module1 {
                 black: "D6E6D5F5C4D3D2E2F3",
                 white: "D4E5E4E3",
             },
-            //'move_tree': this.makePuzzleMoveTree(["E7"], [])
+            move_tree: this.makePuzzleMoveTree(["F4"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "F4,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>Very clever!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "F4,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
@@ -587,51 +531,38 @@ class Puzzle5 extends Module1 {
                 black: "E6D5F5",
                 white: "D4E5",
             },
+            move_tree: this.makePuzzleMoveTree(["E4"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "E4,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>You did it!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "E4,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
@@ -656,51 +587,38 @@ class Puzzle6 extends Module1 {
                 black: "B4B3B2C1D2D3E4F4F5E6D6",
                 white: "E5D5D4C4C3C2",
             },
+            move_tree: this.makePuzzleMoveTree(["C5"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "C5,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>Very clever!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "C5,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
@@ -725,51 +643,38 @@ class Puzzle7 extends Module1 {
                 black: "D7D6D5E5F5G5",
                 white: "E7E6F6G6G7",
             },
+            move_tree: this.makePuzzleMoveTree(["F7"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "F7,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>Very clever!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "F7,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
@@ -794,51 +699,38 @@ class Puzzle8 extends Module1 {
                 black: "C7C6C5B5A5",
                 white: "A6B6B7",
             },
+            move_tree: this.makePuzzleMoveTree(["A7"], []),
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.on("update", () => {
-            const mvs = decodeMoves(
-                goban.engine.cur_move.getMoveStringToThisPoint(),
-                goban.width,
-                goban.height,
-            );
-            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-
-            if (move_string === "A7,pass") {
-                console.log(
-                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
-                );
-                if (this.shouldPlayAudio) {
-                    this.successAudio
-                        .play()
-                        .catch((error) => console.error("Error playing success audio:", error));
-                }
-                this.captureDelay(() => {
-                    openPopup({
-                        text: <Axol>Very clever!</Axol>,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    })
-                        .then(() => {
-                            this.gotoNext();
-                        })
-                        .catch(() => 0);
-                });
-            } else if (move_string !== "" && move_string !== "A7,pass") {
-                console.log(
-                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
-                );
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Try again!</Axol>,
+                    text: <Axol>Very clever!</Axol>,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
                     .then(() => {
-                        this.resetGoban?.();
+                        this.gotoNext();
                     })
                     .catch(() => 0);
-            }
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            openPopup({
+                text: <Axol>Try again!</Axol>,
+                no_cancel: true,
+                timeout: POPUP_TIMEOUT,
+            })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
         });
     }
 }
