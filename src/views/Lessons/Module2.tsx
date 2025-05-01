@@ -430,7 +430,7 @@ class Puzzle1 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Try and save these blue stones!</p>];
+        return [<p>Save the blue stones!</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -488,6 +488,207 @@ class Puzzle1 extends Module2 {
     }
 }
 
+class Puzzle2 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Capture the 2 white stones!</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "B1C2D2D4D5D6",
+                white: "C1D1E2E3E4E5",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("update", () => {
+            const mvs = decodeMoves(
+                goban.engine.cur_move.getMoveStringToThisPoint(),
+                goban.width,
+                goban.height,
+            );
+            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
+
+            if (move_string === "E1,pass") {
+                console.log(
+                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
+                );
+                if (this.shouldPlayAudio) {
+                    this.successAudio
+                        .play()
+                        .catch((error) => console.error("Error playing success audio:", error));
+                }
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>Very clever!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    })
+                        .then(() => {
+                            this.gotoNext();
+                        })
+                        .catch(() => 0);
+                });
+            } else if (move_string !== "" && move_string !== "E1,pass") {
+                console.log(
+                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
+                );
+                openPopup({
+                    text: <Axol>Try again!</Axol>,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.resetGoban?.();
+                    })
+                    .catch(() => 0);
+            }
+        });
+    }
+}
+
+class Puzzle3 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Capture the 5 white stones!</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "D2E2F3E4E5D6C5C3",
+                white: "C2C4D4D5D3E3",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("update", () => {
+            const mvs = decodeMoves(
+                goban.engine.cur_move.getMoveStringToThisPoint(),
+                goban.width,
+                goban.height,
+            );
+            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
+
+            if (move_string === "B4,pass") {
+                console.log(
+                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
+                );
+                if (this.shouldPlayAudio) {
+                    this.successAudio
+                        .play()
+                        .catch((error) => console.error("Error playing success audio:", error));
+                }
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>Very clever!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    })
+                        .then(() => {
+                            this.gotoNext();
+                        })
+                        .catch(() => 0);
+                });
+            } else if (move_string !== "" && move_string !== "B4,pass") {
+                console.log(
+                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
+                );
+                openPopup({
+                    text: <Axol>Try again!</Axol>,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.resetGoban?.();
+                    })
+                    .catch(() => 0);
+            }
+        });
+    }
+}
+
+class Puzzle4 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Save the 3 blue stones!</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "A3B3B4",
+                white: "A2B2C3C4A4",
+            },
+            move_tree: this.makePuzzleMoveTree([], ["A5B5A4A6"]),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("update", () => {
+            const mvs = decodeMoves(
+                goban.engine.cur_move.getMoveStringToThisPoint(),
+                goban.width,
+                goban.height,
+            );
+            const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
+
+            if (move_string === "B5,pass") {
+                console.log(
+                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
+                );
+                if (this.shouldPlayAudio) {
+                    this.successAudio
+                        .play()
+                        .catch((error) => console.error("Error playing success audio:", error));
+                }
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>Very clever!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    })
+                        .then(() => {
+                            this.gotoNext();
+                        })
+                        .catch(() => 0);
+                });
+            } else if ((move_string !== "" && move_string === "A5") || move_string === "A5,B5") {
+                console.log(
+                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
+                );
+                this.captureDelay(() => {
+                    openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    })
+                        .then(() => {
+                            this.resetGoban?.();
+                        })
+                        .catch(() => 0);
+                });
+            }
+        });
+    }
+}
+
 export const module2: Array<typeof Content> = [
     Page1,
     Page2,
@@ -505,4 +706,7 @@ export const module2: Array<typeof Content> = [
     Page14,
 
     Puzzle1,
+    Puzzle2,
+    Puzzle3,
+    Puzzle4,
 ];
