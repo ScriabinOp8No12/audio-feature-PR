@@ -184,7 +184,8 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
             animateCaptures(
                 removed_stones,
                 goban,
-                (content_config as any).flip_animated_capture_color
+                // (content_config as any).flip_animated_capture_color
+                (content_config as any)
                     ? goban.engine.colorToMove()
                     : goban.engine.colorNotToMove(),
             );
