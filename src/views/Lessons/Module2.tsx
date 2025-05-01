@@ -461,11 +461,16 @@ class Puzzle1 extends Module2 {
             });
         });
         goban.on("puzzle-wrong-answer", () => {
-            openPopup({
-                text: <Axol>Try again!</Axol>,
-                no_cancel: true,
-                timeout: POPUP_TIMEOUT,
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
             })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
                 .then(() => {
                     this.resetGoban?.();
                 })
@@ -514,11 +519,16 @@ class Puzzle2 extends Module2 {
             });
         });
         goban.on("puzzle-wrong-answer", () => {
-            openPopup({
-                text: <Axol>Try again!</Axol>,
-                no_cancel: true,
-                timeout: POPUP_TIMEOUT,
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
             })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
                 .then(() => {
                     this.resetGoban?.();
                 })
@@ -567,11 +577,16 @@ class Puzzle3 extends Module2 {
             });
         });
         goban.on("puzzle-wrong-answer", () => {
-            openPopup({
-                text: <Axol>Try again!</Axol>,
-                no_cancel: true,
-                timeout: POPUP_TIMEOUT,
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
             })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
                 .then(() => {
                     this.resetGoban?.();
                 })
@@ -620,11 +635,16 @@ class Puzzle4 extends Module2 {
             });
         });
         goban.on("puzzle-wrong-answer", () => {
-            openPopup({
-                text: <Axol>Try again!</Axol>,
-                no_cancel: true,
-                timeout: POPUP_TIMEOUT,
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
             })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
                 .then(() => {
                     this.resetGoban?.();
                 })
