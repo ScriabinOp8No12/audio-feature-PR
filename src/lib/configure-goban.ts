@@ -89,8 +89,8 @@ export function configure_goban() {
         //getShowMoveNumbers: (): boolean => !!preferences.get("show-move-numbers"),
         getShowVariationMoveNumbers: (): boolean => {
             const location = window.location.pathname;
-            // Hacky solution as I can't figure out an easy way to check if the goban is in puzzle mode,
-            // so we just check if we are on the learn pages, which are when are in puzzle mode
+            // Hacky solution because if we check the global_goban's mode, it is undefined on page refresh,
+            // we will just check the browser url to omit showing the numbers on the stones
             if (location.includes("/learn-to-play/")) {
                 return false;
             }

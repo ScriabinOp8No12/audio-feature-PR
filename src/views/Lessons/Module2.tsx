@@ -438,16 +438,12 @@ class Puzzle1 extends Module2 {
                 black: "C1D1D2E1",
                 white: "B1C2E2F1",
             },
-            // Make a helper function that takes into account initial_state, then replaces this 2nd array with every other move on the board that's legal
-            move_tree: this.makePuzzleMoveTree([], ["C3D3", "E3D3", "B3D3", "F2D3", "D7D3"]),
+            // move_tree: this.makePuzzleMoveTree([], ["C3D3", "E3D3", "B3D3", "F2D3", "D7D3"]),
         };
     }
     onSetGoban(goban: Goban): void {
-        // console.log("Goban engine properties:", Object.getOwnPropertyNames(goban.engine));
-        // console.log("Full goban engine:", goban.engine);
-        // console.log("goban.engine.board", goban.engine.board);
         goban.on("update", () => {
-            console.log("GOBANNNNN", goban);
+            // ******************* //
             const mvs = decodeMoves(
                 goban.engine.cur_move.getMoveStringToThisPoint(),
                 goban.width,
@@ -455,7 +451,11 @@ class Puzzle1 extends Module2 {
             );
             const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
             console.log("Move string22222222222222222222: ", move_string);
-            if (goban.engine.board[4][3] === 1) {
+            // ******************* //
+            if (move_string === "D3,pass") {
+                console.log(
+                    "The move_string value matches! Puzzle solved and playing success audio if it exists",
+                );
                 if (this.shouldPlayAudio) {
                     this.successAudio
                         .play()
@@ -472,11 +472,10 @@ class Puzzle1 extends Module2 {
                         })
                         .catch(() => 0);
                 });
-            }
-        });
-
-        goban.on("update", () => {
-            if (goban.engine.board[6][3] === 0) {
+            } else if (move_string !== "" && move_string !== "D3,pass") {
+                console.log(
+                    "The move_string doesn't match the correct answer, showing 'Try again!' popup and resetting Goban!",
+                );
                 openPopup({
                     text: <Axol>Try again!</Axol>,
                     no_cancel: true,
