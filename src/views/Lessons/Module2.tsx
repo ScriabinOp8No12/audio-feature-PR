@@ -408,7 +408,9 @@ class Page13 extends Module2 {
 
 class Page14 extends Module2 {
     constructor() {
-        super("no_audio_here");
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1746213981/lets_try_some_simple_problems_now_audio_snipped_5_2_2025_lbpyvj.mp3",
+        );
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Let's try some simple problems now.</p>];
@@ -778,6 +780,78 @@ class Puzzle6 extends Module2 {
     }
 }
 
+class Puzzle7 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Save the 7 blue stones, this one is very tricky!</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "B2C2C3D3D4E4F4",
+                white: "B1C1D2E3G4F5E5D5C4B3A2",
+            },
+            move_tree: this.makePuzzleMoveTree(
+                ["F3E2B4A3C5"],
+                [
+                    "E2F3",
+                    "B4F3",
+                    "C5F3",
+                    "D1F3",
+                    "A3F3",
+                    "F3E2G3F2G5G2G4G6",
+                    "F3E2G3F2G5G2G6G4",
+                    "F3E2G3F2G5G2F6G4",
+                    "F3E2G3F2G2G1",
+                    "F3E2C5B4",
+                ],
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Very clever!</Axol>,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
 export const module2: Array<typeof Content> = [
     Page1,
     Page2,
@@ -800,4 +874,5 @@ export const module2: Array<typeof Content> = [
     Puzzle4,
     Puzzle5,
     Puzzle6,
+    Puzzle7,
 ];
