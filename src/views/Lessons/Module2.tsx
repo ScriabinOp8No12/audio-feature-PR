@@ -612,7 +612,71 @@ class Puzzle4 extends Module2 {
                 black: "A3B3B4",
                 white: "A2B2C3C4A4",
             },
-            move_tree: this.makePuzzleMoveTree(["B5"], ["A5B5A4A6"]),
+            move_tree: this.makePuzzleMoveTree(
+                ["B5"],
+                ["A5B5A4A6", "A5B5B6A4", "A5B5C5A4", "A5B5A6A4"],
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Very clever!</Axol>,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle5 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Save the 2 blue stones!</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "B3C2C4D4E3E2",
+                white: "B4C5D5D3E4F4F3F2",
+            },
+            move_tree: this.makePuzzleMoveTree(
+                ["C3D2D1", "C3D2E1F1D1"],
+                ["B5C3", "D2C3", "A4C3", "C3D2C1E1"],
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -673,4 +737,5 @@ export const module2: Array<typeof Content> = [
     Puzzle2,
     Puzzle3,
     Puzzle4,
+    Puzzle5,
 ];
