@@ -717,6 +717,67 @@ class Puzzle5 extends Module2 {
     }
 }
 
+class Puzzle6 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Capture some white stones!</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "B2C2C3B4B5C6D6F6E5",
+                white: "A2A3B3A6B6C4C5D5D2D3F3",
+            },
+            move_tree: this.makePuzzleMoveTree(
+                ["D4", "A1B1D4"],
+                ["E4D4", "A4A5", "A1B1C1D1", "A5A4"],
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            if (this.shouldPlayAudio) {
+                this.successAudio
+                    .play()
+                    .catch((error) => console.error("Error playing success audio:", error));
+            }
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Very clever!</Axol>,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
 export const module2: Array<typeof Content> = [
     Page1,
     Page2,
@@ -738,4 +799,5 @@ export const module2: Array<typeof Content> = [
     Puzzle3,
     Puzzle4,
     Puzzle5,
+    Puzzle6,
 ];
