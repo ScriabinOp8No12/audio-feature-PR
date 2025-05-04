@@ -440,7 +440,7 @@ class Puzzle1 extends Module2 {
                 black: "C1D1D2E1",
                 white: "B1C2E2F1",
             },
-            move_tree: this.makePuzzleMoveTree(["D3"], []),
+            move_tree: this.makePuzzleMoveTree(["D3"], ["C3D3", "E3D3", "B2D3", "F2D3"]),
         };
     }
     onSetGoban(goban: Goban): void {
