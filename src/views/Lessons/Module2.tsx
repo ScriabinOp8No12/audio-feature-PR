@@ -17,11 +17,11 @@
 
 import * as React from "react";
 import { Content } from "./Content";
-import { decodeMoves, PuzzleConfig, Goban, prettyCoordinates, JGOFNumericPlayerColor } from "goban";
+import { PuzzleConfig, Goban, JGOFNumericPlayerColor } from "goban";
 import { Axol } from "./Axol";
 import { openPopup } from "@kidsgo/components/PopupDialog";
 
-const POPUP_TIMEOUT = 3000;
+const POPUP_TIMEOUT = 1500;
 class Module2 extends Content {
     constructor(audioUrl: string) {
         super();
@@ -453,6 +453,7 @@ class Puzzle1 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -469,6 +470,7 @@ class Puzzle1 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -511,6 +513,7 @@ class Puzzle2 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -527,6 +530,7 @@ class Puzzle2 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -569,6 +573,7 @@ class Puzzle3 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -585,6 +590,7 @@ class Puzzle3 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -630,6 +636,7 @@ class Puzzle4 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -646,6 +653,7 @@ class Puzzle4 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -691,6 +699,7 @@ class Puzzle5 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -707,6 +716,7 @@ class Puzzle5 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -752,6 +762,7 @@ class Puzzle6 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -768,6 +779,7 @@ class Puzzle6 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -798,7 +810,7 @@ class Puzzle7 extends Module2 {
                 white: "B1C1D2E3G4F5E5D5C4B3A2",
             },
             move_tree: this.makePuzzleMoveTree(
-                ["F3E2B4A3C5"],
+                ["F3E2B4A3C5", "F3E2F2F1B4A3C5"],
                 [
                     "E2F3",
                     "B4F3",
@@ -824,6 +836,7 @@ class Puzzle7 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -840,6 +853,7 @@ class Puzzle7 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
