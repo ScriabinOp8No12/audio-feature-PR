@@ -738,7 +738,7 @@ class Puzzle6 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture some white stones.</p>];
+        return [<p>Capture the 3 white stones.</p>];
     }
     config(): PuzzleConfig {
         return {
