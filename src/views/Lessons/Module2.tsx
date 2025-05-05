@@ -17,11 +17,11 @@
 
 import * as React from "react";
 import { Content } from "./Content";
-import { decodeMoves, PuzzleConfig, Goban, prettyCoordinates, JGOFNumericPlayerColor } from "goban";
+import { PuzzleConfig, Goban, JGOFNumericPlayerColor } from "goban";
 import { Axol } from "./Axol";
 import { openPopup } from "@kidsgo/components/PopupDialog";
 
-const POPUP_TIMEOUT = 3000;
+const POPUP_TIMEOUT = 1500;
 class Module2 extends Content {
     constructor(audioUrl: string) {
         super();
@@ -428,11 +428,11 @@ class Puzzle1 extends Module2 {
     constructor() {
         super("no_audio_here");
         this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708547864/audio-slices-less-pauses/slice13_less_pauses_revised_tanua8.mp3",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the blue stones!</p>];
+        return [<p>Save the blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -440,7 +440,7 @@ class Puzzle1 extends Module2 {
                 black: "C1D1D2E1",
                 white: "B1C2E2F1",
             },
-            move_tree: this.makePuzzleMoveTree(["D3"], []),
+            move_tree: this.makePuzzleMoveTree(["D3"], ["C3D3", "E3D3", "B2D3", "F2D3"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -452,7 +452,8 @@ class Puzzle1 extends Module2 {
             }
             this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Very clever!</Axol>,
+                    text: <Axol>Good job!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -469,6 +470,7 @@ class Puzzle1 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -486,11 +488,11 @@ class Puzzle2 extends Module2 {
     constructor() {
         super("no_audio_here");
         this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.mp3",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture the 2 white stones!</p>];
+        return [<p>Capture the 2 white stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -510,7 +512,8 @@ class Puzzle2 extends Module2 {
             }
             this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Very clever!</Axol>,
+                    text: <Axol>You did it!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -527,6 +530,7 @@ class Puzzle2 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -544,11 +548,11 @@ class Puzzle3 extends Module2 {
     constructor() {
         super("no_audio_here");
         this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472331/audio-slices-less-pauses/slice17_less_pauses_znln8h.mp3",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture the 5 white stones!</p>];
+        return [<p>Capture the 5 white stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -568,7 +572,8 @@ class Puzzle3 extends Module2 {
             }
             this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Very clever!</Axol>,
+                    text: <Axol>Nice work!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -585,6 +590,7 @@ class Puzzle3 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -606,7 +612,7 @@ class Puzzle4 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the 3 blue stones!</p>];
+        return [<p>Save the 3 blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -630,6 +636,7 @@ class Puzzle4 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -646,6 +653,7 @@ class Puzzle4 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -663,11 +671,11 @@ class Puzzle5 extends Module2 {
     constructor() {
         super("no_audio_here");
         this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708547864/audio-slices-less-pauses/slice13_less_pauses_revised_tanua8.mp3",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the 2 blue stones!</p>];
+        return [<p>Save the 2 blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -690,7 +698,8 @@ class Puzzle5 extends Module2 {
             }
             this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Very clever!</Axol>,
+                    text: <Axol>Good job!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -707,6 +716,7 @@ class Puzzle5 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -724,11 +734,11 @@ class Puzzle6 extends Module2 {
     constructor() {
         super("no_audio_here");
         this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.mp3",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture some white stones!</p>];
+        return [<p>Capture the 3 white stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -751,7 +761,8 @@ class Puzzle6 extends Module2 {
             }
             this.captureDelay(() => {
                 openPopup({
-                    text: <Axol>Very clever!</Axol>,
+                    text: <Axol>You did it!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -768,6 +779,7 @@ class Puzzle6 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
@@ -798,7 +810,13 @@ class Puzzle7 extends Module2 {
                 white: "B1C1D2E3G4F5E5D5C4B3A2",
             },
             move_tree: this.makePuzzleMoveTree(
-                ["F3E2B4A3C5"],
+                [
+                    "F3E2B4A3C5",
+                    "F3E2F2F1B4A3C5",
+                    "F3E2B4A3A4A1D1",
+                    "F3E2B4A3A4A1F2D1E1",
+                    "F3E2B4A3A4A1C5",
+                ],
                 [
                     "E2F3",
                     "B4F3",
@@ -824,6 +842,7 @@ class Puzzle7 extends Module2 {
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
+                    no_accept: true,
                     no_cancel: true,
                     timeout: POPUP_TIMEOUT,
                 })
@@ -840,6 +859,7 @@ class Puzzle7 extends Module2 {
                 .then(() => {
                     return openPopup({
                         text: <Axol>Try again!</Axol>,
+                        no_accept: true,
                         no_cancel: true,
                         timeout: POPUP_TIMEOUT,
                     });
