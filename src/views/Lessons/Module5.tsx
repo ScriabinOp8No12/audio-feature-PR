@@ -107,8 +107,8 @@ class Page3 extends Module5 {
         goban.setMarkByPrettyCoordinates("g7", "1");
         this.delay(() => {
             goban.placeByPrettyCoordinates("f8");
-            goban.setMarkByPrettyCoordinates("f8", "2");
             goban.setMarkByPrettyCoordinates("g7", "1"); // This is needed to keep the marked 1 on the white stone
+            goban.setMarkByPrettyCoordinates("f8", "2");
         }, 1500);
         this.delay(() => goban.setMarkByPrettyCoordinates("e8", "triangle"));
         this.delay(() => goban.setMarkByPrettyCoordinates("f9", "triangle"));
@@ -177,8 +177,8 @@ class Page5 extends Module5 {
         goban.setMarkByPrettyCoordinates("g8", "1");
         this.delay(() => {
             goban.placeByPrettyCoordinates("e8");
+            goban.setMarkByPrettyCoordinates("g8", "1");
             goban.setMarkByPrettyCoordinates("e8", "2");
-            goban.setMarkByPrettyCoordinates("g8", "1"); // Keep the original G8 stone marked with a 1
         }, 6000);
     }
 }
@@ -212,15 +212,19 @@ class Page6 extends Module5 {
         goban.setMarkByPrettyCoordinates("g8", "1");
         goban.setMarkByPrettyCoordinates("e8", "2");
         this.delay(() => {
-            goban.editPlaceByPrettyCoordinates("d8", JGOFNumericPlayerColor.WHITE);
-            goban.setMarkByPrettyCoordinates("d8", "3");
-        }, 4000);
-        this.delay(() => {
             goban.editPlaceByPrettyCoordinates("d7", JGOFNumericPlayerColor.BLACK);
             goban.setMarkByPrettyCoordinates("d8", "3");
             goban.setMarkByPrettyCoordinates("d7", "4");
             goban.setMarkByPrettyCoordinates("e7", "A");
+            goban.setMarkByPrettyCoordinates("g8", "1");
+            goban.setMarkByPrettyCoordinates("e8", "2");
         }, 2000);
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("d8", JGOFNumericPlayerColor.WHITE);
+            goban.setMarkByPrettyCoordinates("d8", "3");
+            goban.setMarkByPrettyCoordinates("g8", "1");
+            goban.setMarkByPrettyCoordinates("e8", "2");
+        }, 4000);
     }
 }
 

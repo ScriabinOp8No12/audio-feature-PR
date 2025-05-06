@@ -70,26 +70,77 @@ class Page2 extends Module6 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <p>Other shapes can stretch out and still connect.</p>,
             <p>
-                The spaces next to the stones are important, we call them Liberties. This stone has
-                four liberties where the lines cross.
+                The diagonal at B, the One Point Jump at C, the small knights move at D, and the two
+                point jump at E
             </p>,
+            <p>These basic connecting moves will help you avoid getting captured!</p>,
         ];
     }
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
-                black: "d4d5",
+                black: "e5e6",
                 white: "",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "A"));
-        this.delay(() => goban.placeByPrettyCoordinates("b5"));
-        this.delay(() => goban.editPlaceByPrettyCoordinates("c6", JGOFNumericPlayerColor.BLACK));
-        // this.delay(() => goban.setMarkByPrettyCoordinates("c4", "4"));
+        this.delay(() => {
+            goban.setMarkByPrettyCoordinates("e6", "A");
+        }, 0);
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("b7");
+            goban.setMarkByPrettyCoordinates("e6", "A");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("c8", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e6", "A");
+            goban.setMarkByPrettyCoordinates("c8", "B");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("h6", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e6", "A");
+            goban.setMarkByPrettyCoordinates("c8", "B");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("h8", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e6", "A");
+            goban.setMarkByPrettyCoordinates("c8", "B");
+            goban.setMarkByPrettyCoordinates("h8", "C");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("f2", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e6", "A");
+            goban.setMarkByPrettyCoordinates("c8", "B");
+            goban.setMarkByPrettyCoordinates("h8", "C");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("h3", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e6", "A");
+            goban.setMarkByPrettyCoordinates("c8", "B");
+            goban.setMarkByPrettyCoordinates("h8", "C");
+            goban.setMarkByPrettyCoordinates("h3", "D");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("b5", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e6", "A");
+            goban.setMarkByPrettyCoordinates("c8", "B");
+            goban.setMarkByPrettyCoordinates("h8", "C");
+            goban.setMarkByPrettyCoordinates("h3", "D");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("b2", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e6", "A");
+            goban.setMarkByPrettyCoordinates("c8", "B");
+            goban.setMarkByPrettyCoordinates("h8", "C");
+            goban.setMarkByPrettyCoordinates("h3", "D");
+            goban.setMarkByPrettyCoordinates("b2", "E");
+        });
     }
 }
 
