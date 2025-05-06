@@ -154,7 +154,8 @@ class Page3 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Let's look at the diagonal connection. This only stays connected if you defend it.
+                Next, let's look at the diagonal connection. This only stays connected if you defend
+                it.
             </p>,
             <p>
                 If white tries to cut with A, blue would play at B to connect. If white tries to cut
@@ -212,62 +213,68 @@ class Page3 extends Module6 {
 
 class Page4 extends Module6 {
     constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472318/audio-slices-less-pauses/slice5_less_pauses_pebkdl.mp3",
-        );
+        super("no_audio_here");
     }
 
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>And this stone only has three.</p>];
+        return [
+            <p>
+                Now let's look at the one space jump. This is a strong shape because it's faster at
+                surrounding territory compared to connecting one by one.
+            </p>,
+        ];
     }
+
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "d7",
+                black: "f3f5",
                 white: "",
             },
         };
-    }
-    onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoordinates("c7", "1"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("d6", "2"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("e7", "3"));
     }
 }
 
 class Page5 extends Module6 {
     constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708473054/audio-slices-less-pauses/slice6_less_pauses_revised_zbk8aa.mp3",
-        );
+        super("no_audio_here");
     }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Stones of the same color that touch each other are on the same team. So they share
-                their liberties.
+                Even if white adds stones here, they will all be captured. If you are in atari on
+                the second line and you extend, you will just lose more stones.
             </p>,
         ];
     }
+
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "",
-                white: "",
+                black: "f3f5",
+                white: "f4",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoordinates("d4", JGOFNumericPlayerColor.BLACK));
-        this.delay(() => goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.BLACK));
-        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "1"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("e5", "2"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("f4", "3"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("e3", "4"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("d3", "5"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("c4", "6"));
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("e4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g2");
+        });
     }
 }
 
