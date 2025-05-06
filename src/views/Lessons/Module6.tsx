@@ -285,10 +285,33 @@ class Page6 extends Module6 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Be careful, if you try the atari from this side, it will end in a disaster.</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            initial_state: {
+                black: "f3f5g4",
+                white: "f4",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => goban.setMarkByPrettyCoordinates("g4", "1"), 0);
+    }
+}
+class Page7 extends Module6 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472320/audio-slices-less-pauses/slice7_less_pauses_nmppvy.mp3",
+        );
+    }
+    text(): JSX.Element | Array<JSX.Element> {
         return [
+            <p>When white extends out, the group will have three liberties and can escape. </p>,
             <p>
-                If the other player takes 3 out of 4 liberties, we say a stone is in Atari, which
-                means it can be captured on the next turn.
+                Usually you want to push the opponent into the edge of the board instead of the
+                center because they will have fewer liberties on the edge of the board.
             </p>,
         ];
     }
@@ -296,45 +319,17 @@ class Page6 extends Module6 {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "D4",
-                white: "",
+                black: "f3f5g4",
+                white: "f4e4",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoordinates("c4", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.editPlaceByPrettyCoordinates("d3", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.WHITE));
-        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "triangle"));
-    }
-}
-
-class Page7 extends Module6 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708473412/audio-slice-less-pauses-COMBINED/slice8_and_9_combined_revised_fxjbn9.mp3",
-        );
-    }
-    text(): JSX.Element | Array<JSX.Element> {
-        return [
-            <p>If we add a stone, then they form a team and get new liberties.</p>,
-            <p>Now they have three liberties and are safe from immediate capture.</p>,
-        ];
-    }
-    config(): PuzzleConfig {
-        return {
-            puzzle_player_move_mode: "fixed",
-            initial_state: {
-                black: "D4",
-                white: "C4D3E4",
-            },
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        this.delay(() => goban.editPlaceByPrettyCoordinates("d5", JGOFNumericPlayerColor.BLACK));
-        this.delay(() => goban.setMarkByPrettyCoordinates("c5", "1"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("d6", "2"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("e5", "3"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("g4", "1"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("e4", "2"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("e3", "triangle"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("d4", "triangle"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("e5", "triangle"), 0);
     }
 }
 
