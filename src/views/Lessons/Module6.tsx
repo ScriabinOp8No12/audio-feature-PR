@@ -46,7 +46,7 @@ class Page1 extends Module6 {
                 cut.
             </p>,
             <p>
-                This move is good for walls and for defense, but it is pretty slow for securing
+                These moves are good for walls and for defense, but it is pretty slow for securing
                 territory.
             </p>,
         ];
@@ -56,7 +56,7 @@ class Page1 extends Module6 {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "D4D5",
+                black: "d4d5",
                 white: "",
             },
         };
@@ -65,9 +65,7 @@ class Page1 extends Module6 {
 
 class Page2 extends Module6 {
     constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472317/audio-slices-less-pauses/slice3_less_pauses_c9w9eo.mp3",
-        );
+        super("no_audio_here");
     }
 
     text(): JSX.Element | Array<JSX.Element> {
@@ -82,18 +80,16 @@ class Page2 extends Module6 {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "d4",
+                black: "d4d5",
                 white: "",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "1"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("e4", "2"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("d3", "3"));
-        this.delay(() => goban.setMarkByPrettyCoordinates("c4", "4"));
-
-        // todo: stone smiles at end
+        this.delay(() => goban.setMarkByPrettyCoordinates("d5", "A"));
+        this.delay(() => goban.placeByPrettyCoordinates("b5"));
+        this.delay(() => goban.editPlaceByPrettyCoordinates("c6", JGOFNumericPlayerColor.BLACK));
+        // this.delay(() => goban.setMarkByPrettyCoordinates("c4", "4"));
     }
 }
 

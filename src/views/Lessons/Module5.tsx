@@ -371,6 +371,7 @@ class Page11 extends Module5 {
     }
     onSetGoban(goban: Goban): void {
         goban.setMarkByPrettyCoordinates("c9", "A");
+        goban.setMarkByPrettyCoordinates("e9", "B");
     }
 }
 
