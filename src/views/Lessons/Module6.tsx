@@ -46,7 +46,7 @@ class Page1 extends Module6 {
                 cut.
             </p>,
             <p>
-                These moves are good for walls and for defense, but it is pretty slow for securing
+                These moves are good for walls and for defense, but are pretty slow at securing
                 territory.
             </p>,
         ];
@@ -55,8 +55,10 @@ class Page1 extends Module6 {
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
-                black: "d4d5",
+                black: "e5e6",
                 white: "",
             },
         };
@@ -436,13 +438,51 @@ class Page10 extends Module6 {
             goban.editPlaceByPrettyCoordinates("g3", JGOFNumericPlayerColor.WHITE);
             goban.setMarkByPrettyCoordinates("g3", "1");
         });
-
-        this.delay(() => goban.setMarkByPrettyCoordinates("f4", "2"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("h2", "3"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("f3", "4"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("g2", "5"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("j5", "6"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("j3", "7"), 0);
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("f4");
+            goban.setMarkByPrettyCoordinates("g3", "1");
+            goban.setMarkByPrettyCoordinates("f4", "2");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h2");
+            goban.setMarkByPrettyCoordinates("g3", "1");
+            goban.setMarkByPrettyCoordinates("f4", "2");
+            goban.setMarkByPrettyCoordinates("h2", "3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("f3");
+            goban.setMarkByPrettyCoordinates("g3", "1");
+            goban.setMarkByPrettyCoordinates("f4", "2");
+            goban.setMarkByPrettyCoordinates("h2", "3");
+            goban.setMarkByPrettyCoordinates("f3", "4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g2");
+            goban.setMarkByPrettyCoordinates("g3", "1");
+            goban.setMarkByPrettyCoordinates("f4", "2");
+            goban.setMarkByPrettyCoordinates("h2", "3");
+            goban.setMarkByPrettyCoordinates("f3", "4");
+            goban.setMarkByPrettyCoordinates("g2", "5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j5");
+            goban.setMarkByPrettyCoordinates("g3", "1");
+            goban.setMarkByPrettyCoordinates("f4", "2");
+            goban.setMarkByPrettyCoordinates("h2", "3");
+            goban.setMarkByPrettyCoordinates("f3", "4");
+            goban.setMarkByPrettyCoordinates("g2", "5");
+            goban.setMarkByPrettyCoordinates("j5", "6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j3");
+            goban.setMarkByPrettyCoordinates("g3", "1");
+            goban.setMarkByPrettyCoordinates("f4", "2");
+            goban.setMarkByPrettyCoordinates("h2", "3");
+            goban.setMarkByPrettyCoordinates("f3", "4");
+            goban.setMarkByPrettyCoordinates("g2", "5");
+            goban.setMarkByPrettyCoordinates("j5", "6");
+            goban.setMarkByPrettyCoordinates("j3", "7");
+        });
     }
 }
 
