@@ -178,6 +178,7 @@ class Page5 extends Module5 {
         this.delay(() => {
             goban.placeByPrettyCoordinates("e8");
             goban.setMarkByPrettyCoordinates("e8", "2");
+            goban.setMarkByPrettyCoordinates("g8", "1"); // Keep the original G8 stone marked with a 1
         }, 6000);
     }
 }
