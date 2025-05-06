@@ -146,9 +146,7 @@ class Page2 extends Module6 {
 
 class Page3 extends Module6 {
     constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472317/audio-slices-less-pauses/slice4_less_pauses_jiozem.mp3",
-        );
+        super("no_audio_here");
     }
 
     text(): JSX.Element | Array<JSX.Element> {
@@ -280,9 +278,7 @@ class Page5 extends Module6 {
 
 class Page6 extends Module6 {
     constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472320/audio-slices-less-pauses/slice7_less_pauses_nmppvy.mp3",
-        );
+        super("no_audio_here");
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Be careful, if you try the atari from this side, it will end in a disaster.</p>];
@@ -302,17 +298,11 @@ class Page6 extends Module6 {
 }
 class Page7 extends Module6 {
     constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472320/audio-slices-less-pauses/slice7_less_pauses_nmppvy.mp3",
-        );
+        super("no_audio_here");
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>When white extends out, the group will have three liberties and can escape. </p>,
-            <p>
-                Usually you want to push the opponent into the edge of the board instead of the
-                center because they will have fewer liberties on the edge of the board.
-            </p>,
         ];
     }
     config(): PuzzleConfig {
@@ -335,31 +325,37 @@ class Page7 extends Module6 {
 
 class Page8 extends Module6 {
     constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472323/audio-slices-less-pauses/slice10_less_pauses_o5h9dp.mp3",
-        );
+        super("no_audio_here");
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                If Blue goes somewhere else though, then White can capture the stone and remove it
-                from the board.
+                A one point jump on the third line has more trouble connecting. If you atari at 1
+                and White extends at 2, then turns at 4, and extends at 6, White will run into the
+                edge of the board and be captured.
             </p>,
+            <p>But... the Blue stones aren't well connected. White has other choices.</p>,
         ];
     }
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
-            flip_animated_capture_color: true,
             initial_state: {
-                black: "D4",
-                white: "C4D3E4",
+                black: "e3e5d4f5g5f2",
+                white: "e4f4f3g4g3",
             },
-        } as PuzzleConfig;
+        };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.placeByPrettyCoordinates("f5"));
-        this.delay(() => goban.placeByPrettyCoordinates("d5"));
+        this.delay(() => goban.setMarkByPrettyCoordinates("d4", "1"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("f4", "2"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("f5", "3"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("f3", "4"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("f2", "5"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g4", "6"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g5", "7"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g3", "8"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g2", "9"), 0);
     }
 }
 
