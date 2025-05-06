@@ -168,6 +168,8 @@ class Page3 extends Module6 {
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
                 black: "d4e5",
                 white: "",
@@ -226,8 +228,10 @@ class Page4 extends Module6 {
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
-                black: "f3f5",
+                black: "h4h6",
                 white: "",
             },
         };
@@ -235,6 +239,37 @@ class Page4 extends Module6 {
 }
 
 class Page5 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                Trying to separate the stones will be a lopsided fight, white will only have two
+                liberties. As long as blue plays at 1, pushing white towards the edge of the board,
+                it will be okay.
+            </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "h4h6g5",
+                white: "h5",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => goban.setMarkByPrettyCoordinates("g5", "1"), 0);
+    }
+}
+
+class Page6 extends Module6 {
     constructor() {
         super("no_audio_here");
     }
@@ -251,32 +286,34 @@ class Page5 extends Module6 {
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
-                black: "f3f5",
-                white: "f4",
+                black: "h4h6",
+                white: "h5",
             },
         };
     }
     onSetGoban(goban: Goban): void {
         this.delay(() => {
-            goban.placeByPrettyCoordinates("e4");
-        });
-        this.delay(() => {
-            goban.placeByPrettyCoordinates("g4");
-        });
-        this.delay(() => {
             goban.placeByPrettyCoordinates("g5");
         });
         this.delay(() => {
-            goban.placeByPrettyCoordinates("g3");
+            goban.placeByPrettyCoordinates("j5");
         });
         this.delay(() => {
-            goban.placeByPrettyCoordinates("g2");
+            goban.placeByPrettyCoordinates("j6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j3");
         });
     }
 }
 
-class Page6 extends Module6 {
+class Page7 extends Module6 {
     constructor() {
         super("no_audio_here");
     }
@@ -286,17 +323,19 @@ class Page6 extends Module6 {
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
-                black: "f3f5g4",
-                white: "f4",
+                black: "h4h6j5",
+                white: "h5",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoordinates("g4", "1"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j5", "1"), 0);
     }
 }
-class Page7 extends Module6 {
+class Page8 extends Module6 {
     constructor() {
         super("no_audio_here");
     }
@@ -308,22 +347,24 @@ class Page7 extends Module6 {
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
-                black: "f3f5g4",
-                white: "f4e4",
+                black: "h4h6j5",
+                white: "h5g5",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoordinates("g4", "1"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("e4", "2"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("e3", "triangle"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("d4", "triangle"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("e5", "triangle"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j5", "1"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g5", "2"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g4", "triangle"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("f5", "triangle"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g6", "triangle"), 0);
     }
 }
 
-class Page8 extends Module6 {
+class Page9 extends Module6 {
     constructor() {
         super("no_audio_here");
     }
@@ -340,22 +381,68 @@ class Page8 extends Module6 {
     config(): PuzzleConfig {
         return {
             puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
             initial_state: {
-                black: "e3e5d4f5g5f2",
-                white: "e4f4f3g4g3",
+                black: "h3g4f5g6h6j6",
+                white: "g5h5j5h4j4",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoordinates("d4", "1"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("f5", "1"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("h5", "2"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("h6", "3"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("h4", "4"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("h3", "5"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j5", "6"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j6", "7"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j4", "8"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j3", "9"), 0);
+    }
+}
+
+class Page10 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                Of the five Blue stones, only two of them are actually connected to each other. So
+                white can turn the tables by playing atari at 1. If blue connects at 2, White 3 can
+                atari again. If Black ataris with 4, White adds a stone at 5. If blue next tries to
+                capture with 6, white captures first at 7.
+            </p>,
+            // <p>
+            //     Don't just run away when you are in a fight and don't attack without watching your
+            //     own connections. Count the liberties in yoru groups and in those surrounding you.
+            // </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "h3g4f5g6h6",
+                white: "h4h5g5",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("g3", JGOFNumericPlayerColor.WHITE);
+            goban.setMarkByPrettyCoordinates("g3", "1");
+        });
+
         this.delay(() => goban.setMarkByPrettyCoordinates("f4", "2"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("f5", "3"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("h2", "3"), 0);
         this.delay(() => goban.setMarkByPrettyCoordinates("f3", "4"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("f2", "5"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("g4", "6"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("g5", "7"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("g3", "8"), 0);
-        this.delay(() => goban.setMarkByPrettyCoordinates("g2", "9"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("g2", "5"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j5", "6"), 0);
+        this.delay(() => goban.setMarkByPrettyCoordinates("j3", "7"), 0);
     }
 }
 
@@ -368,4 +455,6 @@ export const module6: Array<typeof Content> = [
     Page6,
     Page7,
     Page8,
+    Page9,
+    Page10,
 ];
