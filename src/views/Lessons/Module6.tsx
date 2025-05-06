@@ -27,7 +27,7 @@ class Module6 extends Content {
     constructor(audioUrl: string, shouldPlayAudio?: boolean) {
         super();
         this.audioUrl = audioUrl;
-        // Make shouldPlayAudio optional, as only the puzzles need it for conditionally checking if we should render the audio when a user answers the puzzle right
+
         if (shouldPlayAudio !== undefined) {
             this.shouldPlayAudio = shouldPlayAudio;
         }
@@ -72,8 +72,8 @@ class Page2 extends Module6 {
         return [
             <p>Other shapes can stretch out and still connect.</p>,
             <p>
-                The diagonal at B, the One Point Jump at C, the small knights move at D, and the two
-                point jump at E
+                The Diagonal at B, the One Point Jump at C, the Small Knights at D, and the Two
+                Point Jump at E
             </p>,
             <p>These basic connecting moves will help you avoid getting captured!</p>,
         ];
@@ -154,8 +154,15 @@ class Page3 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                There are no liberties off the edge of the board, so this stone only has two
-                liberties.
+                Let's look at the diagonal connection. This only stays connected if you defend it.
+            </p>,
+            <p>
+                If white tries to cut with A, blue would play at B to connect. If white tries to cut
+                with B, blue would play at A to connect.
+            </p>,
+            <p>
+                Sometimes there may be more important moves you could play, but in this lesson we
+                are only concerned about connecting.
             </p>,
         ];
     }
@@ -163,14 +170,43 @@ class Page3 extends Module6 {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "g7",
+                black: "d4e5",
                 white: "",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => goban.setMarkByPrettyCoordinates("f7", "1"), 3000);
-        this.delay(() => goban.setMarkByPrettyCoordinates("g6", "2"));
+        this.delay(() => {
+            goban.setMarkByPrettyCoordinates("d5", "A");
+            goban.setMarkByPrettyCoordinates("e4", "B");
+        }, 0);
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("d5", JGOFNumericPlayerColor.WHITE);
+            goban.setMarkByPrettyCoordinates("d5", "A");
+            goban.setMarkByPrettyCoordinates("e4", "B");
+        });
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("d5", "A");
+            goban.setMarkByPrettyCoordinates("e4", "B");
+        });
+        // Clear stones here so we can animate white trying to cut with B instead
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("d5", 0);
+            goban.editPlaceByPrettyCoordinates("e4", 0);
+            goban.setMarkByPrettyCoordinates("d5", "A");
+            goban.setMarkByPrettyCoordinates("e4", "B");
+        }, 1500);
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("e4", JGOFNumericPlayerColor.WHITE);
+            goban.setMarkByPrettyCoordinates("d5", "A");
+            goban.setMarkByPrettyCoordinates("e4", "B");
+        }, 1500);
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("d5", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("d5", "A");
+            goban.setMarkByPrettyCoordinates("e4", "B");
+        });
     }
 }
 
