@@ -745,6 +745,70 @@ class Page16 extends Module6 {
     }
 }
 
+class Page17 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Trying to cut this way also fails, as long as you play atari at A.</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "h3h6",
+                white: "",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("h4", JGOFNumericPlayerColor.WHITE);
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h5");
+            goban.setMarkByPrettyCoordinates("h5", "A");
+        });
+    }
+}
+
+class Page18 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                If the two space jump is on the third line, or anywhere further from the edge, it
+                can be cut.
+            </p>,
+            <p>
+                It's more complicated, but the fight will usually favor blue because blue has more
+                stones.
+            </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c3f3",
+                white: "d3",
+            },
+        };
+    }
+}
+
 export const module6: Array<typeof Content> = [
     Page1,
     Page2,
@@ -762,4 +826,6 @@ export const module6: Array<typeof Content> = [
     Page14,
     Page15,
     Page16,
+    Page17,
+    Page18,
 ];
