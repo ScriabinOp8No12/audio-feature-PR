@@ -503,10 +503,10 @@ class Puzzle1 extends Module3 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "A5B5C5D5E5E6E7",
-                white: "A6B6C6D6D7",
+                black: "a5b5c5d5e5e6e7",
+                white: "a6b6c6d6d7",
             },
-            move_tree: this.makePuzzleMoveTree(["B7C7A7"], ["C7B7", "A7B7"]),
+            move_tree: this.makePuzzleMoveTree(["b7c7a7"], ["c7b7", "a7b7"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -563,10 +563,10 @@ class Puzzle2 extends Module3 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "E1E2F1F3G2",
-                white: "D1D2D3D4E3F4G4",
+                black: "e1e2f1f3g2",
+                white: "d1d2d3d4e3f4g4",
             },
-            move_tree: this.makePuzzleMoveTree(["G3"], ["F2G3", "G1G3"]),
+            move_tree: this.makePuzzleMoveTree(["g3"], ["f2g3", "g1g3"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -623,10 +623,10 @@ class Puzzle3 extends Module3 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "C7C6C5C4D4E4E5D6E7",
-                white: "B7B6B5B4C3D3E3F4F5F6F7",
+                black: "c7c6c5c4d4e4e5d6e7",
+                white: "b7b6b5b4c3d3e3f4f5f6f7",
             },
-            move_tree: this.makePuzzleMoveTree(["E6"], ["D7E6", "D5E6"]),
+            move_tree: this.makePuzzleMoveTree(["e6"], ["d7e6", "d5e6"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -683,10 +683,10 @@ class Puzzle4 extends Module3 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "A2B2C1D1D2E2D3D4C3",
-                white: "A3B3B4C4C5D5E5E4E3F3F2F1E1B1",
+                black: "a2b2c1d1d2e2d3d4c3",
+                white: "a3b3b4c4c5d5e5e4e3f3f2f1e1b1",
             },
-            move_tree: this.makePuzzleMoveTree(["A1"], ["C2A1"]),
+            move_tree: this.makePuzzleMoveTree(["a1"], ["c2a1"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -743,10 +743,10 @@ class Puzzle5 extends Module3 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "C1D1E1F2F1G2G3G4G5F6E6D6C5B4B3B2",
-                white: "C2C3C4D5E5E3F5F4F3F2E2D2",
+                black: "c1d1e1f2f1g2g3g4g5f6e6d6c5b4b3b2",
+                white: "c2c3c4d5e5e3f5f4f3f2e2d2",
             },
-            move_tree: this.makePuzzleMoveTree(["D4D3E4"], ["D3D4", "E4D4"]),
+            move_tree: this.makePuzzleMoveTree(["d4d3e4"], ["d3d4", "e4d4"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -803,10 +803,10 @@ class Puzzle6 extends Module3 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "F1E2F3G2G4",
-                white: "D1D2D3E3E4F4F5F6",
+                black: "f1e2f3g2g4",
+                white: "d1d2d3e3e4f4f5f6",
             },
-            move_tree: this.makePuzzleMoveTree(["E1G5G3"], ["F2G5G3E1", "E1G5F2", "G3E1F2G5"]),
+            move_tree: this.makePuzzleMoveTree(["e1g5g3"], ["f2g5g3e1", "e1g5f2", "g3e1f2g5"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -863,12 +863,12 @@ class Puzzle7 extends Module3 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "E2E3F3G3F1",
-                white: "D1D2D3D5E4F4G4",
+                black: "e2e3f3g3f1",
+                white: "d1d2d3d5e4f4g4",
             },
             move_tree: this.makePuzzleMoveTree(
-                ["G2"],
-                ["E1G2F2G1", "E1G2G1F2", "F2G2G1E1", "G1F2G2E1"],
+                ["g2"],
+                ["e1g2f2g1", "e1g2g1f2", "f2g2g1e1", "g1f2g2e1"],
             ),
         };
     }
