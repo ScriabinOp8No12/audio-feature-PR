@@ -592,6 +592,159 @@ class Page13 extends Module6 {
     }
 }
 
+class Page14 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                Trying to cut here also fails. The stone in atari on the second line can't escape
+                capture (as we saw earlier).
+            </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "g4h6",
+                white: "",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("h5", JGOFNumericPlayerColor.WHITE);
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h4");
+        });
+    }
+}
+
+class Page15 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                If the knights move is away from the side, blue can capture a cutting stone with a
+                pattern we call a ladder.
+            </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "f4g6",
+                white: "",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("g5", JGOFNumericPlayerColor.WHITE);
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("f5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("f6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h2");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j2");
+        });
+    }
+}
+
+class Page16 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                The two space jump is a looser connection, but it still works here. If white tries
+                to cut, the cutting stones can be captured quickly.
+            </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "h3h6",
+                white: "",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("h5", JGOFNumericPlayerColor.WHITE);
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j7");
+        });
+    }
+}
+
 export const module6: Array<typeof Content> = [
     Page1,
     Page2,
@@ -606,4 +759,7 @@ export const module6: Array<typeof Content> = [
     Page11,
     Page12,
     Page13,
+    Page14,
+    Page15,
+    Page16,
 ];
