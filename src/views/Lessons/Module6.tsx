@@ -519,6 +519,79 @@ class Page11 extends Module6 {
     }
 }
 
+class Page12 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                Let's look at the knight's move. It has the same shape as a knight's move in chess.
+            </p>,
+            <p>
+                This move is good because you can usually capture your opponent if they try to cut.
+            </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "g4h6",
+                white: "",
+            },
+        };
+    }
+}
+
+class Page13 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>If white tries to cut here, capturing the group is easy.</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "g4h6",
+                white: "",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("h5", JGOFNumericPlayerColor.WHITE);
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j2");
+        });
+    }
+}
+
 export const module6: Array<typeof Content> = [
     Page1,
     Page2,
@@ -531,4 +604,6 @@ export const module6: Array<typeof Content> = [
     Page9,
     Page10,
     Page11,
+    Page12,
+    Page13,
 ];
