@@ -809,6 +809,87 @@ class Page18 extends Module6 {
     }
 }
 
+class Page19 extends Module6 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                There are many other common shapes in Go. The tiger's mouth, the large knights move,
+                the horse's neck, the elephant's eye, the bamboo joint, and many others.
+            </p>,
+            <p>Learning about shapes and patterns and how they work in Go is fun!</p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "",
+                white: "",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("f8", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("g9", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("h8", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("f8", "triangle");
+            goban.setMarkByPrettyCoordinates("g9", "triangle");
+            goban.setMarkByPrettyCoordinates("h8", "triangle");
+        }, 1000);
+
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("e3", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("h2", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("e3", "triangle");
+            goban.setMarkByPrettyCoordinates("h2", "triangle");
+        }, 3000);
+
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("b8", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("b6", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("d7", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("b8", "triangle");
+            goban.setMarkByPrettyCoordinates("b6", "triangle");
+            goban.setMarkByPrettyCoordinates("d7", "triangle");
+        }, 3000);
+
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("f6", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("h4", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("f6", "triangle");
+            goban.setMarkByPrettyCoordinates("h4", "triangle");
+        }, 3000);
+
+        this.delay(() => {
+            goban.editPlaceByPrettyCoordinates("b2", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("c2", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("b4", JGOFNumericPlayerColor.BLACK);
+            goban.editPlaceByPrettyCoordinates("c4", JGOFNumericPlayerColor.BLACK);
+            goban.setMarkByPrettyCoordinates("b2", "triangle");
+            goban.setMarkByPrettyCoordinates("c2", "triangle");
+            goban.setMarkByPrettyCoordinates("b4", "triangle");
+            goban.setMarkByPrettyCoordinates("c4", "triangle");
+        }, 3000);
+
+        // Clear triangle markings on the bamboo joint shape after the animation
+        this.delay(() => {
+            const coords = ["b2", "c2", "b4", "c4"];
+            for (const coord of coords) {
+                for (const mv of goban.engine.decodeMoves(coord)) {
+                    delete goban.getMarks(mv.x, mv.y)["triangle"];
+                }
+            }
+        }, 3000);
+    }
+}
+
 export const module6: Array<typeof Content> = [
     Page1,
     Page2,
@@ -828,4 +909,5 @@ export const module6: Array<typeof Content> = [
     Page16,
     Page17,
     Page18,
+    Page19,
 ];
