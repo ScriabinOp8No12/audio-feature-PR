@@ -211,7 +211,7 @@ class Page6 extends Module1 {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "D4",
+                black: "d4",
                 white: "",
             },
         };
@@ -240,8 +240,8 @@ class Page7 extends Module1 {
         return {
             puzzle_player_move_mode: "fixed",
             initial_state: {
-                black: "D4",
-                white: "C4D3E4",
+                black: "d4",
+                white: "c4d3e4",
             },
         };
     }
@@ -272,8 +272,8 @@ class Page8 extends Module1 {
             puzzle_player_move_mode: "fixed",
             flip_animated_capture_color: true,
             initial_state: {
-                black: "D4",
-                white: "C4D3E4",
+                black: "d4",
+                white: "c4d3e4",
             },
         } as PuzzleConfig;
     }
@@ -303,10 +303,10 @@ class Puzzle1 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "C7D6",
-                white: "D7",
+                black: "c7d6",
+                white: "d7",
             },
-            move_tree: this.makePuzzleMoveTree(["E7"], []),
+            move_tree: this.makePuzzleMoveTree(["e7"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -367,8 +367,8 @@ class Puzzle2 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "E5D4E3",
-                white: "E4",
+                black: "e5d4e3",
+                white: "e4",
             },
             move_tree: this.makePuzzleMoveTree(["F4"], []),
         };
@@ -430,10 +430,10 @@ class Puzzle3 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "E5E2D4D3F4",
-                white: "E4E3",
+                black: "e5e2d4d3f4",
+                white: "e4e3",
             },
-            move_tree: this.makePuzzleMoveTree(["F3"], []),
+            move_tree: this.makePuzzleMoveTree(["f3"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -493,10 +493,10 @@ class Puzzle4 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "D6E6D5F5C4D3D2E2F3",
-                white: "D4E5E4E3",
+                black: "d6e6d5f5c4d3d2e2f3",
+                white: "d4e5e4e3",
             },
-            move_tree: this.makePuzzleMoveTree(["F4"], []),
+            move_tree: this.makePuzzleMoveTree(["f4"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -556,10 +556,10 @@ class Puzzle5 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "E6D5F5",
-                white: "D4E5",
+                black: "e6d5f5",
+                white: "d4e5",
             },
-            move_tree: this.makePuzzleMoveTree(["E4"], []),
+            move_tree: this.makePuzzleMoveTree(["e4"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -619,10 +619,10 @@ class Puzzle6 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "B4B3B2C1D2D3E4F4F5E6D6",
-                white: "E5D5D4C4C3C2",
+                black: "b4b3b2c1d2d3e4f4f5e6d6",
+                white: "e5d5d4c4c3c2",
             },
-            move_tree: this.makePuzzleMoveTree(["C5"], []),
+            move_tree: this.makePuzzleMoveTree(["c5"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -682,10 +682,10 @@ class Puzzle7 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "D7D6D5E5F5G5",
-                white: "E7E6F6G6G7",
+                black: "d7d6d5e5f5g5",
+                white: "e7e6f6g6g7",
             },
-            move_tree: this.makePuzzleMoveTree(["F7"], []),
+            move_tree: this.makePuzzleMoveTree(["f7"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -745,10 +745,10 @@ class Puzzle8 extends Module1 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "C7C6C5B5A5",
-                white: "A6B6B7",
+                black: "c7c6c5b5a5",
+                white: "a6b6b7",
             },
-            move_tree: this.makePuzzleMoveTree(["A7"], []),
+            move_tree: this.makePuzzleMoveTree(["a7"], []),
         };
     }
     onSetGoban(goban: Goban): void {

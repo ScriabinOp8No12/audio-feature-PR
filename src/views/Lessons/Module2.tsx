@@ -37,7 +37,7 @@ class Page1 extends Module2 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <span style={{ display: "block" }}>
+            <span>
                 Based on the last lesson you might think the goal of this game is to capture stones,
                 but actually whoever surrounds the most territory at the end of the game wins.
             </span>,
@@ -437,10 +437,10 @@ class Puzzle1 extends Module2 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "C1D1D2E1",
-                white: "B1C2E2F1",
+                black: "c1d1d2e1",
+                white: "b1c2e2f1",
             },
-            move_tree: this.makePuzzleMoveTree(["D3"], ["C3D3", "E3D3", "B2D3", "F2D3"]),
+            move_tree: this.makePuzzleMoveTree(["d3"], ["c3d3", "e3d3", "b2d3", "f2d3"]),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -497,10 +497,10 @@ class Puzzle2 extends Module2 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "B1C2D2D4D5D6",
-                white: "C1D1E2E3E4E5",
+                black: "b1c2d2d4d5d6",
+                white: "c1d1e2e3e4e5",
             },
-            move_tree: this.makePuzzleMoveTree(["E1"], []),
+            move_tree: this.makePuzzleMoveTree(["e1"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -557,10 +557,10 @@ class Puzzle3 extends Module2 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "D2E2F3E4E5D6C5C3",
-                white: "C2C4D4D5D3E3",
+                black: "d2e2f3e4e5d6c5c3",
+                white: "c2c4d4d5d3e3",
             },
-            move_tree: this.makePuzzleMoveTree(["B4"], []),
+            move_tree: this.makePuzzleMoveTree(["b4"], []),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -617,12 +617,12 @@ class Puzzle4 extends Module2 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "A3B3B4",
-                white: "A2B2C3C4A4",
+                black: "a3b3b4",
+                white: "a2b2c3c4a4",
             },
             move_tree: this.makePuzzleMoveTree(
-                ["B5"],
-                ["A5B5A4A6", "A5B5B6A4", "A5B5C5A4", "A5B5A6A4"],
+                ["b5"],
+                ["a5b5a4a6", "a5b5b6a4", "a5b5c5a4", "a5b5a6a4"],
             ),
         };
     }
@@ -680,12 +680,12 @@ class Puzzle5 extends Module2 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "B3C2C4D4E3E2",
-                white: "B4C5D5D3E4F4F3F2",
+                black: "b3c2c4d4e3e2",
+                white: "b4c5d5d3e4f4f3f2",
             },
             move_tree: this.makePuzzleMoveTree(
-                ["C3D2D1", "C3D2E1F1D1"],
-                ["B5C3", "D2C3", "A4C3", "C3D2C1E1"],
+                ["c3d2d1", "c3d2e1f1d1"],
+                ["b5c3", "d2c3", "a4c3", "c3d2c1e1"],
             ),
         };
     }
@@ -743,12 +743,12 @@ class Puzzle6 extends Module2 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "B2C2C3B4B5C6D6F6E5",
-                white: "A2A3B3A6B6C4C5D5D2D3F3",
+                black: "b2c2c3b4b5c6d6f6e5",
+                white: "a2a3b3a6b6c4c5d5d2d3f3",
             },
             move_tree: this.makePuzzleMoveTree(
-                ["D4", "A1B1D4"],
-                ["E4D4", "A4A5", "A1B1C1D1", "A5A4"],
+                ["d4", "a1b1d4"],
+                ["e4d4", "a4a5", "a1b1c1d1", "a5a4"],
             ),
         };
     }
@@ -806,28 +806,28 @@ class Puzzle7 extends Module2 {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "B2C2C3D3D4E4F4",
-                white: "B1C1D2E3G4F5E5D5C4B3A2",
+                black: "b2c2c3d3d4e4f4",
+                white: "b1c1d2e3g4f5e5d5c4b3a2",
             },
             move_tree: this.makePuzzleMoveTree(
                 [
-                    "F3E2B4A3C5",
-                    "F3E2F2F1B4A3C5",
-                    "F3E2B4A3A4A1D1",
-                    "F3E2B4A3A4A1F2D1E1",
-                    "F3E2B4A3A4A1C5",
+                    "f3e2b4a3c5",
+                    "f3e2f2f1b4a3c5",
+                    "f3e2b4a3a4a1d1",
+                    "f3e2b4a3a4a1f2d1e1",
+                    "f3e2b4a3a4a1c5",
                 ],
                 [
-                    "E2F3",
-                    "B4F3",
-                    "C5F3",
-                    "D1F3",
-                    "A3F3",
-                    "F3E2G3F2G5G2G4G6",
-                    "F3E2G3F2G5G2G6G4",
-                    "F3E2G3F2G5G2F6G4",
-                    "F3E2G3F2G2G1",
-                    "F3E2C5B4",
+                    "e2f3",
+                    "b4f3",
+                    "c5f3",
+                    "d1f3",
+                    "a3f3",
+                    "f3e2g3f2g5g2g4g6",
+                    "f3e2g3f2g5g2g6g4",
+                    "f3e2g3f2g5g2f6g4",
+                    "f3e2g3f2g2g1",
+                    "f3e2c5b4",
                 ],
             ),
         };

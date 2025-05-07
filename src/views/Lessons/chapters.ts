@@ -21,5 +21,13 @@ import { module2 } from "./Module2";
 import { module3 } from "./Module3";
 import { module4 } from "./Module4";
 import { module5 } from "./Module5";
+import { module6 } from "./Module6";
 
-export const chapters: Array<Array<typeof Content>> = [module1, module2, module3, module4, module5];
+export const chapters: Array<Array<typeof Content>> = [
+    module1,
+    module2,
+    module3,
+    module4,
+    module5,
+    module6,
+];
