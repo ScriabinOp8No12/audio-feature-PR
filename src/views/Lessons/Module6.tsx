@@ -74,8 +74,8 @@ class Page2 extends Module6 {
         return [
             <p>Other shapes can stretch out and still connect.</p>,
             <p>
-                The Diagonal at B, the One Point Jump at C, the Small Knights at D, and the Two
-                Point Jump at E
+                The diagonal at B, the one space jump at C, the knight's move at D, and the two
+                space jump at E.
             </p>,
             <p>These basic connecting moves will help you avoid getting captured!</p>,
         ];
@@ -218,9 +218,10 @@ class Page4 extends Module6 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <p>Now let's look at the one space jump.</p>,
             <p>
-                Now let's look at the one space jump. This is a strong shape because it's faster at
-                surrounding territory compared to connecting one by one.
+                This is a strong shape because it's faster at surrounding territory compared to
+                connecting one by one in a straight line.
             </p>,
         ];
     }
@@ -371,7 +372,7 @@ class Page9 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                A one point jump on the third line has more trouble connecting. If you atari at 1
+                A one space jump on the third line has more trouble connecting. If you atari at 1
                 and White extends at 2, then turns at 4, and extends at 6, White will run into the
                 edge of the board and be captured.
             </p>,
@@ -491,7 +492,7 @@ class Page11 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                The one point jump is still a good connection if blue plays atari on the second line
+                The one space jump is still a good connection if blue plays atari on the second line
                 and, when white extends out, connects at 3. White could try cutting at 4, but would
                 be pushed into the edge by 5 and caught.
             </p>,
@@ -792,7 +793,7 @@ class Page18 extends Module6 {
             </p>,
             <p>
                 It's more complicated, but the fight will usually favor blue because blue has more
-                stones.
+                stones nearby.
             </p>,
         ];
     }
