@@ -22,6 +22,8 @@ import { module3 } from "./Module3";
 import { module4 } from "./Module4";
 import { module5 } from "./Module5";
 import { module6 } from "./Module6";
+import { module7 } from "./Module7";
+import { module8 } from "./Module8";
 
 export const chapters: Array<Array<typeof Content>> = [
     module1,
@@ -30,4 +32,6 @@ export const chapters: Array<Array<typeof Content>> = [
     module4,
     module5,
     module6,
+    module7,
+    module8,
 ];
