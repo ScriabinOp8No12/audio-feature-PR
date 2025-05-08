@@ -567,19 +567,61 @@ class Page11 extends Module6 {
             width: 9,
             height: 9,
             initial_state: {
-                black: "g4g6h4h5h7j7",
-                white: "g5f5h6j6",
+                black: "g4g6",
+                white: "g5",
             },
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoordinates("h5", "1");
-        goban.setMarkByPrettyCoordinates("f5", "2");
-        goban.setMarkByPrettyCoordinates("h4", "3");
-        goban.setMarkByPrettyCoordinates("h6", "4");
-        goban.setMarkByPrettyCoordinates("h7", "5");
-        goban.setMarkByPrettyCoordinates("j6", "6");
-        goban.setMarkByPrettyCoordinates("j7", "7");
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h5");
+            goban.setMarkByPrettyCoordinates("h5", "1");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("f5");
+            goban.setMarkByPrettyCoordinates("h5", "1");
+            goban.setMarkByPrettyCoordinates("f5", "2");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h4");
+            goban.setMarkByPrettyCoordinates("h5", "1");
+            goban.setMarkByPrettyCoordinates("f5", "2");
+            goban.setMarkByPrettyCoordinates("h4", "3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h6");
+            goban.setMarkByPrettyCoordinates("h5", "1");
+            goban.setMarkByPrettyCoordinates("f5", "2");
+            goban.setMarkByPrettyCoordinates("h4", "3");
+            goban.setMarkByPrettyCoordinates("h6", "4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h7");
+            goban.setMarkByPrettyCoordinates("h5", "1");
+            goban.setMarkByPrettyCoordinates("f5", "2");
+            goban.setMarkByPrettyCoordinates("h4", "3");
+            goban.setMarkByPrettyCoordinates("h6", "4");
+            goban.setMarkByPrettyCoordinates("h7", "5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j6");
+            goban.setMarkByPrettyCoordinates("h5", "1");
+            goban.setMarkByPrettyCoordinates("f5", "2");
+            goban.setMarkByPrettyCoordinates("h4", "3");
+            goban.setMarkByPrettyCoordinates("h6", "4");
+            goban.setMarkByPrettyCoordinates("h7", "5");
+            goban.setMarkByPrettyCoordinates("j6", "6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j7");
+            goban.setMarkByPrettyCoordinates("h5", "1");
+            goban.setMarkByPrettyCoordinates("f5", "2");
+            goban.setMarkByPrettyCoordinates("h4", "3");
+            goban.setMarkByPrettyCoordinates("h6", "4");
+            goban.setMarkByPrettyCoordinates("h7", "5");
+            goban.setMarkByPrettyCoordinates("j6", "6");
+            goban.setMarkByPrettyCoordinates("j7", "7");
+        });
     }
 }
 
