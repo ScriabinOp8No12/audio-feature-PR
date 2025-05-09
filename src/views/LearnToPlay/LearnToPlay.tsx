@@ -103,12 +103,22 @@ export function LearnToPlay(): JSX.Element {
 
                     <div className="chapter-container chapter-7-container">
                         <ChapterButton chapter={7} />
-                        <div className="chapter-text disabled">Soon</div>
+                        <div
+                            className="chapter-text"
+                            onClick={() => navigateToChapter(7, navigate)}
+                        >
+                            Test
+                        </div>
                     </div>
 
                     <div className="chapter-container chapter-8-container">
                         <ChapterButton chapter={8} />
-                        <div className="chapter-text disabled">Soon</div>
+                        <div
+                            className="chapter-text"
+                            onClick={() => navigateToChapter(8, navigate)}
+                        >
+                            Puzzles
+                        </div>
                     </div>
                 </div>
             </div>
@@ -118,7 +128,7 @@ export function LearnToPlay(): JSX.Element {
 }
 
 function navigateToChapter(chapter: number, navigate) {
-    if (chapter <= 6) {
+    if (chapter <= 8) {
         navigate(`/learn-to-play/${chapter}`);
     }
 }
@@ -128,9 +138,9 @@ export function ChapterButton({ chapter }: { chapter: number }): JSX.Element {
 
     return (
         <span
-            className={"ChapterButton" + (chapter > 6 ? " disabled" : "") + ` chapter-${chapter}`}
+            className={"ChapterButton" + (chapter > 8 ? " disabled" : "") + ` chapter-${chapter}`}
             onClick={() => {
-                if (chapter > 6) {
+                if (chapter > 8) {
                     return;
                 }
                 navigate(`/learn-to-play/${chapter}`);
