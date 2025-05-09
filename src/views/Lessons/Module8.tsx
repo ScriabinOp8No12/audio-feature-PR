@@ -446,6 +446,628 @@ class Puzzle8 extends Content {
     }
 }
 
+class Puzzle9 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 9 life and death</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "b9b8b7d8c6d6e6f6f7g7g8g9",
+                white: "c9c8c7d7e8f8f9",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["d9e7e9"], ["e7d9"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle10 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 10 cuts / snapback</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "b4b5b6c3d3e3f4f5f6e7",
+                white: "c5c4d4e4e5e6d7d8b8f8",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["d6c6c7d5d6"], ["c6d6"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle11 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 11 cuts</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "d7e6g6g7",
+                white: "e7f6g5h5h6h7h8",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["f7f5e8"],
+                ["f5f7g8f8", "e8f7g8f8", "e8f7f8g8", "e8f7f5g8"],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle12 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 12 Life and death / cuts</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "j3h3g3f3d3e4e5d6f6f7f8g8j7",
+                white: "j4h4g4f4f5h5j5g6h6g7h8h9j9",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["h7j8g9"], ["j8h7", "j6h7", "g9h7"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle13 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 13 capturing / cuts </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "d7d6d5d4e4f4g4h5h6h7g7",
+                white: "c7c8d8e8e6e5f5g5g6f7g8h8",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["e7f6f8"], ["f8e7"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle14 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 14 capturing / cuts </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "e3f3g3g4g5g6g7f7e7",
+                white: "f4f5f6d5c3b4b5b6c7",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["e5e6d6e4d4e5c5"],
+                ["e6e5", "e4e5", "e5e6e4d6"],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle15 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 15 capturing </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "j7j8h8g8j5h5f7e7e6e5",
+                white: "j6h6h7g7g5g4g3f6f8e8d8e3c4c6",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["g6"], ["f5g6"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle16 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 16 cuts / capturing </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c6c7c8d9e8f7f6",
+                white: "d8d7e7e6d4f4f5",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["e5d6d5"], ["d6e5"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle17 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 17 capturing </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "b3c3d2d3d4e4c6f5f6g5",
+                white: "e2e3e5f3f4h3h4h5g6g7f8c5b5b6b7",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["d5e6e7d6d7"], ["e6d5"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle18 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 18 capturing / cuts </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "d8f9f8f7f6e5d5",
+                white: "c6c5c4d3e3f4f5g6e6e7e8",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["d6d7c7d4e9"], ["d7d6", "e9d6"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle19 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 19 capturing / cuts </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "d5d4d3e2f3h3g4h5g6",
+                white: "c5c6d6d7e3e4e5e8f4f5g5g7h7",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["e6f6f7"], ["f6e6", "e7e6", "f7e6"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle20 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Puzzle 20 life and death </p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "a9b9a7b7c7c6d6e6f7f8f9",
+                white: "a8b8c8d7e7e8e9",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["d9d8c9"], ["c9d9"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
 export const module8: Array<typeof Content> = [
     Puzzle1,
     Puzzle2,
@@ -455,4 +1077,16 @@ export const module8: Array<typeof Content> = [
     Puzzle6,
     Puzzle7,
     Puzzle8,
+    Puzzle9,
+    Puzzle10,
+    Puzzle11,
+    Puzzle12,
+    Puzzle13,
+    Puzzle14,
+    Puzzle15,
+    Puzzle16,
+    Puzzle17,
+    Puzzle18,
+    Puzzle19,
+    Puzzle20,
 ];
