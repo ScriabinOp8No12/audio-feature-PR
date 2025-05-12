@@ -75,6 +75,11 @@ export const routes = (
         <Main>
             <Routes>
                 <Route path="/game/:id" element={<KidsGame />} />
+                {/* Special route for lesson 8 puzzles */}
+                <Route
+                    path="/learn-to-play/8/puzzles/:section/:puzzleId"
+                    element={<LessonRouter />}
+                />
                 <Route path="/learn-to-play/:chapter/:page" element={<LessonRouter />} />
                 <Route path="/learn-to-play/:chapter" element={<LessonRouter />} />
                 <Route path="/learn-to-play" element={<LearnToPlay />} />
