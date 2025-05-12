@@ -34,18 +34,6 @@ export function LessonRouter(): JSX.Element {
         page = 0;
     }
 
-    /*
-    const [content, setContent] = React.useState<Content>(new chapters[chapter][page]);
-
-    React.useEffect(() => {
-        let c = new chapters[chapter][page];
-        setContent(c);
-        return () =>{
-            c.destroy();
-        }
-    }, [chapter, page]);
-    */
-
     return (
         <div>
             <Lesson chapter={chapter} page={page} />
