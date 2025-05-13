@@ -131,7 +131,7 @@ function navigateToChapter(chapter: number, navigate) {
     if (chapter < 8) {
         navigate(`/learn-to-play/${chapter}`);
     } else if (chapter === 8) {
-        navigate(`/learn-to-play/8/puzzles/tesuji/1`);
+        navigate(`/learn-to-play/8/puzzles/capturing/1`);
     }
 }
 
@@ -145,7 +145,7 @@ export function ChapterButton({ chapter }: { chapter: number }): JSX.Element {
                 if (chapter > 8) {
                     return;
                 } else if (chapter === 8) {
-                    navigate(`/learn-to-play/8/puzzles/tesuji/1`);
+                    navigate(`/learn-to-play/8/puzzles/capturing/1`);
                 } else {
                     navigate(`/learn-to-play/${chapter}`);
                 }

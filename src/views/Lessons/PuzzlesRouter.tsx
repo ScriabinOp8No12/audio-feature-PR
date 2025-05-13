@@ -23,11 +23,11 @@ import { puzzleSectionMap } from "./puzzleSections";
 export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
     console.log(params);
-    const sectionName = params.section || "tesuji"; // Default to tesuji if missing
+    const sectionName = params.section || "capturing"; // Default to capturing
     let puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
 
     const sectionKey = sectionName.toLowerCase();
-    const puzzles = puzzleSectionMap[sectionKey] || puzzleSectionMap["tesuji"];
+    const puzzles = puzzleSectionMap[sectionKey] || puzzleSectionMap["capturing"];
 
     if (puzzleNumber < 0 || puzzleNumber >= puzzles.length) {
         puzzleNumber = 0;
