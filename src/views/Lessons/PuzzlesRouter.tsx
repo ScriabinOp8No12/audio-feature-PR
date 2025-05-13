@@ -44,11 +44,7 @@ export function PuzzlesRouter(): JSX.Element {
 
     return (
         <div>
-            <Puzzles
-                sectionIndex={sectionIndex}
-                puzzleNumber={puzzleNumber}
-                sectionName={sectionName}
-            />
+            <Puzzles sectionIndex={sectionIndex} puzzleNumber={puzzleNumber} />
         </div>
     );
 }

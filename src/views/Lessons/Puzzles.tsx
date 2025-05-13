@@ -30,14 +30,17 @@ import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
 import { puzzleSections } from "./puzzleSections";
 
+const sectionDisplayNames: string[] = [
+    "Tesuji", // index 0
+    "Life and Death", // index 1
+];
+
 export function Puzzles({
     sectionIndex,
     puzzleNumber,
-    sectionName,
 }: {
-    sectionIndex: number; // section index, not a string
+    sectionIndex: number;
     puzzleNumber: number;
-    sectionName: string;
 }): JSX.Element {
     const navigate = useNavigate();
     setContentNavigate(useNavigate());
@@ -87,7 +90,6 @@ export function Puzzles({
     const [showAxotol, setShowAxotol]: [boolean, (x: boolean) => void] = useState<boolean>(false);
     const [hidePlayButton, setHidePlayButton]: [boolean, (x: boolean) => void] =
         useState<boolean>(false);
-    // const [shouldPlayAudio, setShouldPlayAudio] = useState(true); // State for tracking audio on learn-to-play pages where it has audio matching the text, set to true initially, but can dynamically set it off localstorage if needed
     const onResize = useCallback((width, height) => {
         const goban = goban_ref.current;
         if (goban) {
@@ -110,9 +112,10 @@ export function Puzzles({
         refreshRate: 10,
     });
 
+    const displaySectionName = sectionDisplayNames[sectionIndex] || "";
+
     useEffect(() => {
-        console.log("Constructing puzzle", sectionName, puzzleNumber);
-        // Now section is already the index we need
+        console.log("Constructing puzzle", displaySectionName, puzzleNumber);
         const content = new puzzleSections[sectionIndex][puzzleNumber]();
         let ct = 0;
 
@@ -243,7 +246,7 @@ export function Puzzles({
 
         return () => {
             content.destroy();
-            console.log(`puzzle ${sectionName} ${puzzleNumber} teardown`);
+            console.log(`puzzle ${displaySectionName} ${puzzleNumber} teardown`);
             if (t) {
                 clearTimeout(t);
             }
@@ -264,7 +267,7 @@ export function Puzzles({
         <>
             <div id="Lesson" className="bg-blue">
                 <div className="landscape-top-spacer">
-                    <div className="lesson-title"> {sectionName} Puzzles</div>
+                    <div className="lesson-title"> {displaySectionName} Puzzles</div>
                 </div>
                 <div id="Lesson-bottom-container">
                     <div id="left-container">
@@ -323,7 +326,7 @@ export function Puzzles({
                         </Link>
                     </div>
 
-                    <div className="center">{sectionName} Puzzles</div>
+                    <div className="center">{displaySectionName} Puzzles</div>
 
                     <div className="right">
                         <Link to={next} className="game-button-container">
