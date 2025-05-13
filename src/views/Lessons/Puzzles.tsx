@@ -40,7 +40,9 @@ export function Puzzles({
 }): JSX.Element {
     const navigate = useNavigate();
     setContentNavigate(useNavigate());
-    //const id:number = parseInt(this.props.match?.params?.id);
+    const id: number = parseInt(this.props.match?.params?.id);
+    const next = "/learn-to-play/";
+    const back = "/learn-to-play/";
     // let next = "/learn-to-play/";
     // {
     //     let next_page = page + 1;
@@ -118,7 +120,7 @@ export function Puzzles({
         //         void audioRef.current.play();
         //     }
         // }
-        let ct = 0;
+        // let ct = 0;
 
         // const target_text: Array<JSX.Element> = (
         //     Array.isArray(content.text()) ? content.text() : [content.text()]

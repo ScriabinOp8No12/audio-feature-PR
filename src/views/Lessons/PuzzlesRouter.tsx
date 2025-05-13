@@ -22,9 +22,10 @@ import { useParams } from "react-router-dom";
 export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
     console.log(params);
-    let section = params.section;
-    let puzzleNumber = parseInt(params.page || "1") - 1;
+    const section = params.section;
+    const puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
 
+    console.log("section, puzzleNumber", section, puzzleNumber);
     return (
         <div>
             <Puzzles section={section} puzzleNumber={puzzleNumber} />
