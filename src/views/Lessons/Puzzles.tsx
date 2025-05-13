@@ -28,16 +28,16 @@ import { useNavigate } from "react-router-dom";
 import { animateCaptures } from "@kidsgo/lib/animateCaptures";
 import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
-import { Tesuji } from "./Lesson8Puzzles/Tesuji";
-import { LifeAndDeath } from "./Lesson8Puzzles/LifeAndDeath";
 import { puzzleSections } from "./puzzleSections";
 
 export function Puzzles({
-    section,
+    sectionIndex,
     puzzleNumber,
+    sectionName,
 }: {
-    section: number; // section index, not a string
+    sectionIndex: number; // section index, not a string
     puzzleNumber: number;
+    sectionName: string;
 }): JSX.Element {
     const navigate = useNavigate();
     setContentNavigate(useNavigate());
@@ -111,9 +111,9 @@ export function Puzzles({
     });
 
     useEffect(() => {
-        console.log("Constructing puzzle", section, puzzleNumber);
+        console.log("Constructing puzzle", sectionName, puzzleNumber);
         // Now section is already the index we need
-        const content = new puzzleSections[section][puzzleNumber]();
+        const content = new puzzleSections[sectionIndex][puzzleNumber]();
         let ct = 0;
 
         const target_text: Array<JSX.Element> = (
@@ -243,7 +243,7 @@ export function Puzzles({
 
         return () => {
             content.destroy();
-            console.log(`puzzle ${section} ${puzzleNumber} teardown`);
+            console.log(`puzzle ${sectionName} ${puzzleNumber} teardown`);
             if (t) {
                 clearTimeout(t);
             }
@@ -258,13 +258,13 @@ export function Puzzles({
                 audioRef.current.currentTime = 0;
             }
         };
-    }, [section, puzzleNumber, replay]);
+    }, [sectionIndex, puzzleNumber, replay]);
 
     return (
         <>
             <div id="Lesson" className="bg-blue">
                 <div className="landscape-top-spacer">
-                    <div className="lesson-title"> {section} Puzzles</div>
+                    <div className="lesson-title"> {sectionName} Puzzles</div>
                 </div>
                 <div id="Lesson-bottom-container">
                     <div id="left-container">
@@ -323,7 +323,7 @@ export function Puzzles({
                         </Link>
                     </div>
 
-                    <div className="center">{section} Puzzles</div>
+                    <div className="center">{sectionName} Puzzles</div>
 
                     <div className="right">
                         <Link to={next} className="game-button-container">
