@@ -43,16 +43,38 @@ export function Puzzles({
     const navigate = useNavigate();
     setContentNavigate(useNavigate());
 
-    const nextPuzzleNumber = puzzleNumber + 1;
-    // 0 indexed puzzleNumber needs an extra +1
-    const next = `/learn-to-play/8/puzzles/${sectionName}/${nextPuzzleNumber + 1}`;
+    const currentSectionIndex = sectionKeys.findIndex(
+        (key) => key.toLowerCase() === sectionName.toLowerCase(),
+    );
 
-    const prevPuzzleNumber = puzzleNumber - 1;
-    // If we're on the first puzzle in lesson 8, go back to the section selection page (same logic as lesson 1 page 1 hitting back button)
-    const back =
-        prevPuzzleNumber === 0
-            ? `/learn-to-play/8/puzzles/${sectionName}/${prevPuzzleNumber + 1}`
-            : "/learn-to-play";
+    const maxPuzzlesInCurrentSection = puzzles.length;
+
+    let next;
+    if (puzzleNumber + 1 < maxPuzzlesInCurrentSection) {
+        // puzzleNumber is 0-indexed internally, +2 for URL (convert to 1-index and increment)
+        next = `/learn-to-play/8/puzzles/${sectionName}/${puzzleNumber + 2}`;
+    } else {
+        // At last puzzle, move to next section or back to main page
+        if (currentSectionIndex < sectionKeys.length - 1) {
+            const nextSectionKey = sectionKeys[currentSectionIndex + 1];
+            next = `/learn-to-play/8/puzzles/${nextSectionKey}/1`;
+        } else {
+            next = "/learn-to-play";
+        }
+    }
+    let back;
+    if (puzzleNumber > 0) {
+        back = `/learn-to-play/8/puzzles/${sectionName}/${puzzleNumber}`;
+    } else {
+        // At first puzzle, go to previous section's last puzzle or main page
+        if (currentSectionIndex > 0) {
+            const prevSectionKey = sectionKeys[currentSectionIndex - 1];
+            const prevSectionPuzzles = puzzleSectionMap[prevSectionKey];
+            back = `/learn-to-play/8/puzzles/${prevSectionKey}/${prevSectionPuzzles.length}`;
+        } else {
+            back = "/learn-to-play";
+        }
+    }
 
     const [container, _setContainer] = useState(document.createElement("div"));
     const goban_ref = useRef<Goban>(null);
