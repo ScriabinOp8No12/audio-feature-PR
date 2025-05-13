@@ -29,8 +29,6 @@ class Puzzle1 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "j3h3g3f3d3e4e5d6f6f7f8g8j7",
                 white: "j4h4g4f4f5h5j5g6h6g7h8h9j9",
@@ -80,8 +78,6 @@ class Puzzle2 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "d7d6d5d4e4f4g4h5h6h7g7",
                 white: "c7c8d8e8e6e5f5g5g6f7g8h8",
@@ -131,8 +127,6 @@ class Puzzle3 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "e3f3g3g4g5g6g7f7e7",
                 white: "f4f5f6d5c3b4b5b6c7",
@@ -187,8 +181,6 @@ class Puzzle4 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "j7j8h8g8j5h5f7e7e6e5",
                 white: "j6h6h7g7g5g4g3f6f8e8d8e3c4c6",
@@ -238,8 +230,6 @@ class Puzzle5 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "c6c7c8d9e8f7f6",
                 white: "d8d7e7e6d4f4f5",
@@ -289,8 +279,6 @@ class Puzzle6 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "b3c3d2d3d4e4c6f5f6g5",
                 white: "e2e3e5f3f4h3h4h5g6g7f8c5b5b6b7",
@@ -340,8 +328,6 @@ class Puzzle7 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "d8f9f8f7f6e5d5",
                 white: "c6c5c4d3e3f4f5g6e6e7e8",
@@ -391,8 +377,6 @@ class Puzzle8 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "d5d4d3e2f3h3g4h5g6",
                 white: "c5c6d6d7e3e4e5e8f4f5g5g7h7",
@@ -442,8 +426,6 @@ class Puzzle9 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "a9b9a7b7c7c6d6e6f7f8f9",
                 white: "a8b8c8d7e7e8e9",
@@ -493,8 +475,6 @@ class Puzzle10 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "e3g3h3h5j6h7g7f7e7",
                 white: "j5h4g4g5g6e5e6d7d8e8f8g8",
@@ -544,8 +524,6 @@ class Puzzle11 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "f3g4d4c5b6c7d7e6",
                 white: "e2g2g3h4h5g5g7f8e5d5d6c6",
@@ -595,8 +573,6 @@ class Puzzle12 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "j7h7h6j5h5g5g4",
                 white: "j8h8g8g7f6f5f4f3g3g2g1h1j1h4j4",
@@ -651,8 +627,6 @@ class Puzzle13 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "g1f2f3e2d2d3d4e4",
                 white: "a2b2c2c3c4c5d5e5f5f4g4g3g2h2e1",
@@ -702,8 +676,6 @@ class Puzzle14 extends Content {
     }
     config(): PuzzleConfig {
         return {
-            width: 9,
-            height: 9,
             initial_state: {
                 black: "g9g8h8f8g7j6h6h5g5",
                 white: "j4h4g4f4e4g6f6f7e7e8e9f9h9j9j8j7e5",
