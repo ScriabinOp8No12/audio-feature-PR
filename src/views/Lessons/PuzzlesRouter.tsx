@@ -26,6 +26,7 @@ export function PuzzlesRouter(): JSX.Element {
     const puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
 
     console.log("section, puzzleNumber", section, puzzleNumber);
+    // I need to render the Tesuji
     return (
         <div>
             <Puzzles section={section} puzzleNumber={puzzleNumber} />

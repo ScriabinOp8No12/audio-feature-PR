@@ -30,6 +30,8 @@ import { useNavigate } from "react-router-dom";
 import { animateCaptures } from "@kidsgo/lib/animateCaptures";
 import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
+import { Tesuji } from "./Lesson8Puzzles/Tesuji";
+import { LifeAndDeath } from "./Lesson8Puzzles/LifeAndDeath";
 
 export function Puzzles({
     section,
@@ -40,7 +42,7 @@ export function Puzzles({
 }): JSX.Element {
     const navigate = useNavigate();
     setContentNavigate(useNavigate());
-    const id: number = parseInt(this.props.match?.params?.id);
+
     const next = "/learn-to-play/";
     const back = "/learn-to-play/";
     // let next = "/learn-to-play/";
@@ -108,10 +110,21 @@ export function Puzzles({
         },
         refreshRate: 10,
     });
+    const sectionMap: Record<string, Array<any>> = {
+        Tesuji,
+        LifeAndDeath,
+    };
+
+    const normalizedSection = section.charAt(0).toUpperCase() + section.slice(1); // e.g., "tesuji" => "Tesuji"
+    const sectionArray = sectionMap[normalizedSection];
 
     useEffect(() => {
         console.log("Constructing game ", section, puzzleNumber);
-        const content = new puzzleSections[section][puzzleNumber]();
+        console.log("Section key:", section); // Add this
+        console.log("Available sections:", Object.keys(sectionMap));
+
+        // const content = new puzzleSections[section][puzzleNumber]();
+        const content = new sectionArray[puzzleNumber]();
 
         // Playing audio that matches text on learn-to-play pages
         // if (audioRef.current) {
@@ -301,7 +314,7 @@ export function Puzzles({
 
     return (
         <>
-            <div id="Puzzles" className="bg-blue">
+            <div id="Lesson" className="bg-blue">
                 <div className="landscape-top-spacer">
                     {/* <div className="lesson-title"> {chapter + 1}</div> */}
                     <div className="lesson-title"> {section} Puzzles</div>
