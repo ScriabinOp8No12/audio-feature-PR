@@ -18,18 +18,33 @@
 import * as React from "react";
 import { Puzzles } from "./Puzzles";
 import { useParams } from "react-router-dom";
+import { puzzleSections } from "./puzzleSections";
 
 export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
     console.log(params);
-    const section = params.section;
-    const puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
+    const sectionName = params.section || "tesuji"; // Default to tesuji if missing
+    let puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
 
-    console.log("section, puzzleNumber", section, puzzleNumber);
-    // I need to render the Tesuji
+    // Convert section name to index using a direct mapping
+    let sectionIndex = 0; // Default to Tesuji
+    if (sectionName.toLowerCase() === "lifeanddeath") {
+        sectionIndex = 1;
+    }
+
+    if (sectionIndex < 0 || sectionIndex >= puzzleSections.length) {
+        sectionIndex = 0;
+    }
+
+    if (puzzleNumber < 0 || puzzleNumber >= puzzleSections[sectionIndex].length) {
+        puzzleNumber = 0;
+    }
+
+    console.log("Resolved to section index:", sectionIndex, "puzzle number:", puzzleNumber);
+
     return (
         <div>
-            <Puzzles section={section} puzzleNumber={puzzleNumber} />
+            <Puzzles section={sectionIndex} puzzleNumber={puzzleNumber} />
         </div>
     );
 }

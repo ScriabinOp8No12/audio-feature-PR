@@ -23,8 +23,6 @@ import { _ } from "@/lib/translate";
 import { decodeMoves, Goban, GobanCanvas, GobanConfig, prettyCoordinates } from "goban";
 import { Racoon } from "@kidsgo/components/Racoon";
 import { setContentNavigate } from "./Content";
-// import { chapters } from "./chapters";
-import { puzzleSections } from "./puzzleSections";
 import { PersistentElement } from "@/components/PersistentElement";
 import { useNavigate } from "react-router-dom";
 import { animateCaptures } from "@kidsgo/lib/animateCaptures";
@@ -32,12 +30,13 @@ import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
 import { Tesuji } from "./Lesson8Puzzles/Tesuji";
 import { LifeAndDeath } from "./Lesson8Puzzles/LifeAndDeath";
+import { puzzleSections } from "./puzzleSections";
 
 export function Puzzles({
     section,
     puzzleNumber,
 }: {
-    section: string;
+    section: number; // section index, not a string
     puzzleNumber: number;
 }): JSX.Element {
     const navigate = useNavigate();
@@ -110,43 +109,25 @@ export function Puzzles({
         },
         refreshRate: 10,
     });
-    const sectionMap: Record<string, Array<any>> = {
-        Tesuji,
-        LifeAndDeath,
-    };
-
-    const normalizedSection = section.charAt(0).toUpperCase() + section.slice(1); // e.g., "tesuji" => "Tesuji"
-    const sectionArray = sectionMap[normalizedSection];
 
     useEffect(() => {
-        console.log("Constructing game ", section, puzzleNumber);
-        console.log("Section key:", section); // Add this
-        console.log("Available sections:", Object.keys(sectionMap));
+        console.log("Constructing puzzle", section, puzzleNumber);
+        // Now section is already the index we need
+        const content = new puzzleSections[section][puzzleNumber]();
+        let ct = 0;
 
-        // const content = new puzzleSections[section][puzzleNumber]();
-        const content = new sectionArray[puzzleNumber]();
+        const target_text: Array<JSX.Element> = (
+            Array.isArray(content.text()) ? content.text() : [content.text()]
+        ) as Array<JSX.Element>;
 
-        // Playing audio that matches text on learn-to-play pages
-        // if (audioRef.current) {
-        //     audioRef.current.src = content.audioUrl;
-        //     if (shouldPlayAudio) {
-        //         void audioRef.current.play();
-        //     }
-        // }
-        // let ct = 0;
-
-        // const target_text: Array<JSX.Element> = (
-        //     Array.isArray(content.text()) ? content.text() : [content.text()]
-        // ) as Array<JSX.Element>;
-
-        // const animation = content.animate(() => {
-        //     setText(target_text.slice(0, ct++));
-        //     return target_text.length >= ct;
-        // }, 0); // Not working anymore (6/26/2024) -> Used to allow the value to animate the text showing up in the left panel, look in the return portion for original working code
-        // cancel_animation_ref.current = () => {
-        //     animation.cancel();
-        //     setText(target_text);
-        // };
+        const animation = content.animate(() => {
+            setText(target_text.slice(0, ct++));
+            return target_text.length >= ct;
+        }, 0); // Not working anymore (6/26/2024) -> Used to allow the value to animate the text showing up in the left panel, look in the return portion for original working code
+        cancel_animation_ref.current = () => {
+            animation.cancel();
+            setText(target_text);
+        };
 
         if (content.hidePlayButton()) {
             setHidePlayButton(true);
@@ -195,18 +176,13 @@ export function Puzzles({
         // This triggers the same re-render that the replay button does, and we pass this down to the Module classes where the puzzles are
         content.resetGoban = () => setReplay(Math.random());
         content.setGoban(goban);
-        // content.setNext(next);
 
         console.log("Listening for capturing");
         goban.on("captured-stones", ({ removed_stones }) => {
             console.log("Animating captures", removed_stones);
-            // I'm not really sure why we need this flip_animated_capture_color
-            // thing to begin with, but at this point I just want things to
-            // work.
             animateCaptures(
                 removed_stones,
                 goban,
-                // (content_config as any).flip_animated_capture_color
                 (content_config as any)
                     ? goban.engine.colorToMove()
                     : goban.engine.colorNotToMove(),
@@ -219,25 +195,10 @@ export function Puzzles({
 
         goban.on("puzzle-correct-answer", () => {
             console.log("CORRECT!");
-            /*
-                this.correct_answer_triggered = true;
-                sfx.play("tutorial-pass");
-                setTimeout(this.next, 1000);
-                this.instructional_goban.goban.disableStonePlacement();
-                this.forceUpdate();
-                 */
             goban.disableStonePlacement();
         });
         goban.on("puzzle-wrong-answer", () => {
             console.log("WRONG");
-            /*
-                this.wrong_answer_triggered = true;
-                sfx.play("tutorial-fail");
-                this.instructional_goban.goban.disableStonePlacement();
-                this.forceUpdate();
-                 */
-            // Use the following line to have the computer pass
-            // goban.engine.place(-1, -1);
             goban.disableStonePlacement();
         });
         goban.on("error", () => {
@@ -261,7 +222,6 @@ export function Puzzles({
             );
             const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
             console.log("Move string: ", move_string);
-            //this.setState({ move_string });
         };
 
         goban.on("update", onUpdate);
@@ -300,46 +260,19 @@ export function Puzzles({
         };
     }, [section, puzzleNumber, replay]);
 
-    // const toggleAudio = () => {
-    //     const audio = audioRef.current;
-    //     if (audio) {
-    //         if (shouldPlayAudio) {
-    //             audio.pause();
-    //         } else {
-    //             void audio.play();
-    //         }
-    //         setShouldPlayAudio(!shouldPlayAudio);
-    //     }
-    // };
-
     return (
         <>
             <div id="Lesson" className="bg-blue">
                 <div className="landscape-top-spacer">
-                    {/* <div className="lesson-title"> {chapter + 1}</div> */}
                     <div className="lesson-title"> {section} Puzzles</div>
                 </div>
                 <div id="Lesson-bottom-container">
                     <div id="left-container">
                         <div className="explanation-text" onClick={cancel_animation_ref.current}>
                             {text}
-                            {/* Text animation logic below */}
-                            {/* {text.map((e, idx) => (
-                                <div className="fade-in" key={idx}>
-                                    {e}
-                                </div>
-                            ))} */}
                             <audio ref={audioRef} style={{ display: "none" }} />
                         </div>
-                        <div className="bottom-graphic">
-                            {/* <button onClick={toggleAudio} className="sound-button">
-                                <div
-                                    className={`sound-icon ${
-                                        shouldPlayAudio ? "sound-on" : "sound-off"
-                                    }`}
-                                />
-                            </button> */}
-                        </div>
+                        <div className="bottom-graphic"></div>
                     </div>
 
                     <div id="board-container" ref={board_container_resizer.ref}>
@@ -402,10 +335,6 @@ export function Puzzles({
             </div>
 
             <BackButton onClick={() => navigate("/learn-to-play")} />
-
-            {/* <div id="portrait-sound" onClick={toggleAudio}>
-                <div className={`sound-icon ${shouldPlayAudio ? "sound-on" : "sound-off"}`} />
-            </div> */}
 
             <div id="portrait-replay">
                 <span className="stone-button-refresh" onClick={() => setReplay(Math.random())} />
