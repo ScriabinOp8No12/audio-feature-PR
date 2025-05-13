@@ -19,4 +19,14 @@ import { Content } from "./Content";
 import { Tesuji } from "./Lesson8Puzzles/Tesuji";
 import { LifeAndDeath } from "./Lesson8Puzzles/LifeAndDeath";
 
-export const puzzleSections: Array<Array<typeof Content>> = [Tesuji, LifeAndDeath];
+export const sectionKeys = ["tesuji", "lifeanddeath"] as const;
+
+export const puzzleSectionMap: Record<(typeof sectionKeys)[number], Array<typeof Content>> = {
+    tesuji: Tesuji,
+    lifeanddeath: LifeAndDeath,
+};
+
+export const sectionDisplayNames: Record<(typeof sectionKeys)[number], string> = {
+    tesuji: "Tesuji",
+    lifeanddeath: "Life and Death",
+};

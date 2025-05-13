@@ -18,6 +18,7 @@
 import * as React from "react";
 import { useResizeDetector } from "react-resize-detector";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Content } from "./Content";
 import { Link } from "react-router-dom";
 import { _ } from "@/lib/translate";
 import { decodeMoves, Goban, GobanCanvas, GobanConfig, prettyCoordinates } from "goban";
@@ -28,18 +29,15 @@ import { useNavigate } from "react-router-dom";
 import { animateCaptures } from "@kidsgo/lib/animateCaptures";
 import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
-import { puzzleSections } from "./puzzleSections";
-
-const sectionDisplayNames: string[] = [
-    "Tesuji", // index 0
-    "Life and Death", // index 1
-];
+import { sectionDisplayNames } from "./puzzleSections";
 
 export function Puzzles({
-    sectionIndex,
+    puzzles,
+    sectionName,
     puzzleNumber,
 }: {
-    sectionIndex: number;
+    puzzles: Array<typeof Content>;
+    sectionName: string;
     puzzleNumber: number;
 }): JSX.Element {
     const navigate = useNavigate();
@@ -112,11 +110,11 @@ export function Puzzles({
         refreshRate: 10,
     });
 
-    const displaySectionName = sectionDisplayNames[sectionIndex] || "";
+    const displaySectionName = sectionDisplayNames[sectionName] || "";
 
     useEffect(() => {
         console.log("Constructing puzzle", displaySectionName, puzzleNumber);
-        const content = new puzzleSections[sectionIndex][puzzleNumber]();
+        const content = new puzzles[puzzleNumber]();
         let ct = 0;
 
         const target_text: Array<JSX.Element> = (
@@ -261,7 +259,7 @@ export function Puzzles({
                 audioRef.current.currentTime = 0;
             }
         };
-    }, [sectionIndex, puzzleNumber, replay]);
+    }, [puzzles, sectionName, puzzleNumber, replay]);
 
     return (
         <>

@@ -18,7 +18,7 @@
 import * as React from "react";
 import { Puzzles } from "./Puzzles";
 import { useParams } from "react-router-dom";
-import { puzzleSections } from "./puzzleSections";
+import { puzzleSectionMap } from "./puzzleSections";
 
 export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
@@ -26,25 +26,18 @@ export function PuzzlesRouter(): JSX.Element {
     const sectionName = params.section || "tesuji"; // Default to tesuji if missing
     let puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
 
-    // Convert section name to index using a direct mapping
-    let sectionIndex = 0; // Default to Tesuji
-    if (sectionName.toLowerCase() === "lifeanddeath") {
-        sectionIndex = 1;
-    }
+    const sectionKey = sectionName.toLowerCase();
+    const puzzles = puzzleSectionMap[sectionKey] || puzzleSectionMap["tesuji"];
 
-    if (sectionIndex < 0 || sectionIndex >= puzzleSections.length) {
-        sectionIndex = 0;
-    }
-
-    if (puzzleNumber < 0 || puzzleNumber >= puzzleSections[sectionIndex].length) {
+    if (puzzleNumber < 0 || puzzleNumber >= puzzles.length) {
         puzzleNumber = 0;
     }
 
-    console.log("Resolved to section index:", sectionIndex, "puzzle number:", puzzleNumber);
+    console.log("Resolved to sectionKey:", sectionKey, "puzzle number:", puzzleNumber);
 
     return (
         <div>
-            <Puzzles sectionIndex={sectionIndex} puzzleNumber={puzzleNumber} />
+            <Puzzles puzzles={puzzles} sectionName={sectionKey} puzzleNumber={puzzleNumber} />
         </div>
     );
 }
