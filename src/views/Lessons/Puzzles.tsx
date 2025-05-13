@@ -29,7 +29,7 @@ import { useNavigate } from "react-router-dom";
 import { animateCaptures } from "@kidsgo/lib/animateCaptures";
 import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
-import { sectionDisplayNames } from "./puzzleSections";
+import { sectionDisplayNames, sectionKeys, puzzleSectionMap } from "./puzzleSections";
 
 export function Puzzles({
     puzzles,
@@ -43,37 +43,16 @@ export function Puzzles({
     const navigate = useNavigate();
     setContentNavigate(useNavigate());
 
-    const next = "/learn-to-play/";
-    const back = "/learn-to-play/";
-    // let next = "/learn-to-play/";
-    // {
-    //     let next_page = page + 1;
-    //     let next_chapter = chapter;
-    //     if (next_page >= chapters[chapter].length) {
-    //         next_chapter += 1;
-    //         next_page = 0;
-    //     }
-    //     if (next_chapter >= chapters.length) {
-    //         next = "/learn-to-play/";
-    //     } else {
-    //         next = `/learn-to-play/${next_chapter + 1}/${next_page + 1}`;
-    //     }
-    // }
-    // let back = "/learn-to-play/";
-    // {
-    //     let next_page = page - 1;
-    //     let next_chapter = chapter;
-    //     back = `/learn-to-play/${next_chapter + 1}/${next_page + 1}`;
-    //     if (next_page < 0) {
-    //         if (next_chapter === 0) {
-    //             back = "/learn-to-play";
-    //         } else {
-    //             next_chapter -= 1;
-    //             next_page = chapters[next_chapter].length - 1;
-    //             back = `/learn-to-play/${next_chapter + 1}/${next_page + 1}`;
-    //         }
-    //     }
-    // }
+    const nextPuzzleNumber = puzzleNumber + 1;
+    // 0 indexed puzzleNumber needs an extra +1
+    const next = `/learn-to-play/8/puzzles/${sectionName}/${nextPuzzleNumber + 1}`;
+
+    const prevPuzzleNumber = puzzleNumber - 1;
+    // If we're on the first puzzle in lesson 8, go back to the section selection page (same logic as lesson 1 page 1 hitting back button)
+    const back =
+        prevPuzzleNumber === 0
+            ? `/learn-to-play/8/puzzles/${sectionName}/${prevPuzzleNumber + 1}`
+            : "/learn-to-play";
 
     const [container, _setContainer] = useState(document.createElement("div"));
     const goban_ref = useRef<Goban>(null);
@@ -124,7 +103,7 @@ export function Puzzles({
         const animation = content.animate(() => {
             setText(target_text.slice(0, ct++));
             return target_text.length >= ct;
-        }, 0); // Not working anymore (6/26/2024) -> Used to allow the value to animate the text showing up in the left panel, look in the return portion for original working code
+        }, 0);
         cancel_animation_ref.current = () => {
             animation.cancel();
             setText(target_text);
@@ -265,7 +244,10 @@ export function Puzzles({
         <>
             <div id="Lesson" className="bg-blue">
                 <div className="landscape-top-spacer">
-                    <div className="lesson-title"> {displaySectionName} Puzzles</div>
+                    <div className="lesson-title">
+                        {/* 0 indexed puzzleNumber */}
+                        {displaySectionName} Puzzle {puzzleNumber + 1}
+                    </div>
                 </div>
                 <div id="Lesson-bottom-container">
                     <div id="left-container">
