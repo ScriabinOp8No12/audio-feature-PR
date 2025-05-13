@@ -26,6 +26,7 @@ import { _ } from "@/lib/translate";
 
 import { LandingPage } from "./views/LandingPage";
 import { LessonRouter } from "./views/Lessons";
+import { PuzzlesRouter } from "./views/Lessons";
 import { KidsGame } from "./views/KidsGame";
 import { Matchmaking } from "./views/Matchmaking";
 import { LearnToPlay } from "./views/LearnToPlay";
@@ -75,10 +76,9 @@ export const routes = (
         <Main>
             <Routes>
                 <Route path="/game/:id" element={<KidsGame />} />
-                {/* Special route for lesson 8 puzzles */}
                 <Route
                     path="/learn-to-play/8/puzzles/:section/:puzzleId"
-                    element={<LessonRouter />}
+                    element={<PuzzlesRouter />}
                 />
                 <Route path="/learn-to-play/:chapter/:page" element={<LessonRouter />} />
                 <Route path="/learn-to-play/:chapter" element={<LessonRouter />} />

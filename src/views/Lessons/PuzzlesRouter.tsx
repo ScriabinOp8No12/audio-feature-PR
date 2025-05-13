@@ -15,13 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { TesujiPuzzles } from "./Lesson8Puzzles/TesujiPuzzles";
-import { LifeAndDeathPuzzles } from "./Lesson8Puzzles/LifeAndDeathPuzzles";
+import * as React from "react";
+import { Puzzles } from "./Puzzles";
+import { useParams } from "react-router-dom";
 
-// For compatibility with chapters
-export const module8 = [...TesujiPuzzles, ...LifeAndDeathPuzzles];
+export function PuzzlesRouter(): JSX.Element {
+    const params = useParams();
+    console.log(params);
+    let section = params.section;
+    let puzzleNumber = parseInt(params.page || "1") - 1;
 
-export const PuzzleSections = {
-    tesuji: TesujiPuzzles,
-    lifeAndDeath: LifeAndDeathPuzzles,
-};
+    return (
+        <div>
+            <Puzzles section={section} puzzleNumber={puzzleNumber} />
+        </div>
+    );
+}

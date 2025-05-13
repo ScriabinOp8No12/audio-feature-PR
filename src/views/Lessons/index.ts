@@ -16,3 +16,4 @@
  */
 
 export * from "./LessonRouter";
+export * from "./PuzzlesRouter";
