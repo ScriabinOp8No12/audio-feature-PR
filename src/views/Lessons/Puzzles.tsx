@@ -29,7 +29,7 @@ import { useNavigate } from "react-router-dom";
 import { animateCaptures } from "@kidsgo/lib/animateCaptures";
 import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
-import { sectionDisplayNames, sectionKeys, puzzleSectionMap } from "./puzzleSections";
+import { sectionDisplayNames, sectionKeys, puzzleSectionMap } from "./PuzzleSections";
 
 export function Puzzles({
     puzzles,

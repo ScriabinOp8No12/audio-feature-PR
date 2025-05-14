@@ -18,7 +18,7 @@
 import * as React from "react";
 import { Puzzles } from "./Puzzles";
 import { useParams } from "react-router-dom";
-import { puzzleSectionMap } from "./puzzleSections";
+import { puzzleSectionMap } from "./PuzzleSections";
 
 export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
