@@ -113,6 +113,16 @@ export function Puzzles({
 
     const displaySectionName = sectionDisplayNames[sectionName] || "";
 
+    const sectionList = Object.entries(sectionDisplayNames).map(([key, value]) => (
+        <div
+            key={key}
+            className="section-link"
+            onClick={() => navigate(`/learn-to-play/8/puzzles/${key}/1`)}
+        >
+            {value}
+        </div>
+    ));
+
     useEffect(() => {
         console.log("Constructing puzzle", displaySectionName, puzzleNumber);
         const content = new puzzles[puzzleNumber]();
@@ -275,8 +285,11 @@ export function Puzzles({
                 <div id="Lesson-bottom-container">
                     <div id="left-container">
                         <div className="explanation-text" onClick={cancel_animation_ref.current}>
-                            {text}
-                            <audio ref={audioRef} style={{ display: "none" }} />
+                            {/* {text} */}
+                            <div className="puzzle-sections">
+                                <h3>Puzzle Sections</h3>
+                                {sectionList}
+                            </div>
                         </div>
                         <div className="bottom-graphic"></div>
                     </div>
