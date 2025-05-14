@@ -22,7 +22,6 @@ import { puzzleSectionMap } from "./puzzleSections";
 
 export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
-    console.log(params);
     const sectionName = params.section || "capturing"; // Default to capturing
     let puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
 
@@ -33,7 +32,7 @@ export function PuzzlesRouter(): JSX.Element {
         puzzleNumber = 0;
     }
 
-    console.log("Resolved to sectionKey:", sectionKey, "puzzle number:", puzzleNumber);
+    console.log("Resolved to sectionKey:", sectionKey, "puzzle number index:", puzzleNumber);
 
     return (
         <div>

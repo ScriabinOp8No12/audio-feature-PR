@@ -178,6 +178,7 @@ export function Puzzles({
         // This triggers the same re-render that the replay button does, and we pass this down to the Module classes where the puzzles are
         content.resetGoban = () => setReplay(Math.random());
         content.setGoban(goban);
+        content.setNext(next);
 
         console.log("Listening for capturing");
         goban.on("captured-stones", ({ removed_stones }) => {
