@@ -116,7 +116,7 @@ export function Puzzles({
     const sectionList = Object.entries(sectionDisplayNames).map(([key, value]) => (
         <div
             key={key}
-            className="section-link"
+            className={`section-link ${value === displaySectionName ? "active-section" : ""}`}
             onClick={() => navigate(`/learn-to-play/8/puzzles/${key}/1`)}
         >
             {value}
