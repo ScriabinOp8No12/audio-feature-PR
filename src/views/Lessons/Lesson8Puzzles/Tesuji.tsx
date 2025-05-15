@@ -25,21 +25,16 @@ const POPUP_TIMEOUT = 1500;
 
 class Puzzle1 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 1 capturing race</p>];
+        return [<p>Tesuji 1</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "a4b5b6b7b8d8e7f5f4e3d3c4c3c2c1",
-                white: "b1b2b3b4c5c6c7d5d4e4f3f2h3",
+                black: "c7c8d9e8f8f7g7g6f5e4d5",
+                white: "d8d7e7e6f6g5g4f4f3e3c4c5c6",
             },
 
-            move_tree: this.makePuzzleMoveTree(
-                ["a3e2a2d2a1", "a2e2a3d2a1"],
-                ["c8e2", "d7e2", "d6e2", "e5e2", "e2e1d2d1", "e2e1d1d2", "d2e2", "d1e2", "e1e2"],
-                9,
-                9,
-            ),
+            move_tree: this.makePuzzleMoveTree(["d6e5f5"], ["e5d6", "d6e5d4d3"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -79,16 +74,21 @@ class Puzzle1 extends Content {
 
 class Puzzle2 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 2 cuts</p>];
+        return [<p>Tesuji 2</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "h3g4f4f5f6g7",
-                white: "h2g2g3h4g5g6h7",
+                black: "d2e2e3f4g3g5h5h3",
+                white: "g6f5e6e4d4c3c2d1f2",
             },
 
-            move_tree: this.makePuzzleMoveTree(["h5j3h6"], ["h6h5j6j7j5j4"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["f1g1e1f3g2"],
+                ["f3e1", "e1f3g4f1c1d3d1b1", "e1f3g2g4", "e1f3f1g4", "f1g1g2e1", "f1g1f3e1"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -128,16 +128,21 @@ class Puzzle2 extends Content {
 
 class Puzzle3 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 3 capturing / cuts</p>];
+        return [<p>Tesuji 3</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e9e8e7f7g8g6h6j6j7",
-                white: "f9f8h9g7h7j8f6f5g5h5",
+                black: "b1b2b3b4e1f1f2f3f4e4",
+                white: "c3c2d1e2e3b5c5d6e5a5a4",
             },
 
-            move_tree: this.makePuzzleMoveTree(["h8"], ["g9j5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["c4d4d3d2c1d3d5"],
+                ["d3c4d2c1", "c4d4c1d3", "c4d4d2d3", "d4c4", "c1d3"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -177,18 +182,18 @@ class Puzzle3 extends Content {
 
 class Puzzle4 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 4 cuts / capturing</p>];
+        return [<p>Tesuji 4</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "d9e8f8h8g7g6f5d5h7",
-                white: "c8d8e7f7f6g8g9g5g4e3d4c5c6h5h6j7",
+                black: "b2c2c3c4b4b5d5e6f6f7g8h8g5h5g3g2h3j4",
+                white: "f8e8d8c7c6c5g6g7f5g4e4d4e3f3e2",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["d7e6d6e5e4"],
-                ["f9e9", "h9j8f9e5", "d7e6e5d6"],
+                ["d6e5h6d7h7", "d6e5h7d7h6"],
+                ["h6d6h7e5", "h7d6h6e5", "h6d6e5e7", "h7d6e5e7", "e5d6"],
                 9,
                 9,
             ),
@@ -229,369 +234,4 @@ class Puzzle4 extends Content {
     }
 }
 
-class Puzzle5 extends Content {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 5 capturing / cuts</p>];
-    }
-    config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "e5d6d7e8g8g7g6",
-                white: "f7e7e6f5f4f3e3",
-            },
-
-            move_tree: this.makePuzzleMoveTree(
-                ["f6d5f8"],
-                ["d5f6", "f8f6", "f6d5e4d4", "f6d5c5e4"],
-                9,
-                9,
-            ),
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
-        });
-        goban.on("puzzle-wrong-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Try again!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
-                })
-                .then(() => {
-                    this.resetGoban?.();
-                })
-                .catch(() => 0);
-        });
-    }
-}
-
-class Puzzle6 extends Content {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 6 life and death</p>];
-    }
-    config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "e3f3g3g4g5g6g7f7e7d8c8b7b6b5c4d4",
-                white: "e4f4f5f6e6d7c7c6d5",
-            },
-
-            move_tree: this.makePuzzleMoveTree(["c5d3d6"], [""], 9, 9),
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
-        });
-        goban.on("puzzle-wrong-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Try again!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
-                })
-                .then(() => {
-                    this.resetGoban?.();
-                })
-                .catch(() => 0);
-        });
-    }
-}
-
-class Puzzle7 extends Content {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 7 capturing</p>];
-    }
-    config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "a6a7b7c7c6d7d5e7f7g7h7h6g5",
-                white: "a5b5b6c5c4d6e6f6g6e4g3h4h5j5",
-            },
-
-            move_tree: this.makePuzzleMoveTree(["e5f5f4"], ["f5e5"], 9, 9),
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
-        });
-        goban.on("puzzle-wrong-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Try again!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
-                })
-                .then(() => {
-                    this.resetGoban?.();
-                })
-                .catch(() => 0);
-        });
-    }
-}
-
-class Puzzle8 extends Content {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 8 life and death</p>];
-    }
-    config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "b5a7b7c7d7e8f8g8",
-                white: "a8b8b9c8d8e9",
-            },
-
-            move_tree: this.makePuzzleMoveTree(["d9c9f9d9a9"], ["f9d9"], 9, 9),
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
-        });
-        goban.on("puzzle-wrong-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Try again!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
-                })
-                .then(() => {
-                    this.resetGoban?.();
-                })
-                .catch(() => 0);
-        });
-    }
-}
-
-class Puzzle9 extends Content {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 9 life and death</p>];
-    }
-    config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "b9b8b7d8c6d6e6f6f7g7g8g9",
-                white: "c9c8c7d7e8f8f9",
-            },
-
-            move_tree: this.makePuzzleMoveTree(["d9e7e9"], ["e7d9"], 9, 9),
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
-        });
-        goban.on("puzzle-wrong-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Try again!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
-                })
-                .then(() => {
-                    this.resetGoban?.();
-                })
-                .catch(() => 0);
-        });
-    }
-}
-
-class Puzzle10 extends Content {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 10 cuts / snapback</p>];
-    }
-    config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "b4b5b6c3d3e3f4f5f6e7",
-                white: "c5c4d4e4e5e6d7d8b8f8",
-            },
-
-            move_tree: this.makePuzzleMoveTree(["d6c6c7d5d6"], ["c6d6"], 9, 9),
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
-        });
-        goban.on("puzzle-wrong-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Try again!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
-                })
-                .then(() => {
-                    this.resetGoban?.();
-                })
-                .catch(() => 0);
-        });
-    }
-}
-
-class Puzzle11 extends Content {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Puzzle 11 cuts</p>];
-    }
-    config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "d7e6g6g7",
-                white: "e7f6g5h5h6h7h8",
-            },
-
-            move_tree: this.makePuzzleMoveTree(
-                ["f7f5e8"],
-                ["f5f7g8f8", "e8f7g8f8", "e8f7f8g8", "e8f7f5g8"],
-                9,
-                9,
-            ),
-        };
-    }
-    onSetGoban(goban: Goban): void {
-        goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
-                })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
-        });
-        goban.on("puzzle-wrong-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Try again!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
-                })
-                .then(() => {
-                    this.resetGoban?.();
-                })
-                .catch(() => 0);
-        });
-    }
-}
-
-export const Tesuji: Array<typeof Content> = [
-    Puzzle1,
-    Puzzle2,
-    Puzzle3,
-    Puzzle4,
-    Puzzle5,
-    Puzzle6,
-    Puzzle7,
-    Puzzle8,
-    Puzzle9,
-    Puzzle10,
-    Puzzle11,
-];
+export const Tesuji: Array<typeof Content> = [Puzzle1, Puzzle2, Puzzle3, Puzzle4];
