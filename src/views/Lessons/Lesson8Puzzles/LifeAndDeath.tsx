@@ -527,18 +527,21 @@ class Puzzle10 extends Content {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Solved!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
                 })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
+                .then(() => {
+                    this.gotoNext();
+                })
+                .catch(() => 0);
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
@@ -581,18 +584,21 @@ class Puzzle11 extends Content {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Solved!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
                 })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
+                .then(() => {
+                    this.gotoNext();
+                })
+                .catch(() => 0);
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
