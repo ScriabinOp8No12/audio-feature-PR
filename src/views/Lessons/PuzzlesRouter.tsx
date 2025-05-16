@@ -16,27 +16,27 @@
  */
 
 import * as React from "react";
-import { Lesson } from "./Lesson";
-//import { Content } from "./Content";
+import { Puzzles } from "./Puzzles";
 import { useParams } from "react-router-dom";
-import { chapters } from "./chapters";
+import { puzzleSectionMap } from "./PuzzleSections";
 
-export function LessonRouter(): JSX.Element {
+export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
-    console.log(params);
-    let chapter = parseInt(params.chapter || "1") - 1;
-    let page = parseInt(params.page || "1") - 1;
+    const sectionName = params.section || "capturing"; // Default to capturing
+    let puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
 
-    if (chapter < 0 || chapter >= chapters.length) {
-        chapter = 0;
+    const sectionKey = sectionName.toLowerCase();
+    const puzzles = puzzleSectionMap[sectionKey] || puzzleSectionMap["capturing"];
+
+    if (puzzleNumber < 0 || puzzleNumber >= puzzles.length) {
+        puzzleNumber = 0;
     }
-    if (page < 0 || page >= chapters[chapter].length) {
-        page = 0;
-    }
+
+    console.log("Resolved to sectionKey:", sectionKey, "puzzle number index:", puzzleNumber);
 
     return (
         <div>
-            <Lesson chapter={chapter} page={page} />
+            <Puzzles puzzles={puzzles} sectionName={sectionKey} puzzleNumber={puzzleNumber} />
         </div>
     );
 }
