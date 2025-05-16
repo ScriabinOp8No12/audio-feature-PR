@@ -76,7 +76,6 @@ class Puzzle1 extends Content {
 class Puzzle2 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Life and death 2</p>];
-        //  return [<p>Puzzle 13 capturing / cuts </p>];
     }
 
     config(): PuzzleConfig {
@@ -89,16 +88,6 @@ class Puzzle2 extends Content {
             move_tree: this.makePuzzleMoveTree(["d9e7e9"], ["e7d9"], 9, 9),
         };
     }
-    // config(): PuzzleConfig {
-    //     return {
-    //         initial_state: {
-    //             black: "d7d6d5d4e4f4g4h5h6h7g7",
-    //             white: "c7c8d8e8e6e5f5g5g6f7g8h8",
-    //         },
-
-    //         move_tree: this.makePuzzleMoveTree(["e7f6f8"], ["f8e7"], 9, 9),
-    //     };
-    // }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
             this.captureDelay(() => {
@@ -137,33 +126,18 @@ class Puzzle2 extends Content {
 class Puzzle3 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Life and death 3</p>];
-        //  return [<p>Puzzle 14 capturing / cuts </p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "b5a7b7c7d7e8f8g8",
+                black: "a7b7c7d7e8f8g8",
                 white: "a8b8b9c8d8e9",
             },
 
             move_tree: this.makePuzzleMoveTree(["d9c9f9d9a9"], ["f9d9", "c9d9"], 9, 9),
         };
     }
-    // config(): PuzzleConfig {
-    //     return {
-    //         initial_state: {
-    //             black: "e3f3g3g4g5g6g7f7e7",
-    //             white: "f4f5f6d5c3b4b5b6c7",
-    //         },
 
-    //         move_tree: this.makePuzzleMoveTree(
-    //             ["e5e6d6e4d4e5c5"],
-    //             ["e6e5", "e4e5", "e5e6e4d6"],
-    //             9,
-    //             9,
-    //         ),
-    //     };
-    // }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
             this.captureDelay(() => {
