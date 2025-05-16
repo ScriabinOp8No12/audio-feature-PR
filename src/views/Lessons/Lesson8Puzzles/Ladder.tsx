@@ -30,7 +30,7 @@ class Puzzle1 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e7e6e5f5g5g6",
+                black: "e7e6e5f5g5g6c4d4d3",
                 white: "d8d7d6d5e4f4g4h5f6f7",
             },
 
@@ -97,8 +97,8 @@ class Puzzle2 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e4d3c3c4c5",
-                white: "b3b4b5b6b7c7d4d5",
+                black: "e4d3c3c4c5g3g4",
+                white: "b3b4b5b6c8c7d4d5",
             },
 
             move_tree: this.makePuzzleMoveTree(
@@ -156,8 +156,8 @@ class Puzzle3 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e8e7d6d5",
-                white: "g7d8c8d7b7c6c4e6",
+                black: "e8e7d6d5b3c3d2",
+                white: "g7d8c8d7b7c6c4e6b4",
             },
 
             move_tree: this.makePuzzleMoveTree(["f6e5e4f5g5f4f3"], ["e5f6"], 9, 9),
@@ -208,8 +208,8 @@ class Puzzle4 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e8e7d6d5d4",
-                white: "g7d8c8d7b7c5c6c4c3e6h6",
+                black: "e8e7d6d5d4b3c2a2b1",
+                white: "g7d8d7c5c6c4c3e6b7c8",
             },
 
             move_tree: this.makePuzzleMoveTree(
