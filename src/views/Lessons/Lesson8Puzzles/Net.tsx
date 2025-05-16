@@ -25,30 +25,24 @@ const POPUP_TIMEOUT = 1500;
 
 class Puzzle1 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Ladder 1</p>];
+        return [<p>Net 1</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e7e6e5f5g5g6",
-                white: "d8d7d6d5e4f4g4h5f6f7",
+                black: "c6d6d5d4e3f4g3h4",
+                white: "b7c7e4e5e8f8g8h7h6h5",
             },
 
             move_tree: this.makePuzzleMoveTree(
+                ["f6f5g5e6e7"],
                 [
-                    "f8g7h7g8h8g9h9f9e9",
-                    "f8g7h7g8h8g9f9e8h9",
-                    "f8g7h7g8g9h8j8h9j9",
-                    "f8g7h7g8g9h8h9j8j7h6j9",
-                    "f8g7h7g8h8g9e8h6h9f9e9",
-                ],
-                [
-                    "f8g7h7g8g9h8h9j8j9f9",
-                    "f8g7h7g8h8g9h6e8",
-                    "f8g7g8h7h6e8",
-                    "f8g7g8h7e8h6",
-                    "g7f8e8e9g8f9g9d9",
-                    "g7f8g8e8",
+                    "f5e6f6e7",
+                    "f5e6e7f6f7g6",
+                    "f5e6e7f6g6f7",
+                    "e6f5f6g5",
+                    "e6f5g5f6f7g6",
+                    "e6f5g5f6g6f7",
                 ],
                 9,
                 9,
@@ -92,23 +86,18 @@ class Puzzle1 extends Content {
 
 class Puzzle2 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Ladder 2</p>];
+        return [<p>Net 2</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e4d3c3c4c5",
-                white: "b3b4b5b6b7c7d4d5",
+                black: "f1e2d2d3d4d5d6d7f3f4f5g5h5",
+                white: "h1j2g2f2g3h3g4e3e4e5e6j5h6h7g8c4c5c6c7c8d8",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                [
-                    "d6e5f5e6e7f6g6f7f8g7h7g8h8g9h9g5f9",
-                    "d6e5f5e6e7f6g6f7f8g7h7g8h8g9f9g5h9",
-                    "d6e5f5e6e7f6g6f7f8g7h7g8g9h8j8g5h9",
-                    "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j7g5j9",
-                ],
-                ["e5d6", "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j9f9"],
+                ["f7e7e8f6g6"],
+                ["f6e7e8f7f8g7", "e7f6g6f7g7h4", "e7f6f7g6", "e7f6g6f7f8g7", "f6e7f7e8"],
                 9,
                 9,
             ),
