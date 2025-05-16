@@ -279,21 +279,18 @@ class Puzzle5 extends Content {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Solved!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
                 })
-                .then(() => {
-                    this.gotoNext();
-                })
-                .catch(() => 0);
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
@@ -315,4 +312,65 @@ class Puzzle5 extends Content {
     }
 }
 
-export const Ladder: Array<typeof Content> = [Puzzle1, Puzzle2, Puzzle3, Puzzle4, Puzzle5];
+class Puzzle6 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Ladder 4</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "e8e7d6d5d4d3f2h2c2b2b3f8",
+                white: "f7g7d8c8d7b7c5c6c4c3e6h6h4g8",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["f6e5f5e4e3f4g4e9f3"],
+                [
+                    "e5f6",
+                    "f6e5e4f5g5g6",
+                    "f6e5f5e4f4e3d2e9f3f9",
+                    "f6e5f5e4f4e3d2e9e2f9",
+                    "f6e5f5e4f4e3f3d2",
+                    "f6e5f5e4f4e3e2d2",
+                ],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+export const Ladder: Array<typeof Content> = [Puzzle1, Puzzle2, Puzzle3, Puzzle4, Puzzle5, Puzzle6];

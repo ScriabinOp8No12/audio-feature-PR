@@ -140,35 +140,37 @@ class Puzzle2 extends Content {
 
 class Puzzle3 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Ladder 3</p>];
+        return [<p>Net 3</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e8e7d6d5",
-                white: "g7d8c8d7b7c6c4e6",
+                black: "e7c7c6b5a5a4a3a2a1b1c2",
+                white: "h2g3g4g7f5e5d5c4b4b3b2c1d1",
             },
 
-            move_tree: this.makePuzzleMoveTree(["f6e5e4f5g5f4f3"], ["e5f6"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["d2e1f2f1g1e2e3"],
+                ["d2e1e2f1f2g1g2h1", "d2e1e2f1g2f2f3g1"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Solved!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
                 })
-                .then(() => {
-                    this.gotoNext();
-                })
-                .catch(() => 0);
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
@@ -192,40 +194,32 @@ class Puzzle3 extends Content {
 
 class Puzzle4 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Ladder 4</p>];
+        return [<p>Net 4</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e8e7d6d5d4",
-                white: "g7d8c8d7b7c5c6c4c3e6h6",
+                black: "b3b4c2d2d3d4d5d6e2f2f3h3",
+                white: "b5c3c4c5c6c7d8e3e4e5g7g8h6",
             },
 
-            move_tree: this.makePuzzleMoveTree(
-                ["f6e5e4f5g5f4f3g4h4"],
-                ["e5f6", "f6e5f5e4e3d3"],
-                9,
-                9,
-            ),
+            move_tree: this.makePuzzleMoveTree(["f6e6e7f5g5f7f4"], ["", ""], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Solved!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
                 })
-                .then(() => {
-                    this.gotoNext();
-                })
-                .catch(() => 0);
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
