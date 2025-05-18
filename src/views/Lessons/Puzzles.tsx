@@ -279,7 +279,7 @@ export function Puzzles({
                 <div className="landscape-top-spacer">
                     <div className="lesson-title">
                         {/* 0 indexed puzzleNumber */}
-                        {displaySectionName} Problem {puzzleNumber + 1}
+                        {displaySectionName} Problem {puzzleNumber + 1}: Blue to play
                     </div>
                 </div>
                 <div id="Lesson-bottom-container">
@@ -287,6 +287,7 @@ export function Puzzles({
                         <div className="explanation-text" onClick={cancel_animation_ref.current}>
                             {/* {text} */}
                             <div className="puzzle-sections">
+                                {/* <h3>Blue to play</h3> */}
                                 <h3>Problem Sections</h3>
                                 {sectionList}
                             </div>
