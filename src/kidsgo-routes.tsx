@@ -77,7 +77,7 @@ export const routes = (
             <Routes>
                 <Route path="/game/:id" element={<KidsGame />} />
                 <Route
-                    path="/learn-to-play/8/puzzles/:section/:puzzleNumber"
+                    path="/learn-to-play/8/problems/:section/:puzzleNumber"
                     element={<PuzzlesRouter />}
                 />
                 <Route path="/learn-to-play/:chapter/:page" element={<LessonRouter />} />
