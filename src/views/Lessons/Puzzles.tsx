@@ -343,7 +343,9 @@ export function Puzzles({
                         </Link>
                     </div>
 
-                    <div className="center">{displaySectionName} Puzzles</div>
+                    <div className="center">
+                        {displaySectionName} {puzzleNumber + 1}: Blue to play
+                    </div>
 
                     <div className="right">
                         <Link to={next} className="game-button-container">
