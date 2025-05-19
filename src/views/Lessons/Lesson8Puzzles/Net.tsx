@@ -145,16 +145,11 @@ class Puzzle3 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e7c7c6b5a5a4a3a2a1b1c2",
-                white: "h2g3g4g7f5e5d5c4b4b3b2c1d1",
+                black: "c3c5c6d7e7f7",
+                white: "b7c7d6d8e8f4g8g7g5g3",
             },
 
-            move_tree: this.makePuzzleMoveTree(
-                ["d2e1f2f1g1e2e3"],
-                ["d2e1e2f1f2g1g2h1", "d2e1e2f1g2f2f3g1"],
-                9,
-                9,
-            ),
+            move_tree: this.makePuzzleMoveTree(["e5e6f6d5d4"], ["d5e6f5f6"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -196,6 +191,7 @@ class Puzzle4 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Net 4</p>];
     }
+
     config(): PuzzleConfig {
         return {
             initial_state: {
@@ -241,4 +237,114 @@ class Puzzle4 extends Content {
     }
 }
 
-export const Net: Array<typeof Content> = [Puzzle1, Puzzle2, Puzzle3, Puzzle4];
+class Puzzle5 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Net 4</p>];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "e7c7c6b5a5a4a3a2a1b1c2",
+                white: "h2g3g4g7f5e5d5c4b4b3b2c1d1",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["d2e1f2f1g1e2e3"],
+                ["d2e1e2f1f2g1g2h1", "d2e1e2f1g2f2f3g1", "e2d2d3c3"],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle6 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Net 4</p>];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "b6b7c4c5d2d3f2",
+                white: "a2b1b3b8c2c3c8d4d7e7f6",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["e5e4f4e3e2f3g3d5d6"],
+                ["e4d5", "e5e4f4e3f3e2"],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+export const Net: Array<typeof Content> = [Puzzle1, Puzzle2, Puzzle3, Puzzle4, Puzzle5, Puzzle6];
