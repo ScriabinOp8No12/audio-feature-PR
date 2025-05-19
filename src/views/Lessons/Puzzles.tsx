@@ -343,7 +343,7 @@ export function Puzzles({
                         </Link>
                     </div>
 
-                    <div className="center">
+                    <div className="puzzle-center">
                         {displaySectionName} {puzzleNumber + 1}: Blue to play
                     </div>
 
