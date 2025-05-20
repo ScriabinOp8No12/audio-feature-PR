@@ -20,15 +20,24 @@ import { Capturing } from "./Lesson8Puzzles/Capturing";
 import { LifeAndDeath } from "./Lesson8Puzzles/LifeAndDeath";
 import { Ladder } from "./Lesson8Puzzles/Ladder";
 import { Net } from "./Lesson8Puzzles/Net";
+import { CapturingRace } from "./Lesson8Puzzles/CapturingRace";
 import { Tesuji } from "./Lesson8Puzzles/Tesuji";
 
-export const sectionKeys = ["capturing", "lifeanddeath", "ladder", "net", "tesuji"] as const;
+export const sectionKeys = [
+    "capturing",
+    "lifeanddeath",
+    "ladder",
+    "net",
+    "capturingrace",
+    "tesuji",
+] as const;
 
 export const puzzleSectionMap: Record<(typeof sectionKeys)[number], Array<typeof Content>> = {
     capturing: Capturing,
     lifeanddeath: LifeAndDeath,
     ladder: Ladder,
     net: Net,
+    capturingrace: CapturingRace,
     tesuji: Tesuji,
 };
 
@@ -37,5 +46,6 @@ export const sectionDisplayNames: Record<(typeof sectionKeys)[number], string> =
     lifeanddeath: "Life and Death",
     ladder: "Ladder",
     net: "Net",
+    capturingrace: "Capturing Race",
     tesuji: "Tesuji",
 };
