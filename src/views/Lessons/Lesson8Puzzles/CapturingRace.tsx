@@ -514,7 +514,7 @@ class Puzzle10 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["b5b6c4c6a6", "b5b6a6b4c6"],
-                ["a5b6c6a7", "b6b5b4a6c4a7", "b6b5c4a6b4a7", "c6b6"],
+                ["a5b6c6a7", "b6b5b4a6c4a7", "b6b5c4a6b4a7", "c6b6", "c4b5b4a6a7a8"],
                 9,
                 9,
             ),
