@@ -188,11 +188,11 @@ class Puzzle4 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "b5b6c4c7d6d7e6",
-                white: "c5c6d5e2e7e8f4f7g4h5h6",
+                black: "a4b5c1c2c4c5d2d3",
+                white: "a2b1b2b3b4c3d4e4f2f3",
             },
 
-            move_tree: this.makePuzzleMoveTree(["e4e5f5d4d3"], ["e5d4e4d3", "d4e5e4f5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["a5e2a3e3a1"], ["a3a5"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -238,16 +238,11 @@ class Puzzle5 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "b3b4c2d2d3d4d5d6e2f2f3h3",
-                white: "b5c3c4c5c6c7d8e3e4e5f8g7g8h6",
+                black: "b2b3c2d3e3f3f4f5g2g6h2h5h6",
+                white: "b4c3c4c6d2e1e2e5e6f2f6g3g4g5",
             },
 
-            move_tree: this.makePuzzleMoveTree(
-                ["f6e6e7f5g5f7f4", "f6e6e7f5g5f7g6d7f4"],
-                [""],
-                9,
-                9,
-            ),
+            move_tree: this.makePuzzleMoveTree(["h3d4h4", "h4d43"], ["d1c1", "f1g1", "d4d5"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -293,13 +288,13 @@ class Puzzle6 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "b6b7b8c4c5c8d7e7",
-                white: "b2b3b4b5c2c6d2d6f2",
+                black: "c7d6e6e7f8g7",
+                white: "b6c6d7d8e8",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["e5d5d4e6f6e4c7", "e5d5d4e6f6e4f5c3c7"],
-                [""],
+                ["c8b8d9b7e9", "c8b8e9b7d9", "c8b8c9b7e9b9d9", "c8b8c9b7d9b9e9"],
+                ["b7b8c8c9", "b8c8b7b9"],
                 9,
                 9,
             ),
@@ -348,30 +343,32 @@ class Puzzle7 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "c2c3c4c5c6d2e3e4e5",
-                white: "d3d4d5d6e2f2f3f4f6",
+                black: "c2d2e2f3f4g4h4h2",
+                white: "b1b2b3c3e1e3e4f2g2g3",
             },
 
-            move_tree: this.makePuzzleMoveTree(["e6d7e7"], ["f5g5e6e7"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["h3d1g1f1c1", "g1d3h3d1f1", "f1g1h1d1h3f1c1"],
+                ["d1d3f1c1e1g1", "d1d3f1c1g1e1", "d1d3f1c1h3e1"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Solved!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
                 })
-                .then(() => {
-                    this.gotoNext();
-                })
-                .catch(() => 0);
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
@@ -401,13 +398,13 @@ class Puzzle8 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "c3e3h2h3h4j2",
-                white: "j3j4j5h8g8f7e7",
+                black: "j7j8h5h6g5e5e6e8d4d7d8",
+                white: "c8c7c6d6e7f7f6g6g8h8h7",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["h6h5g5j6j7"],
-                ["h5j6h6j7h7j8", "h5j6h7j7h6j8"],
+                ["f8d9f5g7g9e9h9", "f8d9f5g7h9f9g9"],
+                ["f8d9f5g7g9e9f9h9", "f5f8f9d9e9g9", "f5f8h9e9d9c9"],
                 9,
                 9,
             ),
@@ -456,13 +453,13 @@ class Puzzle9 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e7c7c6b5a5a4a3a2a1b1c2",
-                white: "h2g3g4g7f5e5d5c4b4b3b2c1d1",
+                black: "j6h6g6f6e7e8e9g9h9",
+                white: "j7h7g7f7f8f9e6d6c7b8",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["d2e1f2f1g1e2e3"],
-                ["d2e1e2f1f2g1g2h1", "d2e1e2f1g2f2f3g1", "e2d2d3c3"],
+                ["j8d7h8d8g8", "j8d7g8d8h8"],
+                ["g8j8h8j9", "g8j8j9h8", "h8j8g8j9", "h8j8j9g8h9d7"],
                 9,
                 9,
             ),
@@ -511,13 +508,13 @@ class Puzzle10 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "b6b7c4c5d2d3f2",
-                white: "a2b1b3b8c2c3c8d4d7e7f6",
+                black: "b7c7d7e6e5d4c3",
+                white: "b8c8d8e7f7d6d5c5",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["e5e4f4e3e2f3g3d5d6"],
-                ["e4d5", "e5e4f4e3f3e2"],
+                ["b5b6c4c6a6", "b5b6a6b4c6"],
+                ["a5b6c6a7", "b6b5b4a6c4a7", "b6b5c4a6b4a7", "c6b6"],
                 9,
                 9,
             ),
