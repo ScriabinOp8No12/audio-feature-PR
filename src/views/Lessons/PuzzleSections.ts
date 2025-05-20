@@ -26,30 +26,30 @@ import { Tesuji } from "./Lesson8Puzzles/Tesuji";
 
 export const sectionKeys = [
     "capturing",
+    "endgame",
     "lifeanddeath",
     "ladder",
     "net",
     "capturingrace",
-    "endgame",
     "tesuji",
 ] as const;
 
 export const puzzleSectionMap: Record<(typeof sectionKeys)[number], Array<typeof Content>> = {
     capturing: Capturing,
+    endgame: Endgame,
     lifeanddeath: LifeAndDeath,
     ladder: Ladder,
     net: Net,
     capturingrace: CapturingRace,
-    endgame: Endgame,
     tesuji: Tesuji,
 };
 
 export const sectionDisplayNames: Record<(typeof sectionKeys)[number], string> = {
     capturing: "Capturing",
+    endgame: "Endgame",
     lifeanddeath: "Life and Death",
     ladder: "Ladder",
     net: "Net",
     capturingrace: "Capturing Race",
-    endgame: "Endgame",
     tesuji: "Tesuji",
 };
