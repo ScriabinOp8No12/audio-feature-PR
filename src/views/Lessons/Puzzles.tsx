@@ -78,6 +78,7 @@ export function Puzzles({
 
     const [container, _setContainer] = useState(document.createElement("div"));
     const goban_ref = useRef<Goban>(null);
+    // const content_ref = useRef(null);
     const cancel_animation_ref = useRef<() => void>(() => {});
     const audioRef = useRef<HTMLAudioElement>(null);
     const goban_opts_ref = useRef<any>({});
@@ -122,6 +123,11 @@ export function Puzzles({
             {value}
         </div>
     ));
+    // const handleHintClick = () => {
+    //     if (content_ref.current && content_ref.current.showHint) {
+    //         content_ref.current.showHint();
+    //     }
+    // };
 
     useEffect(() => {
         console.log("Constructing puzzle", displaySectionName, puzzleNumber);
@@ -187,6 +193,16 @@ export function Puzzles({
         const goban: Goban = goban_ref.current;
         // This triggers the same re-render that the replay button does, and we pass this down to the Module classes where the puzzles are
         content.resetGoban = () => setReplay(Math.random());
+        // content.showHint = () => {
+        //     console.log("Hello, clicked hint button!");
+        //     const mvs = decodeMoves(
+        //         goban.engine.cur_move.getMoveStringToThisPoint(),
+        //         goban.width,
+        //         goban.height,
+        //     );
+        //     const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
+        //     console.log("MOVE STRING FROM HINT BUTTON CLICK: ", move_string);
+        // };
         content.setGoban(goban);
         content.setNext(next);
 
@@ -291,7 +307,9 @@ export function Puzzles({
                                 {sectionList}
                             </div>
                         </div>
-                        <div className="bottom-graphic"></div>
+                        <div className="bottom-graphic">
+                            {/* <button onClick={handleHintClick}>Hint</button> */}
+                        </div>
                     </div>
 
                     <div id="board-container" ref={board_container_resizer.ref}>

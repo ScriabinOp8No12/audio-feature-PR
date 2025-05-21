@@ -244,6 +244,7 @@ export class Content extends TypedEventEmitter<Events> {
     }
     // Uses the 'replay' button on the lesson page to reset the goban's state by triggering a re-render
     resetGoban?: () => void;
+    showHint?: () => void;
 }
 
 let content_navigate = (_path: string) => {
