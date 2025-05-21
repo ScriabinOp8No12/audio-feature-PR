@@ -172,10 +172,8 @@ class Page5 extends Module7 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <p>
-                White could then connect to the top edge to finish enclosing territory. Now is the
-                game done? Are all the connections secure?
-            </p>,
+            <p>White could then connect to the top edge to finish enclosing territory.</p>,
+            <p>Now is the game done? Are all the connections secure?</p>,
         ];
     }
 
@@ -460,10 +458,12 @@ class Page12 extends Module7 {
         });
         this.delay(() => {
             goban.placeByPrettyCoordinates("g1");
-            goban.setMarkByPrettyCoordinates("g1", "triangle");
+            // goban.setMarkByPrettyCoordinates("g1", "triangle");
         });
         this.delay(() => {
             goban.placeByPrettyCoordinates("d6");
+        });
+        this.delay(() => {
             goban.setMarkByPrettyCoordinates("g1", "triangle");
         });
     }
@@ -536,7 +536,7 @@ class Page15 extends Module7 {
         return [
             <p>The end of the game could have looked like this.</p>,
             <p>
-                The edges of all the territories are all touching, but there are some stones trapped
+                The edges of all the territories are touching, but there are some stones trapped
                 behind the walls. These are marked with triangles. They could be captured, or they
                 could live.
             </p>,
@@ -630,6 +630,126 @@ class Page16 extends Module7 {
     }
 }
 
+class Page17 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>If each side captures the trapped stones, the game might go like this.</p>,
+            <p>
+                So the principle remains the same: surround all areas that you can, capture any
+                stones that you can, and seal all the edges.
+            </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c1c2c3c5c6c7d1d3d4d5d7d8e1e3e4e8e9f4f5f6g8h7",
+                white: "d2d6e2e5e6e7f1f2f3f7f8f9g3g4g5g6g7h2h4h8b2b3",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("b4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("a3");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j7");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("a2");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g9");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("b1");
+        });
+    }
+}
+
+class Page18 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                At this point, white could pass, blue passes, and white must pass once more to keep
+                the number of stones played equal.
+            </p>,
+            <p>
+                The game ends here and can be scored. The score is blue 18 and white 16, but blue
+                captured 3 prisoners and white captured 2, so it is 16-13.
+            </p>,
+            <p>
+                The computer will score the game for you, but you have to pass in order to get
+                there.
+            </p>,
+            // <p>
+            //     You can go back and forth between the end of the game and the score by clicking on
+            //     View Game or Show Score.
+            // </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c1c2c3c5c6c7d1d3d4d5d7d8e1e3e4e8e9f4f5f6b1b4a2a3",
+                white: "d2d6e2e5e6e7f1f2f3f7f8f9g3g4g5g6g7h2h4h8g9h6j7",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        const s = goban.engine.computeScore(false);
+        goban.showScores(s, true);
+    }
+}
+
+class Page19 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                Congratulations on making it through all 7 lessons! You now have the basics down,
+                and as you play more, your understanding of the game will deepen.
+            </p>,
+            <p>
+                The next section contains 100 problems in eight different categories, and they get
+                harder as you work through them.
+            </p>,
+            <p>Solving these kinds of problems is fun!</p>,
+        ];
+    }
+    axolotlFace() {
+        return true;
+    }
+    hidePlayButton() {
+        return true;
+    }
+}
+
 export const module7: Array<typeof Content> = [
     Page1,
     Page2,
@@ -647,4 +767,7 @@ export const module7: Array<typeof Content> = [
     Page14,
     Page15,
     Page16,
+    Page17,
+    Page18,
+    Page19,
 ];
