@@ -384,11 +384,9 @@ class Page10 extends Module7 {
         };
     }
     onSetGoban(goban: Goban): void {
-        this.delay(() => {
-            goban.setMarkByPrettyCoordinates("d6", "square");
-            goban.setMarkByPrettyCoordinates("d5", "square");
-            goban.setMarkByPrettyCoordinates("e5", "square");
-        }, 0);
+        goban.setMarkByPrettyCoordinates("d6", "square");
+        goban.setMarkByPrettyCoordinates("d5", "square");
+        goban.setMarkByPrettyCoordinates("e5", "square");
     }
 }
 
@@ -431,6 +429,207 @@ class Page11 extends Module7 {
     }
 }
 
+class Page12 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                If you play inside your own territory, and your opponent plays a neutral point, you
+                actually lose a point.
+            </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c1c2c3c5c6c7d1d3d4d7d8e1e3e4e8e9f4f5f6",
+                white: "d2e2e5e6e7f1f2f3f7f8f9g3g4g5g6g7h2h4h8",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("d5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g1");
+            goban.setMarkByPrettyCoordinates("g1", "triangle");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("d6");
+            goban.setMarkByPrettyCoordinates("g1", "triangle");
+        });
+    }
+}
+
+class Page13 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                Inside a players territory, the stones do not need to touch and you don't want to
+                play inside unless you need to defend or connect something.
+            </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c1c2c3c5c6c7d1d3d4d5d7d8e1e3e4e8e9f4f5f6",
+                white: "d2d6e2e5e6e7f1f2f3f7f8f9g3g4g5g6g7h2h4h8",
+            },
+        };
+    }
+}
+
+class Page14 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                The white territory is marked with circles, and the blue territory is marked with
+                squares. White has 19 points and blue has 22.
+            </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c1c2c3c5c6c7d1d3d4d5d7d8e1e3e4e8e9f4f5f6",
+                white: "d2d6e2e5e6e7f1f2f3f7f8f9g3g4g5g6g7h2h4h8",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.setMarkByPrettyCoordinates("a1a2a3a4a5a6a7a8a9b1b2b3b4b5b6b7b8b9c4c8c9d9", "square");
+        goban.setMarkByPrettyCoordinates("g1g2g8g9h1h3h5h6h7h9j1j2j3j4j5j6j7j8j9", "circle");
+    }
+}
+
+class Page15 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>The end of the game could have looked like this.</p>,
+            <p>
+                The edges of all the territories are all touching, but there are some stones trapped
+                behind the walls. These are marked with triangles. They could be captured, or they
+                could live.
+            </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c1c2c3c5c6c7d1d3d4d5d7d8e1e3e4e8e9f4f5f6g8h7",
+                white: "d2d6e2e5e6e7f1f2f3f7f8f9g3g4g5g6g7h2h4h8b2b3",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.setMarkByPrettyCoordinates("g8h7b2b3", "triangle");
+    }
+}
+
+class Page16 extends Module7 {
+    constructor() {
+        super("no_audio_here");
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <p>
+                If each side tires to make a living group, and neither side tried to stop the other,
+                these stones could live.
+            </p>,
+        ];
+    }
+
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            width: 9,
+            height: 9,
+            initial_state: {
+                black: "c1c2c3c5c6c7d1d3d4d5d7d8e1e3e4e8e9f4f5f6g8h7",
+                white: "d2d6e2e5e6e7f1f2f3f7f8f9g3g4g5g6g7h2h4h8b2b3",
+            },
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j8");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("b4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("b5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("b1");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h9");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("a4");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("a5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("a2");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("g9");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("h6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j6");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j5");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("j7");
+        });
+        this.delay(() => {
+            goban.placeByPrettyCoordinates("c4");
+        });
+    }
+}
+
 export const module7: Array<typeof Content> = [
     Page1,
     Page2,
@@ -443,4 +642,9 @@ export const module7: Array<typeof Content> = [
     Page9,
     Page10,
     Page11,
+    Page12,
+    Page13,
+    Page14,
+    Page15,
+    Page16,
 ];
