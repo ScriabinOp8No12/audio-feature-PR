@@ -107,7 +107,7 @@ export function LearnToPlay(): JSX.Element {
                             className="chapter-text"
                             onClick={() => navigateToChapter(7, navigate)}
                         >
-                            Test
+                            Scoring
                         </div>
                     </div>
 
