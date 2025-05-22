@@ -52,25 +52,25 @@ export function Puzzles({
     let next;
     if (puzzleNumber + 1 < maxPuzzlesInCurrentSection) {
         // puzzleNumber is 0-indexed internally, +2 for URL (convert to 1-index and increment)
-        next = `/learn-to-play/8/puzzles/${sectionName}/${puzzleNumber + 2}`;
+        next = `/learn-to-play/8/problems/${sectionName}/${puzzleNumber + 2}`;
     } else {
         // At last puzzle, move to next section or back to main page
         if (currentSectionIndex < sectionKeys.length - 1) {
             const nextSectionKey = sectionKeys[currentSectionIndex + 1];
-            next = `/learn-to-play/8/puzzles/${nextSectionKey}/1`;
+            next = `/learn-to-play/8/problems/${nextSectionKey}/1`;
         } else {
             next = "/learn-to-play";
         }
     }
     let back;
     if (puzzleNumber > 0) {
-        back = `/learn-to-play/8/puzzles/${sectionName}/${puzzleNumber}`;
+        back = `/learn-to-play/8/problems/${sectionName}/${puzzleNumber}`;
     } else {
         // At first puzzle, go to previous section's last puzzle or main page
         if (currentSectionIndex > 0) {
             const prevSectionKey = sectionKeys[currentSectionIndex - 1];
             const prevSectionPuzzles = puzzleSectionMap[prevSectionKey];
-            back = `/learn-to-play/8/puzzles/${prevSectionKey}/${prevSectionPuzzles.length}`;
+            back = `/learn-to-play/8/problems/${prevSectionKey}/${prevSectionPuzzles.length}`;
         } else {
             back = "/learn-to-play";
         }
@@ -118,7 +118,7 @@ export function Puzzles({
         <div
             key={key}
             className={`section-link ${value === displaySectionName ? "active-section" : ""}`}
-            onClick={() => navigate(`/learn-to-play/8/puzzles/${key}/1`)}
+            onClick={() => navigate(`/learn-to-play/8/problems/${key}/1`)}
         >
             {value}
         </div>
@@ -295,7 +295,7 @@ export function Puzzles({
                 <div className="landscape-top-spacer">
                     <div className="lesson-title">
                         {/* 0 indexed puzzleNumber */}
-                        {displaySectionName} Puzzle {puzzleNumber + 1}
+                        {displaySectionName} Problem {puzzleNumber + 1}: Blue to play
                     </div>
                 </div>
                 <div id="Lesson-bottom-container">
@@ -303,7 +303,8 @@ export function Puzzles({
                         <div className="explanation-text" onClick={cancel_animation_ref.current}>
                             {/* {text} */}
                             <div className="puzzle-sections">
-                                <h3>Puzzle Sections</h3>
+                                {/* <h3>Blue to play</h3> */}
+                                <h3>Problem Sections</h3>
                                 {sectionList}
                             </div>
                         </div>
@@ -360,7 +361,9 @@ export function Puzzles({
                         </Link>
                     </div>
 
-                    <div className="center">{displaySectionName} Puzzles</div>
+                    <div className="puzzle-center">
+                        {displaySectionName} {puzzleNumber + 1}: Blue to play
+                    </div>
 
                     <div className="right">
                         <Link to={next} className="game-button-container">

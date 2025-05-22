@@ -37,7 +37,6 @@ class Puzzle1 extends Content {
             move_tree: this.makePuzzleMoveTree(["g6"], ["f5g6"], 9, 9),
         };
     }
-
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
             this.captureDelay(() => {
