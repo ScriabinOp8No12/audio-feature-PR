@@ -189,6 +189,7 @@ export function Puzzles({
 
         goban_opts_ref.current = opts;
         console.log(opts);
+        console.log("opts.move_tree.branches", opts.move_tree.branches);
         goban_ref.current = new GobanCanvas(opts);
         const goban: Goban = goban_ref.current;
         // This triggers the same re-render that the replay button does, and we pass this down to the Module classes where the puzzles are
