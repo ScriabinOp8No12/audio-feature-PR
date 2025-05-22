@@ -26,17 +26,30 @@
 
 .section-link {
     cursor: pointer;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background: rgb(208,238,249);
+    color: black;
+    border: none;
+    padding: 10px;
+    margin-right: 2rem;
+    border-radius: 6px;
+    font-size: 20px;
+    text-shadow: none;
     
     &:hover {
-        opacity: 0.75;
+        opacity: 0.85;
     }
 }
 
 .active-section {
     color: rgb(46, 165, 250);
-        &:hover {
-        opacity: 1;
-    }
 }
 
+.puzzle-center {
+    flex: 1;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.7rem;
+    overflow: hidden;
+}
