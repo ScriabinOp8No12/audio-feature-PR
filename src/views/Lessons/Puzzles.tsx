@@ -72,7 +72,8 @@ export function Puzzles({
             const prevSectionPuzzles = puzzleSectionMap[prevSectionKey];
             back = `/learn-to-play/8/problems/${prevSectionKey}/${prevSectionPuzzles.length}`;
         } else {
-            back = "/learn-to-play";
+            // Pretty bad to be hard coded here, as if we add or remove pages from lesson 7, it won't go to the last page
+            back = "/learn-to-play/7/19";
         }
     }
 
@@ -89,6 +90,9 @@ export function Puzzles({
     const [showAxotol, setShowAxotol]: [boolean, (x: boolean) => void] = useState<boolean>(false);
     const [hidePlayButton, setHidePlayButton]: [boolean, (x: boolean) => void] =
         useState<boolean>(false);
+    const [hintsOn, setHintsOn] = useState(false);
+
+    console.log("hintsOn value local state", hintsOn);
     const onResize = useCallback((width, height) => {
         const goban = goban_ref.current;
         if (goban) {
@@ -122,6 +126,62 @@ export function Puzzles({
             {value}
         </div>
     ));
+
+    const removeHints = () => {
+        console.log("got to remove hints function!");
+        const goban: Goban = goban_ref.current;
+        const move = goban.engine.cur_move;
+        move.branches.forEach((item) => goban.deleteCustomMark(item.x, item.y, "hint", true));
+        setHintsOn(false);
+    };
+
+    const showHint = () => {
+        console.log("HELLO CLICKED HINT BUTTON");
+        // this.ref_hint_button.current?.blur();
+        const content = new puzzles[puzzleNumber]();
+        const content_config = content.config();
+        const opts: GobanConfig = Object.assign(
+            {
+                board_div: container || undefined,
+                interactive: true,
+                mode: "puzzle",
+                width: 9,
+                height: 9,
+                circle_radius: 0.45,
+                draw_top_labels: false,
+                draw_right_labels: false,
+                draw_left_labels: false,
+                draw_bottom_labels: false,
+                player_id: 0,
+                server_socket: null,
+                square_size: "auto",
+                dont_draw_last_move: true,
+
+                puzzle_opponent_move_mode: "automatic",
+                puzzle_player_move_mode: "free",
+                getPuzzlePlacementSetting: () => {
+                    return { mode: "play" };
+                },
+            },
+            content_config,
+        ) as GobanConfig;
+        goban_opts_ref.current = opts;
+        // console.log(opts);
+        // console.log("opts.move_tree.branches", opts.move_tree.branches);
+        const goban: Goban = goban_ref.current;
+        // console.log("goban.engine.cur_move", goban.engine.cur_move);
+        // console.log("goban.engine.cur_move.correct_answer", goban.engine.cur_move.correct_answer);
+
+        if (hintsOn) {
+            removeHints();
+        } else if (!goban.engine.cur_move.correct_answer) {
+            const branches = goban.engine.cur_move.findBranchesWithCorrectAnswer();
+            branches.forEach((branch) => {
+                goban.setCustomMark(branch.x, branch.y, "hint", true);
+            });
+            setHintsOn(true);
+        }
+    };
 
     useEffect(() => {
         console.log("Constructing puzzle", displaySectionName, puzzleNumber);
@@ -182,11 +242,12 @@ export function Puzzles({
         ) as GobanConfig;
 
         goban_opts_ref.current = opts;
-        console.log(opts);
+        // console.log(opts);
         goban_ref.current = new GobanCanvas(opts);
         const goban: Goban = goban_ref.current;
         // This triggers the same re-render that the replay button does, and we pass this down to the Module classes where the puzzles are
         content.resetGoban = () => setReplay(Math.random());
+
         content.setGoban(goban);
         content.setNext(next);
 
@@ -235,6 +296,7 @@ export function Puzzles({
             );
             const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
             console.log("Move string: ", move_string);
+            removeHints();
         };
 
         goban.on("update", onUpdate);
@@ -292,7 +354,9 @@ export function Puzzles({
                                 {sectionList}
                             </div>
                         </div>
-                        <div className="bottom-graphic"></div>
+                        <div className="bottom-graphic">
+                            <button onClick={showHint}>Hint</button>
+                        </div>
                     </div>
 
                     <div id="board-container" ref={board_container_resizer.ref}>
@@ -316,18 +380,33 @@ export function Puzzles({
                         <div className="top-spacer" />
                         <Racoon hover />
                         <div className="landscape-bottom-buttons">
-                            <Link to={back} className="game-button-container">
+                            <Link
+                                to={back}
+                                className="game-button-container"
+                                onClick={() => {
+                                    removeHints();
+                                }}
+                            >
                                 <span className="stone-button-left" />
                                 <span className="button-text">Back</span>
                             </Link>
                             <span
                                 className="game-button-container"
-                                onClick={() => setReplay(Math.random())}
+                                onClick={() => {
+                                    setReplay(Math.random());
+                                    removeHints();
+                                }}
                             >
                                 <span className="stone-button-refresh" />
                                 <span className="button-text">Replay</span>
                             </span>
-                            <Link to={next} className="game-button-container">
+                            <Link
+                                to={next}
+                                className="game-button-container"
+                                onClick={() => {
+                                    removeHints();
+                                }}
+                            >
                                 <span className="stone-button-right" />
                                 <span className="button-text">next</span>
                             </Link>
@@ -337,7 +416,13 @@ export function Puzzles({
 
                 <div className="portrait-bottom-buttons">
                     <div className="left">
-                        <Link to={back} className="game-button-container">
+                        <Link
+                            to={back}
+                            className="game-button-container"
+                            onClick={() => {
+                                removeHints();
+                            }}
+                        >
                             <span className="stone-button-left" />
                             <span className="button-text">Back</span>
                         </Link>
@@ -348,7 +433,13 @@ export function Puzzles({
                     </div>
 
                     <div className="right">
-                        <Link to={next} className="game-button-container">
+                        <Link
+                            to={next}
+                            className="game-button-container"
+                            onClick={() => {
+                                removeHints();
+                            }}
+                        >
                             <span className="stone-button-right" />
                             <span className="button-text">Next</span>
                         </Link>
@@ -359,7 +450,13 @@ export function Puzzles({
             <BackButton onClick={() => navigate("/learn-to-play")} />
 
             <div id="portrait-replay">
-                <span className="stone-button-refresh" onClick={() => setReplay(Math.random())} />
+                <span
+                    className="stone-button-refresh"
+                    onClick={() => {
+                        setReplay(Math.random());
+                        removeHints();
+                    }}
+                />
             </div>
         </>
     );
