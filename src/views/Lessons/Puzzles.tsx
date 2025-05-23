@@ -29,6 +29,7 @@ import { useNavigate } from "react-router-dom";
 import { animateCaptures } from "@kidsgo/lib/animateCaptures";
 import { BackButton } from "@kidsgo/components/BackButton";
 import { sfx } from "@/lib/sfx";
+import { setCustomMarkWithColor } from "@kidsgo/lib/configure-goban";
 import { sectionDisplayNames, sectionKeys, puzzleSectionMap } from "./PuzzleSections";
 
 export function Puzzles({
@@ -173,10 +174,16 @@ export function Puzzles({
 
         if (hintsOn) {
             removeHints();
-        } else if (!goban.engine.cur_move.correct_answer) {
-            const branches = goban.engine.cur_move.findBranchesWithCorrectAnswer();
-            branches.forEach((branch) => {
+        } else if (!goban.engine.cur_move.correct_answer || !goban.engine.cur_move.wrong_answer) {
+            const branchesRight = goban.engine.cur_move.findBranchesWithCorrectAnswer();
+            branchesRight.forEach((branch) => {
                 goban.setCustomMark(branch.x, branch.y, "hint", true);
+            });
+            const branchesWrong = goban.engine.cur_move.findBranchesWithWrongAnswer();
+            branchesWrong.forEach((branch) => {
+                // goban.setMarkColor(branch.x, branch.y, "red");
+                // goban.setCustomMark(branch.x, branch.y, "hint", true);
+                setCustomMarkWithColor(goban, branch.x, branch.y, "hint", "red", true);
             });
             setHintsOn(true);
         }
@@ -348,7 +355,6 @@ export function Puzzles({
                         <div className="explanation-text" onClick={cancel_animation_ref.current}>
                             {/* {text} */}
                             <div className="puzzle-sections">
-                                {/* <h3>Blue to play</h3> */}
                                 <h3>Problem Sections</h3>
                                 {sectionList}
                             </div>
