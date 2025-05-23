@@ -89,10 +89,9 @@ export function Puzzles({
     const [showAxotol, setShowAxotol]: [boolean, (x: boolean) => void] = useState<boolean>(false);
     const [hidePlayButton, setHidePlayButton]: [boolean, (x: boolean) => void] =
         useState<boolean>(false);
-    // local hint state, if it's true, it shows the mark on the goban, if it's false, it hides it, basically, we can
-    // use this to hide the hint after it's showing, if the user clicks the board (either where the hint is or where it isn't)
     const [hintsOn, setHintsOn] = useState(false);
 
+    console.log("hintsOn value local state", hintsOn);
     const onResize = useCallback((width, height) => {
         const goban = goban_ref.current;
         if (goban) {
@@ -127,6 +126,14 @@ export function Puzzles({
         </div>
     ));
 
+    const removeHints = () => {
+        console.log("got to remove hints function!");
+        const goban: Goban = goban_ref.current;
+        const move = goban.engine.cur_move;
+        move.branches.forEach((item) => goban.deleteCustomMark(item.x, item.y, "hint", true));
+        setHintsOn(false);
+    };
+
     const showHint = () => {
         console.log("HELLO CLICKED HINT BUTTON");
         // this.ref_hint_button.current?.blur();
@@ -159,31 +166,20 @@ export function Puzzles({
         ) as GobanConfig;
         goban_opts_ref.current = opts;
         // console.log(opts);
-        console.log("opts.move_tree.branches", opts.move_tree.branches);
-        // if clicking the hint button when HINTS are already displayed, then clear them (below if block!), have a removeHints function
-        // if (hintsOn) {
-        //     this.removeHints();
+        // console.log("opts.move_tree.branches", opts.move_tree.branches);
+        const goban: Goban = goban_ref.current;
+        // console.log("goban.engine.cur_move", goban.engine.cur_move);
+        // console.log("goban.engine.cur_move.correct_answer", goban.engine.cur_move.correct_answer);
 
-        // removeHints() {
-        //     if (this.goban) {
-        //         const move = this.goban.engine.cur_move;
-        //         move.branches.forEach((item) =>
-        //             this.goban.deleteCustomMark(item.x, item.y, "hint", true),
-        //         );
-        //     }
-        //     this.setState({ hintsOn: false });
-        // }
-        // }
-
-        // Otherwise, we show the green hint button on the screen, like OGS does it
-
-        // else if (goban.engine.cur_move.correct_answer) {
-        //     const branches = goban.engine.cur_move.findBranchesWithCorrectAnswer();
-        //     branches.forEach((branch) => {
-        //         goban.setCustomMark(branch.x, branch.y, "hint", true);
-        //     });
-        //     setHintsOn(true);
-        // }
+        if (hintsOn) {
+            removeHints();
+        } else if (!goban.engine.cur_move.correct_answer) {
+            const branches = goban.engine.cur_move.findBranchesWithCorrectAnswer();
+            branches.forEach((branch) => {
+                goban.setCustomMark(branch.x, branch.y, "hint", true);
+            });
+            setHintsOn(true);
+        }
     };
 
     useEffect(() => {
@@ -246,16 +242,8 @@ export function Puzzles({
 
         goban_opts_ref.current = opts;
         // console.log(opts);
-        // console.log("opts.move_tree.branches", opts.move_tree.branches);
         goban_ref.current = new GobanCanvas(opts);
         const goban: Goban = goban_ref.current;
-        console.log("goban.engine.cur_move", goban.engine.cur_move);
-        console.log("goban.engine.cur_move.correct_answer", goban.engine.cur_move.correct_answer);
-        const branches = goban.engine.cur_move.findBranchesWithCorrectAnswer();
-        // console.log("branches!!!!!!!!!!!!!1", branches);
-        branches.forEach((branch) => {
-            goban.setCustomMark(branch.x, branch.y, "hint", true);
-        });
         // This triggers the same re-render that the replay button does, and we pass this down to the Module classes where the puzzles are
         content.resetGoban = () => setReplay(Math.random());
 
@@ -307,6 +295,7 @@ export function Puzzles({
             );
             const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
             console.log("Move string: ", move_string);
+            removeHints();
         };
 
         goban.on("update", onUpdate);
@@ -390,18 +379,33 @@ export function Puzzles({
                         <div className="top-spacer" />
                         <Racoon hover />
                         <div className="landscape-bottom-buttons">
-                            <Link to={back} className="game-button-container">
+                            <Link
+                                to={back}
+                                className="game-button-container"
+                                onClick={() => {
+                                    removeHints();
+                                }}
+                            >
                                 <span className="stone-button-left" />
                                 <span className="button-text">Back</span>
                             </Link>
                             <span
                                 className="game-button-container"
-                                onClick={() => setReplay(Math.random())}
+                                onClick={() => {
+                                    setReplay(Math.random());
+                                    removeHints();
+                                }}
                             >
                                 <span className="stone-button-refresh" />
                                 <span className="button-text">Replay</span>
                             </span>
-                            <Link to={next} className="game-button-container">
+                            <Link
+                                to={next}
+                                className="game-button-container"
+                                onClick={() => {
+                                    removeHints();
+                                }}
+                            >
                                 <span className="stone-button-right" />
                                 <span className="button-text">next</span>
                             </Link>
@@ -411,7 +415,13 @@ export function Puzzles({
 
                 <div className="portrait-bottom-buttons">
                     <div className="left">
-                        <Link to={back} className="game-button-container">
+                        <Link
+                            to={back}
+                            className="game-button-container"
+                            onClick={() => {
+                                removeHints();
+                            }}
+                        >
                             <span className="stone-button-left" />
                             <span className="button-text">Back</span>
                         </Link>
@@ -422,7 +432,13 @@ export function Puzzles({
                     </div>
 
                     <div className="right">
-                        <Link to={next} className="game-button-container">
+                        <Link
+                            to={next}
+                            className="game-button-container"
+                            onClick={() => {
+                                removeHints();
+                            }}
+                        >
                             <span className="stone-button-right" />
                             <span className="button-text">Next</span>
                         </Link>
@@ -433,7 +449,13 @@ export function Puzzles({
             <BackButton onClick={() => navigate("/learn-to-play")} />
 
             <div id="portrait-replay">
-                <span className="stone-button-refresh" onClick={() => setReplay(Math.random())} />
+                <span
+                    className="stone-button-refresh"
+                    onClick={() => {
+                        setReplay(Math.random());
+                        removeHints();
+                    }}
+                />
             </div>
         </>
     );
