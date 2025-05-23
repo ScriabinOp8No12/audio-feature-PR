@@ -38,12 +38,14 @@ export function Lesson({ chapter, page }: { chapter: number; page: number }): JS
     {
         let next_page = page + 1;
         let next_chapter = chapter;
+
         if (next_page >= chapters[chapter].length) {
             next_chapter += 1;
             next_page = 0;
         }
         if (next_chapter >= chapters.length) {
-            next = "/learn-to-play/";
+            // If we are on the end of chapter 7, navigate to chapter 8 problems section which has a different url pattern
+            next = "/learn-to-play/8/problems/capturing/1";
         } else {
             next = `/learn-to-play/${next_chapter + 1}/${next_page + 1}`;
         }
