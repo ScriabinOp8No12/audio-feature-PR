@@ -73,7 +73,8 @@ export function Puzzles({
             const prevSectionPuzzles = puzzleSectionMap[prevSectionKey];
             back = `/learn-to-play/8/problems/${prevSectionKey}/${prevSectionPuzzles.length}`;
         } else {
-            back = "/learn-to-play";
+            // Pretty bad to be hard coded here, as if we add or remove pages from lesson 7, it won't go to the last page
+            back = "/learn-to-play/7/19";
         }
     }
 
