@@ -23,6 +23,7 @@ import { Net } from "./Lesson8Puzzles/Net";
 import { Semeai } from "./Lesson8Puzzles/Semeai";
 import { Endgame } from "./Lesson8Puzzles/Endgame";
 import { Tesuji } from "./Lesson8Puzzles/Tesuji";
+import { Random } from "./Lesson8Puzzles/Random";
 
 export const sectionKeys = [
     "capturing",
@@ -32,6 +33,7 @@ export const sectionKeys = [
     "net",
     "semeai",
     "tesuji",
+    "random",
 ] as const;
 
 export const puzzleSectionMap: Record<(typeof sectionKeys)[number], Array<typeof Content>> = {
@@ -42,6 +44,7 @@ export const puzzleSectionMap: Record<(typeof sectionKeys)[number], Array<typeof
     net: Net,
     semeai: Semeai,
     tesuji: Tesuji,
+    random: Random,
 };
 
 export const sectionDisplayNames: Record<(typeof sectionKeys)[number], string> = {
@@ -52,4 +55,5 @@ export const sectionDisplayNames: Record<(typeof sectionKeys)[number], string> =
     net: "Net",
     semeai: "Semeai",
     tesuji: "Tesuji",
+    random: "Random",
 };
