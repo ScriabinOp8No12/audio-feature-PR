@@ -78,7 +78,6 @@ export function Puzzles({
 
     const [container, _setContainer] = useState(document.createElement("div"));
     const goban_ref = useRef<Goban>(null);
-    // const content_ref = useRef(null);
     const cancel_animation_ref = useRef<() => void>(() => {});
     const audioRef = useRef<HTMLAudioElement>(null);
     const goban_opts_ref = useRef<any>({});
@@ -90,6 +89,10 @@ export function Puzzles({
     const [showAxotol, setShowAxotol]: [boolean, (x: boolean) => void] = useState<boolean>(false);
     const [hidePlayButton, setHidePlayButton]: [boolean, (x: boolean) => void] =
         useState<boolean>(false);
+    // local hint state, if it's true, it shows the mark on the goban, if it's false, it hides it, basically, we can
+    // use this to hide the hint after it's showing, if the user clicks the board (either where the hint is or where it isn't)
+    const [hintsOn, setHintsOn] = useState(false);
+
     const onResize = useCallback((width, height) => {
         const goban = goban_ref.current;
         if (goban) {
@@ -123,11 +126,65 @@ export function Puzzles({
             {value}
         </div>
     ));
-    // const handleHintClick = () => {
-    //     if (content_ref.current && content_ref.current.showHint) {
-    //         content_ref.current.showHint();
-    //     }
-    // };
+
+    const showHint = () => {
+        console.log("HELLO CLICKED HINT BUTTON");
+        // this.ref_hint_button.current?.blur();
+        const content = new puzzles[puzzleNumber]();
+        const content_config = content.config();
+        const opts: GobanConfig = Object.assign(
+            {
+                board_div: container || undefined,
+                interactive: true,
+                mode: "puzzle",
+                width: 9,
+                height: 9,
+                circle_radius: 0.45,
+                draw_top_labels: false,
+                draw_right_labels: false,
+                draw_left_labels: false,
+                draw_bottom_labels: false,
+                player_id: 0,
+                server_socket: null,
+                square_size: "auto",
+                dont_draw_last_move: true,
+
+                puzzle_opponent_move_mode: "automatic",
+                puzzle_player_move_mode: "free",
+                getPuzzlePlacementSetting: () => {
+                    return { mode: "play" };
+                },
+            },
+            content_config,
+        ) as GobanConfig;
+        goban_opts_ref.current = opts;
+        // console.log(opts);
+        console.log("opts.move_tree.branches", opts.move_tree.branches);
+        // if clicking the hint button when HINTS are already displayed, then clear them (below if block!), have a removeHints function
+        // if (hintsOn) {
+        //     this.removeHints();
+
+        // removeHints() {
+        //     if (this.goban) {
+        //         const move = this.goban.engine.cur_move;
+        //         move.branches.forEach((item) =>
+        //             this.goban.deleteCustomMark(item.x, item.y, "hint", true),
+        //         );
+        //     }
+        //     this.setState({ hintsOn: false });
+        // }
+        // }
+
+        // Otherwise, we show the green hint button on the screen, like OGS does it
+
+        // else if (goban.engine.cur_move.correct_answer) {
+        //     const branches = goban.engine.cur_move.findBranchesWithCorrectAnswer();
+        //     branches.forEach((branch) => {
+        //         goban.setCustomMark(branch.x, branch.y, "hint", true);
+        //     });
+        //     setHintsOn(true);
+        // }
+    };
 
     useEffect(() => {
         console.log("Constructing puzzle", displaySectionName, puzzleNumber);
@@ -188,22 +245,20 @@ export function Puzzles({
         ) as GobanConfig;
 
         goban_opts_ref.current = opts;
-        console.log(opts);
-        console.log("opts.move_tree.branches", opts.move_tree.branches);
+        // console.log(opts);
+        // console.log("opts.move_tree.branches", opts.move_tree.branches);
         goban_ref.current = new GobanCanvas(opts);
         const goban: Goban = goban_ref.current;
+        console.log("goban.engine.cur_move", goban.engine.cur_move);
+        console.log("goban.engine.cur_move.correct_answer", goban.engine.cur_move.correct_answer);
+        const branches = goban.engine.cur_move.findBranchesWithCorrectAnswer();
+        // console.log("branches!!!!!!!!!!!!!1", branches);
+        branches.forEach((branch) => {
+            goban.setCustomMark(branch.x, branch.y, "hint", true);
+        });
         // This triggers the same re-render that the replay button does, and we pass this down to the Module classes where the puzzles are
         content.resetGoban = () => setReplay(Math.random());
-        // content.showHint = () => {
-        //     console.log("Hello, clicked hint button!");
-        //     const mvs = decodeMoves(
-        //         goban.engine.cur_move.getMoveStringToThisPoint(),
-        //         goban.width,
-        //         goban.height,
-        //     );
-        //     const move_string = mvs.map((p) => prettyCoordinates(p.x, p.y, goban.height)).join(",");
-        //     console.log("MOVE STRING FROM HINT BUTTON CLICK: ", move_string);
-        // };
+
         content.setGoban(goban);
         content.setNext(next);
 
@@ -310,7 +365,7 @@ export function Puzzles({
                             </div>
                         </div>
                         <div className="bottom-graphic">
-                            {/* <button onClick={handleHintClick}>Hint</button> */}
+                            <button onClick={showHint}>Hint</button>
                         </div>
                     </div>
 
