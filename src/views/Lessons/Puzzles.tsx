@@ -379,7 +379,7 @@ export function Puzzles({
                     <div id="right-container">
                         <div className="top-spacer" />
                         <Racoon hover />
-                        <div className="landscape-bottom-buttons landscape-bottom-buttons-spacer">
+                        <div className="landscape-bottom-buttons">
                             <Link
                                 to={back}
                                 className="game-button-container"
