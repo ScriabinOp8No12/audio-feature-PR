@@ -93,7 +93,6 @@ export function Puzzles({
         useState<boolean>(false);
     const [hintsOn, setHintsOn] = useState(false);
 
-    console.log("hintsOn value local state", hintsOn);
     const onResize = useCallback((width, height) => {
         const goban = goban_ref.current;
         if (goban) {
@@ -129,7 +128,6 @@ export function Puzzles({
     ));
 
     const removeHints = () => {
-        console.log("got to remove hints function!");
         const goban: Goban = goban_ref.current;
         const move = goban.engine.cur_move;
 
@@ -157,8 +155,8 @@ export function Puzzles({
 
             const branchesWrong = goban.engine.cur_move.findBranchesWithWrongAnswer();
             branchesWrong.forEach((branch) => {
-                // This if conditional is needed otherwise we duplicate draw a red mark behind the green mark it seems, which means
-                // if we hover over the green mark, it'll appear red on branches where there are multiple wrong moves
+                // This if conditional is needed otherwise we will sometimes draw a red mark on the same spot as the green mark,
+                // which means if we hover over the green mark, it'll appear red
                 if (!isCorrect(branch.x, branch.y)) {
                     setCustomMarkWithColor(goban, branch.x, branch.y, "hint", "red", true);
                 }
@@ -332,7 +330,12 @@ export function Puzzles({
                     <div id="left-container">
                         <div className="explanation-text" onClick={cancel_animation_ref.current}>
                             {/* {text} */}
-                            <div className="puzzle-sections">
+                            <div
+                                className="puzzle-sections"
+                                onClick={() => {
+                                    removeHints();
+                                }}
+                            >
                                 <h3>Problem Sections</h3>
                                 {sectionList}
                             </div>
