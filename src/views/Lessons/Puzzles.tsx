@@ -132,46 +132,17 @@ export function Puzzles({
         console.log("got to remove hints function!");
         const goban: Goban = goban_ref.current;
         const move = goban.engine.cur_move;
-        move.branches.forEach((item) => goban.deleteCustomMark(item.x, item.y, "hint", true));
+
+        move.branches.forEach((item) => {
+            goban.deleteCustomMark(item.x, item.y, "hint", false);
+            // Clear the mark color too, otherwise this only removes the green square marks
+            delete goban.engine.cur_move.getMarks(item.x, item.y).color;
+            goban.drawSquare(item.x, item.y);
+        });
         setHintsOn(false);
     };
-
     const showHint = () => {
-        console.log("HELLO CLICKED HINT BUTTON");
-        // this.ref_hint_button.current?.blur();
-        const content = new puzzles[puzzleNumber]();
-        const content_config = content.config();
-        const opts: GobanConfig = Object.assign(
-            {
-                board_div: container || undefined,
-                interactive: true,
-                mode: "puzzle",
-                width: 9,
-                height: 9,
-                circle_radius: 0.45,
-                draw_top_labels: false,
-                draw_right_labels: false,
-                draw_left_labels: false,
-                draw_bottom_labels: false,
-                player_id: 0,
-                server_socket: null,
-                square_size: "auto",
-                dont_draw_last_move: true,
-
-                puzzle_opponent_move_mode: "automatic",
-                puzzle_player_move_mode: "free",
-                getPuzzlePlacementSetting: () => {
-                    return { mode: "play" };
-                },
-            },
-            content_config,
-        ) as GobanConfig;
-        goban_opts_ref.current = opts;
-        // console.log(opts);
-        // console.log("opts.move_tree.branches", opts.move_tree.branches);
         const goban: Goban = goban_ref.current;
-        // console.log("goban.engine.cur_move", goban.engine.cur_move);
-        // console.log("goban.engine.cur_move.correct_answer", goban.engine.cur_move.correct_answer);
 
         if (hintsOn) {
             removeHints();
@@ -180,11 +151,17 @@ export function Puzzles({
             branchesRight.forEach((branch) => {
                 goban.setCustomMark(branch.x, branch.y, "hint", true);
             });
+
+            const isCorrect = (x: number, y: number) =>
+                branchesRight.some((branch) => branch.x === x && branch.y === y);
+
             const branchesWrong = goban.engine.cur_move.findBranchesWithWrongAnswer();
             branchesWrong.forEach((branch) => {
-                // goban.setMarkColor(branch.x, branch.y, "red");
-                // goban.setCustomMark(branch.x, branch.y, "hint", true);
-                setCustomMarkWithColor(goban, branch.x, branch.y, "hint", "red", true);
+                // This if conditional is needed otherwise we duplicate draw a red mark behind the green mark it seems, which means
+                // if we hover over the green mark, it'll appear red on branches where there are multiple wrong moves
+                if (!isCorrect(branch.x, branch.y)) {
+                    setCustomMarkWithColor(goban, branch.x, branch.y, "hint", "red", true);
+                }
             });
             setHintsOn(true);
         }
