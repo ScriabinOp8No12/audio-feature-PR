@@ -133,9 +133,8 @@ export function Puzzles({
 
         move.branches.forEach((item) => {
             goban.deleteCustomMark(item.x, item.y, "hint", false);
-            // Clear the mark color too, otherwise this only removes the green square marks
+            // Clear the mark color too, otherwise this only removes the green square marks and not the red marks
             delete goban.engine.cur_move.getMarks(item.x, item.y).color;
-            goban.drawSquare(item.x, item.y);
         });
         setHintsOn(false);
     };
