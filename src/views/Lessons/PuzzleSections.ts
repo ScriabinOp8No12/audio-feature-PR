@@ -20,7 +20,7 @@ import { Capturing } from "./Lesson8Puzzles/Capturing";
 import { LifeAndDeath } from "./Lesson8Puzzles/LifeAndDeath";
 import { Ladder } from "./Lesson8Puzzles/Ladder";
 import { Net } from "./Lesson8Puzzles/Net";
-import { LibertyRace } from "./Lesson8Puzzles/LibertyRace";
+import { CaptureRace } from "./Lesson8Puzzles/CaptureRace";
 import { Endgame } from "./Lesson8Puzzles/Endgame";
 import { Tesuji } from "./Lesson8Puzzles/Tesuji";
 import { Random } from "./Lesson8Puzzles/Random";
@@ -31,7 +31,7 @@ export const sectionKeys = [
     "lifeanddeath",
     "ladder",
     "net",
-    "libertyrace",
+    "capturerace",
     "tesuji",
     "random",
 ] as const;
@@ -42,7 +42,7 @@ export const puzzleSectionMap: Record<(typeof sectionKeys)[number], Array<typeof
     lifeanddeath: LifeAndDeath,
     ladder: Ladder,
     net: Net,
-    libertyrace: LibertyRace,
+    capturerace: CaptureRace,
     tesuji: Tesuji,
     random: Random,
 };
@@ -53,7 +53,7 @@ export const sectionDisplayNames: Record<(typeof sectionKeys)[number], string> =
     lifeanddeath: "Life and Death",
     ladder: "Ladder",
     net: "Net",
-    libertyrace: "Liberty Race",
+    capturerace: "Capture Race",
     tesuji: "Tesuji",
     random: "Random",
 };

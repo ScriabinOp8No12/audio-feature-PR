@@ -555,7 +555,7 @@ class Puzzle10 extends Content {
     }
 }
 
-export const LibertyRace: Array<typeof Content> = [
+export const CaptureRace: Array<typeof Content> = [
     Puzzle1,
     Puzzle2,
     Puzzle3,
