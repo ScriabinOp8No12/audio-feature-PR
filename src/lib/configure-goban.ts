@@ -153,3 +153,15 @@ export function getSelectedThemes(): {
         "removal-scale": 1,
     };
 }
+
+export function setCustomMarkWithColor(
+    goban: Goban,
+    x: number,
+    y: number,
+    mark: string,
+    color: string,
+    drawSquare: boolean = true,
+) {
+    (goban as any).setMarkColor(x, y, color);
+    goban.setCustomMark(x, y, mark, drawSquare);
+}
