@@ -30,11 +30,11 @@ class Puzzle1 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "",
-                white: "",
+                black: "f8f7e6d6d9c6c8b7b6",
+                white: "h8g6g9f6e7e8e9d7c7b8",
             },
 
-            move_tree: this.makePuzzleMoveTree([""], [""], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["f9g8d8"], ["d8c9", "b9f9", "f9g8g7h7"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -74,16 +74,16 @@ class Puzzle1 extends Content {
 
 class Puzzle2 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Tesuji 2</p>];
+        return [<p>Random 2</p>];
     }
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "j7h7h9g5g7f6f8e8d8",
-                white: "j8h8g8f7f9e7d7c7c8",
+                black: "c6d4d7d8e9f8f7f6g7h7h6",
+                white: "b4c3d3d6e6e7e8f3f5g3g6g5g6h5",
             },
 
-            move_tree: this.makePuzzleMoveTree(["g9j9g9h9g9"], ["j9g9", "e9d9"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["e5d5c5"], ["d5e5", "e5d5e4c5"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
