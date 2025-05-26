@@ -275,7 +275,12 @@ class Puzzle5 extends Content {
                 white: "j4h4g4f4f5h5j5g6h6g7h8h9j9",
             },
 
-            move_tree: this.makePuzzleMoveTree(["h7j8g9"], ["j8h7", "j6h7", "g9h7"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["h7j6g5"],
+                ["j8h7", "j6h7", "g9h7", "h7j6g9j8"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
