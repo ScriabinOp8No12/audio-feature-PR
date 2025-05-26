@@ -178,15 +178,49 @@ class Puzzle4 extends Content {
         return [<p>Life and death 4</p>];
     }
     config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "d9d8e8e7f7g7g8h8h9",
-                white: "c9c8c7d7d6e6f6g6h6h7j7j8j9",
-            },
+        const initialState = {
+            black: "d9d8e8e7f7g7g8h8h9",
+            white: "c9c8c7d7d6e6f6g6h6h7j7j8j9",
+        };
 
+        // The block below is used to generate all remaining valid moves (not including the ones in the movetree -> e9, f9, g9 and f8)
+        // on the Go board so that white can respond with f9 to any of those moves, press the hint button to see the red squares
+        const occupiedPositions = new Set();
+
+        for (let i = 0; i < initialState.black.length; i += 2) {
+            occupiedPositions.add(initialState.black.substring(i, i + 2));
+        }
+
+        for (let i = 0; i < initialState.white.length; i += 2) {
+            occupiedPositions.add(initialState.white.substring(i, i + 2));
+        }
+
+        const otherMoves = [];
+        const letters = "abcdefghj";
+        const excludedMoves = ["e9", "f9", "g9", "f8"];
+
+        for (const letter of letters) {
+            for (let num = 1; num <= 9; num++) {
+                const move = letter + num;
+                if (!occupiedPositions.has(move) && !excludedMoves.includes(move)) {
+                    otherMoves.push(move + "f9");
+                }
+            }
+        }
+
+        return {
+            initial_state: initialState,
             move_tree: this.makePuzzleMoveTree(
                 ["f9"],
-                ["f8f9e9g9", "f8f9g9e9", "e9f9f8g9", "e9f9g9f8", "g9f9f8e9", "g9f9e9f8"],
+                [
+                    "f8f9e9g9",
+                    "f8f9g9e9",
+                    "e9f9f8g9",
+                    "e9f9g9f8",
+                    "g9f9f8e9",
+                    "g9f9e9f8",
+                    ...otherMoves,
+                ],
                 9,
                 9,
             ),
