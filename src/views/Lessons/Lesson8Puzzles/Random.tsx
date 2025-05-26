@@ -534,6 +534,60 @@ class Puzzle10 extends Content {
     }
 }
 
+class Puzzle11 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Random 11</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "j6j7h6g5f5f8e5e6e7d8c9c7",
+                white: "j8h7h9h8g8g9f6f7e8e9",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["g7f9g6f8d9d6j9"],
+                ["d9f9g6g7", "g6g7d9f9", "d9f9g7g6"],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
 export const Random: Array<typeof Content> = [
     Puzzle1,
     Puzzle2,
@@ -545,4 +599,5 @@ export const Random: Array<typeof Content> = [
     Puzzle8,
     Puzzle9,
     Puzzle10,
+    Puzzle11,
 ];
