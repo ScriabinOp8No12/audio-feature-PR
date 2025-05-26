@@ -378,7 +378,12 @@ class Puzzle7 extends Content {
                 white: "j8h8g8g7f6f5f4f3g3g2g1h1j1h4j4",
             },
 
-            move_tree: this.makePuzzleMoveTree(["h3j3j2h2j3h4j4"], ["j3h3", "h2h3", "j2h3"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["h3j3j2h2j3h4j4"],
+                ["j3h3j2g6", "h2h3j2g6", "j2h3g6j6", "j2h3h2g6", "j2h3j3g6"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -521,7 +526,7 @@ class Puzzle8 extends Content {
 
 class Puzzle9 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Life and death 10</p>];
+        return [<p>Life and death 9</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -532,7 +537,16 @@ class Puzzle9 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["e9f8f9g9f8"],
-                ["e9f8g9f9", "e9f8f9g9e8f8", "f8e9", "g9f8e9f9", "g9f8f9e9"],
+                [
+                    "e9f8g9d9",
+                    "e9f8f9g9e8f8",
+                    "f8e9f9g9d9e8e9e8",
+                    "f8e9g9f9d9e9f9e8",
+                    "f8e9g9f9d9e9e8f9",
+                    "g9f8e9d9",
+                    "g9f8f9d9",
+                    "g9f8d9e9",
+                ],
                 9,
                 9,
             ),
@@ -578,7 +592,7 @@ class Puzzle9 extends Content {
 
 class Puzzle10 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Life and death 11</p>];
+        return [<p>Life and death 10</p>];
     }
     config(): PuzzleConfig {
         return {
