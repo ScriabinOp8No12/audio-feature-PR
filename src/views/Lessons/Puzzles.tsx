@@ -434,6 +434,10 @@ export function Puzzles({
 
             <BackButton onClick={() => navigate("/learn-to-play")} />
 
+            <div id="portrait-hint" onClick={showHint}>
+                <div className="hint-icon" />
+            </div>
+
             <div id="portrait-replay">
                 <span
                     className="stone-button-refresh"
