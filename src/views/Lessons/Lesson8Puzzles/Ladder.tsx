@@ -97,7 +97,7 @@ class Puzzle2 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e4d3c3c4c5g3g4",
+                black: "e4d3c3c4c5",
                 white: "b3b4b5b6c8c7d4d5",
             },
 
@@ -108,7 +108,18 @@ class Puzzle2 extends Content {
                     "d6e5f5e6e7f6g6f7f8g7h7g8g9h8j8g5h9",
                     "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j7g5j9",
                 ],
-                ["e5d6", "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j9f9"],
+                [
+                    "e5d6",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j9f9",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j7g5h6f4",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j7g5f4h6",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8g9h8j8g5f4h6",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8g9h8j8g5h6f4",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8h8g9f9g5f4h6",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8h8g9f9g5h6f4",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8h8g9h9g5h6f4",
+                    "d6e5f5e6e7f6g6f7f8g7h7g8h8g9h9g5f4h6",
+                ],
                 9,
                 9,
             ),
@@ -160,7 +171,28 @@ class Puzzle3 extends Content {
                 white: "g7d8c8d7b7c6c4e6b4",
             },
 
-            move_tree: this.makePuzzleMoveTree(["f6e5e4f5g5f4f3"], ["e5f6"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                [
+                    "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j2e3j4",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j4e3j2",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3j3h2j2h1g1e3j1",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3j3h2h1e3j2",
+                ],
+                [
+                    "e5f6",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j2e3d4f2",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j2e3f2d4",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j4e3d4f2",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j4e3f2d4",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3j3h2j2h1j1j4",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3j3h2j2h1g1e3d4f2",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3j3h2j2h1g1e3f2d4",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3j3h2h1e3d4f2",
+                    "f6e5e4f5g5f4f3g4h4g3g2h3j3h2h1e3f2d4",
+                ],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
