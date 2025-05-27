@@ -435,7 +435,7 @@ export function Puzzles({
             <BackButton onClick={() => navigate("/learn-to-play")} />
 
             <div id="portrait-hint" onClick={showHint}>
-                <div className="hint-icon" />
+                <div className={`hint-icon ${hintsOn ? "hints-on" : ""}`} />
             </div>
 
             <div id="portrait-replay">
