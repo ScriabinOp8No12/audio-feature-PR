@@ -565,12 +565,22 @@ class Puzzle9 extends Content {
         return {
             initial_state: {
                 black: "b5b6c6d5d7e3e7f3g5h3h4",
-                white: "b2c7c8d2d4d6e2e6f2f7g2g7h7",
+                white: "b2c7c8d2d4d6e2e6f2f7g2g7h7b7",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["f6e5e4c5f5d5d3c4c3b4b3"],
-                ["e5f6", "f6e5f5e4", "f6e5e4c5f5d5c4d3", "f6e5e4c5f5d5d3c4b4c3"],
+                ["f6e5e4c5f5d5d3c4c3b4b3a4a3a5a6"],
+                [
+                    "e5f6",
+                    "f6e5f5e4",
+                    "f6e5c5e8d8d9",
+                    "f6e5c5e8e4d8",
+                    "f6e5c5e8f5d8",
+                    "f6e5e4c5f5d5c4d3",
+                    "f6e5e4c5f5d5d3c4b4c3b3c2",
+                    "f6e5e4c5f5d5d3c4b4c3c2c1",
+                    "f6e5e4c5f5d5d3c4c3b4b3a4a5a6",
+                ],
                 9,
                 9,
             ),
@@ -578,21 +588,18 @@ class Puzzle9 extends Content {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Solved!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
                 })
-                .then(() => {
-                    this.gotoNext();
-                })
-                .catch(() => 0);
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
@@ -627,7 +634,14 @@ class Puzzle10 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["d6e7f7e6e5f5g5f4e2f3f2"],
-                ["e7d6", "d6e7e6f7", "d6e7f7e6f5e5", "d6e7f7e6e5f5f4g5"],
+                [
+                    "e7d6",
+                    "d6e7e6f7f8g5",
+                    "d6e7e6f7f5g5",
+                    "d6e7f7e6f5e5",
+                    "d6e7f7e6e5f5f4g5",
+                    "d6e7f7e6e5f5g5f4f3e2",
+                ],
                 9,
                 9,
             ),
