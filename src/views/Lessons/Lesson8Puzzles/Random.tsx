@@ -697,6 +697,135 @@ class Puzzle13 extends Content {
     }
 }
 
+class Puzzle14 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Random 14</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "f4f5f6f7e3e7d7d6b4",
+                white: "a2a4b5e6e5e4c5c6c7",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["d5d4c4d3d2c3b3c2b2c1b1e2d1", "d5d4c4d3d2c3b3c2b2c1d1a3b1"],
+                [
+                    "d5d4c4d3d2c3b3c2b2c1b1e2f3d1",
+                    "d5d4c4d3d2c3b3c2b2c1d1a3a1b1",
+                    "d5d4c4d3d2c3c2b3",
+                    "d4d5",
+                    "d5d4d3c4",
+                    "d5d4c4d3d2c3b3c2c1b2",
+                ],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle15 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Random 15</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "h4g2g4f3f5e2d3c3c5",
+                white: "g5g6f4f7e3e4d4d7",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["e5d5d6e6c4"],
+                [
+                    "d5e5e6f6",
+                    "d5e5f6e6",
+                    "d5e5c4e6",
+                    "c4e5e6f6",
+                    "c4e5f6e6",
+                    "c4e5d5e6",
+                    "e5d5d6e6c6f6",
+                    "e6e5f6d6d5e7",
+                    "e6e5d5f6",
+                    "e6e5c4f6",
+                    "e6e5f6d6e7e8",
+                    "e6e5f6d6c4e7",
+                    "e5d5c4d6",
+                ],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
 export const Random: Array<typeof Content> = [
     Puzzle1,
     Puzzle2,
@@ -711,4 +840,6 @@ export const Random: Array<typeof Content> = [
     Puzzle11,
     Puzzle12,
     Puzzle13,
+    Puzzle14,
+    Puzzle15,
 ];
