@@ -63,3 +63,22 @@ This project is largely built with Typescript and React. If you are unfamiliar w
 
 -   [React](https://reactjs.org/)
 -   [Typescript](https://www.typescriptlang.org/)
+
+## Important Information regarding Codebase (May 2025)
+
+Puzzles.tsx is very similar to the Lesson.tsx file.  I chose to duplicate most of the code, since there were some major differences and it's easier to maintain when they are separate components.
+
+As a result, most of the CSS styling from the Puzzles.tsx file still uses the same classnames, which are in the Lessons.styl file.  It does have some styling of it's own, which are in Puzzles.styl file.
+
+Lesson 8 is the section with 100 puzzles, it contains different navigation logic since the URL pattern is different from the other 7 lessons. Because of this, the back button logic when leaving lesson 8 is a little hacky as it hard codes in navigating back to /learn-to-play/7/19.  So if we add or remove any pages from lesson 7, we need to modify this hard coded value inside the Puzzles.tsx file. 
+
+There's a hacky fix for not showing numbers on the stones when they are placed on the Go board for the 8 lessons. This is inside the configure-goban.ts file, in the getShowVariationMoveNumbers method.  We check the url pattern for "learn-to-play", then return false for the getShowVariationMoveNumbers method, which properly omits the numbering on the stones.  
+
+You can likely create puzzles faster if you show the coordinates on the Go board. To do so, you can change the boolean value from false to true for the following values inside the Puzzles.tsx and/or the Lesson.tsx file:                 
+
+```
+draw_top_labels: false,
+draw_right_labels: false,
+draw_left_labels: false,
+draw_bottom_labels: false,
+```
