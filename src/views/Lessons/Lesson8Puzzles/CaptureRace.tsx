@@ -25,7 +25,7 @@ const POPUP_TIMEOUT = 1500;
 
 class Puzzle1 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 1</p>];
+        return [<p>Capture Race 1</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -74,7 +74,7 @@ class Puzzle1 extends Content {
 
 class Puzzle2 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 2</p>];
+        return [<p>Capture Race 2</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -128,7 +128,7 @@ class Puzzle2 extends Content {
 
 class Puzzle3 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 3</p>];
+        return [<p>Capture Race 3</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -182,7 +182,7 @@ class Puzzle3 extends Content {
 
 class Puzzle4 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 4</p>];
+        return [<p>Capture Race 4</p>];
     }
 
     config(): PuzzleConfig {
@@ -232,7 +232,7 @@ class Puzzle4 extends Content {
 
 class Puzzle5 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 5</p>];
+        return [<p>Capture Race 5</p>];
     }
 
     config(): PuzzleConfig {
@@ -282,7 +282,7 @@ class Puzzle5 extends Content {
 
 class Puzzle6 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 6</p>];
+        return [<p>Capture Race 6</p>];
     }
 
     config(): PuzzleConfig {
@@ -337,7 +337,7 @@ class Puzzle6 extends Content {
 
 class Puzzle7 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 7</p>];
+        return [<p>Capture Race 7</p>];
     }
 
     config(): PuzzleConfig {
@@ -392,7 +392,7 @@ class Puzzle7 extends Content {
 
 class Puzzle8 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 8</p>];
+        return [<p>Capture Race 8</p>];
     }
 
     config(): PuzzleConfig {
@@ -447,7 +447,7 @@ class Puzzle8 extends Content {
 
 class Puzzle9 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 9</p>];
+        return [<p>Capture Race 9</p>];
     }
 
     config(): PuzzleConfig {
@@ -502,7 +502,7 @@ class Puzzle9 extends Content {
 
 class Puzzle10 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Liberty Race 10</p>];
+        return [<p>Capture Race 10</p>];
     }
 
     config(): PuzzleConfig {
