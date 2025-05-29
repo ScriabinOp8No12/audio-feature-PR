@@ -70,8 +70,8 @@ class Page2 extends Module7 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                First: finish the territories by playing to the edge. Here the blue stone pushes
-                into white's area, making it a little smaller and sealing the edge.
+                First: finish the territories by playing to the edge. Here the Blue stone pushes
+                into White's area, making it a little smaller and sealing the edge.
             </p>,
         ];
     }
@@ -203,8 +203,8 @@ class Page6 extends Module7 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                No, white 1 is dangerous. If Blue plays in the middle at 2, oops! Now white can cut
-                at 3 and blue is in trouble.
+                No, White 1 is dangerous. If Blue plays in the middle at 2, oops! Now White can cut
+                at 3 and Blue is in trouble.
             </p>,
         ];
     }
@@ -247,7 +247,7 @@ class Page7 extends Module7 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Adding a stone on the bottom line doesnt help as the group is still in atari, blue
+                Adding a stone on the bottom line doesnt help as the group is still in atari, Blue
                 just loses more stones.
             </p>,
         ];
@@ -283,7 +283,7 @@ class Page8 extends Module7 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Instead, blue can play this way. white captures two stones, and Blue seals the edge
+                Instead, Blue can play this way. White captures two stones, and Blue seals the edge
                 between the colors.
             </p>,
         ];
@@ -504,8 +504,8 @@ class Page14 extends Module7 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                The white territory is marked with circles, and the blue territory is marked with
-                squares. White has 19 points and blue has 22.
+                The White territory is marked with circles, and the Blue territory is marked with
+                squares. White has 19 points and Blue has 22.
             </p>,
         ];
     }
@@ -689,12 +689,12 @@ class Page18 extends Module7 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                At this point, white could pass, blue passes, and white must pass once more to keep
+                At this point, White could pass, Blue passes, and White must pass once more to keep
                 the number of stones played equal.
             </p>,
             <p>
-                The game ends here and can be scored. The score is blue 18 and white 16, but blue
-                captured 3 prisoners and white captured 2, so it is 16-13.
+                The game ends here and can be scored. The score is Blue 18 and White 16, but Blue
+                captured 3 prisoners and White captured 2, so it is 16-13.
             </p>,
             <p>
                 The computer will score the game for you, but you have to pass in order to get
