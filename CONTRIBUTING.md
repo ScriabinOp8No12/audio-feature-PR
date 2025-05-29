@@ -14,13 +14,7 @@ npm run dev
 
 If you're on linux, you can simply type `make` and it will do all this for you as well.
 
-Once running, you can then navigate to http://dev.beta.kidsgoserver.com:18888/ which loads the interface from your local server that you just started with gulp, and connects to the beta server for testing.
-
-If the above url did not work (perhaps you are using Ubuntu WSL), you may have to navigate to something like: http://172.23.34.161:18888/ To find this value before 18888, use the following command, then look at the eth0 portion, and use the address that follows "inet"
-
-```
-ip addr
-```
+Once running, you can then navigate to http://localhost:18888/ which connects to the beta server for testing.
 
 ## Getting Started
 
