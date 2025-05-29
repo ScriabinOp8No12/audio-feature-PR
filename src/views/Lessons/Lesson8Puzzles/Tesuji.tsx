@@ -501,13 +501,21 @@ class Puzzle10 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "b2c2c3c4b4b5d5e6f6f7g8h8g5h5g3g2h3j4",
-                white: "f8e8d8c7c6c5g6g7f5g4e4d4e3f3e2",
+                black: "a3b2c2c3c4b4b5d5e6f6f7g8h8g5h5g3h3h2j4",
+                white: "f8e8d8d2d3b6c7c6c5g6g7f5g4e4d4e3f3f2g2",
             },
 
             move_tree: this.makePuzzleMoveTree(
                 ["d6e5h6d7h7", "d6e5h7d7h6"],
-                ["h6d6h7e5", "h7d6h6e5", "h6d6e5e7", "h7d6e5e7", "e5d6"],
+                [
+                    "h6d6h7e5",
+                    "h7d6h6e5",
+                    "h6d6e5e7",
+                    "h7d6e5e7",
+                    "e5d6f4e1g1f5",
+                    "e5d6f4e1h4g1",
+                    "e5d6f4e1f5g1",
+                ],
                 9,
                 9,
             ),

@@ -411,27 +411,31 @@ class Puzzle8 extends Content {
         return {
             initial_state: {
                 black: "a5a6b4b5c3c4d3e2f2f3f4g5h3h5h6j6",
-                white: "a7b7b6c6c5d4d5d7e3e4f5g6g8h7j7",
+                white: "a7b7b6c6c5d4d5d7e3e4e7e8f8f5g6g8h7j7",
             },
 
-            move_tree: this.makePuzzleMoveTree(["f6g7e5"], ["e5e6", "g7f7"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["f6g7e5e6f5f7"], ["e5e6", "g7f7", "g4f6"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            this.captureDelay(() => {
-                openPopup({
-                    text: <Axol>Solved!</Axol>,
-                    no_accept: true,
-                    no_cancel: true,
-                    timeout: POPUP_TIMEOUT,
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Solved!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
                 })
-                    .then(() => {
-                        this.gotoNext();
-                    })
-                    .catch(() => 0);
-            });
+                .then(() => {
+                    this.gotoNext();
+                })
+                .catch(() => 0);
         });
+
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {
                 setTimeout(resolve, 1000);
@@ -507,12 +511,12 @@ class Puzzle10 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "a4b4c4d3e3e4e5f3f5g6h6h7h8",
+                black: "a4b4c4d3e3e4e5f3f5g6h6h7h8h9",
                 white: "a5b5c3c5d4d5d6e6f6g7g8g9",
             },
             move_tree: this.makePuzzleMoveTree(
-                ["b3c2b2b1d2", "b3c2b2b1a2"],
-                ["h9c2", "c2b3b2a3", "c2b3a3a2", "b3c2d2b2"],
+                ["b3c2b2b1d2c1d1a2a1", "b3c2b2b1d2c1a2a1d1", "b3c2b2b1a2c1d2a1d1"],
+                ["c2b3b2a3", "c2b3a3a2", "b3c2d2b2a3a2"],
                 9,
                 9,
             ),
@@ -520,21 +524,18 @@ class Puzzle10 extends Content {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            new Promise<void>((resolve) => {
-                setTimeout(resolve, 1000);
-            })
-                .then(() => {
-                    return openPopup({
-                        text: <Axol>Solved!</Axol>,
-                        no_accept: true,
-                        no_cancel: true,
-                        timeout: POPUP_TIMEOUT,
-                    });
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
                 })
-                .then(() => {
-                    this.gotoNext();
-                })
-                .catch(() => 0);
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
         });
         goban.on("puzzle-wrong-answer", () => {
             new Promise<void>((resolve) => {

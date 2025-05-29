@@ -178,15 +178,49 @@ class Puzzle4 extends Content {
         return [<p>Life and death 4</p>];
     }
     config(): PuzzleConfig {
-        return {
-            initial_state: {
-                black: "d9d8e8e7f7g7g8h8h9",
-                white: "c9c8c7d7d6e6f6g6h6h7j7j8j9",
-            },
+        const initialState = {
+            black: "d9d8e8e7f7g7g8h8h9",
+            white: "c9c8c7d7d6e6f6g6h6h7j7j8j9",
+        };
 
+        // The block below is used to generate all remaining valid moves (not including the ones in the movetree -> e9, f9, g9 and f8)
+        // on the Go board so that white can respond with f9 to any of those moves, press the hint button to see the red squares
+        const occupiedPositions = new Set();
+
+        for (let i = 0; i < initialState.black.length; i += 2) {
+            occupiedPositions.add(initialState.black.substring(i, i + 2));
+        }
+
+        for (let i = 0; i < initialState.white.length; i += 2) {
+            occupiedPositions.add(initialState.white.substring(i, i + 2));
+        }
+
+        const otherMoves = [];
+        const letters = "abcdefghj";
+        const excludedMoves = ["e9", "f9", "g9", "f8"];
+
+        for (const letter of letters) {
+            for (let num = 1; num <= 9; num++) {
+                const move = letter + num;
+                if (!occupiedPositions.has(move) && !excludedMoves.includes(move)) {
+                    otherMoves.push(move + "f9");
+                }
+            }
+        }
+
+        return {
+            initial_state: initialState,
             move_tree: this.makePuzzleMoveTree(
                 ["f9"],
-                ["f8f9e9g9", "f8f9g9e9", "e9f9f8g9", "e9f9g9f8", "g9f9f8e9", "g9f9e9f8"],
+                [
+                    "f8f9e9g9",
+                    "f8f9g9e9",
+                    "e9f9f8g9",
+                    "e9f9g9f8",
+                    "g9f9f8e9",
+                    "g9f9e9f8",
+                    ...otherMoves,
+                ],
                 9,
                 9,
             ),
@@ -241,7 +275,12 @@ class Puzzle5 extends Content {
                 white: "j4h4g4f4f5h5j5g6h6g7h8h9j9",
             },
 
-            move_tree: this.makePuzzleMoveTree(["h7j8g9"], ["j8h7", "j6h7", "g9h7"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["h7j6g5"],
+                ["j8h7", "j6h7", "g9h7", "h7j6g9j8"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -336,10 +375,10 @@ class Puzzle7 extends Content {
         return {
             initial_state: {
                 black: "j7h7h6j5h5g5g4",
-                white: "j8h8g8g7f6f5f4f3g3g2g1h1j1h4j4",
+                white: "j8h8g8g7f6f5f4f3g3g2g1h4j4",
             },
 
-            move_tree: this.makePuzzleMoveTree(["h3j3j2h2j3h4j4"], ["j3h3", "h2h3", "j2h3"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["h3h2j3", "h3h2j2j3h3"], ["j3h3j2g6"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -426,63 +465,9 @@ class Puzzle8 extends Content {
     }
 }
 
-// class Puzzle9 extends Content {
-//     text(): JSX.Element | Array<JSX.Element> {
-//         return [<p>Life and death 9</p>];
-//     }
-//     config(): PuzzleConfig {
-//         return {
-//             initial_state: {
-//                 black: "g9g8h8f8g7h7j6h6h5g5",
-//                 white: "j4h4g4f4e4g6f6f7e7e8e9f9j8e5",
-//             },
-
-//             move_tree: this.makePuzzleMoveTree(
-//                 ["j9h9j7f5j9"],
-//                 ["j7j9", "j9h9j5j9", "j9h9f5j9"],
-//                 9,
-//                 9,
-//             ),
-//         };
-//     }
-//     onSetGoban(goban: Goban): void {
-//         goban.on("puzzle-correct-answer", () => {
-//             this.captureDelay(() => {
-//                 openPopup({
-//                     text: <Axol>Solved!</Axol>,
-//                     no_accept: true,
-//                     no_cancel: true,
-//                     timeout: POPUP_TIMEOUT,
-//                 })
-//                     .then(() => {
-//                         this.gotoNext();
-//                     })
-//                     .catch(() => 0);
-//             });
-//         });
-//         goban.on("puzzle-wrong-answer", () => {
-//             new Promise<void>((resolve) => {
-//                 setTimeout(resolve, 1000);
-//             })
-//                 .then(() => {
-//                     return openPopup({
-//                         text: <Axol>Try again!</Axol>,
-//                         no_accept: true,
-//                         no_cancel: true,
-//                         timeout: POPUP_TIMEOUT,
-//                     });
-//                 })
-//                 .then(() => {
-//                     this.resetGoban?.();
-//                 })
-//                 .catch(() => 0);
-//         });
-//     }
-// }
-
 class Puzzle9 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Life and death 10</p>];
+        return [<p>Life and death 9</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -493,7 +478,17 @@ class Puzzle9 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["e9f8f9g9f8"],
-                ["e9f8g9f9", "e9f8f9g9e8f8", "f8e9", "g9f8e9f9", "g9f8f9e9"],
+                ["e9f8g9d9", "e9f8f9g9e8f8", "f8e9", "g9f8e9d9", "g9f8f9d9", "g9f8d9e9"],
+                //  [
+                //     "e9f8g9d9",
+                //     "e9f8f9g9e8f8",
+                //     "f8e9f9g9d9e8e9e8",
+                //     "f8e9g9f9d9e9f9e8",
+                //     "f8e9g9f9d9e9e8f9",
+                //     "g9f8e9d9",
+                //     "g9f8f9d9",
+                //     "g9f8d9e9",
+                // ],
                 9,
                 9,
             ),
@@ -539,7 +534,7 @@ class Puzzle9 extends Content {
 
 class Puzzle10 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Life and death 11</p>];
+        return [<p>Life and death 10</p>];
     }
     config(): PuzzleConfig {
         return {
