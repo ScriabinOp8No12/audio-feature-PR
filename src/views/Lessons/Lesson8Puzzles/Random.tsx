@@ -421,6 +421,66 @@ class Puzzle9 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
+                black: "c3d3e4d5g4e3f2h5f2",
+                white: "d4c4b7c7f7g7b2c2d2e2a2b1h7",
+            },
+
+            move_tree: this.makePuzzleMoveTree(
+                ["b4c5c6b5b6a5a4a6a7", "b4c5c6b5b6a5a6a4a3"],
+                [
+                    "c5b4b3a3b5a4",
+                    "c5b4b3a3a4a5",
+                    "b4c5c6b5a5b6",
+                    "b4c5c6b5b6a5a6a4b3a3",
+                    "b4c5c6b5b6a5a4a6d6a7",
+                ],
+                9,
+                9,
+            ),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
+class Puzzle10 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Random 10</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
                 black: "a3b4b6c3c7d3d4d6e5",
                 white: "a5b2b3b5c2c4c5c6d5",
             },
@@ -463,9 +523,9 @@ class Puzzle9 extends Content {
     }
 }
 
-class Puzzle10 extends Content {
+class Puzzle11 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Random 10</p>];
+        return [<p>Random 11</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -534,9 +594,9 @@ class Puzzle10 extends Content {
     }
 }
 
-class Puzzle11 extends Content {
+class Puzzle12 extends Content {
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Random 11</p>];
+        return [<p>Random 12</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -588,6 +648,55 @@ class Puzzle11 extends Content {
     }
 }
 
+class Puzzle13 extends Content {
+    text(): JSX.Element | Array<JSX.Element> {
+        return [<p>Random 13</p>];
+    }
+    config(): PuzzleConfig {
+        return {
+            initial_state: {
+                black: "j5j6j7j8h8h9f7f8e9d8c8b7b6b5b4c3c2",
+                white: "j4h4h5h6h7g6g7g8f6f3e7e8d6d3d2c6c4",
+            },
+
+            move_tree: this.makePuzzleMoveTree(["g9f9f8"], ["f9g9d9j9", "g9f9d9j9"], 9, 9),
+        };
+    }
+    onSetGoban(goban: Goban): void {
+        goban.on("puzzle-correct-answer", () => {
+            this.captureDelay(() => {
+                openPopup({
+                    text: <Axol>Solved!</Axol>,
+                    no_accept: true,
+                    no_cancel: true,
+                    timeout: POPUP_TIMEOUT,
+                })
+                    .then(() => {
+                        this.gotoNext();
+                    })
+                    .catch(() => 0);
+            });
+        });
+        goban.on("puzzle-wrong-answer", () => {
+            new Promise<void>((resolve) => {
+                setTimeout(resolve, 1000);
+            })
+                .then(() => {
+                    return openPopup({
+                        text: <Axol>Try again!</Axol>,
+                        no_accept: true,
+                        no_cancel: true,
+                        timeout: POPUP_TIMEOUT,
+                    });
+                })
+                .then(() => {
+                    this.resetGoban?.();
+                })
+                .catch(() => 0);
+        });
+    }
+}
+
 export const Random: Array<typeof Content> = [
     Puzzle1,
     Puzzle2,
@@ -600,4 +709,6 @@ export const Random: Array<typeof Content> = [
     Puzzle9,
     Puzzle10,
     Puzzle11,
+    Puzzle12,
+    Puzzle13,
 ];
