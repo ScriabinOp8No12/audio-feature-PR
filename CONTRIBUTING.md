@@ -1,7 +1,17 @@
 # Development Environment
 
-Getting setup is easy, you'll need to have [node.js](https://nodejs.org/) installed,
-then simply clone the repository and within the working directory run the following:
+Getting setup is easy, you'll need to have [node.js](https://nodejs.org/) installed (version 20+),
+then clone your forked repository with the submodules.  Replace the github section below with your own forked repo. It should look something like this:
+
+```
+git clone --recurse-submodules https://github.com/ScriabinOp8No12/kidsgoserver.git
+```
+
+Then navigate to your project, and install the packages:
+
+```
+cd kidsgoserver
+```
 
 ```
 # You only need to run this the first time
