@@ -183,7 +183,7 @@ class Page6 extends Module3 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                If Blue tries to capture the stone by playing at 2, notice that all the blue stones
+                If Blue tries to capture the stone by playing at 2, notice that all the Blue stones
                 are now in atari at A.
             </p>,
         ];
@@ -498,7 +498,7 @@ class Puzzle1 extends Module3 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture the white stones.</p>];
+        return [<p>Capture the White stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -558,7 +558,7 @@ class Puzzle2 extends Module3 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the blue stones.</p>];
+        return [<p>Save the Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -618,7 +618,7 @@ class Puzzle3 extends Module3 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the blue stones.</p>];
+        return [<p>Save the Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -678,7 +678,7 @@ class Puzzle4 extends Module3 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the blue stones.</p>];
+        return [<p>Save the Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -738,7 +738,7 @@ class Puzzle5 extends Module3 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture the white stones.</p>];
+        return [<p>Capture the White stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -798,7 +798,7 @@ class Puzzle6 extends Module3 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the blue stones.</p>];
+        return [<p>Save the Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -858,7 +858,7 @@ class Puzzle7 extends Module3 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the blue stones.</p>];
+        return [<p>Save the Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {

@@ -432,7 +432,7 @@ class Puzzle1 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the blue stones.</p>];
+        return [<p>Save the Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -492,7 +492,7 @@ class Puzzle2 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture the 2 white stones.</p>];
+        return [<p>Capture the 2 White stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -552,7 +552,7 @@ class Puzzle3 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture the 5 white stones.</p>];
+        return [<p>Capture the 5 White stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -612,7 +612,7 @@ class Puzzle4 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the 3 blue stones.</p>];
+        return [<p>Save the 3 Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -675,7 +675,7 @@ class Puzzle5 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the 2 blue stones.</p>];
+        return [<p>Save the 2 Blue stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -738,7 +738,7 @@ class Puzzle6 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Capture the 3 white stones.</p>];
+        return [<p>Capture the 3 White stones.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -801,7 +801,7 @@ class Puzzle7 extends Module2 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Save the 7 blue stones, this one is very tricky!</p>];
+        return [<p>Save the 7 Blue stones, this one is very tricky!</p>];
     }
     config(): PuzzleConfig {
         return {
