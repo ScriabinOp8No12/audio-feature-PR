@@ -19,11 +19,18 @@ import * as React from "react";
 import { Puzzles } from "./Puzzles";
 import { useParams } from "react-router-dom";
 import { puzzleSectionMap } from "./PuzzleSections";
+import { sectionKeys } from "./PuzzleSections";
+import { PageNotFound } from "@kidsgo/components/PageNotFound/PageNotFound";
 
 export function PuzzlesRouter(): JSX.Element {
     const params = useParams();
     const sectionName = params.section || "capturing"; // Default to capturing
     let puzzleNumber = parseInt(params.puzzleNumber || "1") - 1;
+
+    // If section in url is invaild, show a "PageNotFound" message
+    if (!sectionKeys.includes(sectionName as any)) {
+        return <PageNotFound />;
+    }
 
     const sectionKey = sectionName.toLowerCase();
     const puzzles = puzzleSectionMap[sectionKey] || puzzleSectionMap["capturing"];
