@@ -157,8 +157,8 @@ class Page3 extends Module6 {
                 it.
             </p>,
             <p>
-                If white tries to cut with A, blue would play at B to connect. If white tries to cut
-                with B, blue would play at A to connect.
+                If White tries to cut with A, Blue would play at B to connect. If White tries to cut
+                with B, Blue would play at A to connect.
             </p>,
             <p>
                 Sometimes there may be more important moves you could play, but in this lesson we
@@ -247,8 +247,8 @@ class Page5 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Trying to separate the stones will be a lopsided fight, white will only have two
-                liberties. As long as blue plays at 1, pushing white towards the edge of the board,
+                Trying to separate the stones will be a lopsided fight, White will only have two
+                liberties. As long as Blue plays at 1, pushing White towards the edge of the board,
                 it will be okay.
             </p>,
         ];
@@ -278,7 +278,7 @@ class Page6 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Even if white adds stones here, they will all be captured. If you are in atari on
+                Even if White adds stones here, they will all be captured. If you are in atari on
                 the second line and you extend, you will just lose more stones.
             </p>,
         ];
@@ -342,7 +342,7 @@ class Page8 extends Module6 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <p>When white extends out, the group will have three liberties and can escape. </p>,
+            <p>When White extends out, the group will have three liberties and can escape. </p>,
         ];
     }
     config(): PuzzleConfig {
@@ -474,9 +474,9 @@ class Page10 extends Module6 {
         return [
             <p>
                 Of the five Blue stones, only two of them are actually connected to each other. So
-                white can turn the tables by playing atari at 1. If blue connects at 2, White 3 can
-                atari again. If Black ataris with 4, White adds a stone at 5. If blue next tries to
-                capture with 6, white captures first at 7.
+                White can turn the tables by playing atari at 1. If Blue connects at 2, White 3 can
+                atari again. If Black ataris with 4, White adds a stone at 5. If Blue next tries to
+                capture with 6, White captures first at 7.
             </p>,
             // <p>
             //     Don't just run away when you are in a fight and don't attack without watching your
@@ -555,8 +555,8 @@ class Page11 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                The one space jump is still a good connection if blue plays atari on the second line
-                and, when white extends out, connects at 3. White could try cutting at 4, but would
+                The one space jump is still a good connection if Blue plays atari on the second line
+                and, when White extends out, connects at 3. White could try cutting at 4, but would
                 be pushed into the edge by 5 and caught.
             </p>,
         ];
@@ -657,7 +657,7 @@ class Page13 extends Module6 {
         super("no_audio_here");
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>If white tries to cut here, capturing the group is easy.</p>];
+        return [<p>If White tries to cut here, capturing the group is easy.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -744,7 +744,7 @@ class Page15 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                If the knights move is away from the side, blue can capture a cutting stone with a
+                If the knights move is away from the side, Blue can capture a cutting stone with a
                 pattern we call a ladder.
             </p>,
         ];
@@ -807,7 +807,7 @@ class Page16 extends Module6 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                The two space jump is a looser connection, but it still works here. If white tries
+                The two space jump is a looser connection, but it still works here. If White tries
                 to cut, the cutting stones can be captured quickly.
             </p>,
         ];
@@ -897,7 +897,7 @@ class Page18 extends Module6 {
                 can be cut.
             </p>,
             <p>
-                It's more complicated, but the fight will usually favor blue because blue has more
+                It's more complicated, but the fight will usually favor Blue because Blue has more
                 stones nearby.
             </p>,
         ];

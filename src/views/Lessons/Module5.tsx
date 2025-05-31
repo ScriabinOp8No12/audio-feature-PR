@@ -62,7 +62,7 @@ class Page2 extends Module5 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                With enough moves, both stones could be captured. The white stone at 1 places both
+                With enough moves, both stones could be captured. The White stone at 1 places both
                 Blue stones into atari at once, or double atari.
             </p>,
         ];
@@ -267,7 +267,7 @@ class Page8 extends Module5 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <p>Now Blue has turned the tables on white! Playing at 1 puts white C into atari.</p>,
+            <p>Now Blue has turned the tables on White! Playing at 1 puts White C into atari.</p>,
         ];
     }
     config(): PuzzleConfig {
@@ -327,7 +327,7 @@ class Page10 extends Module5 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                This means that a move by Blue at either A or B will put two white stones into
+                This means that a move by Blue at either A or B will put two White stones into
                 atari. Which one do you think is best?
             </p>,
         ];
@@ -359,7 +359,7 @@ class Page11 extends Module5 {
         return [
             <p>
                 Let's look at B first. This move looks good because on the next turn Blue could
-                capture the two white stones at A.
+                capture the two White stones at A.
             </p>,
         ];
     }
@@ -389,8 +389,8 @@ class Page12 extends Module5 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Unfortunately, it's not Blue's turn. While it is true that white is in atari, Blue
-                is also now in atari, so white can capture first - at C - and remove four Blue
+                Unfortunately, it's not Blue's turn. While it is true that White is in atari, Blue
+                is also now in atari, so White can capture first - at C - and remove four Blue
                 stones.
             </p>,
         ];
@@ -428,7 +428,7 @@ class Page13 extends Module5 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                Let's try going the other way this time. A Blue play at A also puts the two white
+                Let's try going the other way this time. A Blue play at A also puts the two White
                 stones into atari.
             </p>,
         ];
@@ -456,7 +456,7 @@ class Page14 extends Module5 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Now even if white adds a stone at 2, which puts Blue into atari at D...</p>];
+        return [<p>Now even if White adds a stone at 2, which puts Blue into atari at D...</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -483,7 +483,7 @@ class Page15 extends Module5 {
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>It's now Blue's turn, and playing at D captures all three white stones.</p>];
+        return [<p>It's now Blue's turn, and playing at D captures all three White stones.</p>];
     }
     config(): PuzzleConfig {
         return {
