@@ -205,8 +205,9 @@ export function HelpPage(): JSX.Element {
                     <p>
                         The lessons section should be completed in order, but you can stop and come
                         back as often as you like, and you can revisit any lesson if you need a
-                        reminder on how something works. The 8th lesson is all go problems for you
-                        to solve, you can visit this section as often as you like.
+                        reminder on how something works. The 8th lesson contains 100 Go problems for
+                        you to solve. The problems get harder as you progress through them, and you
+                        can visit this section as often as you like.
                     </p>
                     {isMobile && <BackToTopButton />}
                 </section>
@@ -236,7 +237,8 @@ export function HelpPage(): JSX.Element {
                         </a>
                         . The lessons and general concept of the site are by Paul Barchilon and
                         Terry Benson. Initial programming and bot hosting were provided by Akita
-                        Noek, with additional programming by Nathan Harwit. The entire project has
+                        Noek, with additional programming by Nathan Harwit. The majority of the
+                        problems in lesson 8 were taken from goproblems.com. The entire project has
                         been funded solely by donations. If you would like to contribute,{" "}
                         <a
                             href="https://www.agfgo.org/donate"
