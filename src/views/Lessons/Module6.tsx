@@ -41,6 +41,7 @@ class Page1 extends Module6 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <p>Audio coming soon!</p>,
             <p>
                 The best way to keep your stones safe is to connect them. These stones cannot be
                 cut.

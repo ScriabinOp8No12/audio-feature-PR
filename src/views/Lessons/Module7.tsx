@@ -41,6 +41,7 @@ class Page1 extends Module7 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <p>Audio coming soon!</p>,
             <p>
                 Understanding when the game is over can be confusing. The most important thing is to
                 keep playing until you have clear borders.
