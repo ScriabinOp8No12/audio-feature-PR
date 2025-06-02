@@ -399,7 +399,10 @@ class Page11 extends Module7 {
                 Remember, you must either play a stone or pass a stone to your opponent as a
                 prisoner, so playing on a neutral point saves you one point.
             </p>,
-            <p>So go along the borders of each territory and fill in any gaps.</p>,
+            <p>
+                So go along the borders of each territory and fill in any gaps. Pass a stone to show
+                you are done. White passes last. Score the game.
+            </p>,
         ];
     }
 
