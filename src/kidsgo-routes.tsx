@@ -33,6 +33,7 @@ import { LearnToPlay } from "./views/LearnToPlay";
 import { CharacterSelection } from "./views/CharacterSelection";
 import { HelpPage } from "./views/HelpPage";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { PageNotFound } from "@kidsgo/components/PageNotFound/PageNotFound";
 import * as sockets from "@/lib/sockets";
 
 /*** Layout our main view and routes ***/
@@ -59,11 +60,6 @@ function Main(props): JSX.Element {
 
     return <ErrorBoundary>{props.children}</ErrorBoundary>;
 }
-const PageNotFound = (props, state) => (
-    <div style={{ display: "flex", flex: "1", alignItems: "center", justifyContent: "center" }}>
-        {_("Page not found")}
-    </div>
-);
 
 function Default(): JSX.Element {
     const user = data.get("config.user");
