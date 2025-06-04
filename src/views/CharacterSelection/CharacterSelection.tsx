@@ -45,7 +45,7 @@ export function CharacterSelection(): JSX.Element {
 
     const last_ui_class = React.useRef<string>(raceIdxToUiClass(race, idx));
     const updating = React.useRef<boolean>(false);
-    const previousRace = React.useRef<Race>(race); // Track previous race
+    const previousRace = React.useRef<Race>(race);
 
     const refresh = () => {
         setRefreshing(true);
@@ -83,21 +83,50 @@ export function CharacterSelection(): JSX.Element {
             });
     };
 
-    const update = (race: Race, idx: number): void => {
+    const update = async (race: Race, idx: number): Promise<void> => {
         const raceChanged = previousRace.current !== race;
 
         setAvatarRace(race);
         setAvatarIdx(idx);
-        update_server(raceIdxToUiClass(race, idx));
 
+        const new_ui_class = raceIdxToUiClass(race, idx);
+
+        // Update server first
+        await new Promise<void>((resolve, reject) => {
+            const updateServerAsync = (ui_class: string): void => {
+                last_ui_class.current = ui_class;
+                if (updating.current) {
+                    resolve();
+                    return;
+                }
+                updating.current = true;
+                post("kidsgo/update_avatar", { ui_class })
+                    .then(() => {
+                        updating.current = false;
+                        if (ui_class !== last_ui_class.current) {
+                            updateServerAsync(last_ui_class.current);
+                        } else {
+                            resolve();
+                        }
+                    })
+                    .catch((err) => {
+                        updating.current = false;
+                        console.error("Failed to update avatar", err);
+                        reject(err);
+                    });
+            };
+            updateServerAsync(new_ui_class);
+        });
+
+        // Update local config after server update
         const config = data.get("cached.config");
-        config.user.ui_class = raceIdxToUiClass(race, idx);
+        config.user.ui_class = new_ui_class;
         data.setWithoutEmit("cached.config", config);
         data.setWithoutEmit("config", config);
         data.set("config.user", JSON.parse(JSON.stringify(config.user)));
         data.set("user", JSON.parse(JSON.stringify(config.user)));
 
-        // Only trigger refresh when race changes, not idx
+        // Only trigger refresh when race changes, after avatar is fully updated
         if (raceChanged) {
             refresh();
         }
