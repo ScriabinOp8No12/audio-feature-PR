@@ -105,9 +105,12 @@ function NameSelection(): JSX.Element {
 
     console.log("user", user);
 
+    const config = data.get("cached.config");
+    const ui_class = config?.user?.ui_class;
+
     const refresh = (e) => {
         setRefreshing(true);
-        post("kidsgo/regenerate_username")
+        post("kidsgo/regenerate_username", { ui_class })
             .then((config) => {
                 data.set(cached.config, config);
                 console.log("should be ", config.user);
