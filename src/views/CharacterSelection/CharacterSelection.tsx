@@ -45,9 +45,11 @@ export function CharacterSelection(): JSX.Element {
     const last_ui_class = React.useRef<string>(raceIdxToUiClass(race, idx));
     const previousRace = React.useRef<Race>(race);
 
-    const refresh = async () => {
+    const refresh = async (ui_class_override?: string) => {
+        console.log("Refresh called with:", ui_class_override);
         const config = data.get("cached.config");
-        const ui_class = config?.user?.ui_class;
+        const ui_class = ui_class_override || config?.user?.ui_class;
+        console.log("Using ui_class:", ui_class);
         if (!ui_class) {
             return;
         }
@@ -67,28 +69,48 @@ export function CharacterSelection(): JSX.Element {
         }
     };
 
-    const update = async (newRace: Race, newIdx: number) => {
-        const new_ui_class = raceIdxToUiClass(newRace, newIdx);
+    // New function to handle race changes with username refresh
+    const handleRaceChange = async (newRace: Race, newIdx: number) => {
         const raceChanged = previousRace.current !== newRace;
+        const new_ui_class = raceIdxToUiClass(newRace, newIdx);
 
-        // Update UI immediately
         setAvatarRace(newRace);
         setAvatarIdx(newIdx);
         last_ui_class.current = new_ui_class;
 
+        if (raceChanged) {
+            previousRace.current = newRace;
+        }
+
         try {
             await post("kidsgo/update_avatar", { ui_class: new_ui_class });
 
-            const config = data.get("cached.config");
-            config.user.ui_class = new_ui_class;
-            data.setWithoutEmit("cached.config", config);
-            data.setWithoutEmit("config", config);
-            data.set("config.user", JSON.parse(JSON.stringify(config.user)));
-            data.set("user", JSON.parse(JSON.stringify(config.user)));
-
             if (raceChanged) {
-                previousRace.current = newRace;
-                await refresh();
+                // Generate new username and update everything at once
+                setRefreshing(true);
+                try {
+                    const newConfig = await post("kidsgo/regenerate_username", {
+                        ui_class: new_ui_class,
+                    });
+                    // Single atomic update - no separate config update needed
+                    data.set(cached.config, newConfig);
+                    data.setWithoutEmit("cached.config", newConfig);
+                    data.setWithoutEmit("config", newConfig);
+                    data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
+                    data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
+                } catch (err) {
+                    console.error("Failed to refresh name", err);
+                } finally {
+                    setRefreshing(false);
+                }
+            } else {
+                // Just update the avatar, no username change
+                const config = data.get("cached.config");
+                config.user.ui_class = new_ui_class;
+                data.setWithoutEmit("cached.config", config);
+                data.setWithoutEmit("config", config);
+                data.set("config.user", JSON.parse(JSON.stringify(config.user)));
+                data.set("user", JSON.parse(JSON.stringify(config.user)));
             }
         } catch (err) {
             console.error("Failed to update avatar", err);
@@ -99,8 +121,8 @@ export function CharacterSelection(): JSX.Element {
         <div id="CharacterSelection" className={avatar_background_class(avatarRace)}>
             <BackButton onClick={() => navigate("/play")} />
             <div className="HelpButton" onClick={() => navigate("/help")}></div>
-            <NameSelection refreshing={refreshing} onRefresh={refresh} />
-            <AvatarSelection race={avatarRace} idx={avatarIdx} onChange={update} />
+            <NameSelection refreshing={refreshing} onRefresh={() => refresh()} />
+            <AvatarSelection race={avatarRace} idx={avatarIdx} onChange={handleRaceChange} />
             <button className="ok" onClick={() => navigate("/play")}>
                 Done — I love it!
             </button>
