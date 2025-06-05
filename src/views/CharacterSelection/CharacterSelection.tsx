@@ -88,7 +88,7 @@ export function CharacterSelection(): JSX.Element {
 
             if (raceChanged) {
                 previousRace.current = newRace;
-                await refresh(); // reuse the existing refresh logic
+                await refresh();
             }
         } catch (err) {
             console.error("Failed to update avatar", err);
