@@ -46,10 +46,9 @@ export function CharacterSelection(): JSX.Element {
     const previousRace = React.useRef<Race>(race);
 
     const refresh = async (ui_class_override?: string) => {
-        console.log("Refresh called with:", ui_class_override);
         const config = data.get("cached.config");
         const ui_class = ui_class_override || config?.user?.ui_class;
-        console.log("Using ui_class:", ui_class);
+
         if (!ui_class) {
             return;
         }
