@@ -90,7 +90,6 @@ export function CharacterSelection(): JSX.Element {
                     const newConfig = await post("kidsgo/regenerate_username", {
                         ui_class: new_ui_class,
                     });
-                    // Update cache
                     data.set(cached.config, newConfig);
                     data.setWithoutEmit("cached.config", newConfig);
                     data.setWithoutEmit("config", newConfig);
