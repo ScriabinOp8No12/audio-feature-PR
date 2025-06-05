@@ -40,12 +40,12 @@ export function CharacterSelection(): JSX.Element {
     const [race, idx] = uiClassToRaceIdx(user.ui_class);
     const [avatarRace, setAvatarRace] = React.useState<Race>(race);
     const [avatarIdx, setAvatarIdx] = React.useState(idx);
-    const [refreshing, setRefreshing] = React.useState(false);
+    const [regeneratingUsername, setRegeneratingUsername] = React.useState(false);
 
     const last_ui_class = React.useRef<string>(raceIdxToUiClass(race, idx));
     const previousRace = React.useRef<Race>(race);
 
-    const refresh = async (ui_class_override?: string) => {
+    const regenerateUsername = async (ui_class_override?: string) => {
         const config = data.get("cached.config");
         const ui_class = ui_class_override || config?.user?.ui_class;
 
@@ -53,7 +53,7 @@ export function CharacterSelection(): JSX.Element {
             return;
         }
 
-        setRefreshing(true);
+        setRegeneratingUsername(true);
         try {
             const newConfig = await post("kidsgo/regenerate_username", { ui_class });
             data.set(cached.config, newConfig);
@@ -62,13 +62,12 @@ export function CharacterSelection(): JSX.Element {
             data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
             data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
         } catch (err) {
-            console.error("Failed to refresh name", err);
+            console.error("Failed to regenerate name", err);
         } finally {
-            setRefreshing(false);
+            setRegeneratingUsername(false);
         }
     };
 
-    // New function to handle race changes with username refresh
     const handleRaceChange = async (newRace: Race, newIdx: number) => {
         const raceChanged = previousRace.current !== newRace;
         const new_ui_class = raceIdxToUiClass(newRace, newIdx);
@@ -86,21 +85,21 @@ export function CharacterSelection(): JSX.Element {
 
             if (raceChanged) {
                 // Generate new username and update everything at once
-                setRefreshing(true);
+                setRegeneratingUsername(true);
                 try {
                     const newConfig = await post("kidsgo/regenerate_username", {
                         ui_class: new_ui_class,
                     });
-                    // Single atomic update - no separate config update needed
+                    // Update cache
                     data.set(cached.config, newConfig);
                     data.setWithoutEmit("cached.config", newConfig);
                     data.setWithoutEmit("config", newConfig);
                     data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
                     data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
                 } catch (err) {
-                    console.error("Failed to refresh name", err);
+                    console.error("Failed to regenerate name", err);
                 } finally {
-                    setRefreshing(false);
+                    setRegeneratingUsername(false);
                 }
             } else {
                 // Just update the avatar, no username change
@@ -120,7 +119,7 @@ export function CharacterSelection(): JSX.Element {
         <div id="CharacterSelection" className={avatar_background_class(avatarRace)}>
             <BackButton onClick={() => navigate("/play")} />
             <div className="HelpButton" onClick={() => navigate("/help")}></div>
-            <NameSelection refreshing={refreshing} onRefresh={() => refresh()} />
+            <NameSelection onRegenerate={() => regenerateUsername()} />
             <AvatarSelection race={avatarRace} idx={avatarIdx} onChange={handleRaceChange} />
             <button className="ok" onClick={() => navigate("/play")}>
                 Done — I love it!
@@ -129,13 +128,7 @@ export function CharacterSelection(): JSX.Element {
     );
 }
 
-function NameSelection({
-    refreshing,
-    onRefresh,
-}: {
-    refreshing: boolean;
-    onRefresh: () => void;
-}): JSX.Element {
+function NameSelection({ onRegenerate }: { onRegenerate: () => void }): JSX.Element {
     const user = useUser();
 
     if (user.anonymous) {
@@ -143,10 +136,10 @@ function NameSelection({
     }
 
     return (
-        <div className={`NameSelection ${refreshing ? "refreshing" : ""}`}>
+        <div className={"NameSelection"}>
             <div className="title">PLAYER AVATAR</div>
             <div className="username">{user.username}</div>
-            <button className="refresh" onClick={onRefresh}>
+            <button className="regenerate" onClick={onRegenerate}>
                 Change Name
             </button>
         </div>
