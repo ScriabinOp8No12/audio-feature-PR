@@ -45,17 +45,16 @@ export function CharacterSelection(): JSX.Element {
     const last_ui_class = React.useRef<string>(raceIdxToUiClass(race, idx));
     const previousRace = React.useRef<Race>(race);
 
-    const regenerateUsername = async (ui_class_override?: string) => {
+    const regenerateUsername = async () => {
         const config = data.get("cached.config");
-        const ui_class = ui_class_override || config?.user?.ui_class;
-
-        if (!ui_class) {
-            return;
-        }
+        const ui_class = config?.user?.ui_class;
 
         setRegeneratingUsername(true);
+
         try {
-            const newConfig = await post("kidsgo/regenerate_username", { ui_class });
+            const newConfig = await post("kidsgo/regenerate_username", {
+                ui_class,
+            });
             data.set(cached.config, newConfig);
             data.setWithoutEmit("cached.config", newConfig);
             data.setWithoutEmit("config", newConfig);
@@ -80,11 +79,12 @@ export function CharacterSelection(): JSX.Element {
             previousRace.current = newRace;
         }
 
+        // We need to regenerate a new username from the backend when the Avatar race changes, but not when the idx changes
+        // Idx is changed on the frontend when you click the left and right arrows on your Avatar
         try {
             await post("kidsgo/update_avatar", { ui_class: new_ui_class });
 
             if (raceChanged) {
-                // Generate new username and update everything at once
                 setRegeneratingUsername(true);
                 try {
                     const newConfig = await post("kidsgo/regenerate_username", {
@@ -101,7 +101,6 @@ export function CharacterSelection(): JSX.Element {
                     setRegeneratingUsername(false);
                 }
             } else {
-                // Just update the avatar, no username change
                 const config = data.get("cached.config");
                 config.user.ui_class = new_ui_class;
                 data.setWithoutEmit("cached.config", config);
