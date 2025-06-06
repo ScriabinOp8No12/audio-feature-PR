@@ -149,7 +149,23 @@ class Puzzle3 extends Content {
                 white: "b7c7d6d8e8f4g8g7g5g3",
             },
 
-            move_tree: this.makePuzzleMoveTree(["e5e6f6d5d4"], ["d5e6f5f6"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["e5e6f6d5d4"],
+                [
+                    "d5e6f5f6",
+                    "d4e5",
+                    "f6e5",
+                    "d5e6f6e5f5e4",
+                    "d5e6f6e5e4f5",
+                    "d5e6e5f6f5f8",
+                    "d5e6e5f6g6f8",
+                    "d5e6e5f6f8f9",
+                    "e5e6d5f6f5f8",
+                    "e5e6d5f6g6f8",
+                ],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -251,7 +267,7 @@ class Puzzle5 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["f6e6e7f5g5f7f4", "f6e6e7f5g5f7g6d7f4"],
-                [""],
+                ["e6f5f6g5", "f4f6f5e6", "f4f6e6f5", "f5e6"],
                 9,
                 9,
             ),
@@ -306,7 +322,7 @@ class Puzzle6 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["e5d5d4e6f6e4c7", "e5d5d4e6f6e4f5c3c7"],
-                [""],
+                ["e6d5e5d4", "e6d5d4e5f5e4e3f4"],
                 9,
                 9,
             ),
@@ -469,7 +485,7 @@ class Puzzle9 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["d2e1f2f1g1e2e3"],
-                ["d2e1e2f1f2g1g2h1", "d2e1e2f1g2f2f3g1", "e2d2d3c3"],
+                ["d2e1e2f1f2g1g2h1", "d2e1e2f1g2f2f3g1", "e2d2d3c3", "f2d2"],
                 9,
                 9,
             ),
@@ -524,7 +540,7 @@ class Puzzle10 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["e5e4f4e3e2f3g3d5d6"],
-                ["e4d5", "e5e4f4e3f3e2"],
+                ["e4d5", "e5e4f4e3f3e2", "d5e4", "e5e4f5d5d6e6c6f4"],
                 9,
                 9,
             ),

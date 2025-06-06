@@ -192,7 +192,7 @@ class Puzzle4 extends Content {
                 white: "a2b1b2b3b4c3d4e4f2f3",
             },
 
-            move_tree: this.makePuzzleMoveTree(["a5e2a3e3a1"], ["a3a5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["a5e2a3e3a1"], ["a3a5", "e2e1"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -294,7 +294,7 @@ class Puzzle6 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["c8b8d9b7e9", "c8b8e9b7d9", "c8b8c9b7e9b9d9", "c8b8c9b7d9b9e9"],
-                ["b7b8c8c9", "b8c8b7b9"],
+                ["b7b8c8c9", "b8c8b7b9", "e9c8"],
                 9,
                 9,
             ),
@@ -349,7 +349,13 @@ class Puzzle7 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["h3d1g1f1c1", "g1d3h3d1f1", "f1g1h1d1h3f1c1"],
-                ["d1d3f1c1e1g1", "d1d3f1c1g1e1", "d1d3f1c1h3e1"],
+                [
+                    "d1d3f1c1e1g1",
+                    "d1d3f1c1g1e1",
+                    "d1d3f1c1h3e1",
+                    "f1g1d1c1f1d3h3e1",
+                    "f1g1d1c1f1d3h1e1",
+                ],
                 9,
                 9,
             ),
@@ -403,8 +409,8 @@ class Puzzle8 extends Content {
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["f8d9f5g7g9e9h9", "f8d9f5g7h9f9g9"],
-                ["f8d9f5g7g9e9f9h9", "f5f8f9d9e9g9", "f5f8h9e9d9c9"],
+                ["f8d9f5f9g7e9h9f7g9"],
+                ["f8d9f9g9f5e9", "f8d9g9e9f9h9", "f5f8f9d9e9g9", "f5f8h9e9d9c9"],
                 9,
                 9,
             ),
@@ -514,7 +520,7 @@ class Puzzle10 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["b5b6c4c6a6", "b5b6a6b4c6"],
-                ["a5b6c6a7", "b6b5b4a6c4a7", "b6b5c4a6b4a7", "c6b6", "c4b5b4a6a7a8"],
+                ["a5b6c6a7", "b6b5b4a6c4a7", "b6b5c4a6b4a7", "c6b6", "c4b5b4a6a7a8", "b4b6"],
                 9,
                 9,
             ),

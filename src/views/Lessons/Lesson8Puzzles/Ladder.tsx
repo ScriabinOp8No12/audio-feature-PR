@@ -30,25 +30,22 @@ class Puzzle1 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "e7e6e5f5g5g6c4d4d3",
-                white: "d8d7d6d5e4f4g4h5f6f7",
+                black: "e7e6e5f5g5g6c4d5d4d3d2b4",
+                white: "b6b7d8d7d6e4e9f4g4h4h5f2f6f7",
             },
 
             move_tree: this.makePuzzleMoveTree(
+                ["f8g7h7g8g9h8j8h9j9", "f8g7h7g8g9h8h9j8j7h6j9"],
                 [
-                    "f8g7h7g8h8g9h9f9e9",
-                    "f8g7h7g8h8g9f9e8h9",
-                    "f8g7h7g8g9h8j8h9j9",
-                    "f8g7h7g8g9h8h9j8j7h6j9",
-                    "f8g7h7g8h8g9e8h6h9f9e9",
-                ],
-                [
+                    "e8f8",
+                    "g8f8",
+                    "f8g7h7g8h8g9f9e8",
+                    "f8g7h7g8h8g9h9f9",
                     "f8g7h7g8g9h8h9j8j9f9",
                     "f8g7h7g8h8g9h6e8",
-                    "f8g7g8h7h6e8",
+                    "f8g7g8h7h6j6h8j7j8j5",
                     "f8g7g8h7e8h6",
-                    "g7f8e8e9g8f9g9d9",
-                    "g7f8g8e8",
+                    "g7f8",
                 ],
                 9,
                 9,
@@ -109,6 +106,8 @@ class Puzzle2 extends Content {
                     "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j7g5j9",
                 ],
                 [
+                    "c6d6",
+                    "e6d6",
                     "e5d6",
                     "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j9f9",
                     "d6e5f5e6e7f6g6f7f8g7h7g8g9h8h9j8j7g5h6f4",
@@ -180,6 +179,9 @@ class Puzzle3 extends Content {
                 ],
                 [
                     "e5f6",
+                    "f5f6",
+                    "f4f6",
+                    "f6e5f4d4",
                     "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j2e3d4f2",
                     "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j2e3f2d4",
                     "f6e5e4f5g5f4f3g4h4g3g2h3h2j3j4e3d4f2",
@@ -241,12 +243,12 @@ class Puzzle4 extends Content {
         return {
             initial_state: {
                 black: "c3e3f3g4g5h5e6h7b3",
-                white: "b4c6d7e5f4f6f7g3f2h3h4h2",
+                white: "b4c6d7e5f4f6f7g3f2h3h4h2g1",
             },
 
             move_tree: this.makePuzzleMoveTree(
                 ["f5e4d5d4c4d3d2"],
-                ["e4f5", "f5e4d4d5c5d6", "f5e4d4d5d6e7", "f5e4d5d4d3c4"],
+                ["e4f5", "d5f5", "f5e4d4d5c5d6", "f5e4d4d5d6e7", "f5e4d5d4d3c4"],
                 9,
                 9,
             ),
@@ -305,7 +307,9 @@ class Puzzle5 extends Content {
                     "f6e5e4f5g5f4f3g4h4g3g2h3j3h2h1e3j2",
                 ],
                 [
+                    "f5f6",
                     "e5f6",
+                    "d3f6",
                     "f6e5f5e4e3d3",
                     "f6e5f5e4f4d3",
                     "f6e5f5e4d3f4",
@@ -444,7 +448,11 @@ class Puzzle7 extends Content {
                     "f4e5f5d5c5d6d7c6b6c7c8b7a7b8b9b5a8",
                 ],
                 [
+                    "d5f4",
+                    "f5f4",
                     "e5f4f5g4",
+                    "f4e5d5f5",
+                    "f4e5f5d5d6c5",
                     "e5f4g4f5",
                     "f4e5f5d5c5d6d7c6b6c7c8b7a7b8a8b9a9a6",
                     "f4e5f5d5c5d6c6d7d8e8",
@@ -511,6 +519,9 @@ class Puzzle8 extends Content {
             move_tree: this.makePuzzleMoveTree(
                 ["e5f5f6g5h5g6h7j6j7h4j5", "e5f5f6g5h5g6h7j6j5h4j7"],
                 [
+                    "d5e2d3g2f1e1g1h1",
+                    "f6d3d5e2",
+                    "f6d3e2d5",
                     "f5e5d5e6e7f6f7g6",
                     "f5e5e6d5",
                     "f5e5d5e6f6e7",
@@ -572,6 +583,7 @@ class Puzzle9 extends Content {
                 ["f6e5e4c5f5d5d3c4c3b4b3a4a3a5a6"],
                 [
                     "e5f6",
+                    "f5f6",
                     "f6e5f5e4",
                     "f6e5c5e8d8d9",
                     "f6e5c5e8e4d8",
@@ -641,6 +653,7 @@ class Puzzle10 extends Content {
                     "d6e7f7e6f5e5",
                     "d6e7f7e6e5f5f4g5",
                     "d6e7f7e6e5f5g5f4f3e2",
+                    "d6e7f7e6e5f5g5f4f2e2",
                 ],
                 9,
                 9,

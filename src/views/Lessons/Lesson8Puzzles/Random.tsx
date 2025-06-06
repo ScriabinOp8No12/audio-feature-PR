@@ -376,7 +376,12 @@ class Puzzle8 extends Content {
                 white: "a6b6b8c6d7e6e8e9",
             },
 
-            move_tree: this.makePuzzleMoveTree(["a8c8c9"], ["c8a8a7c9"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["a8c8c9"],
+                ["c8a8a7c9", "a7c8a8a9", "a7c8c9a9"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -433,6 +438,8 @@ class Puzzle9 extends Content {
                     "b4c5c6b5a5b6",
                     "b4c5c6b5b6a5a6a4b3a3",
                     "b4c5c6b5b6a5a4a6d6a7",
+                    "b3c5",
+                    "b5b4b3a3c5a4",
                 ],
                 9,
                 9,

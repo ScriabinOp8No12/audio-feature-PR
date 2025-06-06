@@ -83,7 +83,7 @@ class Puzzle2 extends Content {
                 white: "j8h8g8f7f9e7d7c7c8",
             },
 
-            move_tree: this.makePuzzleMoveTree(["g9j9g9h9g9"], ["j9g9", "e9d9"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["g9j9g9h9g9"], ["j9g9", "e9d9", "d9c9"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -186,7 +186,12 @@ class Puzzle4 extends Content {
                 white: "j3h3g2g3g4f5f6g6h6",
             },
 
-            move_tree: this.makePuzzleMoveTree(["j4j6j2j5h4"], ["h4j5j2j4", "j5j6", "j2j5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["j4j6j2j5h4"],
+                ["h4j5j2j4", "j5j6j2", "j2j5"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -247,6 +252,7 @@ class Puzzle5 extends Content {
                     "b3c9b6b9d6a9",
                     "b3c9b9a9",
                     "b3c9a6b9a9",
+                    "a5c9",
                 ],
                 9,
                 9,
@@ -299,7 +305,7 @@ class Puzzle6 extends Content {
                 white: "b7b8c6d2d4d6e5e7f3f4f7g7",
             },
 
-            move_tree: this.makePuzzleMoveTree(["d5c5c4d5d3e4f2e3e2"], ["c5d5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["d5c5c4d5d3e4f2e3e2"], ["c5d5", "c4d5"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -399,7 +405,15 @@ class Puzzle8 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["f1g1e1f3g2"],
-                ["f3e1", "e1f3g4f1c1d3d1b1", "e1f3g2g4", "e1f3f1g4", "f1g1g2e1", "f1g1f3e1"],
+                [
+                    "f3e1",
+                    "e1f3g4f1c1d3d1b1",
+                    "e1f3g2g4",
+                    "e1f3f1g4",
+                    "f1g1g2e1",
+                    "f1g1f3e1",
+                    "g2e1f3f1g1c1",
+                ],
                 9,
                 9,
             ),
@@ -452,8 +466,8 @@ class Puzzle9 extends Content {
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["c4d4d3d2c1d3d5"],
-                ["d3c4d2c1", "c4d4c1d3", "c4d4d2d3", "d4c4", "c1d3"],
+                ["c4d4d3d2c1d5d3"],
+                ["d3c4d2c1", "c4d4c1d3", "c4d4d2d3", "d4c4", "c1d3", "d2d3c1c4d2"],
                 9,
                 9,
             ),

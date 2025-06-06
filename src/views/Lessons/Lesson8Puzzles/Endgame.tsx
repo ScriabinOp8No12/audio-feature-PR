@@ -34,7 +34,7 @@ class Puzzle1 extends Content {
                 white: "a6b6c6d6d7e6f5f6g4g5h4h5h6h7j7",
             },
 
-            move_tree: this.makePuzzleMoveTree(["d5e5f4", "e5d5f4", "f4d5e5"], [""], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["d5e5f4", "e5d5f4", "f4d5e5"], ["b3e5"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -86,7 +86,7 @@ class Puzzle2 extends Content {
                 white: "a6b6c6d6d5e6f4f6g4g5h4h5h6h7j7",
             },
 
-            move_tree: this.makePuzzleMoveTree(["e5f5"], ["f5e5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["e5f5"], ["f5e5", "g6e5"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -134,8 +134,8 @@ class Puzzle3 extends Content {
     config(): PuzzleConfig {
         return {
             initial_state: {
-                black: "a5b5c5c4d4e4e3f3g3h3",
-                white: "a6b6c6d6d5e5f4g4g5h4h6j4",
+                black: "a5b5b3c5c4c2d4d3e4e3f3g3h3",
+                white: "a6b6c6c7d6d5e5f4g4g5g7h4h6j4",
             },
 
             move_tree: this.makePuzzleMoveTree(["j3"], [""], 9, 9),
@@ -244,7 +244,7 @@ class Puzzle5 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["d6c7f4g4h4", "d6c7g4f4h4", "d6c7h4f4g4"],
-                ["f4d6", "g4d6", "h4d6"],
+                ["f4d6", "g4d6", "h4d6", "c7d6"],
                 9,
                 9,
             ),
@@ -354,12 +354,12 @@ class Puzzle7 extends Content {
         return {
             initial_state: {
                 black: "a4a5a6b4b5c5d3d5d6d7e4f4f5f6g3g4h1h2",
-                white: "a7b6b8c6c7d8e5e6e7f7g7g6g5h4h3j2",
+                white: "a7b6b8c6c7d8e5e6e7f7g7g6g5h5h4h3j2",
             },
 
             move_tree: this.makePuzzleMoveTree(
-                ["g2j3j1h5", "f2j3j1h5"],
-                ["j1g2j3g1j2j4", "j1g2j3g1f2j2", "j1g2j3g1h5j2", "j1g2g1f1", "j1g2f2g1"],
+                ["g2j3j1", "f2j3j1", "g1j3j1f2g2"],
+                ["j1g2j3g1j2j4", "j1g2j3g1j4j2", "j1g2j3g1f2j2", "j1g2g1f1", "j1g2f2g1"],
                 9,
                 9,
             ),
@@ -414,7 +414,12 @@ class Puzzle8 extends Content {
                 white: "a7b7b6c6c5d4d5d7e3e4e7e8f8f5g6g8h7j7",
             },
 
-            move_tree: this.makePuzzleMoveTree(["f6g7e5e6f5f7"], ["e5e6", "g7f7", "g4f6"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["f6g7e5e6f5f7"],
+                ["e5e6", "g7f7", "g4f6", "e5f6"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
