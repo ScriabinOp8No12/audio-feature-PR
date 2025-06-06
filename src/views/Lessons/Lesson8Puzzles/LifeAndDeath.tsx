@@ -34,7 +34,7 @@ class Puzzle1 extends Content {
                 white: "e4f4f5f6e6d7c7c6d5",
             },
 
-            move_tree: this.makePuzzleMoveTree(["c5d3d6"], [""], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["c5d3d6"], ["b4c5"], 9, 9),
         };
     }
 
@@ -134,7 +134,7 @@ class Puzzle3 extends Content {
                 white: "a8b8b9c8d8e9",
             },
 
-            move_tree: this.makePuzzleMoveTree(["d9c9f9d9a9"], ["f9d9", "c9d9"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["d9c9f9d9a9"], ["f9d9", "c9d9", "e7d9"], 9, 9),
         };
     }
 
@@ -375,10 +375,10 @@ class Puzzle7 extends Content {
         return {
             initial_state: {
                 black: "j7h7h6j5h5g5g4",
-                white: "j8h8g8g7f6f5f4f3g3g2g1h4j4",
+                white: "j8h8g8g7f6f5f4f3g3g2g1h4j4j1",
             },
 
-            move_tree: this.makePuzzleMoveTree(["h3h2j3", "h3h2j2j3h3"], ["j3h3j2g6"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(["h3h2j3"], ["j3h3j2g6d5j6"], 9, 9),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -478,7 +478,16 @@ class Puzzle9 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["e9f8f9g9f8"],
-                ["e9f8g9d9", "e9f8f9g9e8f8", "f8e9", "g9f8e9d9", "g9f8f9d9", "g9f8d9e9"],
+                [
+                    "e9f8g9d9",
+                    "e9f8f9g9e8f8",
+                    "f8e9",
+                    "g9f8e9d9",
+                    "g9f8f9d9",
+                    "g9f8d9e9",
+                    "f9e9",
+                    "d9f8",
+                ],
                 //  [
                 //     "e9f8g9d9",
                 //     "e9f8f9g9e8f8",
@@ -545,7 +554,16 @@ class Puzzle10 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["h7j7j8"],
-                ["j7g7h7g8", "j7g7g8h7", "g7j7j8h7", "j8g7g8h7", "j8g7h7g8"],
+                [
+                    "j7g7h7g8",
+                    "j7g7g8h7",
+                    "g7j7j8h7",
+                    "j8g7g8h7",
+                    "j8g7h7g8",
+                    "g7j7h7j8",
+                    "g8j7j8h7",
+                    "g8j7h7j8",
+                ],
                 9,
                 9,
             ),
