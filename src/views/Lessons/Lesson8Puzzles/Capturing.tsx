@@ -83,7 +83,12 @@ class Puzzle2 extends Content {
                 white: "a5b5b6c5c4d6e6f6g6e4g3h4h5j5",
             },
 
-            move_tree: this.makePuzzleMoveTree(["e5f5f4"], ["f5e5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["e5f5f4"],
+                ["f5e5", "f4e5", "g4e5", "j6e5", "d4d3e5f5"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -132,7 +137,12 @@ class Puzzle3 extends Content {
                 white: "d8d7e7e6d4f4f5",
             },
 
-            move_tree: this.makePuzzleMoveTree(["e5d6d5"], ["d6e5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["e5d6d5"],
+                ["d6e5", "d5e5", "e4e3e5d5", "e4e3d6e5"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -183,7 +193,7 @@ class Puzzle4 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["f6d5f8"],
-                ["d5f6", "f8f6", "f6d5e4d4", "f6d5c5e4"],
+                ["d5f6", "f8f6", "f6d5e4d4", "f6d5c5e4", "g5f6", "d4f6"],
                 9,
                 9,
             ),
@@ -334,7 +344,12 @@ class Puzzle7 extends Content {
                 white: "c6c5c4d3e3f4f5g6e6e7e8",
             },
 
-            move_tree: this.makePuzzleMoveTree(["d6d7c7d4e9"], ["d7d6", "e9d6"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["d6d7c7d4e9"],
+                ["d7d6", "e9d6", "c7d6", "d6d7e9c7"],
+                9,
+                9,
+            ),
         };
     }
 
@@ -386,7 +401,7 @@ class Puzzle8 extends Content {
 
             move_tree: this.makePuzzleMoveTree(
                 ["d7e6d6e5e4"],
-                ["f9e9", "h9j8f9e5", "d7e6e5d6"],
+                ["f9e9", "h9j8f9e5", "d7e6e5d6", "d6d7", "e6d7", "d7e6e4f4e5d6"],
                 9,
                 9,
             ),
@@ -438,7 +453,12 @@ class Puzzle9 extends Content {
                 white: "e2e3e5f3f4h3h4h5g6g7f8c5b5b6b7",
             },
 
-            move_tree: this.makePuzzleMoveTree(["d5e6e7d6d7"], ["e6d5"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["d5e6e7d6d7", "d5e6e7d6c7d7d8"],
+                ["e6d5", "d6d5"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
@@ -487,7 +507,12 @@ class Puzzle10 extends Content {
                 white: "e2g2g3h4h5g5g7f8e5d5d6c6",
             },
 
-            move_tree: this.makePuzzleMoveTree(["f5e4e3f4g4"], ["e4f5", "f5e4f4e3"], 9, 9),
+            move_tree: this.makePuzzleMoveTree(
+                ["f5e4e3f4g4"],
+                ["e4f5", "f5e4f4e3", "f4f5", "e3f5"],
+                9,
+                9,
+            ),
         };
     }
     onSetGoban(goban: Goban): void {
