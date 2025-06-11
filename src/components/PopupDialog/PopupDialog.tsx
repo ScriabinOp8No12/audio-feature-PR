@@ -28,12 +28,21 @@ interface PopupDialogProps {
 
 export function PopupDialog(props: PopupDialogProps): JSX.Element {
     const hasButtons = !!props.onAccept || !!props.onCancel;
+
+    const isLesson8 = window.location.pathname.includes("/learn-to-play/8/");
+
+    let dialogClasses = `PopupDialog ${props.className || ""}`;
+    if (!hasButtons) {
+        dialogClasses += " no-buttons";
+        if (isLesson8) {
+            dialogClasses += " smaller-and-high-position";
+        }
+    }
+
     return (
         <div className="PopupDialog-container">
             <KBShortcut shortcut="esc" action={props.onCancel || props.onAccept || (() => 0)} />
-            <div
-                className={`PopupDialog ${props.className || ""} ${hasButtons ? "" : "no-buttons"}`}
-            >
+            <div className={dialogClasses}>
                 <div className="PopupDialog-text">{props.text}</div>
                 {hasButtons && (
                     <div className="PopupDialog-buttons">
