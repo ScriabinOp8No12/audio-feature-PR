@@ -45,6 +45,14 @@ export function CharacterSelection(): JSX.Element {
     const last_ui_class = React.useRef<string>(raceIdxToUiClass(race, idx));
     const previousRace = React.useRef<Race>(race);
 
+    function syncUserData(newConfig: any) {
+        data.set(cached.config, newConfig);
+        data.setWithoutEmit("cached.config", newConfig);
+        data.setWithoutEmit("config", newConfig);
+        data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
+        data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
+    }
+
     const regenerateUsername = async () => {
         const config = data.get("cached.config");
         const ui_class = config?.user?.ui_class;
@@ -55,11 +63,7 @@ export function CharacterSelection(): JSX.Element {
             const newConfig = await post("kidsgo/regenerate_username", {
                 ui_class,
             });
-            data.set(cached.config, newConfig);
-            data.setWithoutEmit("cached.config", newConfig);
-            data.setWithoutEmit("config", newConfig);
-            data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
-            data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
+            syncUserData(newConfig);
         } catch (err) {
             console.error("Failed to regenerate name", err);
         } finally {
@@ -79,8 +83,8 @@ export function CharacterSelection(): JSX.Element {
             previousRace.current = newRace;
         }
 
-        // We need to regenerate a new username from the backend when the Avatar race changes, but not when the idx changes
-        // Idx is changed on the frontend when you click the left and right arrows on your Avatar
+        // We need to regenerate a new username from the backend when only the Avatar race changes, but not when the idx changes
+        // idx is changed on the frontend when you click the left and right arrows on the Avatar
         try {
             await post("kidsgo/update_avatar", { ui_class: new_ui_class });
 
@@ -90,16 +94,13 @@ export function CharacterSelection(): JSX.Element {
                     const newConfig = await post("kidsgo/regenerate_username", {
                         ui_class: new_ui_class,
                     });
-                    data.set(cached.config, newConfig);
-                    data.setWithoutEmit("cached.config", newConfig);
-                    data.setWithoutEmit("config", newConfig);
-                    data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
-                    data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
+                    syncUserData(newConfig);
                 } catch (err) {
                     console.error("Failed to regenerate name", err);
                 } finally {
                     setRegeneratingUsername(false);
                 }
+                // Necessary otherwise if we refresh the page after changing the alien index by using the left/right arrows, we lose the avatar we were on
             } else {
                 const config = data.get("cached.config");
                 config.user.ui_class = new_ui_class;
