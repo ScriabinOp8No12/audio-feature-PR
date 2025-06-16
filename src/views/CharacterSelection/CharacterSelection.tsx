@@ -24,6 +24,7 @@ import { post, get } from "@/lib/requests";
 import { BackButton } from "@kidsgo/components/BackButton";
 import { _ } from "@/lib/translate";
 import { useEnsureUserIsCreated } from "@kidsgo/views/Matchmaking";
+import { authenticate } from "@kidsgo/kidsgo";
 import {
     AvatarSelection,
     Race,
@@ -60,6 +61,7 @@ export function CharacterSelection(): JSX.Element {
             data.setWithoutEmit("config", newConfig);
             data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
             data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
+            authenticate();
         } catch (err) {
             console.error("Failed to regenerate name", err);
         } finally {
@@ -95,6 +97,7 @@ export function CharacterSelection(): JSX.Element {
                     data.setWithoutEmit("config", newConfig);
                     data.set("config.user", JSON.parse(JSON.stringify(newConfig.user)));
                     data.set("user", JSON.parse(JSON.stringify(newConfig.user)));
+                    authenticate();
                 } catch (err) {
                     console.error("Failed to regenerate name", err);
                 } finally {
@@ -107,6 +110,7 @@ export function CharacterSelection(): JSX.Element {
                 data.setWithoutEmit("config", config);
                 data.set("config.user", JSON.parse(JSON.stringify(config.user)));
                 data.set("user", JSON.parse(JSON.stringify(config.user)));
+                authenticate();
             }
         } catch (err) {
             console.error("Failed to update avatar", err);

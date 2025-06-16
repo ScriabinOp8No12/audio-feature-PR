@@ -226,18 +226,22 @@ try {
     );
 }
 
-/** Connect to the chat service */
-/** Connect to the chat service */
-for (const socket of [sockets.socket, sockets.ai_socket]) {
-    socket.authenticate({
-        jwt: data.get("config.user_jwt", ""),
-        device_id: get_device_id(),
-        user_agent: navigator.userAgent,
-        language: kidsgo_current_language,
-        language_version: "",
-        client_version: kidsgo_version,
-    });
+export function authenticate() {
+    for (const socket of [sockets.socket, sockets.ai_socket]) {
+        if (socket.connected) {
+            socket.authenticate({
+                jwt: data.get("config.user_jwt", ""),
+                device_id: get_device_id(),
+                user_agent: navigator.userAgent,
+                language: kidsgo_current_language,
+                language_version: "",
+                client_version: kidsgo_version,
+            });
+        }
+    }
 }
+
+authenticate();
 
 data.watch("config.user_jwt", (jwt?: string) => {
     if (sockets.ai_socket.connected) {
