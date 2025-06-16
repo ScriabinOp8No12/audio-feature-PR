@@ -33,6 +33,7 @@ import * as requests from "@/lib/requests";
 import { configure_goban } from "./lib/configure-goban";
 import { initialize_kidsgo_themes } from "./lib/goban_themes";
 import {
+    GobanSocket,
     init_remote_ownership_estimator,
     init_wasm_ownership_estimator,
     //init_score_estimator,
@@ -226,11 +227,10 @@ try {
     );
 }
 
-/** Connect to the chat service */
-/** Connect to the chat service */
-for (const socket of [sockets.socket, sockets.ai_socket]) {
+/** Authentication */
+function authenticate(socket: GobanSocket<any, any>, jwt?: string) {
     socket.authenticate({
-        jwt: data.get("config.user_jwt", ""),
+        jwt: jwt ?? data.get("config.user_jwt", ""),
         device_id: get_device_id(),
         user_agent: navigator.userAgent,
         language: kidsgo_current_language,
@@ -239,16 +239,17 @@ for (const socket of [sockets.socket, sockets.ai_socket]) {
     });
 }
 
+authenticate(sockets.socket);
+authenticate(sockets.ai_socket);
+
 data.watch("config.user_jwt", (jwt?: string) => {
-    if (sockets.ai_socket.connected) {
-        sockets.ai_socket.authenticate({
-            jwt: jwt ?? "",
-            device_id: get_device_id(),
-            user_agent: navigator.userAgent,
-            language: kidsgo_current_language,
-            language_version: "",
-            client_version: kidsgo_version,
-        });
+    if (jwt) {
+        if (sockets.socket.connected) {
+            authenticate(sockets.socket, jwt);
+        }
+        if (sockets.ai_socket.connected) {
+            authenticate(sockets.ai_socket, jwt);
+        }
     }
 });
 
