@@ -6,6 +6,10 @@ dev: node_modules
 	rm -Rf online-go.com/node_modules
 	npm run dev
 
+
+local: node_modules
+	OGS_BACKEND=LOCAL npm run dev
+
 node_modules: package.json
 	npm ls yarn || npm install yarn
 	npm run yarn install
