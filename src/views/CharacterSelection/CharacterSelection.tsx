@@ -91,7 +91,7 @@ export function CharacterSelection(): JSX.Element {
                     syncUserData(newConfig);
                 } catch (err) {
                     console.error("Failed to regenerate name", err);
-                } 
+                }
                 // Necessary otherwise if we refresh the page after changing the alien index by using the left/right arrows, we lose the avatar we were on
             } else {
                 const config = data.get("cached.config");
