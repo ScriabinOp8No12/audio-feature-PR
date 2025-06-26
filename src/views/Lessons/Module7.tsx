@@ -439,8 +439,8 @@ class Page12 extends Module7 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                If you play inside your own territory, and your opponent plays a neutral point, you
-                actually lose a point.
+                Once your walls are safe, if you play inside your own area instead of expanding to a
+                neutral point, your opponent can take it. You've lost a point of territory.
             </p>,
         ];
     }
@@ -480,10 +480,8 @@ class Page13 extends Module7 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <p>
-                Inside a players territory, the stones do not need to touch and you don't want to
-                play inside unless you need to defend or connect something.
-            </p>,
+            <p>Inside a player's territory, the stones do not need to touch.</p>,
+            <p>You don't want to play inside unless you need to defend or connect something.</p>,
         ];
     }
 
@@ -506,12 +504,7 @@ class Page14 extends Module7 {
     }
 
     text(): JSX.Element | Array<JSX.Element> {
-        return [
-            <p>
-                The White territory is marked with circles, and the Blue territory is marked with
-                squares. White has 19 points and Blue has 22.
-            </p>,
-        ];
+        return [<p>Blue has 22 points and White has 19 points.</p>];
     }
 
     config(): PuzzleConfig {
@@ -526,8 +519,8 @@ class Page14 extends Module7 {
         };
     }
     onSetGoban(goban: Goban): void {
-        goban.setMarkByPrettyCoordinates("a1a2a3a4a5a6a7a8a9b1b2b3b4b5b6b7b8b9c4c8c9d9", "square");
-        goban.setMarkByPrettyCoordinates("g1g2g8g9h1h3h5h6h7h9j1j2j3j4j5j6j7j8j9", "circle");
+        const s = goban.engine.computeScore(false);
+        goban.showScores(s, true);
     }
 }
 
