@@ -91,7 +91,7 @@ class Page2 extends Module7 {
     onSetGoban(goban: Goban): void {
         this.delay(() => {
             goban.placeByPrettyCoordinates("d1");
-            // goban.setMarkByPrettyCoordinates("d1", "1");
+            goban.setMarkByPrettyCoordinates("d1", "1");
         });
     }
 }
@@ -121,8 +121,12 @@ class Page3 extends Module7 {
         };
     }
     onSetGoban(goban: Goban): void {
+        goban.setMarkByPrettyCoordinates("d1", "1");
+
         this.delay(() => {
             goban.editPlaceByPrettyCoordinates("g5", JGOFNumericPlayerColor.WHITE);
+            goban.setMarkByPrettyCoordinates("d1", "1");
+            goban.setMarkByPrettyCoordinates("g5", "2");
         });
     }
 }
@@ -156,12 +160,21 @@ class Page4 extends Module7 {
     onSetGoban(goban: Goban): void {
         this.delay(() => {
             goban.placeByPrettyCoordinates("e1");
+
+            goban.setMarkByPrettyCoordinates("e1", "1");
         });
         this.delay(() => {
             goban.placeByPrettyCoordinates("f1");
+
+            goban.setMarkByPrettyCoordinates("e1", "1");
+            goban.setMarkByPrettyCoordinates("f1", "2");
         });
         this.delay(() => {
             goban.placeByPrettyCoordinates("c1");
+
+            goban.setMarkByPrettyCoordinates("e1", "1");
+            goban.setMarkByPrettyCoordinates("f1", "2");
+            goban.setMarkByPrettyCoordinates("c1", "3");
         });
     }
 }
@@ -192,6 +205,7 @@ class Page5 extends Module7 {
     onSetGoban(goban: Goban): void {
         this.delay(() => {
             goban.editPlaceByPrettyCoordinates("f9", JGOFNumericPlayerColor.WHITE);
+            goban.setMarkByPrettyCoordinates("f9", "1");
         });
     }
 }
