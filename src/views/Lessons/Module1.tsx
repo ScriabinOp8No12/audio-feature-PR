@@ -673,9 +673,13 @@ class Puzzle4 extends Module1 {
 }
 
 class Puzzle5 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472327/audio-slices-less-pauses/slice14_less_pauses_if00pt.wav",
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -704,6 +708,9 @@ class Puzzle5 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Good job!</Axol>,
@@ -738,9 +745,13 @@ class Puzzle5 extends Module1 {
 }
 
 class Puzzle6 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548582/audio-slices-less-pauses/slice18_less_pauses_revised_y2583y.wav",
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -769,6 +780,9 @@ class Puzzle6 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>You did it!</Axol>,
@@ -803,9 +817,13 @@ class Puzzle6 extends Module1 {
 }
 
 class Puzzle7 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548582/audio-slices-less-pauses/slice18_less_pauses_revised_y2583y.wav",
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852117/kids-go-server-audio-slices/slice_17_z0n55r.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -834,6 +852,9 @@ class Puzzle7 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Nice work!</Axol>,
@@ -868,9 +889,13 @@ class Puzzle7 extends Module1 {
 }
 
 class Puzzle8 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548582/audio-slices-less-pauses/slice18_less_pauses_revised_y2583y.wav",
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -899,6 +924,9 @@ class Puzzle8 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
