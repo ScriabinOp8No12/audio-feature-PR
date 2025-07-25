@@ -679,7 +679,7 @@ class Puzzle5 extends Module1 {
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472327/audio-slices-less-pauses/slice14_less_pauses_if00pt.wav",
         );
         this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.wav",
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852115/kids-go-server-audio-slices/slice_13_q0v6nw.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -751,7 +751,7 @@ class Puzzle6 extends Module1 {
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548582/audio-slices-less-pauses/slice18_less_pauses_revised_y2583y.wav",
         );
         this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.wav",
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852116/kids-go-server-audio-slices/slice_15_cidisp.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
