@@ -41,7 +41,6 @@ class Module1 extends Content {
     };
 
     componentWillUnmount() {
-        // Stop audio playback and cleanup when the component is about to unmount
         const audio = this.audioRef.current;
         if (audio) {
             audio.pause();
@@ -55,7 +54,6 @@ class Page1 extends Module1 {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854748/kids-go-server-COMBINED-audio-slices/slice_audio1_nkvkon.wav",
         );
-        console.log("Page1 constructor");
     }
 
     text(): JSX.Element | Array<JSX.Element> {
@@ -70,11 +68,11 @@ class Page1 extends Module1 {
                 autoPlay={true} // This line auto plays the audio when we click the next button to navigate to the next page
                 src={this.audioUrl}
             ></audio>,
-            <span>In Go we place stones on the lines, not in the squares!</span>,
-            <span>
+            <p>In Go we place stones on the lines, not in the squares!</p>,
+            <p>
                 The darker color, Blast Off Blue in this case, always goes first, followed by the
                 lighter color, Whammo White here.
-            </span>,
+            </p>,
         ];
     }
     config(): PuzzleConfig {
@@ -100,7 +98,6 @@ class Page2 extends Module1 {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854682/kids-go-server-COMBINED-audio-slices/slice_audio2_pcjrth.wav",
         );
-        console.log("page 2 constructor");
     }
 
     text(): JSX.Element | Array<JSX.Element> {
