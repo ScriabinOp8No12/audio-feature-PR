@@ -24,21 +24,12 @@ import { openPopup } from "@kidsgo/components/PopupDialog";
 const POPUP_TIMEOUT = 1500;
 
 class Module7 extends Content {
-    constructor(audioUrl: string, shouldPlayAudio?: boolean) {
+    constructor() {
         super();
-        this.audioUrl = audioUrl;
-
-        if (shouldPlayAudio !== undefined) {
-            this.shouldPlayAudio = shouldPlayAudio;
-        }
     }
 }
 
 class Page1 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Audio coming soon!</p>,
@@ -64,10 +55,6 @@ class Page1 extends Module7 {
 }
 
 class Page2 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -97,10 +84,6 @@ class Page2 extends Module7 {
 }
 
 class Page3 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -132,10 +115,6 @@ class Page3 extends Module7 {
 }
 
 class Page4 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -180,10 +159,6 @@ class Page4 extends Module7 {
 }
 
 class Page5 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>White could then connect to the top edge to finish enclosing territory.</p>,
@@ -211,10 +186,6 @@ class Page5 extends Module7 {
 }
 
 class Page6 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -255,10 +226,6 @@ class Page6 extends Module7 {
 }
 
 class Page7 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -291,10 +258,6 @@ class Page7 extends Module7 {
 }
 
 class Page8 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -329,10 +292,6 @@ class Page8 extends Module7 {
 }
 
 class Page9 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -367,10 +326,6 @@ class Page9 extends Module7 {
 }
 
 class Page10 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -404,10 +359,6 @@ class Page10 extends Module7 {
 }
 
 class Page11 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -446,10 +397,6 @@ class Page11 extends Module7 {
 }
 
 class Page12 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -488,10 +435,6 @@ class Page12 extends Module7 {
 }
 
 class Page13 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Inside a player's territory, the stones do not need to touch.</p>,
@@ -513,10 +456,6 @@ class Page13 extends Module7 {
 }
 
 class Page14 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Blue has 22 points and White has 19 points.</p>];
     }
@@ -539,10 +478,6 @@ class Page14 extends Module7 {
 }
 
 class Page15 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>The end of the game could have looked like this.</p>,
@@ -571,10 +506,6 @@ class Page15 extends Module7 {
 }
 
 class Page16 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -642,10 +573,6 @@ class Page16 extends Module7 {
 }
 
 class Page17 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>If each side captures the trapped stones, the game might go like this.</p>,
@@ -693,10 +620,6 @@ class Page17 extends Module7 {
 }
 
 class Page18 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -736,10 +659,6 @@ class Page18 extends Module7 {
 }
 
 class Page19 extends Module7 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>

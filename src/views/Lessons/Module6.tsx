@@ -24,21 +24,12 @@ import { openPopup } from "@kidsgo/components/PopupDialog";
 const POPUP_TIMEOUT = 1500;
 
 class Module6 extends Content {
-    constructor(audioUrl: string, shouldPlayAudio?: boolean) {
+    constructor() {
         super();
-        this.audioUrl = audioUrl;
-
-        if (shouldPlayAudio !== undefined) {
-            this.shouldPlayAudio = shouldPlayAudio;
-        }
     }
 }
 
 class Page1 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Audio coming soon!</p>,
@@ -67,10 +58,6 @@ class Page1 extends Module6 {
 }
 
 class Page2 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Other shapes can stretch out and still connect.</p>,
@@ -147,10 +134,6 @@ class Page2 extends Module6 {
 }
 
 class Page3 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -213,10 +196,6 @@ class Page3 extends Module6 {
 }
 
 class Page4 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Now let's look at the one space jump.</p>,
@@ -241,10 +220,6 @@ class Page4 extends Module6 {
 }
 
 class Page5 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -272,10 +247,6 @@ class Page5 extends Module6 {
 }
 
 class Page6 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -316,9 +287,6 @@ class Page6 extends Module6 {
 }
 
 class Page7 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Be careful, if you try the atari from this side, it will end in a disaster.</p>];
     }
@@ -338,9 +306,6 @@ class Page7 extends Module6 {
     }
 }
 class Page8 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>When White extends out, the group will have three liberties and can escape. </p>,
@@ -367,9 +332,6 @@ class Page8 extends Module6 {
 }
 
 class Page9 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -468,9 +430,6 @@ class Page9 extends Module6 {
 }
 
 class Page10 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -550,9 +509,6 @@ class Page10 extends Module6 {
 }
 
 class Page11 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -627,9 +583,6 @@ class Page11 extends Module6 {
 }
 
 class Page12 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -654,9 +607,6 @@ class Page12 extends Module6 {
 }
 
 class Page13 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>If White tries to cut here, capturing the group is easy.</p>];
     }
@@ -700,9 +650,6 @@ class Page13 extends Module6 {
 }
 
 class Page14 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -739,9 +686,6 @@ class Page14 extends Module6 {
 }
 
 class Page15 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -802,9 +746,6 @@ class Page15 extends Module6 {
 }
 
 class Page16 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -853,9 +794,6 @@ class Page16 extends Module6 {
 }
 
 class Page17 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Trying to cut this way also fails, as long as you play atari at A.</p>];
     }
@@ -888,9 +826,6 @@ class Page17 extends Module6 {
 }
 
 class Page18 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -917,10 +852,6 @@ class Page18 extends Module6 {
 }
 
 class Page19 extends Module6 {
-    constructor() {
-        super("no_audio_here");
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>

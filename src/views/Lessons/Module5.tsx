@@ -20,18 +20,12 @@ import { Content } from "./Content";
 import { PuzzleConfig, Goban, JGOFNumericPlayerColor } from "goban";
 
 class Module5 extends Content {
-    constructor(audioUrl: string) {
+    constructor() {
         super();
-        this.audioUrl = audioUrl;
     }
 }
 
 class Page1 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472606/audio-slices-less-pauses/slice78_less_pauses_k9xkqa.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Here's an example of how some things might play out in a real game.</p>,
@@ -54,11 +48,6 @@ class Page1 extends Module5 {
 }
 
 class Page2 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472607/audio-slices-less-pauses/slice79_less_pauses_srqee7.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -84,11 +73,6 @@ class Page2 extends Module5 {
 }
 
 class Page3 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472601/audio-slices-less-pauses/slice80_less_pauses_v0jd9a.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Blue could add a stone at 2 to make a group with three liberties.</p>];
     }
@@ -117,11 +101,6 @@ class Page3 extends Module5 {
 }
 
 class Page4 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472600/audio-slices-less-pauses/slice81_less_pauses_wvf1ee.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -149,11 +128,6 @@ class Page4 extends Module5 {
 }
 
 class Page5 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472608/audio-slices-less-pauses/slice82_less_pauses_ikjoo1.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -184,11 +158,6 @@ class Page5 extends Module5 {
 }
 
 class Page6 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639605/audio-slices-less-pauses/slice85_less_pauses_revised_dgu07k.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -229,11 +198,6 @@ class Page6 extends Module5 {
 }
 
 class Page7 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708638936/audio-slice-less-pauses-COMBINED/slice86_and_87_combined_ct8ryr.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -260,11 +224,6 @@ class Page7 extends Module5 {
 }
 
 class Page8 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472602/audio-slices-less-pauses/slice86_less_pauses_srkqgo.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Now Blue has turned the tables on White! Playing at 1 puts White C into atari.</p>,
@@ -288,11 +247,6 @@ class Page8 extends Module5 {
 }
 
 class Page9 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639046/audio-slices-less-pauses/slice89_less_pauses_revised_llnh9k.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -319,11 +273,6 @@ class Page9 extends Module5 {
 }
 
 class Page10 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472610/audio-slices-less-pauses/slice88_less_pauses_f7u8uy.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -350,11 +299,6 @@ class Page10 extends Module5 {
 }
 
 class Page11 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472603/audio-slices-less-pauses/slice89_less_pauses_ahaovx.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -381,11 +325,6 @@ class Page11 extends Module5 {
 }
 
 class Page12 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472620/audio-slices-less-pauses/slice90_less_pauses_tb5ayg.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -420,11 +359,6 @@ class Page12 extends Module5 {
 }
 
 class Page13 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639218/audio-slices-less-pauses/slice93_less_pauses_revised_muwwqy.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -450,11 +384,6 @@ class Page13 extends Module5 {
 }
 
 class Page14 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472612/audio-slices-less-pauses/slice92_less_pauses_vqjtar.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Now even if White adds a stone at 2, which puts Blue into atari at D...</p>];
     }
@@ -477,11 +406,6 @@ class Page14 extends Module5 {
 }
 
 class Page15 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472617/audio-slices-less-pauses/slice93_less_pauses_sxisdv.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>It's now Blue's turn, and playing at D captures all three White stones.</p>];
     }
@@ -507,11 +431,6 @@ class Page15 extends Module5 {
 }
 
 class Page16 extends Module5 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639374/audio-slices-less-pauses/slice96_less_pauses_revised_u8kay3.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>

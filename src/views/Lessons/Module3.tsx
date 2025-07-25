@@ -23,19 +23,12 @@ import { openPopup } from "@kidsgo/components/PopupDialog";
 
 const POPUP_TIMEOUT = 1500;
 class Module3 extends Content {
-    constructor(audioUrl: string) {
+    constructor() {
         super();
-        this.audioUrl = audioUrl;
     }
 }
 
 class Page1 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708554656/audio-slice-less-pauses-COMBINED/slice45_and_48_combined_dgsntg.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -63,12 +56,6 @@ class Page1 extends Module3 {
 }
 
 class Page2 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708554818/audio-slices-less-pauses/slice46_less_pauses_revised_npgupt.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -89,12 +76,6 @@ class Page2 extends Module3 {
 }
 
 class Page3 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472373/audio-slices-less-pauses/slice45_less_pauses_qcmti9.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -118,12 +99,6 @@ class Page3 extends Module3 {
 }
 
 class Page4 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472580/audio-slices-less-pauses/slice47_less_pauses_oddmrp.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -147,12 +122,6 @@ class Page4 extends Module3 {
 }
 
 class Page5 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472377/audio-slices-less-pauses/slice48_less_pauses_l10z1c.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>What happens if White gets to play in the middle first?</p>];
     }
@@ -174,12 +143,6 @@ class Page5 extends Module3 {
 }
 
 class Page6 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472379/audio-slices-less-pauses/slice49_less_pauses_i2uwkz.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -208,12 +171,6 @@ class Page6 extends Module3 {
 }
 
 class Page7 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708555182/audio-slice-less-pauses-COMBINED/slice52_53_and_54_combined_idgmba.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>It looks like White can't play at A because the team would have no liberties.</p>,
@@ -244,12 +201,6 @@ class Page7 extends Module3 {
 }
 
 class Page8 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472586/audio-slices-less-pauses/slice53_less_pauses_smoepq.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -274,12 +225,6 @@ class Page8 extends Module3 {
 }
 
 class Page9 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708555395/audio-slice-less-pauses-COMBINED/slice54_and_57_combined_fhlma2.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -306,12 +251,6 @@ class Page9 extends Module3 {
 }
 
 class Page10 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472590/audio-slices-less-pauses/slice56_less_pauses_myxeli.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -335,12 +274,6 @@ class Page10 extends Module3 {
 }
 
 class Page11 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472582/audio-slices-less-pauses/slice57_less_pauses_ksavic.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>So Blue can capture two stones with 1. Surely the group is okay now.</p>];
     }
@@ -364,12 +297,6 @@ class Page11 extends Module3 {
 }
 
 class Page12 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708555523/audio-slices-less-pauses/slice60_less_pauses_revised_wseie1.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -406,12 +333,6 @@ class Page12 extends Module3 {
 }
 
 class Page13 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708555614/audio-slices-less-pauses/slice61_less_pauses_revised_ptlzux.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -439,12 +360,6 @@ class Page13 extends Module3 {
 }
 
 class Page14 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472596/audio-slices-less-pauses/slice60_less_pauses_vlwhff.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -468,12 +383,6 @@ class Page14 extends Module3 {
 }
 
 class Page15 extends Module3 {
-    constructor() {
-        super(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472583/audio-slices-less-pauses/slice61_less_pauses_fh5hpq.mp3",
-        );
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>Good job learning about eyes so far, this is tricky stuff!</p>,
@@ -490,13 +399,6 @@ class Page15 extends Module3 {
 }
 
 class Puzzle1 extends Module3 {
-    private successAudio: HTMLAudioElement;
-    constructor() {
-        super("no_audio_here");
-        this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708547864/audio-slices-less-pauses/slice13_less_pauses_revised_tanua8.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Capture the White stones.</p>];
     }
@@ -511,11 +413,6 @@ class Puzzle1 extends Module3 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            if (this.shouldPlayAudio) {
-                this.successAudio
-                    .play()
-                    .catch((error) => console.error("Error playing success audio:", error));
-            }
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Good job!</Axol>,
@@ -550,13 +447,6 @@ class Puzzle1 extends Module3 {
 }
 
 class Puzzle2 extends Module3 {
-    private successAudio: HTMLAudioElement;
-    constructor() {
-        super("no_audio_here");
-        this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the Blue stones.</p>];
     }
@@ -571,11 +461,6 @@ class Puzzle2 extends Module3 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            if (this.shouldPlayAudio) {
-                this.successAudio
-                    .play()
-                    .catch((error) => console.error("Error playing success audio:", error));
-            }
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>You did it!</Axol>,
@@ -610,13 +495,6 @@ class Puzzle2 extends Module3 {
 }
 
 class Puzzle3 extends Module3 {
-    private successAudio: HTMLAudioElement;
-    constructor() {
-        super("no_audio_here");
-        this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472331/audio-slices-less-pauses/slice17_less_pauses_znln8h.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the Blue stones.</p>];
     }
@@ -631,11 +509,6 @@ class Puzzle3 extends Module3 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            if (this.shouldPlayAudio) {
-                this.successAudio
-                    .play()
-                    .catch((error) => console.error("Error playing success audio:", error));
-            }
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Nice work!</Axol>,
@@ -670,13 +543,6 @@ class Puzzle3 extends Module3 {
 }
 
 class Puzzle4 extends Module3 {
-    private successAudio: HTMLAudioElement;
-    constructor() {
-        super("no_audio_here");
-        this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the Blue stones.</p>];
     }
@@ -691,11 +557,6 @@ class Puzzle4 extends Module3 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            if (this.shouldPlayAudio) {
-                this.successAudio
-                    .play()
-                    .catch((error) => console.error("Error playing success audio:", error));
-            }
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
@@ -730,13 +591,6 @@ class Puzzle4 extends Module3 {
 }
 
 class Puzzle5 extends Module3 {
-    private successAudio: HTMLAudioElement;
-    constructor() {
-        super("no_audio_here");
-        this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708547864/audio-slices-less-pauses/slice13_less_pauses_revised_tanua8.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Capture the White stones.</p>];
     }
@@ -751,11 +605,6 @@ class Puzzle5 extends Module3 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            if (this.shouldPlayAudio) {
-                this.successAudio
-                    .play()
-                    .catch((error) => console.error("Error playing success audio:", error));
-            }
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Good job!</Axol>,
@@ -790,13 +639,6 @@ class Puzzle5 extends Module3 {
 }
 
 class Puzzle6 extends Module3 {
-    private successAudio: HTMLAudioElement;
-    constructor() {
-        super("no_audio_here");
-        this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the Blue stones.</p>];
     }
@@ -811,11 +653,6 @@ class Puzzle6 extends Module3 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            if (this.shouldPlayAudio) {
-                this.successAudio
-                    .play()
-                    .catch((error) => console.error("Error playing success audio:", error));
-            }
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>You did it!</Axol>,
@@ -850,13 +687,6 @@ class Puzzle6 extends Module3 {
 }
 
 class Puzzle7 extends Module3 {
-    private successAudio: HTMLAudioElement;
-    constructor() {
-        super("no_audio_here");
-        this.successAudio = new Audio(
-            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472331/audio-slices-less-pauses/slice17_less_pauses_znln8h.mp3",
-        );
-    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the Blue stones.</p>];
     }
@@ -874,11 +704,6 @@ class Puzzle7 extends Module3 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
-            if (this.shouldPlayAudio) {
-                this.successAudio
-                    .play()
-                    .catch((error) => console.error("Error playing success audio:", error));
-            }
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Nice work!</Axol>,

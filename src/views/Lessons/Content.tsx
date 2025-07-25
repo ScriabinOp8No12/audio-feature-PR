@@ -36,12 +36,9 @@ export class Content extends TypedEventEmitter<Events> {
     goban?: Goban;
     current_delay: number = 0;
     next_path: string = "";
-    audioUrl: string = "";
-    shouldPlayAudio: boolean;
 
-    constructor(shouldPlayAudio: boolean = true) {
+    constructor() {
         super();
-        this.shouldPlayAudio = shouldPlayAudio;
     }
 
     text(): JSX.Element | Array<JSX.Element> {
