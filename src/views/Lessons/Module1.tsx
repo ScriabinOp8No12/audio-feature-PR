@@ -381,10 +381,15 @@ class Page8 extends Module1 {
 }
 
 class Puzzle1 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         // This is the manually sliced audio clip for the first puzzle
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707977976/kids-go-server-audio-slices/slice_first_puzzle_audio_wflxs8.wav",
+        );
+        // Success audio for the popup audio!  Says "Good job!"
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852115/kids-go-server-audio-slices/slice_13_q0v6nw.wav",
         );
     }
 
@@ -414,6 +419,10 @@ class Puzzle1 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            // If we chain the success audio after the captureDelay, the "good job audio clip" happens after we go to the next puzzle
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Good job!</Axol>,
@@ -448,9 +457,13 @@ class Puzzle1 extends Module1 {
 }
 
 class Puzzle2 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852119/kids-go-server-audio-slices/slice_14_s6dmem.wav",
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852116/kids-go-server-audio-slices/slice_15_cidisp.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -479,6 +492,9 @@ class Puzzle2 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>You did it!</Axol>,
@@ -513,9 +529,13 @@ class Puzzle2 extends Module1 {
 }
 
 class Puzzle3 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852118/kids-go-server-audio-slices/slice_16_p8yhmr.wav",
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852117/kids-go-server-audio-slices/slice_17_z0n55r.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -544,6 +564,9 @@ class Puzzle3 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Nice work!</Axol>,
@@ -578,9 +601,13 @@ class Puzzle3 extends Module1 {
 }
 
 class Puzzle4 extends Module1 {
+    private successAudio: HTMLAudioElement;
     constructor() {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548582/audio-slices-less-pauses/slice18_less_pauses_revised_y2583y.wav",
+        );
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852119/kids-go-server-audio-slices/slice_19_ddyawc.wav",
         );
     }
     text(): JSX.Element | Array<JSX.Element> {
@@ -609,6 +636,9 @@ class Puzzle4 extends Module1 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
