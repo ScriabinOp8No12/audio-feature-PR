@@ -46,6 +46,11 @@ class Module1 extends Content {
             audio.pause();
             audio.currentTime = 0;
         }
+        // Clean up the delay of stone animations, otherwise it'll persist across rerenders and cause weird side effects
+        Object.keys(this.delays).forEach((key) => {
+            clearTimeout(this.delays[key]);
+            delete this.delays[key];
+        });
     }
 }
 
