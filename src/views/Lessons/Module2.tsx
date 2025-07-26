@@ -66,10 +66,10 @@ class Page1 extends Module2 {
                 autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
-            <span>
+            <p>
                 Based on the last lesson you might think the goal of this game is to capture stones,
                 but actually whoever surrounds the most territory at the end of the game wins.
-            </span>,
+            </p>,
         ];
     }
     config(): PuzzleConfig {
