@@ -75,6 +75,9 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
                                         if (
                                             bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
                                         ) {
+                                            if (handicap === 6) {
+                                                botDisplayName = "Beginner + 6";
+                                            }
                                             if (handicap === 4) {
                                                 botDisplayName = "Beginner";
                                             } else if (handicap === 2) {
