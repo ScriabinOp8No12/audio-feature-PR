@@ -43,7 +43,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-1-container">
                         <ChapterButton chapter={1} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-1-text"
                             onClick={() => navigateToChapter(1, navigate)}
                         >
                             Capturing Stones
@@ -53,7 +53,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-2-container">
                         <ChapterButton chapter={2} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-2-text"
                             onClick={() => navigateToChapter(2, navigate)}
                         >
                             Quest for Space
@@ -64,7 +64,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-3-container">
                         <ChapterButton chapter={3} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-3-text"
                             onClick={() => navigateToChapter(3, navigate)}
                         >
                             Eyes for Life
@@ -74,7 +74,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-4-container">
                         <ChapterButton chapter={4} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-4-text"
                             onClick={() => navigateToChapter(4, navigate)}
                         >
                             Ko Battles
@@ -84,7 +84,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-5-container">
                         <ChapterButton chapter={5} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-5-text"
                             onClick={() => navigateToChapter(5, navigate)}
                         >
                             Magic Moves
@@ -94,7 +94,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-6-container">
                         <ChapterButton chapter={6} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-6-text"
                             onClick={() => navigateToChapter(6, navigate)}
                         >
                             Connecting
@@ -104,7 +104,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-7-container">
                         <ChapterButton chapter={7} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-7-text"
                             onClick={() => navigateToChapter(7, navigate)}
                         >
                             Scoring
@@ -114,7 +114,7 @@ export function LearnToPlay(): JSX.Element {
                     <div className="chapter-container chapter-8-container">
                         <ChapterButton chapter={8} />
                         <div
-                            className="chapter-text"
+                            className="chapter-text chapter-8-text"
                             onClick={() => navigateToChapter(8, navigate)}
                         >
                             Problems
