@@ -1,10 +1,41 @@
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![website](https://img.shields.io/website-up-down-green-red/http/kidsgoserver.com/.svg?label=online-go)](https://kidsgoserver.com/)
+*******************
+**Initial Setup**
+*******************
 
-# KidsGoServer.com source code
+Getting setup locally takes less than 5 minutes!
 
-This repository contains the source code for web client used by [KidsGoServer.com](https://kidsgoserver.com).
+Requirements:
+- Node.js version 20+ (check with: node -v)
+- Yarn package manager (install with: npm install -g yarn)
 
-# Contributing
+*******************
 
-Feel like making some changes? Excellent! See the [Contributing guide](./CONTRIBUTING.md).
+1. Git clone the project
+
+```
+git clone https://github.com/ScriabinOp8No12/audio-feature-PR.git
+```
+
+2. In a terminal, navigate to the root of the project
+
+```
+cd audio-feature-PR
+```
+
+3. Open the project in your IDE, then return to your original terminal for step 4:
+
+```
+code .
+```
+
+4. Install packages and start the frontend server:
+
+```
+yarn install && npm run dev
+```
+
+5. View the website in your browser:
+
+```
+http://localhost:18888/
+```
