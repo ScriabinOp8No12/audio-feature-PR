@@ -64,7 +64,7 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
                             const [race, idx] = uiClassToRaceIdx(bot.ui_class);
                             const handicaps =
                                 bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
-                                    ? [4, 2, 0]
+                                    ? [6, 4, 2, 0]
                                     : [0];
 
                             return (
@@ -75,6 +75,9 @@ export function ComputerOpponents(props: OpponentListProperties): JSX.Element {
                                         if (
                                             bot.kidsgo_bot_name?.toLowerCase()?.indexOf("easy") >= 0
                                         ) {
+                                            if (handicap === 6) {
+                                                botDisplayName = "Beginner + 6";
+                                            }
                                             if (handicap === 4) {
                                                 botDisplayName = "Beginner";
                                             } else if (handicap === 2) {

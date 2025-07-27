@@ -23,18 +23,53 @@ import { openPopup } from "@kidsgo/components/PopupDialog";
 
 const POPUP_TIMEOUT = 1500;
 class Module2 extends Content {
-    constructor() {
+    audioRef: React.RefObject<HTMLAudioElement>;
+    audioUrl: string;
+
+    constructor(audioUrl: string) {
         super();
+        this.audioRef = React.createRef();
+        this.audioUrl = audioUrl;
+    }
+
+    playAudio = async () => {
+        const audio = this.audioRef.current;
+        if (audio) {
+            await audio.play();
+        }
+    };
+
+    componentWillUnmount() {
+        const audio = this.audioRef.current;
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
     }
 }
 
 class Page1 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708550145/audio-slices-less-pauses/slice20_less_pauses_revised_wlyinf.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <span>
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
+            <p>
                 Based on the last lesson you might think the goal of this game is to capture stones,
                 but actually whoever surrounds the most territory at the end of the game wins.
-            </span>,
+            </p>,
         ];
     }
     config(): PuzzleConfig {
@@ -49,8 +84,23 @@ class Page1 extends Module2 {
 }
 
 class Page2 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708550225/audio-slices-less-pauses/slice21_less_pauses_revised_vjtr4g.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 Territory is the empty space we surround. Here is one kind of territory using the
                 edge of the board. There are four points of territory in the corner.
@@ -77,8 +127,23 @@ class Page2 extends Module2 {
 }
 
 class Page3 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708550312/audio-slices-less-pauses/slice22_less_pauses_revised_ksy8ir.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 Here is another kind of territory, made by surrounding space in the middle. How many
                 points of territory does Blue have here?
@@ -97,8 +162,25 @@ class Page3 extends Module2 {
 }
 
 class Page4 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472337/audio-slices-less-pauses/slice23_less_pauses_sr0s2s.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Four points is right.</p>];
+        return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
+            <p>Four points is right.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -118,8 +200,25 @@ class Page4 extends Module2 {
 }
 
 class Page5 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472339/audio-slices-less-pauses/slice24_less_pauses_woik4b.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>How many points does Blue have here?</p>];
+        return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
+            <p>How many points does Blue have here?</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -135,8 +234,23 @@ class Page5 extends Module2 {
 }
 
 class Page6 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708550675/audio-slice-less-pauses-COMBINED/slice25_and_26_combined_xjrc9k.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>The answer is 9 points for Blue.</p>,
             <p>Remember, you only need to build your fence up to the edge of the board. </p>,
         ];
@@ -166,8 +280,23 @@ class Page6 extends Module2 {
 }
 
 class Page7 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472343/audio-slices-less-pauses/slice27_less_pauses_mkkli5.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 In Go, we play until the two colors are touching each other, and the empty space
                 each blocks off and surrounds is their territory.
@@ -188,8 +317,23 @@ class Page7 extends Module2 {
 }
 
 class Page8 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708552000/audio-slice-less-pauses-COMBINED/slice28_29_and_30_combined_go49dz.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>Can White play on Blue's side? Yes.</p>,
             <p>Can Blue play on White's side? Yes.</p>,
             <p>
@@ -223,8 +367,23 @@ class Page8 extends Module2 {
 // the game ends and we score the game or something. Or something like "when you think the game is over, say "pass", if your opponent also thinks the game is over, they can say
 // "pass" too, then we can score the game!
 class Page9 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708552553/audio-slice-less-pauses-COMBINED/slice31_and_32_combined_jcmxoh.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 If you think the game is over, just pass a stone to your opponent. If your opponent
                 plays a stone then you can either play or pass.
@@ -249,8 +408,23 @@ class Page9 extends Module2 {
 }
 
 class Page10 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708552711/audio-slice-less-pauses-COMBINED/slice33_and_34_combined_bkl2un.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>Blue has territory on the left, and White has it on the right.</p>,
             <p>We can see Blue has 23 points.</p>,
         ];
@@ -275,8 +449,25 @@ class Page10 extends Module2 {
 }
 
 class Page11 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472354/audio-slices-less-pauses/slice35_less_pauses_pzy4sf.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>And White has 24, so White is ahead by one.</p>];
+        return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
+            <p>And White has 24, so White is ahead by one.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -298,8 +489,23 @@ class Page11 extends Module2 {
 }
 
 class Page12 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708553650/audio-slice-less-pauses-COMBINED/slice36_38_and_39_combined_kymjby.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>But Blue also captured three stones which went into the prisoner bowl.</p>,
             <p>Those three stones that Blue captured are subtracted from White's territory.</p>,
             <p>Now the score is Blue 23 and White 21 so Blue wins by two.</p>,
@@ -323,8 +529,23 @@ class Page12 extends Module2 {
 }
 
 class Page13 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472581/audio-slices-less-pauses/slice39_less_pauses_t7eggo.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 When we play face-to-face we put all captures back into the territory of the same
                 color. So at the end of the game, the board will have all the stones played during
@@ -341,6 +562,11 @@ class Page13 extends Module2 {
 }
 
 class Page14 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1746213981/lets_try_some_simple_problems_now_audio_snipped_5_2_2025_lbpyvj.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Let's try some simple problems now.</p>];
     }
@@ -353,6 +579,13 @@ class Page14 extends Module2 {
 }
 
 class Puzzle1 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708547864/audio-slices-less-pauses/slice13_less_pauses_revised_tanua8.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the Blue stones.</p>];
     }
@@ -367,6 +600,9 @@ class Puzzle1 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Good job!</Axol>,
@@ -401,6 +637,13 @@ class Puzzle1 extends Module2 {
 }
 
 class Puzzle2 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Capture the 2 White stones.</p>];
     }
@@ -415,6 +658,9 @@ class Puzzle2 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>You did it!</Axol>,
@@ -449,6 +695,13 @@ class Puzzle2 extends Module2 {
 }
 
 class Puzzle3 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472331/audio-slices-less-pauses/slice17_less_pauses_znln8h.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Capture the 5 White stones.</p>];
     }
@@ -463,6 +716,9 @@ class Puzzle3 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Nice work!</Axol>,
@@ -497,6 +753,13 @@ class Puzzle3 extends Module2 {
 }
 
 class Puzzle4 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the 3 Blue stones.</p>];
     }
@@ -514,6 +777,9 @@ class Puzzle4 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,
@@ -548,6 +814,13 @@ class Puzzle4 extends Module2 {
 }
 
 class Puzzle5 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708547864/audio-slices-less-pauses/slice13_less_pauses_revised_tanua8.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the 2 Blue stones.</p>];
     }
@@ -565,6 +838,9 @@ class Puzzle5 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Good job!</Axol>,
@@ -599,6 +875,13 @@ class Puzzle5 extends Module2 {
 }
 
 class Puzzle6 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472328/audio-slices-less-pauses/slice15_less_pauses_w7g2jr.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Capture the 3 White stones.</p>];
     }
@@ -616,6 +899,9 @@ class Puzzle6 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>You did it!</Axol>,
@@ -650,6 +936,13 @@ class Puzzle6 extends Module2 {
 }
 
 class Puzzle7 extends Module2 {
+    private successAudio: HTMLAudioElement;
+    constructor() {
+        super("no_audio_here");
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708548659/audio-slices-less-pauses/slice19_less_pauses_revised_fykpjy.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [<p>Save the 7 Blue stones, this one is very tricky!</p>];
     }
@@ -684,6 +977,9 @@ class Puzzle7 extends Module2 {
     }
     onSetGoban(goban: Goban): void {
         goban.on("puzzle-correct-answer", () => {
+            this.successAudio
+                .play()
+                .catch((error) => console.error("Error playing success audio:", error));
             this.captureDelay(() => {
                 openPopup({
                     text: <Axol>Very clever!</Axol>,

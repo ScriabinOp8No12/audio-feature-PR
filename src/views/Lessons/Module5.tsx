@@ -20,14 +20,49 @@ import { Content } from "./Content";
 import { PuzzleConfig, Goban, JGOFNumericPlayerColor } from "goban";
 
 class Module5 extends Content {
-    constructor() {
+    audioRef: React.RefObject<HTMLAudioElement>;
+    audioUrl: string;
+
+    constructor(audioUrl: string) {
         super();
+        this.audioRef = React.createRef();
+        this.audioUrl = audioUrl;
+    }
+
+    playAudio = async () => {
+        const audio = this.audioRef.current;
+        if (audio) {
+            await audio.play();
+        }
+    };
+
+    componentWillUnmount() {
+        const audio = this.audioRef.current;
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+        }
     }
 }
 
 class Page1 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472606/audio-slices-less-pauses/slice78_less_pauses_k9xkqa.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>Here's an example of how some things might play out in a real game.</p>,
             <p>
                 Let's look at these two stones. They're not a team, because diagonal points are not
@@ -48,8 +83,23 @@ class Page1 extends Module5 {
 }
 
 class Page2 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472607/audio-slices-less-pauses/slice79_less_pauses_srqee7.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 With enough moves, both stones could be captured. The White stone at 1 places both
                 Blue stones into atari at once, or double atari.
@@ -73,8 +123,25 @@ class Page2 extends Module5 {
 }
 
 class Page3 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472601/audio-slices-less-pauses/slice80_less_pauses_v0jd9a.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Blue could add a stone at 2 to make a group with three liberties.</p>];
+        return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
+            <p>Blue could add a stone at 2 to make a group with three liberties.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -101,8 +168,23 @@ class Page3 extends Module5 {
 }
 
 class Page4 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472600/audio-slices-less-pauses/slice81_less_pauses_wvf1ee.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 White can still capture the other stone at 3 though, because it's not connected to
                 the Blue group.
@@ -128,8 +210,23 @@ class Page4 extends Module5 {
 }
 
 class Page5 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472608/audio-slices-less-pauses/slice82_less_pauses_ikjoo1.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 So White might try to capture the Blue group by adding a stone at 1. Blue might try
                 playing at 2 to save the stones.
@@ -158,8 +255,23 @@ class Page5 extends Module5 {
 }
 
 class Page6 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639605/audio-slices-less-pauses/slice85_less_pauses_revised_dgu07k.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 Maybe White gets impatient and tries to surround Blue's group with 3. Blue responds
                 with 4, which puts White's stone at A into atari.
@@ -198,8 +310,23 @@ class Page6 extends Module5 {
 }
 
 class Page7 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708638936/audio-slice-less-pauses-COMBINED/slice86_and_87_combined_ct8ryr.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 White will lose the stone at A if Blue plays at B, so White adds a stone there to
                 get new liberties.
@@ -224,8 +351,23 @@ class Page7 extends Module5 {
 }
 
 class Page8 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472602/audio-slices-less-pauses/slice86_less_pauses_srkqgo.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>Now Blue has turned the tables on White! Playing at 1 puts White C into atari.</p>,
         ];
     }
@@ -247,8 +389,23 @@ class Page8 extends Module5 {
 }
 
 class Page9 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639046/audio-slices-less-pauses/slice89_less_pauses_revised_llnh9k.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 White adds a stone at 2, but there's a problem. 2 is on the edge of the board, which
                 means there is one liberty less!
@@ -273,8 +430,23 @@ class Page9 extends Module5 {
 }
 
 class Page10 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472610/audio-slices-less-pauses/slice88_less_pauses_f7u8uy.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 This means that a move by Blue at either A or B will put two White stones into
                 atari. Which one do you think is best?
@@ -299,8 +471,23 @@ class Page10 extends Module5 {
 }
 
 class Page11 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472603/audio-slices-less-pauses/slice89_less_pauses_ahaovx.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 Let's look at B first. This move looks good because on the next turn Blue could
                 capture the two White stones at A.
@@ -325,8 +512,23 @@ class Page11 extends Module5 {
 }
 
 class Page12 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472620/audio-slices-less-pauses/slice90_less_pauses_tb5ayg.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 Unfortunately, it's not Blue's turn. While it is true that White is in atari, Blue
                 is also now in atari, so White can capture first - at C - and remove four Blue
@@ -359,8 +561,23 @@ class Page12 extends Module5 {
 }
 
 class Page13 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639218/audio-slices-less-pauses/slice93_less_pauses_revised_muwwqy.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 Let's try going the other way this time. A Blue play at A also puts the two White
                 stones into atari.
@@ -384,8 +601,25 @@ class Page13 extends Module5 {
 }
 
 class Page14 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472612/audio-slices-less-pauses/slice92_less_pauses_vqjtar.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Now even if White adds a stone at 2, which puts Blue into atari at D...</p>];
+        return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
+            <p>Now even if White adds a stone at 2, which puts Blue into atari at D...</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -406,8 +640,25 @@ class Page14 extends Module5 {
 }
 
 class Page15 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708472617/audio-slices-less-pauses/slice93_less_pauses_sxisdv.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>It's now Blue's turn, and playing at D captures all three White stones.</p>];
+        return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
+            <p>It's now Blue's turn, and playing at D captures all three White stones.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -431,8 +682,23 @@ class Page15 extends Module5 {
 }
 
 class Page16 extends Module5 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1708639374/audio-slices-less-pauses/slice96_less_pauses_revised_u8kay3.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                autoPlay={true}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 In Go, the placement of a single stone can make the difference between capturing a
                 large group or losing one of your own. That's part of the fun!
