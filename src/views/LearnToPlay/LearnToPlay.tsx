@@ -46,7 +46,7 @@ export function LearnToPlay(): JSX.Element {
                             className="chapter-text"
                             onClick={() => navigateToChapter(1, navigate)}
                         >
-                            Capturing
+                            Capturing Stones
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@ export function LearnToPlay(): JSX.Element {
                             className="chapter-text"
                             onClick={() => navigateToChapter(2, navigate)}
                         >
-                            Territory
+                            Quest for Space
                         </div>
                     </div>
 
@@ -67,7 +67,7 @@ export function LearnToPlay(): JSX.Element {
                             className="chapter-text"
                             onClick={() => navigateToChapter(3, navigate)}
                         >
-                            Eyes
+                            Eyes for Life
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@ export function LearnToPlay(): JSX.Element {
                             className="chapter-text"
                             onClick={() => navigateToChapter(4, navigate)}
                         >
-                            Ko
+                            Ko Battles
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@ export function LearnToPlay(): JSX.Element {
                             className="chapter-text"
                             onClick={() => navigateToChapter(5, navigate)}
                         >
-                            Reading
+                            Magic Moves
                         </div>
                     </div>
 
